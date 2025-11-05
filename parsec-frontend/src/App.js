@@ -1,0 +1,70 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import './App.css';
+
+// Import page components (we'll create these next)
+import Landing from './pages/Landing';
+import Login from './pages/Login';
+import SignupLayout from './pages/signup/SignupLayout';
+import Onboarding from './pages/signup/Onboarding';
+import Terms from './pages/signup/Terms';
+import Auth from './pages/signup/Auth';
+import Events from './pages/Events';
+import EventDetail from './pages/EventDetail';
+import Schedule from './pages/Schedule';
+import DashboardLayout from './layouts/DashboardLayout';
+import DashboardHome from './pages/dashboard/DashboardHome';
+import DashboardEvents from './pages/dashboard/DashboardEvents';
+import DashboardEventDetail from './pages/dashboard/DashboardEventDetail';
+import DashboardSchedule from './pages/dashboard/DashboardSchedule';
+import Tickets from './pages/dashboard/Tickets';
+import Profile from './pages/dashboard/Profile';
+import Leaderboard from './pages/dashboard/Leaderboard';
+import Team from './pages/dashboard/Team';
+import Contact from './pages/dashboard/Contact';
+import NotFound from './pages/NotFound';
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        {/* Root redirects to landing */}
+        <Route path="/" element={<Navigate to="/landing" replace />} />
+
+        {/* Public Routes */}
+        <Route path="/landing" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+        
+        {/* Signup Flow (nested routes) */}
+        <Route path="/signup" element={<SignupLayout />}>
+          <Route path="onboarding" element={<Onboarding />} />
+          <Route path="auth" element={<Auth />} />
+          <Route path="terms" element={<Terms />} />
+        </Route>
+
+        {/* Public Events & Schedule */}
+        <Route path="/events" element={<Events />} />
+        <Route path="/events/:id" element={<EventDetail />} />
+        <Route path="/schedule" element={<Schedule />} />
+
+        {/* Protected Dashboard Routes */}
+        <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route index element={<DashboardHome />} />
+          <Route path="events" element={<DashboardEvents />} />
+          <Route path="events/:id" element={<DashboardEventDetail />} />
+          <Route path="schedule" element={<DashboardSchedule />} />
+          <Route path="tickets" element={<Tickets />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="leaderboard" element={<Leaderboard />} />
+          <Route path="team" element={<Team />} />
+          <Route path="contact" element={<Contact />} />
+        </Route>
+
+        {/* 404 Page */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
