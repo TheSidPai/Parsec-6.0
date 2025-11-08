@@ -1,6 +1,6 @@
 import React from "react";
 import GhostCursor from "../components/GhostCursor";
-import Button from "../components/Button";
+// import Button from "../components/Button";
 
 function Landing() {
   return (
@@ -28,28 +28,31 @@ function Landing() {
           style={{
             textAlign: "center",
             color: "black",
-            display: "flex",
-            justifyContent: "center",
             height: "100vh",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
             alignItems: "center",
           }}
         >
           <h1
             style={{
-              fontSize: "6rem",
+              fontSize: "10rem",
               fontWeight: "bold",
+              fontFamily: "harryP",
               marginBottom: "1rem",
-              fontFamily: "inherit", // You can change this later
-              position: "absolute",
               zIndex: 999,
+              letterSpacing: "0.5rem",
             }}
           >
             PARSEC 6.0
           </h1>
           <p
             style={{
-              fontSize: "2rem",
+                fontFamily: "Playfair Display, serif",
+              fontSize: "4rem",
               fontWeight: "300",
+              zIndex: 999,
             }}
           >
             Digital Wizardry
