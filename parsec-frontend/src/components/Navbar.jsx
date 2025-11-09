@@ -10,14 +10,19 @@ function Navbar() {
         <Link to="/landing" className="navbar-logo">
           Parsec 6.0
         </Link>
-
         <ul className="navbar-menu">
-          <li><Link to="/events">Events</Link></li>
-          <li><Link to="/schedule">Schedule</Link></li>
-          <li><Link to="/login">Login</Link></li>
-          <li>
-            <Link to="/signup/onboarding">
-              <Button variant="primary">Sign Up</Button>
+          <li className="navbar-item">
+            <Link to="/events" className="navbar-link">Events</Link>
+          </li>
+          <li className="navbar-item">
+            <Link to="/schedule" className="navbar-link">Schedule</Link>
+          </li>
+          <li className="navbar-item">
+            <Link to="/landing" className="navbar-link">Home</Link>
+          </li>
+          <li className="navbar-item">
+            <Link to="/signup/onboarding" className="navbar-signup">
+              <Button variant="primary">Login/signup</Button>
             </Link>
           </li>
         </ul>

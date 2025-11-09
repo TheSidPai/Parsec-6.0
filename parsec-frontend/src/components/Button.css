@@ -6,7 +6,7 @@
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-family: inherit;
+    font-family: 'JosefinSans';
   }
   
   .btn:hover {
@@ -23,6 +23,7 @@
   /* Primary button - magical purple */
   .btn-primary {
     background: linear-gradient(135deg, #6b46c1 0%, #9333ea 100%);
+    background: rgb(0, 0, 47);
     color: white;
   }
   

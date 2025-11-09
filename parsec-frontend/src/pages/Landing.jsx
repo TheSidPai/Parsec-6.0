@@ -1,10 +1,13 @@
 import React from "react";
 import GhostCursor from "../components/GhostCursor";
+import Navbar from "../components/Navbar";
 // import Button from "../components/Button";
 
 function Landing() {
   return (
     <div>
+        <Navbar/>
+
       <div style={{ height: "100vh", position: "relative" }}>
         <GhostCursor
           // Visuals
@@ -23,7 +26,7 @@ function Landing() {
           fadeDelayMs={1000}
           fadeDurationMs={1500}
         />
-
+        
         <div
           style={{
             textAlign: "center",
@@ -41,7 +44,7 @@ function Landing() {
               fontWeight: "bold",
               fontFamily: "harryP",
               marginBottom: "1rem",
-              zIndex: 999,
+              zIndex: 900,
               letterSpacing: "0.5rem",
             }}
           >

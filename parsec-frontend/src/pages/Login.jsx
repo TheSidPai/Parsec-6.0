@@ -1,11 +1,12 @@
 import React from 'react';
+import Navbar from "../components/Navbar";
+import ComingSoon from '../components/ComingSoon.jsx';
 
 function Login() {
-  return (
-    <div>
-      <h1>Login Page</h1>
-    </div>
-  );
+  return <div>
+    <Navbar />
+    <ComingSoon />
+  </div>;
 }
 
 export default Login;

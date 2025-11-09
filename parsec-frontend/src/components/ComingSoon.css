@@ -1,0 +1,29 @@
+.comingsoon-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comingsoon-card {
+    text-align: center;
+    color: white;
+    padding: 40px;
+    border: 3px solid lightyellow;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.comingsoon-title{
+    font-family: 'Playfair Display';
+    font-size: 3rem;
+    color: lightyellow;
+}
+
+.comingsoon-desc{
+    font-family: 'JosefinSans';
+}

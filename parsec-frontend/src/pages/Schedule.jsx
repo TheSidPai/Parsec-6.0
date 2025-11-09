@@ -1,7 +1,12 @@
 import React from 'react';
+import Navbar from "../components/Navbar";
+import ComingSoon from '../components/ComingSoon.jsx';
 
 function Schedule() {
-  return <div><h1>Schedule (Public)</h1></div>;
+  return <div>
+    <Navbar />
+    <ComingSoon />
+  </div>;
 }
 
 export default Schedule;

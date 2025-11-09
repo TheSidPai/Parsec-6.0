@@ -18,3 +18,10 @@
   font-weight: bold;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'JosefinSans';
+  src: url(./assets/fonts/JosefinSans-SemiBold.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
