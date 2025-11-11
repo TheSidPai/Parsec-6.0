@@ -1,0 +1,97 @@
+/* ========== LANDING CONTENT ========== */
+.landing-content {
+  text-align: center;
+  color: black;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.landing-title {
+  font-size: 10rem;
+  font-weight: bold;
+  font-family: "harryP", serif;
+  margin-bottom: 1rem;
+  z-index: 900;
+  letter-spacing: 0.5rem;
+  position: relative;
+}
+
+.landing-motto {
+  font-family: "Playfair Display", serif;
+  font-size: 4rem;
+  font-weight: 300;
+  z-index: 999;
+  position: relative;
+}
+
+/* ========== RESPONSIVE - TABLET ========== */
+@media screen and (max-width: 960px) {
+  .landing-title {
+    font-size: 7rem;
+    letter-spacing: 0.3rem;
+  }
+
+  .landing-motto {
+    font-size: 3rem;
+  }
+}
+
+/* ========== RESPONSIVE - MOBILE ========== */
+@media screen and (max-width: 768px) {
+  .landing-content {
+    padding: 0 15px;
+  }
+
+  .landing-title {
+    font-size: 5rem;
+    letter-spacing: 0.2rem;
+    margin-bottom: 0.5rem;
+    /* Stack text vertically on mobile */
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .landing-motto {
+    font-size: 2rem;
+  }
+}
+
+/* ========== RESPONSIVE - SMALL MOBILE ========== */
+@media screen and (max-width: 480px) {
+  .landing-content {
+    padding: 0 10px;
+  }
+
+  .landing-title {
+    font-size: 3.5rem;
+    letter-spacing: 0.15rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .landing-motto {
+    font-size: 1.5rem;
+  }
+}
+
+/* ========== RESPONSIVE - EXTRA SMALL ========== */
+@media screen and (max-width: 360px) {
+  .landing-title {
+    font-size: 2.8rem;
+    letter-spacing: 0.1rem;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .landing-motto {
+    font-size: 1.2rem;
+  }
+}

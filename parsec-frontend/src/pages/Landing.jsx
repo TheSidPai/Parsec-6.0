@@ -1,7 +1,7 @@
 import React from "react";
 import GhostCursor from "../components/GhostCursor";
 import Navbar from "../components/Navbar";
-// import Button from "../components/Button";
+import "./Landing.css";
 
 function Landing() {
   return (
@@ -27,40 +27,14 @@ function Landing() {
           fadeDurationMs={1500}
         />
         
-        <div
-          style={{
-            textAlign: "center",
-            color: "black",
-            height: "100vh",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <h1
-            style={{
-              fontSize: "10rem",
-              fontWeight: "bold",
-              fontFamily: "harryP",
-              marginBottom: "1rem",
-              zIndex: 900,
-              letterSpacing: "0.5rem",
-            }}
-          >
-            PARSEC 6.0
+        <div className="landing-content">
+          <h1 className="landing-title">
+            <span>PARSEC </span>
+            <span>6.0</span>
           </h1>
-          <p
-            style={{
-                fontFamily: "Playfair Display, serif",
-              fontSize: "4rem",
-              fontWeight: "300",
-              zIndex: 999,
-            }}
-          >
+          <p className="landing-motto">
             Digital Wizardry
           </p>
-
         </div>
       </div>
     </div>

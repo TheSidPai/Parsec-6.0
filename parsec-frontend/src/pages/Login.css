@@ -1,0 +1,38 @@
+.login-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    text-align: center;
+    color: white;
+    padding: 40px;
+    border: 3px solid lightyellow;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.5);
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-title {
+    font-family: 'Playfair Display';
+    font-size: 3rem;
+    color: lightyellow;
+    margin-bottom: 12px;
+}
+
+.login-desc {
+    font-family: 'JosefinSans';
+    font-size: 1rem;
+    color: white;
+}
+
+.login-note {
+    font-family: 'JosefinSans';
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+}
