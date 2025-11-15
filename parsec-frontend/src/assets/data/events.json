@@ -1,0 +1,617 @@
+[
+  {
+    "id": "aurora-2",
+    "title": "Aurora 2.0: Beyond the Horizon",
+    "category": "Hackathon",
+    "mode": "mixed",
+    "venue": "IIT Dharwad (Quiz + Presentations)",
+    "team": { "min": 2, "max": 6, "individualAllowed": false },
+    "registrationFee": "Free",
+    "date": "Dec 22, 2025 – Jan 26, 2026",
+    "image": "",
+    "description": "Aurora 2.0 is a hackathon that brings together satellite datasets, AI-powered analysis, and practical problem-solving to address pressing challenges in space tech and geospatial analytics.",
+    "rules": {
+      "important": [
+        "Every team has to register online on the official Techfest website for the competition.",
+        "A Team ID will be allocated on registration for future references.",
+        "The decision of the organizers or judges is final and binding."
+      ],
+      "others": [
+        "Team size: 2–6.",
+        "3 Stages: Stage 1 (50%) Remote Sensing Hackathon (online); Stage 2 (15%) Quiz on space and data science (offline); Stage 3 (35%) Presentation (offline).",
+        "Mode: Online hackathon; Offline Quiz + Presentation.",
+        "Teams must maintain a public GitHub repository.",
+        "At least one team member must join the WhatsApp group (link).",
+        "Submit the public repository link as per instructions (link to be made)."
+      ]
+    },
+    "rounds": [
+      { "name": "Remote Sensing Hackathon", "mode": "online", "weight": 50 },
+      { "name": "Quiz on space and data science", "mode": "offline", "weight": 15 },
+      { "name": "Presentation", "mode": "offline", "weight": 35 }
+    ],
+    "timeline": [
+      { "title": "Hackathon Launch", "date": "2025-12-22", "description": "Release of problem statement and dataset. Teams begin working." },
+      { "title": "Hackathon Submission Deadline", "date": "2026-01-04", "time": "EOD", "description": "Teams submit complete solutions for evaluation." },
+      { "title": "Shortlist Announcement", "date": "2026-01-07", "time": "EOD", "description": "Top 8 teams announced for onsite stages." },
+      { "title": "Technical Quiz (Stage 2)", "date": "2026-01-26", "time": "10:00–11:00 AM", "description": "One-hour quiz on astronomy, remote sensing, and geospatial data science." },
+      { "title": "Final Presentations (Stage 3)", "date": "2026-01-26", "time": "3:00–6:00 PM", "description": "Onsite presentations before the jury at CLT, IIT Dharwad." }
+    ],
+    "deliverables": [
+      "Public GitHub repository with code in a Jupyter Notebook (well-commented).",
+      "README with instructions to run the code.",
+      "Report detailing thought process, experiments, research, and future scope.",
+      "Concise presentation (if shortlisted)."
+    ],
+    "organizers": [
+      { "name": "Aniruddh Pandav", "role": "Event Lead", "email": "ee23bt031@iitdh.ac.in", "phone": "+91-9618218601" },
+      { "name": "Balamurali V B", "role": "Event Co-Lead", "email": "me24bt047@iitdh.ac.in", "phone": "+91-6383651842" }
+    ],
+    "prizes": {
+      "prizePool": 14000,
+      "breakdown": [
+        { "place": "1st", "amount": 6000 },
+        { "place": "2nd", "amount": 4500 },
+        { "place": "3rd", "amount": 3500 }
+      ],
+      "inKind": ["Coffee Mugs for Quiz Winners", "Participation token"]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
+    "links": {},
+    "comments": ["For offline events - accommodation shall be limited/exclusive; keep an eye on website."]
+  },
+  {
+    "id": "protocraft",
+    "title": "Protocraft",
+    "category": "Hackathon",
+    "mode": "mixed",
+    "venue": "IIT Dharwad (final presentation)",
+    "team": { "min": 1, "max": 3, "individualAllowed": true },
+    "registrationFee": "Free",
+    "date": "Jan 13–25, 2026",
+    "image": "",
+    "description": "Theme-based mechanical design challenge—sketch, model, simulate, and present your engineering solution.",
+    "rules": {
+      "important": [
+        "Every team has to register online on the official Techfest website for the competition.",
+        "A Team ID will be allocated on registration for future references.",
+        "The decision of the organizers or judges is final and binding."
+      ],
+      "others": [
+        "Individual or teams up to 3.",
+        "All design work must be original and created during the event.",
+        "Any CAD and simulation tools allowed.",
+        "Submission: Final CAD model (STEP/SLDPRT/SLDASM/STL) + 2-page design explanation (reasoning, performance advantage).",
+        "Shortlisted participants present (7 min + 3 min Q&A).",
+        "Disqualification: plagiarism, AI-generated CAD, misrepresentation, no-show in presentation.",
+        "Only top 12 teams shortlisted from online round; judged on Functionality, Creativity, Theme relevance."
+      ]
+    },
+    "rounds": [
+      { "name": "Online Round", "mode": "online", "duration": "10 days" },
+      { "name": "Offline Presentation", "mode": "offline", "duration": "3 hours" }
+    ],
+    "timeline": [
+      { "title": "Round 1 (Online)", "date": "2026-01-13", "endDate": "2026-01-22" },
+      { "title": "Round 2 (Offline Presentation)", "date": "2026-01-25", "time": "2:00–5:00 PM" }
+    ],
+    "organizers": [
+      { "name": "FARHAAN NASIR", "email": "me23bt023@iitdh.ac.in", "phone": "+91 88842 65444" },
+      { "name": "KAVICHELVAN K", "email": "me23bt028@iitdh.ac.in", "phone": "+91 97895 92295" }
+    ],
+    "prizes": {
+      "prizePool": 9000,
+      "breakdown": [
+        { "place": "1st", "amount": 4000 },
+        { "place": "2nd", "amount": 3000 },
+        { "place": "3rd", "amount": 2000 }
+      ],
+      "inKind": ["1st: Hoodie", "2nd: Oversized Tee", "3rd: T-Shirts"]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Phone Number", "Mail-Id"], "optional": ["Merch Size"] },
+    "links": {},
+    "comments": ["For offline events - accommodation shall be limited/exclusive; keep an eye on website."]
+  },
+  {
+    "id": "devhack-7",
+    "title": "DevHack 7.0",
+    "category": "Hackathon",
+    "mode": "offline",
+    "venue": "IIT Dharwad, Permanent Campus",
+    "team": { "min": 3, "max": 4, "individualAllowed": false },
+    "registrationFee": "Free",
+    "date": "Jan 24–26, 2026",
+    "image": "",
+    "description": "PARSEC’s 30-hour flagship hackathon to prototype impactful solutions, mentored and judged by industry experts.",
+    "rules": {
+      "important": [
+        "Every team must register on the official PARSEC website.",
+        "A Team ID will be allocated upon registration.",
+        "Organizers’/judges’ decisions are final.",
+        "Top 33–34 teams shortlisted from online round."
+      ],
+      "others": [
+        "Eligibility: Any UG/PG students across India.",
+        "Duration: 30 hours + 3 hours presentation.",
+        "Mode: Offline.",
+        "Carry college ID cards; open-source tools allowed; no plagiarism or misconduct."
+      ]
+    },
+    "format": [
+      "Preliminary Phase (Online Submission): report on approach/methodology.",
+      "Hackathon Phase (Offline – 30 hours): build working prototype; deliverables include GitHub repo and demo video.",
+      "Final Presentation Round (Offline – 3 hours): evaluation on innovation, creativity, applicability."
+    ],
+    "timeline": [
+      { "title": "Preliminary Phase Start", "date": "2025-12-22" },
+      { "title": "Preliminary Submission", "date": "2026-01-04" },
+      { "title": "Shortlist Announcement", "date": "2026-01-10", "time": "EOD" },
+      { "title": "Hackathon Commences", "date": "2026-01-24", "time": "9:00 AM" },
+      { "title": "Repo & Video Deadline", "date": "2026-01-25", "time": "3:00 PM" },
+      { "title": "Presentation Round", "date": "2026-01-26", "time": "10:00 AM" }
+    ],
+    "organizers": [
+      { "name": "Nidhish Doshi", "role": "Event Lead", "email": "cs23bt009@iitdh.ac.in", "phone": "+91-8240525200" },
+      { "name": "Anant Tripathi", "role": "Event Co-Lead", "email": "mc24bt001@iitdh.ac.in", "phone": "+91-8400990007" },
+      { "name": "Gourav Sherikar", "role": "Event Co-Lead", "email": "mc24bt009@iitdh.ac.in", "phone": "+91-9742626777" }
+    ],
+    "prizes": {
+      "prizePool": 24500,
+      "breakdown": [
+        { "place": "1st", "amount": 10000 },
+        { "place": "2nd", "amount": 7000 },
+        { "place": "3rd", "amount": 4000 },
+        { "place": "JustJuniors 1st", "amount": 2500 },
+        { "place": "JustJuniors 2nd", "amount": 1500 }
+      ],
+      "inKind": ["Goodies for all shortlisted teams", "Certificates for all participants"]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Phone Number", "Mail-Id", "Institute Name", "Batch"], "optional": ["Merch Size"] },
+    "links": {},
+    "comments": ["Accommodation limited/exclusive; see website."]
+  },
+  {
+    "id": "veni-vidi-veci",
+    "title": "Veni Vidi Veci (VVV)",
+    "category": "Hackathon",
+    "mode": "online",
+    "venue": "Website",
+    "team": { "min": 1, "max": 3, "individualAllowed": true },
+    "registrationFee": "Free",
+    "date": "48-hour CTF (Dates TBA)",
+    "image": "",
+    "description": "CTF covering cryptography, forensics, reversing, web, OSINT and more. Jeopardy style with dynamic scoring.",
+    "rules": {
+      "important": [
+        "Register on the official Techfest website.",
+        "Team ID issued upon registration.",
+        "Organizers’/judges’ decisions are final."
+      ],
+      "others": [
+        "Eligibility: Any UG/PG worldwide; Prize eligibility: UG/PG in India.",
+        "Team size: up to 3.",
+        "Duration: 48 hours; Style: Jeopardy; Mode: Online.",
+        "Use same email as Unstop for CTF account.",
+        "No attacking infrastructure; report vulnerabilities responsibly.",
+        "No flag sharing; dynamic scoring enabled; flags format: parsec{flag_text}.",
+        "AI tools allowed responsibly and ethically."
+      ]
+    },
+    "timeline": [
+      { "title": "CTF Window", "dateText": "9 PM Friday 16th – 9 PM Sunday 18th" }
+    ],
+    "organizers": [
+      { "name": "Vishvanathan K", "email": "ep23bt002@iitdh.ac.in", "phone": "+91 8903883306", "discord": "Jerrasterix" },
+      { "name": "Amogh R" },
+      { "name": "Sreejita Chatterjee", "email": "mc24bt002@iitdh.ac.in", "phone": "+91 9987261023", "discord": "sreejitachatterjee9768" }
+    ],
+    "prizes": {
+      "prizePool": 10000,
+      "breakdown": [
+        { "place": "1st", "amount": 5000 },
+        { "place": "2nd", "amount": 3000 },
+        { "place": "3rd", "amount": 2000 }
+      ],
+      "inKind": ["T-Shirts for Top 3 Place Members"],
+      "notes": ["Prizes reserved only for current residents of India"]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Phone Number", "Mail-Id", "Country of Residence"], "optional": ["Merch Size"] },
+    "links": {}
+  },
+  {
+    "id": "algostrike",
+    "title": "Algostrike",
+    "category": "Competition",
+    "mode": "offline",
+    "venue": "IIT Dharwad Permanent Campus",
+    "team": { "min": 1, "max": 1, "individualAllowed": true },
+    "registrationFee": "Free",
+    "date": "Jan 27, 2026",
+    "image": "",
+    "description": "Individual competitive programming contest (single round, 2 hours).",
+    "rules": {
+      "important": [
+        "Register on the official Techfest website.",
+        "Participant ID issued upon registration.",
+        "Organizers’/judges’ decisions are final."
+      ],
+      "others": [
+        "Strictly individual; no team participation.",
+        "No copying or AI-generated code; plagiarism leads to disqualification.",
+        "Duration 2 hours; rule changes at organizers’ discretion.",
+        "On-site only; remote not permitted."
+      ]
+    },
+    "format": [
+      "6–8 problems of varying difficulty; ranked by problems solved then by lowest cumulative time."
+    ],
+    "timeline": [
+      { "title": "Contest", "date": "2026-01-27", "time": "9:30–11:30 AM" }
+    ],
+    "organizers": [
+      { "name": "Dileepan S K", "email": "cs23bt049@iitdh.ac.in", "phone": "+91 86609 94853" },
+      { "name": "Aayushi Singh", "email": "is24bm037@iitdh.ac.in", "phone": "+91 77353 89083" }
+    ],
+    "prizes": {
+      "prizePool": 10750,
+      "breakdown": [
+        { "place": "1st", "amount": 3000 },
+        { "place": "2nd", "amount": 2000 },
+        { "place": "3rd", "amount": 1500 },
+        { "place": "Jr 1st (2025 batch)", "amount": 1250 },
+        { "place": "Jr 2nd (2025 batch)", "amount": 1000 },
+        { "place": "Jr 3rd (2025 batch)", "amount": 750 }
+      ],
+      "inKind": ["Goodies for the top 10 participants"],
+      "notes": ["Prizes reserved only for current residents of India"]
+    },
+    "registrationForm": { "required": ["Name", "Phone Number", "Mail-Id"], "optional": ["Merch Size"] },
+    "comments": ["Accommodation limited/exclusive; see website."]
+  },
+  {
+    "id": "bithunt",
+    "title": "BitHunt",
+    "category": "Hackathon",
+    "mode": "mixed",
+    "venue": "IIT Dharwad (Round 2)",
+    "team": { "min": 3, "max": 4, "individualAllowed": false },
+    "registrationFee": "Free",
+    "date": "Jan 16–27, 2026",
+    "image": "",
+    "description": "Two-round technical treasure hunt blending coding, aptitude, and on-campus clue solving.",
+    "rules": {
+      "important": [
+        "Register on Unstop.",
+        "Team ID allocated upon registration.",
+        "Teams must be 3–4 members from the same college.",
+        "No internet during online round (Unstop Smart Hire app).",
+        "Organizers’ decisions are final; misconduct or plagiarism leads to disqualification."
+      ],
+      "others": [
+        "Round 1: 10 aptitude + 10 DSA questions; 25 minutes; online.",
+        "Round 2: On-campus Bit Chase with zones, bases, QR codes, and live War Room coding.",
+        "Hidden gems for bonus or steal; scoreboard live in War Room.",
+        "Elimination after each zone for lowest-scoring teams."
+      ]
+    },
+    "timeline": [
+      { "title": "Registrations Open", "dateText": "TBD", "mode": "online" },
+      { "title": "Round 1: Aptitude + DSA Quiz", "date": "2026-01-16", "time": "8:00 PM", "mode": "online" },
+      { "title": "Announcement of Qualifiers", "date": "2026-01-18", "time": "12:00 AM", "mode": "online" },
+      { "title": "Round 2: The Bit Chase", "date": "2026-01-26", "time": "3:00–7:00 PM", "mode": "offline" },
+      { "title": "Results & Prize Distribution", "date": "2026-01-27", "time": "Closing ceremony", "mode": "offline" }
+    ],
+    "organizers": [
+      { "name": "P Sri Smaran", "email": "cs23bt039@iitdh.ac.in", "phone": "+91 6309776899" },
+      { "name": "Saikat Ghosh", "email": "ce24bt001@iitdh.ac.in", "phone": "+91 70012 92174" },
+      { "name": "Outreach Parsec", "email": "outreach.parsec@iitdh.ac.in" }
+    ],
+    "prizes": {
+      "prizePool": 10000,
+      "breakdown": [
+        { "place": "1st", "amount": 6000 },
+        { "place": "2nd", "amount": 4000 },
+        { "place": "3rd", "amount": 2500 }
+      ],
+      "inKind": ["Goodies for winners of round-2", "Goodies for participants of round-2", "Certificates"],
+      "notes": ["Certificate of participation for all participants"]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Phone Number", "Mail-Id"], "optional": ["Merch Size"] },
+    "comments": ["Accommodation limited/exclusive; see website", "Get ready for the Ultimate Bit Chase !"]
+  },
+  {
+    "id": "gringotts",
+    "title": "Gringotts",
+    "category": "Workshop",
+    "mode": "offline",
+    "venue": "IIT Dharwad",
+    "team": { "min": 1, "max": 1, "individualAllowed": true },
+    "registrationFee": "Rs. 599 (tentative)",
+    "date": "Jan 24–25, 2026",
+    "image": "",
+    "description": "Finance workshop exploring quantitative finance and algo trading.",
+    "timeline": [
+      { "title": "Day 1", "date": "2026-01-24", "time": "9:00 AM – 12:00 PM" },
+      { "title": "Day 2", "date": "2026-01-25", "time": "9:00 AM – 12:00 PM" }
+    ],
+    "organizers": [
+      { "name": "Samarth M", "email": "outreach.parsec@iitdh.ac.in" }
+    ],
+    "rules": {
+      "others": [
+        "Full attendance required for certificate.",
+        "Registrations limited to 125 participants."
+      ]
+    },
+    "registrationForm": { "required": ["Name", "Phone Number", "Mail-Id"], "optional": [] }
+  },
+  {
+    "id": "design-playground",
+    "title": "Design Playground",
+    "category": "Workshop",
+    "mode": "offline",
+    "venue": "IIT Dharwad",
+    "team": { "min": 1, "max": 1, "individualAllowed": true },
+    "registrationFee": "Free",
+    "date": "Jan 24–25, 2026",
+    "image": "",
+    "description": "Gamified design thinking workshop with interactive activities, quick challenges, and team tasks.",
+    "timeline": [
+      { "title": "Day 1", "date": "2026-01-24", "time": "9:00 AM – 12:00 PM" },
+      { "title": "Day 2", "date": "2026-01-25", "time": "9:00 AM – 12:00 PM" }
+    ],
+    "organizers": [
+      { "name": "Rajat Gupta", "email": "outreach.parsec@iitdh.ac.in" }
+    ],
+    "rules": {
+      "others": [
+        "Full attendance required for certificate.",
+        "Materials provided on-site.",
+        "Team formation (if applicable) during the workshop."
+      ]
+    },
+    "registrationForm": { "required": ["Name", "Phone Number", "Mail-Id"], "optional": [] }
+  },
+  {
+    "id": "singularity",
+    "title": "Singularity: Build. Evolve. Converge.",
+    "category": "Hackathon",
+    "mode": "offline",
+    "venue": "IIT Dharwad, Permanent Campus",
+    "team": { "min": 2, "max": 4, "individualAllowed": false },
+    "registrationFee": "Free",
+    "date": "Jan 25–27, 2026",
+    "image": "",
+    "description": "30-hour agentic AI hackathon building autonomous multi-agent systems with tool use and real-time decision-making.",
+    "format": [
+      "Preliminary (Online): report submission and shortlisting.",
+      "Hackathon (Offline – 30 hours): build and refine solutions; deliver repo and demo video.",
+      "Final Presentation (Offline – 3 hours): judged on innovation, technical depth, applicability, autonomy."
+    ],
+    "timeline": [
+      { "title": "Registration Opens", "date": "2025-12-22" },
+      { "title": "Announcement of PS", "date": "2025-12-27" },
+      { "title": "Last Date: Registration & Report", "date": "2026-01-04" },
+      { "title": "Shortlist Announcement", "date": "2026-01-05", "time": "EOD" },
+      { "title": "Hackathon Starts", "date": "2026-01-25", "time": "6:00 PM" },
+      { "title": "Repo & Video Deadline", "date": "2026-01-26", "time": "11:59 PM" },
+      { "title": "Presentation Round", "date": "2026-01-27", "time": "9:00 AM" }
+    ],
+    "organizers": [
+      { "name": "SURYA PRAKASH S", "role": "Event Lead", "email": "CS23BT068@iitdh.ac.in", "phone": "+91-9344191103" },
+      { "name": "SHREYA S BHAT", "role": "Event Co-Lead", "email": "CS23BT070@iitdh.ac.in", "phone": "+91-7795348992" },
+      { "name": "MEDA VARSHITH", "role": "Event Co-Lead", "email": "CS23BT066@iitdh.ac.in", "phone": "+91-7382165165" }
+    ],
+    "prizes": {
+      "prizePool": 15000,
+      "breakdown": [
+        { "place": "1st", "amount": 6500 },
+        { "place": "2nd", "amount": 5000 },
+        { "place": "3rd", "amount": 3500 }
+      ],
+      "inKind": ["Goodies for all shortlisted teams"]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Phone Number", "Mail-Id"], "optional": ["Merch Size"], "additional": ["Solution draft required with registration (deadline slightly extended)"] },
+    "comments": ["Accommodation limited/exclusive; see website."]
+  },
+  {
+    "id": "trumble",
+    "title": "Trumble (Invest, Grow and Prosper)",
+    "category": "Competition",
+    "mode": "online",
+    "venue": "StockGro platform",
+    "team": { "min": 1, "max": 1, "individualAllowed": true },
+    "registrationFee": "Free",
+    "date": "Jan 19–23, 2026",
+    "image": "",
+    "description": "Mock stock market competition on StockGro with simulated funds and real-time market dynamics.",
+    "rules": {
+      "important": [
+        "Register on the official Techfest website.",
+        "Team ID allocated upon registration.",
+        "Organizers’/judges’ decisions are final."
+      ],
+      "others": [
+        "Only trades on StockGro are valid; follow StockGro rules.",
+        "Trades in multiples of 5; min 1 and max 10 trades/day.",
+        "Portfolio <= 50% of initial value at end of day leads to disqualification.",
+        "No highly volatile/pump-and-dump stocks; no NIFTY trades.",
+        "Champion determined by highest portfolio valuation on 2026-01-23."
+      ],
+      "guidelines": [
+        "Eligibility: All UG/PG students.",
+        "No registration fee; online; 5-day trading period; individual participation."
+      ]
+    },
+    "timeline": [
+      { "title": "Registration Starts", "dateText": "TBD" },
+      { "title": "Registration Ends", "dateText": "TBD" },
+      { "title": "Start", "date": "2026-01-19" },
+      { "title": "End", "date": "2026-01-23" }
+    ],
+    "organizers": [
+      { "name": "Swarup Sahoo", "email": "mc24bt022@iitdh.ac.in", "phone": "7030758790" }
+    ],
+    "prizes": {
+      "prizePool": 6500,
+      "breakdown": [
+        { "place": "Winner", "amount": 3500 },
+        { "place": "1st Runner Up", "amount": 2000 },
+        { "place": "2nd Runner Up", "amount": 1000 }
+      ],
+      "inKind": ["Participation Certificates", "Mugs/T-shirts for top performers", "Book awards option"]
+    },
+    "registrationForm": { "required": ["Name", "Phone Number", "Mail-Id"], "optional": ["Merch Size"] },
+    "comments": ["Accommodation note applies only to offline events."]
+  },
+  {
+    "id": "build-a-bot-3",
+    "title": "Build a Bot 3.0",
+    "category": "Hackathon",
+    "mode": "mixed",
+    "venue": "IIT Dharwad (Onsite Buildathon)",
+    "team": { "min": 1, "max": 4, "individualAllowed": false },
+    "registrationFee": "Free",
+    "date": "Jan 2–25, 2026",
+    "image": "",
+    "description": "Flagship robotics challenge focusing on Perception and Motion Control. Two tracks: Junior and Senior.",
+    "format": [
+      "Round 1: Online qualifier (design/simulate/propose). Top 10 per track qualify.",
+      "Round 2: Onsite Buildathon (24 hours) with hardware and new PS released a week prior."
+    ],
+    "eligibility": [
+      "Open to students from recognized colleges/universities across India.",
+      "Teams up to 4; inter-college teams allowed.",
+      "Register for only one problem statement (Junior or Senior)."
+    ],
+    "timeline": [
+      { "title": "Round 1 (Online)", "date": "2026-01-02" },
+      { "title": "Release of Offline PS", "dateText": "One week before PARSEC" },
+      { "title": "Round 2 (Onsite Buildathon)", "date": "2026-01-25" }
+    ],
+    "organizers": [
+      { "name": "Affan Pathan", "email": "affanp1399@icloud.com", "phone": "+91 8983976975" },
+      { "name": "Suchitra Dabholkar", "email": "me24bt041@iitdh.ac.in", "phone": "+91 93599 85161" },
+      { "name": "Outreach Parsec", "email": "outreach.parsec@iitdh.ac.in" }
+    ],
+    "prizes": {
+      "notes": ["Cash Prize - 5k + 3k + 2k PER problem statement", "Exclusive Merch"]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Phone Number", "Mail-Id"], "optional": ["Merch Size"] },
+    "rules": {
+      "others": [
+        "Carry college ID for onsite.",
+        "No plagiarism or misconduct.",
+        "Organizers may modify rules/format/evaluation if necessary."
+      ]
+    },
+    "comments": ["Accommodation limited/exclusive; see website."]
+  },
+  {
+    "id": "starquest",
+    "title": "StarQuest",
+    "category": "Competition",
+    "mode": "offline",
+    "venue": "IIT Dharwad Permanent Campus",
+    "team": { "min": 1, "max": 1, "individualAllowed": true },
+    "registrationFee": "Free",
+    "date": "Jan 24, 2026",
+    "image": "",
+    "description": "On-campus astronomy quiz (1–2 hours) with prizes and workshop access for top scorers. Followed by optional stargazing night.",
+    "timeline": [
+      { "title": "Astronomy Quiz", "date": "2026-01-24", "time": "1–2 hours" },
+      { "title": "Stargazing Night", "date": "2026-01-24", "time": "After quiz", "description": "Open stargazing session with telescope." }
+    ],
+    "rules": {
+      "important": [
+        "Register via official Parsec 6.0 website.",
+        "Participant ID issued upon registration.",
+        "Organizers’/judges’ decisions are final."
+      ],
+      "others": [
+        "Individual event; open to UG/PG across India; on-site presence required; timed round; no cheating; rule modifications possible."
+      ]
+    },
+    "organizers": [
+      { "name": "Rithika Athawade", "email": "is24bm031@iitdh.ac.in", "phone": "+91 8976072606" },
+      { "name": "Ranit Maity", "email": "me24bt050@iitdh.ac.in", "phone": "+91 6289541702" }
+    ],
+    "prizes": {
+      "prizePool": 10000,
+      "breakdown": [
+        { "place": "1st", "amount": 5000 },
+        { "place": "2nd", "amount": 3000 },
+        { "place": "3rd", "amount": 2000 }
+      ],
+      "inKind": ["Goodies", "Free workshop access for top scorers"]
+    },
+    "registrationForm": { "required": ["Participant Name", "Phone Number", "Email ID", "College Name", "Year of Study"], "optional": ["Merch Size"] },
+    "comments": ["Accommodation limited/exclusive; see website."]
+  },
+  {
+    "id": "synapse",
+    "title": "Synapse: The NeuroTech Challenge",
+    "category": "Hackathon",
+    "mode": "mixed",
+    "venue": "IIT Dharwad (Phase II)",
+    "team": { "min": 2, "max": 4, "individualAllowed": false },
+    "registrationFee": "Free",
+    "date": "Jan 10–23, 2026",
+    "image": "",
+    "description": "EMG-based dual-mode prosthetic control using Myoware 2.0 sensors: continuous proportional control and discrete gesture recognition.",
+    "format": [
+      "Phase 1 (Online): Submit trained model predictions on hidden ground-truth test dataset.",
+      "Phase 2 (Offline, top 5): Live demo with EMG streaming to trained model; control prosthetic arm/simulation; optional gaming interface."
+    ],
+    "timeline": [
+      { "title": "Problem Statement Release", "date": "2026-01-10" },
+      { "title": "Dataset Release", "date": "2026-01-10" },
+      { "title": "Phase I Submission", "date": "2026-01-18" },
+      { "title": "Phase II Live Demo", "date": "2026-01-23" }
+    ],
+    "organizers": [
+      { "name": "Aayushi Singh", "email": "is24bm037@iitdh.ac.in", "phone": "+91 7735389083" },
+      { "name": "Affan Pathan", "email": "affanp1399@icloud.com", "phone": "+91 898397695" }
+    ],
+    "prizes": {
+      "prizePool": 10000,
+      "breakdown": [
+        { "place": "1st", "amount": 5000 },
+        { "place": "2nd", "amount": 3000 },
+        { "place": "3rd", "amount": 2000 }
+      ],
+      "inKind": ["Participation Certificates", "Exclusive Merch for winning team members"]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Phone Number", "Mail-Id"], "optional": ["Merch Size"] },
+    "cap": { "phase2MaxTeams": 5 },
+    "comments": ["Accommodation limited/exclusive; see website."]
+  },
+  {
+    "id": "astrophotography-workshop",
+    "title": "Astrophotography Workshop",
+    "category": "Workshop",
+    "mode": "offline",
+    "venue": "IIT Dharwad",
+    "team": { "min": 1, "max": 1, "individualAllowed": true },
+    "registrationFee": "Free",
+    "date": "Jan 26, 2026",
+    "image": "",
+    "description": "Hands-on night-sky photography: telescope-mounted DSLR imaging, framing, exposure, and basic post-processing.",
+    "timeline": [
+      { "title": "Workshop", "date": "2026-01-26", "time": "9:00 PM – 12:00 AM" }
+    ],
+    "organizers": [
+      { "name": "Rithika Athawade", "email": "is24bm031@iitdh.ac.in" },
+      { "name": "Ranit Maity", "email": "me24bt050@iitdh.ac.in" }
+    ],
+    "rules": {
+      "others": [
+        "Register via official Parsec 6.0 website; full attendance required for certificate.",
+        "Equipment provided on-site; bringing your own DSLR is optional.",
+        "Slots limited; first-come, first-served."
+      ]
+    },
+    "registrationForm": { "required": ["Name", "Phone Number", "Email ID"], "optional": ["Merch Size"] },
+    "comments": ["Accommodation limited/exclusive; see website."]
+  }
+]

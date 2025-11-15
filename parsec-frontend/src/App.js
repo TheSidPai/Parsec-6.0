@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import './App.css';
 
 // Import page components (we'll create these next)
@@ -24,10 +25,12 @@ import Team from './pages/dashboard/Team';
 import Contact from './pages/dashboard/Contact';
 import NotFound from './pages/NotFound';
 
-function App() {
+function AnimatedRoutes() {
+  const location = useLocation();
+  
   return (
-    <Router>
-      <Routes>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
         {/* Root redirects to landing */}
         <Route path="/" element={<Navigate to="/landing" replace />} />
 
@@ -63,6 +66,14 @@ function App() {
         {/* 404 Page */}
         <Route path="*" element={<NotFound />} />
       </Routes>
+    </AnimatePresence>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AnimatedRoutes />
     </Router>
   );
 }

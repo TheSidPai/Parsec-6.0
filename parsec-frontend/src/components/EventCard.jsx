@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './EventCard.css';
 import Button from './Button';
 
@@ -12,11 +12,16 @@ function EventCard({
   description,
   isAuthenticated = false 
 }) {
+  const navigate = useNavigate();
+  const bgStyle = image && image.trim() !== ''
+    ? { backgroundImage: `url(${image})` }
+    : { background: 'linear-gradient(135deg, #222 0%, #333 100%)' };
+  
   return (
     <div className="event-card">
       <div 
         className="event-card-image" 
-        style={{ backgroundImage: `url(${image})` }}
+        style={bgStyle}
       >
         <span className="event-category">{category}</span>
       </div>
@@ -27,9 +32,12 @@ function EventCard({
         <p className="event-description">{description}</p>
         
         <div className="event-card-actions">
-          <Link to={`/events/${id}`}>
-            <Button variant="secondary">View Details</Button>
-          </Link>
+          <Button 
+            variant="secondary" 
+            onClick={() => navigate(`/events/${id}`)}
+          >
+            View Details
+          </Button>
           
           {isAuthenticated ? (
             <Button variant="primary">Register</Button>

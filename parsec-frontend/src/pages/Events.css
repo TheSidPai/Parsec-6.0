@@ -1,0 +1,56 @@
+.events-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  /* Offset for fixed navbar */
+  margin-top: 100px;
+  padding: 2rem 1.25rem;
+}
+
+.events-header {
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #fbbf24;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.events-description {
+  margin-bottom: 2rem;
+  color: #d1d5db;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.events-grid {
+  display: grid;
+  gap: 3rem 2.5rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+/* Tablet: 2 columns */
+@media (min-width: 600px) {
+  .events-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop: 3 columns */
+@media (min-width: 900px) {
+  .events-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Large screens: 4 columns */
+@media (min-width: 1400px) {
+  .events-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile spacing for navbar */
+@media (max-width: 768px) {
+  .events-container {
+    margin-top: 84px;
+    padding: 1.5rem 1rem;
+  }
+}
