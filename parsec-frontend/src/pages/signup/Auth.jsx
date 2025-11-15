@@ -22,20 +22,20 @@ import { useNavigate } from 'react-router-dom';
 function Auth() {
   const navigate = useNavigate();
   // const location = useLocation();
-  const [message, setMessage] = useState('Processing authentication...');
+  const [message, setMessage] = useState("Processing authentication...");
 
   useEffect(() => {
     const run = async () => {
       try {
-        setMessage('Checking server session...');
+        setMessage("Checking server session...");
 
         // Cookie-first approach: backend sets httpOnly secure cookie named `jwt`.
         // We call the callback endpoint with credentials so the server can read the cookie
         // and return the JSON payload (success, token, user).
-        const resp = await fetch('/api/parsec/v1/auth/google/callback', {
-          method: 'GET',
-          headers: { 'Accept': 'application/json' },
-          credentials: 'include',
+        const resp = await fetch("/api/parsec/v1/auth/google/callback", {
+          method: "GET",
+          headers: { Accept: "application/json" },
+          credentials: "include",
         });
 
         if (!resp.ok) {
@@ -46,24 +46,33 @@ function Auth() {
         // Expected shape (from backend):
         // { success: true, message: 'Authentication successful', token: '...', user: { isOnboardingComplete: false, ... } }
         if (data.success === false) {
-          throw new Error(data.message || 'Authentication failed on server');
+          throw new Error(data.message || "Authentication failed on server");
         }
 
         const token = data.token || data.accessToken || data.jwt;
-        const isOnboardingComplete = data.user?.isOnboardingComplete ?? data.isOnboardingComplete ?? null;
+        const isOnboardingComplete =
+          data.user?.isOnboardingComplete ?? data.isOnboardingComplete ?? null;
 
-        setMessage('Authentication successful — redirecting...');
+        setMessage("Authentication successful — redirecting...");
 
-        if (isOnboardingComplete === false || isOnboardingComplete === 'false' || isOnboardingComplete === 0) {
+        if (
+          isOnboardingComplete === false ||
+          isOnboardingComplete === "false" ||
+          isOnboardingComplete === 0
+        ) {
           // Pass token to onboarding page via navigate state
-          navigate('/signup/onboarding', { replace: true, state: { token } });
-        } else if (isOnboardingComplete === true || isOnboardingComplete === 'true' || isOnboardingComplete === 1) {
-          navigate('/dashboard', { replace: true });
+          navigate("/signup/onboarding", { replace: true, state: { token } });
+        } else if (
+          isOnboardingComplete === true ||
+          isOnboardingComplete === "true" ||
+          isOnboardingComplete === 1
+        ) {
+          navigate("/dashboard", { replace: true });
         } else {
-          navigate('/signup/onboarding', { replace: true, state: { token } });
+          navigate("/signup/onboarding", { replace: true, state: { token } });
         }
       } catch (err) {
-        console.error('Auth processing error:', err);
+        console.error("Auth processing error:", err);
         setMessage(`Authentication failed: ${err.message}`);
       }
     };
@@ -75,7 +84,10 @@ function Auth() {
     <div style={{ padding: 24 }}>
       <h3>Processing Sign-in</h3>
       <p>{message}</p>
-      <p>If this page does not redirect automatically, please contact support or try signing in again.</p>
+      <p>
+        If this page does not redirect automatically, please contact support or
+        try signing in again.
+      </p>
     </div>
   );
 }
