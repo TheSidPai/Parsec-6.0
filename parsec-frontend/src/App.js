@@ -13,6 +13,7 @@ import Auth from './pages/signup/Auth';
 import Events from './pages/Events';
 import EventDetail from './pages/EventDetail';
 import Schedule from './pages/Schedule';
+import Team from './pages/Team';
 import DashboardLayout from './layouts/DashboardLayout';
 import DashboardHome from './pages/dashboard/DashboardHome';
 import DashboardEvents from './pages/dashboard/DashboardEvents';
@@ -21,7 +22,7 @@ import DashboardSchedule from './pages/dashboard/DashboardSchedule';
 import Tickets from './pages/dashboard/Tickets';
 import Profile from './pages/dashboard/Profile';
 import Leaderboard from './pages/dashboard/Leaderboard';
-import Team from './pages/dashboard/Team';
+import DashboardTeam from './pages/dashboard/Team';
 import Contact from './pages/dashboard/Contact';
 import NotFound from './pages/NotFound';
 
@@ -45,10 +46,11 @@ function AnimatedRoutes() {
           <Route path="terms" element={<Terms />} />
         </Route>
 
-        {/* Public Events & Schedule */}
+        {/* Public Events, Schedule & Team */}
         <Route path="/events" element={<Events />} />
         <Route path="/events/:id" element={<EventDetail />} />
         <Route path="/schedule" element={<Schedule />} />
+        <Route path="/team" element={<Team />} />
 
         {/* Protected Dashboard Routes */}
         <Route path="/dashboard" element={<DashboardLayout />}>
@@ -59,7 +61,7 @@ function AnimatedRoutes() {
           <Route path="tickets" element={<Tickets />} />
           <Route path="profile" element={<Profile />} />
           <Route path="leaderboard" element={<Leaderboard />} />
-          <Route path="team" element={<Team />} />
+          <Route path="team" element={<DashboardTeam />} />
           <Route path="contact" element={<Contact />} />
         </Route>
 

@@ -20,6 +20,25 @@
   position: relative;
 }
 
+/* Shimmer text effect for title parts (driven by Framer Motion) */
+.landing-title .shimmer-text {
+  background: linear-gradient(
+    90deg,
+    currentColor 0%,
+    currentColor 47%,
+    #fef3c7 50%,
+    currentColor 53%,
+    currentColor 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: inherit; /* Use parent color for currentColor stops */
+  display: inline-block;
+  will-change: background-position;
+}
+
 .landing-motto {
   font-family: "Playfair Display", serif;
   font-size: 4rem;
