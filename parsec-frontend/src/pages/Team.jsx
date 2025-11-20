@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import teamData from '../assets/data/team.json';
 import './Team.css';
 
@@ -85,6 +86,8 @@ function Team() {
           );
         })}
       </div>
+      
+      <Footer />
     </div>
   );
 }

@@ -2,14 +2,25 @@ import React from "react";
 import { motion } from "framer-motion";
 import GhostCursor from "../components/GhostCursor";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import Particles from '../components/Particles.jsx';
 import "./Landing.css";
 
 function Landing() {
   return (
     <div>
       <Navbar />
-
       <div style={{ height: "100vh", position: "relative" }}>
+        <Particles
+          particleColors={["#ffffff", "#ffffff"]}
+          particleCount={400}
+          particleSpread={15}
+          speed={0.1}
+          particleBaseSize={70}
+          moveParticlesOnHover={false}
+          alphaParticles={false}
+          disableRotation={false}
+        />
         <GhostCursor
           // Visuals
           color="#B19EEF"
@@ -32,7 +43,7 @@ function Landing() {
           <h1 className="landing-title">
             <motion.span
               className="shimmer-text"
-              animate={{ backgroundPosition: ["150% 0%","0% 0%"] }}
+              animate={{ backgroundPosition: ["150% 0%", "0% 0%"] }}
               transition={{
                 duration: 2,
                 ease: "linear",
@@ -41,11 +52,10 @@ function Landing() {
               }}
             >
               PARSEC
-            </motion.span>
-            {" "}
+            </motion.span>{" "}
             <motion.span
               className="shimmer-text"
-              animate={{ backgroundPosition: ["150% 0%","0% 0%"] }}
+              animate={{ backgroundPosition: ["150% 0%", "0% 0%"] }}
               transition={{
                 duration: 1,
                 ease: "linear",
@@ -59,6 +69,7 @@ function Landing() {
           <p className="landing-motto">Techno-Cultural Fest</p>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

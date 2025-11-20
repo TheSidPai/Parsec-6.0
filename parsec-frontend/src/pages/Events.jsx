@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import EventCard from "../components/EventCard";
 import events from "../assets/data/events.json";
 import './Events.css';
@@ -27,6 +28,8 @@ function Events() {
           ))}
         </div>
       </main>
+      
+      <Footer />
     </div>
   );
 }

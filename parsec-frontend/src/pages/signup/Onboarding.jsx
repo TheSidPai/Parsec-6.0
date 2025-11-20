@@ -131,7 +131,7 @@ const OnboardingForm = () => {
       };
 
       // Make the POST request
-      const response = await fetch("/api/example/v1/onboarding", {
+      const response = await fetch("/api/parsec/v1/onboarding", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

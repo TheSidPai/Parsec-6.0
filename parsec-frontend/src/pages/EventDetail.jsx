@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import events from '../assets/data/events.json';
 import './EventDetail.css';
 
@@ -185,6 +186,8 @@ function EventDetail() {
           <Link to="/events" className="event-detail-back">← Back to Events</Link>
         </div>
       </main>
+      
+      <Footer />
     </div>
   );
 }

@@ -1,13 +1,14 @@
 /* ========== LANDING CONTENT ========== */
 .landing-content {
   text-align: center;
-  color: black;
+  color: rgba(6, 11, 39, 0.95);
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 0 20px;
+  background-color: rgb(6, 0, 23);
 }
 
 .landing-title {
@@ -16,7 +17,7 @@
   font-family: "harryP", serif;
   margin-bottom: 1rem;
   z-index: 900;
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.6rem;
   position: relative;
 }
 
@@ -26,7 +27,7 @@
     90deg,
     currentColor 0%,
     currentColor 47%,
-    #fef3c7 50%,
+    #ffe270 50%,
     currentColor 53%,
     currentColor 100%
   );
@@ -87,7 +88,7 @@
   }
 
   .landing-title {
-    font-size: 3.5rem;
+    font-size: 6.0rem;
     letter-spacing: 0.15rem;
     margin-bottom: 0.5rem;
     display: flex;
