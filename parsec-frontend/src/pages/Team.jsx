@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import teamData from '../assets/data/team.json';
+import Particles from '../components/Particles';
 import './Team.css';
 
 function Team() {
@@ -20,10 +21,20 @@ function Team() {
   return (
     <div>
       <Navbar />
+      <Particles
+          particleColors={["#ffffff", "#ffffff"]}
+          particleCount={400}
+          particleSpread={15}
+          speed={0.1}
+          particleBaseSize={70}
+          moveParticlesOnHover={false}
+          alphaParticles={false}
+          disableRotation={false}
+        />
       <div className="team-container">
         <h1 className="team-header">Meet the Team</h1>
         <p className="team-description">
-          The brilliant minds behind Parsec 6.0 - our organizers, mentors, and coordinators.
+          The brilliant minds behind PARSEC 6.0 - our organizers, mentors, and coordinators.
         </p>
 
         {teamOrder.map((teamName) => {

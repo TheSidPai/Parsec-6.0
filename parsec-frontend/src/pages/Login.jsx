@@ -29,7 +29,7 @@ function Login() {
         >
           <h2 className="login-title">Login / Signup</h2>
           <p className="login-desc">
-            Sign in with your Google account to continue to Parsec 6.0
+            Sign in with your Google account to continue to PARSEC 6.0
           </p>
           <Button variant="primary" onClick={handleLogin}>
             Sign in with Google

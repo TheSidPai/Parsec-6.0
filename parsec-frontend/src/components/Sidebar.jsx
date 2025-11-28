@@ -19,7 +19,7 @@ function Sidebar({ house = 'gryffindor' }) {
   return (
     <aside className={`sidebar sidebar-${house}`}>
       <div className="sidebar-header">
-        <h2>Parsec 6.0</h2>
+        <h2>PARSEC 6.0</h2>
         <p className="house-name">{house.toUpperCase()}</p>
       </div>
 
