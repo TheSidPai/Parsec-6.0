@@ -10,6 +10,7 @@ import SignupLayout from './pages/signup/SignupLayout';
 import Onboarding from './pages/signup/Onboarding';
 import Terms from './pages/signup/Terms';
 import Auth from './pages/signup/Auth';
+import ManualAuth from './pages/signup/ManualAuth';
 import Events from './pages/Events';
 import EventDetail from './pages/EventDetail';
 import Schedule from './pages/Schedule';
@@ -43,6 +44,7 @@ function AnimatedRoutes() {
         <Route path="/signup" element={<SignupLayout />}>
           <Route path="onboarding" element={<Onboarding />} />
           <Route path="auth" element={<Auth />} />
+          <Route path="manual" element={<ManualAuth />} />
           <Route path="terms" element={<Terms />} />
         </Route>
 
