@@ -4,6 +4,8 @@
   padding: 3rem 0 1.5rem;
   margin-top: auto;
   width: 100%;
+  position: relative;
+  z-index: 5;
 }
 
 .footer-container {
@@ -64,6 +66,8 @@
   color: #ffd700;
   text-decoration: none;
   transition: color 0.3s ease;
+  position: relative;
+  z-index: 10;
 }
 
 .footer-email a:hover {
@@ -101,6 +105,8 @@
   text-decoration: none;
   transition: color 0.3s ease, padding-left 0.3s ease;
   display: inline-block;
+  position: relative;
+  z-index: 10;
 }
 
 .footer-nav li a:hover {
@@ -127,6 +133,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 10;
 }
 
 .footer-social-links a:hover {
@@ -137,6 +145,7 @@
 .footer-social-links svg {
   width: 28px;
   height: 28px;
+  pointer-events: none;
 }
 
 .footer-copyright {

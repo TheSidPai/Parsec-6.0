@@ -2,6 +2,7 @@
 .landing-content {
   text-align: center;
   color: rgba(6, 11, 39, 0.95);
+  color: #020009;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -16,7 +17,7 @@
   font-weight: bold;
   font-family: "harryP", serif;
   margin-bottom: 1rem;
-  z-index: 900;
+  z-index: 10;
   letter-spacing: 0.6rem;
   position: relative;
 }
@@ -44,7 +45,7 @@
   font-family: "Playfair Display", serif;
   font-size: 4rem;
   font-weight: 300;
-  z-index: 999;
+  z-index: 10;
   position: relative;
 }
 

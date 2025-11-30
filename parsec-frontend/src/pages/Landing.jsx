@@ -16,14 +16,14 @@ function Landing() {
           particleCount={400}
           particleSpread={15}
           speed={0.1}
-          particleBaseSize={70}
+          particleBaseSize={80}
           moveParticlesOnHover={false}
           alphaParticles={false}
           disableRotation={false}
         />
         <GhostCursor
           // Visuals
-          color="#B19EEF"
+          color="#fffeecff"
           brightness={1}
           edgeIntensity={0.8}
           // Trail and motion

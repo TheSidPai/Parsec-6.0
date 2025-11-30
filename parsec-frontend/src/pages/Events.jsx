@@ -3,12 +3,23 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import EventCard from "../components/EventCard";
 import events from "../assets/data/events.json";
+import Particles from '../components/Particles';
 import './Events.css';
 
 function Events() {
   return (
     <div>
       <Navbar />
+      <Particles
+          particleColors={["#ffffff", "#ffffff"]}
+          particleCount={400}
+          particleSpread={15}
+          speed={0.1}
+          particleBaseSize={70}
+          moveParticlesOnHover={false}
+          alphaParticles={false}
+          disableRotation={false}
+        />
       <main className="events-container">
         <h1 className="events-header">Events</h1>
         <p className="events-description">Explore hackathons, competitions, and workshops at PARSEC 6.0.</p>
