@@ -85,7 +85,7 @@ export const API_ENDPOINTS = {
   AUTH_LOGOUT: '/auth/logout',
 
   // Onboarding
-  ONBOARDING: '/onboarding',
+  ONBOARDING: '/onboarding/submit',
 
   // Sorting Hat
   SORTING_HAT_STATS: '/sorting-hat/stats',
