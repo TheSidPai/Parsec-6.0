@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { API_ENDPOINTS, authenticatedFetch } from "../../config/api";
 
 /**
  * ONBOARDING FORM COMPONENT
@@ -15,8 +16,8 @@ const OnboardingForm = () => {
   const location = useLocation();
   const navigate = useNavigate();
   
-  // Get token passed from Auth page via navigate state
-  const token = location.state?.token;
+  // Get token from location state (passed from Auth page) or localStorage as fallback
+  const token = location.state?.token || localStorage.getItem('jwt_token');
   // ========== STATE MANAGEMENT ==========
 
   // Form data state - holds all the user inputs
@@ -124,30 +125,25 @@ const OnboardingForm = () => {
         throw new Error("Authentication token not found. Please sign in again.");
       }
 
-      // Prepare the request body (convert batch to number)
+      // Prepare the request body (batch should be sent as string)
       const requestBody = {
         ...formData,
-        batch: parseInt(formData.batch),
       };
 
-      // Make the POST request
-      const response = await fetch("/api/parsec/v1/onboarding", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
+      // Make the POST request using authenticatedFetch helper
+      const { response, data } = await authenticatedFetch(
+        API_ENDPOINTS.ONBOARDING,
+        {
+          method: "POST",
+          body: JSON.stringify(requestBody),
         },
-        credentials: 'include', // include httpOnly cookie as well
-        body: JSON.stringify(requestBody),
-      });
-
-      // Parse the JSON response
-      const data = await response.json();
+        token
+      );
 
       // Check if request was successful
       if (!response.ok) {
         // Handle HTTP errors (4xx, 5xx)
-        throw new Error(data.message || "Onboarding failed. Please try again.");
+        throw new Error(data?.message || "Onboarding failed. Please try again.");
       }
 
       // ========== SUCCESS ==========
@@ -255,9 +251,9 @@ const OnboardingForm = () => {
             }}
           >
             <option value="">Select gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
           </select>
         </div>
 
