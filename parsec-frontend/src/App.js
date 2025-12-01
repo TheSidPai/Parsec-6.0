@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import './App.css';
+import { ThemeProvider } from './context/ThemeContext';
 
 // Import page components (we'll create these next)
 import Landing from './pages/Landing';
@@ -75,7 +76,9 @@ function AnimatedRoutes() {
 function App() {
   return (
     <Router>
-      <AnimatedRoutes />
+      <ThemeProvider>
+        <AnimatedRoutes />
+      </ThemeProvider>
     </Router>
   );
 }

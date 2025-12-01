@@ -1,7 +1,8 @@
 import React from 'react';
+import ComingSoon from '../../components/ComingSoon';
 
 function Contact() {
-  return <div><h1>Contact</h1></div>;
+  return <ComingSoon />;
 }
 
 export default Contact;

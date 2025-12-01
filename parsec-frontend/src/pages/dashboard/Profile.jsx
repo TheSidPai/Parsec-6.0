@@ -1,7 +1,8 @@
 import React from 'react';
+import ComingSoon from '../../components/ComingSoon';
 
 function Profile() {
-  return <div><h1>Profile</h1></div>;
+  return <ComingSoon />;
 }
 
 export default Profile;

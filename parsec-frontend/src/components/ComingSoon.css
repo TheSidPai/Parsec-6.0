@@ -3,27 +3,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background: var(--background);
 }
 
 .comingsoon-card {
     text-align: center;
-    color: white;
+    color: var(--fontMain);
     padding: 40px;
-    border: 3px solid lightyellow;
+    border: 3px solid var(--fontAccent);
     border-radius: 12px;
-    background: rgba(0, 0, 0, 0.5);
+    background: color-mix(in srgb, var(--surface) 85%, transparent);
     max-width: 600px;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    box-shadow: 0 0 30px var(--glow);
 }
 
 .comingsoon-title{
     font-family: 'Playfair Display';
     font-size: 3rem;
-    color: lightyellow;
+    color: var(--linkHover);
 }
 
 .comingsoon-desc{
     font-family: 'JosefinSans';
+    color: var(--fontSub);
 }

@@ -1,7 +1,8 @@
 import React from 'react';
+import ComingSoon from '../../components/ComingSoon';
 
 function Team() {
-  return <div><h1>Team</h1></div>;
+  return <ComingSoon />;
 }
 
 export default Team;

@@ -20,32 +20,34 @@
     transform: none;
   }
   
-  /* Primary button - magical purple */
+  /* Primary button - themed */
   .btn-primary {
-    background: linear-gradient(135deg, #6b46c1 0%, #9333ea 100%);
-    background: rgb(0, 0, 47);
-    color: white;
+    background: var(--buttonBg);
+    color: var(--buttonText);
+    box-shadow: 0 0 10px var(--glow);
   }
   
   .btn-primary:hover {
-    background: linear-gradient(135deg, #553c9a 0%, #7e22ce 100%);
+    background: var(--buttonHoverBg);
+    box-shadow: 0 0 18px var(--glow);
   }
   
   /* Secondary button - dark blue */
   .btn-secondary {
-    background: #1e3a8a;
-    color: white;
-    border: 2px solid #3b82f6;
+    background: var(--surface);
+    color: var(--fontMain);
+    border: 2px solid var(--border);
   }
   
   .btn-secondary:hover {
-    background: #1e40af;
+    background: color-mix(in srgb, var(--surface) 80%, var(--fontAccent));
   }
   
   /* House-themed button (we'll dynamically style this later) */
   .btn-house {
-    background: #c41e3a; /* Default: Gryffindor red */
-    color: white;
+    background: var(--primary);
+    color: var(--buttonText);
+    box-shadow: 0 0 10px var(--glow);
   }
   
   /* Full width variant */

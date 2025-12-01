@@ -1,27 +1,30 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
+import './DashboardLayout.css';
+import HouseSwitcher from '../components/HouseSwitcher';
 
 function DashboardLayout() {
   return (
-    <div style={{ display: 'flex' }}>
+    <div className="dashboard-root">
       {/* Sidebar */}
-      <nav style={{ width: '200px', background: '#222', color: '#fff', padding: '20px' }}>
+      <nav className="dashboard-sidebar">
         <h3>Dashboard</h3>
-        <ul style={{ listStyle: 'none', padding: 0 }}>
-          <li><Link to="/dashboard" style={{ color: '#fff' }}>Home</Link></li>
-          <li><Link to="/dashboard/events" style={{ color: '#fff' }}>Events</Link></li>
-          <li><Link to="/dashboard/schedule" style={{ color: '#fff' }}>Schedule</Link></li>
-          <li><Link to="/dashboard/tickets" style={{ color: '#fff' }}>Tickets</Link></li>
-          <li><Link to="/dashboard/profile" style={{ color: '#fff' }}>Profile</Link></li>
-          <li><Link to="/dashboard/leaderboard" style={{ color: '#fff' }}>Leaderboard</Link></li>
-          <li><Link to="/dashboard/team" style={{ color: '#fff' }}>Team</Link></li>
-          <li><Link to="/dashboard/contact" style={{ color: '#fff' }}>Contact</Link></li>
+        <HouseSwitcher />
+        <ul className="dashboard-nav">
+          <li><Link className="dashboard-link" to="/dashboard">Home</Link></li>
+          <li><Link className="dashboard-link" to="/dashboard/events">Events</Link></li>
+          <li><Link className="dashboard-link" to="/dashboard/schedule">Schedule</Link></li>
+          <li><Link className="dashboard-link" to="/dashboard/tickets">Tickets</Link></li>
+          <li><Link className="dashboard-link" to="/dashboard/profile">Profile</Link></li>
+          <li><Link className="dashboard-link" to="/dashboard/leaderboard">Leaderboard</Link></li>
+          <li><Link className="dashboard-link" to="/dashboard/team">Team</Link></li>
+          <li><Link className="dashboard-link" to="/dashboard/contact">Contact</Link></li>
         </ul>
       </nav>
 
       {/* Main Content Area */}
-      <main style={{ flex: 1, padding: '20px' }}>
-        <Outlet /> {/* Renders the current dashboard page */}
+      <main className="dashboard-content">
+        <Outlet />
       </main>
     </div>
   );

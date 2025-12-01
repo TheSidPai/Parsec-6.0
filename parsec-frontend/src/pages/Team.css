@@ -10,14 +10,14 @@
   margin-bottom: 1rem;
   font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
-  color: lightyellow;
+  color: var(--linkHover);
   text-align: center;
-  text-shadow: 0 0 15px rgba(255, 255, 224, 0.4);
+  text-shadow: 0 0 15px var(--glow);
 }
 
 .team-description {
   margin-bottom: 3rem;
-  color: #d1d5db;
+  color: var(--fontSub);
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1.1rem;
   line-height: 1.6;
@@ -34,10 +34,10 @@
 .team-section-title {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
-  color: lightyellow;
+  color: var(--linkHover);
   margin-bottom: 2rem;
   text-align: center;
-  text-shadow: 0 0 10px rgba(255, 255, 224, 0.3);
+  text-shadow: 0 0 10px var(--glow);
 }
 
 .team-grid {
@@ -48,12 +48,12 @@
 }
 
 .team-card {
-  background: rgba(0, 0, 0, 0.5);
-  border: 3px solid lightyellow;
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
+  border: 3px solid var(--fontAccent);
   border-radius: 12px;
   padding: 2rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px var(--shadow);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,7 +64,7 @@
 
 .team-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45), 0 0 24px rgba(255, 255, 224, 0.3);
+  box-shadow: 0 12px 28px var(--shadow), 0 0 24px var(--glow);
 }
 
 .team-card-photo-wrapper {
@@ -72,9 +72,9 @@
   height: 150px;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid lightyellow;
+  border: 3px solid var(--fontAccent);
   margin-bottom: 1.5rem;
-  box-shadow: 0 0 15px rgba(255, 255, 224, 0.2);
+  box-shadow: 0 0 15px var(--glow);
 }
 
 .team-card-photo {
@@ -94,14 +94,14 @@
 .team-card-name {
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem;
-  color: lightyellow;
+  color: var(--linkHover);
   margin: 0;
   font-weight: 600;
 }
 
 .team-card-team {
   font-family: 'Josefin Sans', sans-serif;
-  color: #fbbf24;
+  color: var(--fontAccent);
   font-size: 1rem;
   margin: 0.25rem 0 0.5rem 0;
   font-weight: 500;
@@ -109,7 +109,7 @@
 
 .team-card-role {
   font-family: 'Josefin Sans', sans-serif;
-  color: #d1d5db;
+  color: var(--fontSub);
   font-size: 0.95rem;
   margin: 0;
   line-height: 1.4;
@@ -125,7 +125,7 @@
 }
 
 .social-link {
-  color: lightyellow;
+  color: var(--linkHover);
   transition: color 0.3s ease, transform 0.3s ease;
   display: flex;
   align-items: center;
@@ -133,7 +133,7 @@
 }
 
 .social-link:hover {
-  color: #ffd700;
+  color: var(--link);
   transform: scale(1.2);
 }
 

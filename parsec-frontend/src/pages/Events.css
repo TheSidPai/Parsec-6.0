@@ -10,13 +10,13 @@
   margin-bottom: 1rem;
   font-family: 'Playfair Display', serif;
   font-size: 2.2rem;
-  color: #fbbf24;
-  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  color: var(--fontAccent);
+  text-shadow: 0 0 10px var(--glow);
 }
 
 .events-description {
   margin-bottom: 2rem;
-  color: #d1d5db;
+  color: var(--fontSub);
   font-family: 'Josefin Sans', sans-serif;
 }
 
