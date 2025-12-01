@@ -5,15 +5,17 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Particles from '../components/Particles.jsx';
 import "./Landing.css";
+import { useTheme } from "../context/ThemeContext";
 
 function Landing() {
+  const { theme } = useTheme();
   return (
     <div>
       <Navbar />
       <div style={{ height: "100vh", position: "relative" }}>
         <Particles
-          particleColors={["#ffffff", "#ffffff"]}
-          particleCount={400}
+          particleColors={[theme.fontMain || "#ffffff", theme.fontMain || "#ffffff"]}
+          particleCount={600}
           particleSpread={15}
           speed={0.1}
           particleBaseSize={80}
@@ -23,7 +25,7 @@ function Landing() {
         />
         <GhostCursor
           // Visuals
-          color="#fffeecff"
+          color={(theme.fontMain || "#F5F1E6" || "#fffeecff")}
           brightness={1}
           edgeIntensity={0.8}
           // Trail and motion

@@ -5,13 +5,15 @@ import EventCard from "../components/EventCard";
 import events from "../assets/data/events.json";
 import Particles from '../components/Particles';
 import './Events.css';
+import { useTheme } from "../context/ThemeContext";
 
 function Events() {
+  const { theme } = useTheme();
   return (
     <div>
       <Navbar />
       <Particles
-          particleColors={["#ffffff", "#ffffff"]}
+          particleColors={[theme.fontMain || "#ffffff", theme.fontMain || "#ffffff"]}
           particleCount={400}
           particleSpread={15}
           speed={0.1}

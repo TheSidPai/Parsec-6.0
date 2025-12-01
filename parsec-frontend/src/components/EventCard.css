@@ -1,5 +1,5 @@
 .event-card {
-    background: linear-gradient(180deg, rgba(10, 15, 40, 0.6) 0%, rgba(15, 20, 50, 0.55) 100%);
+    background: color-mix(in srgb, var(--surface) 80%, transparent);
     border: 2px solid transparent;
     border-radius: 12px;
     overflow: hidden;
@@ -7,13 +7,13 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 12px var(--shadow);
   }
   
   .event-card:hover {
     transform: translateY(-8px);
-    border-color: rgba(255, 215, 0, 0.4);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45), 0 0 24px rgba(255, 215, 0, 0.22);
+    border-color: color-mix(in srgb, var(--fontAccent) 40%, transparent);
+    box-shadow: 0 12px 28px var(--shadow), 0 0 24px var(--glow);
   }
   
   .event-card-image {
@@ -28,15 +28,15 @@
     position: absolute;
     top: 12px;
     right: 12px;
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.95), rgba(59, 130, 246, 0.9));
-    color: #0a0f28;
+    background: linear-gradient(135deg, var(--fontAccent), color-mix(in srgb, var(--primary), var(--fontAccent)));
+    color: var(--background);
     padding: 6px 12px;
     border-radius: 6px;
     font-size: 0.85rem;
     font-weight: 700;
     font-family: 'Josefin Sans', sans-serif;
-    border: 1px solid rgba(255, 215, 0, 0.6);
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.35);
+    border: 1px solid var(--fontAccent);
+    box-shadow: 0 0 10px var(--glow);
   }
   
   .event-card-content {
@@ -49,7 +49,7 @@
   .event-title {
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
-    color: #fbbf24;
+    color: var(--fontAccent);
     margin-bottom: 0.5rem;
     min-height: 3rem;
     line-height: 1.5rem;
@@ -58,12 +58,12 @@
     line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    text-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
+    text-shadow: 0 0 8px var(--glow);
   }
   
   .event-date {
     font-family: 'Josefin Sans', sans-serif;
-    color: #9ca3af;
+    color: var(--fontSub);
     font-size: 0.9rem;
     margin-bottom: 1rem;
     min-height: 1.35rem;
@@ -71,14 +71,14 @@
   
   .event-description {
     font-family: 'Josefin Sans', sans-serif;
-    color: #d1d5db;
+    color: var(--fontSub);
     line-height: 1.6;
     margin-bottom: 1.5rem;
     max-height: 7.2rem;
     overflow-y: auto;
     padding-right: 0.5rem;
     scrollbar-width: thin;
-    scrollbar-color: #ffd700 rgba(255, 255, 255, 0.1);
+    scrollbar-color: var(--fontAccent) color-mix(in srgb, var(--surface) 70%, transparent);
   }
 
   .event-description::-webkit-scrollbar {
@@ -86,17 +86,17 @@
   }
 
   .event-description::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
+    background: color-mix(in srgb, var(--surface) 70%, transparent);
     border-radius: 3px;
   }
 
   .event-description::-webkit-scrollbar-thumb {
-    background: #ffd700;
+    background: var(--fontAccent);
     border-radius: 3px;
   }
 
   .event-description::-webkit-scrollbar-thumb:hover {
-    background: #daa520;
+    background: var(--link);
   }
   
   .event-card-actions {
@@ -117,24 +117,24 @@
   }
 
   .event-card .btn-primary {
-    background: linear-gradient(135deg, #ffd700 0%, #daa520 100%);
-    color: #0a0f28;
-    border: 1px solid rgba(255, 215, 0, 0.6);
-    box-shadow: 0 0 14px rgba(255, 215, 0, 0.25);
+    background: var(--buttonBg);
+    color: var(--buttonText);
+    border: 1px solid var(--fontAccent);
+    box-shadow: 0 0 14px var(--glow);
   }
 
   .event-card .btn-primary:hover {
-    background: linear-gradient(135deg, #ffe45e 0%, #e0b62a 100%);
-    box-shadow: 0 0 18px rgba(255, 215, 0, 0.45);
+    background: var(--buttonHoverBg);
+    box-shadow: 0 0 18px var(--glow);
   }
 
   .event-card .btn-secondary {
     background: transparent;
-    color: #ffd700;
-    border: 1.5px solid #ffd700;
+    color: var(--link);
+    border: 1.5px solid var(--fontAccent);
   }
 
   .event-card .btn-secondary:hover {
-    background: rgba(255, 215, 0, 0.12);
-    box-shadow: 0 0 14px rgba(255, 215, 0, 0.25);
+    background: color-mix(in srgb, var(--fontAccent) 12%, transparent);
+    box-shadow: 0 0 14px var(--glow);
   }

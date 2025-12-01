@@ -1,7 +1,8 @@
 import React from 'react';
+import ComingSoon from '../../components/ComingSoon';
 
 function Leaderboard() {
-  return <div><h1>Leaderboard</h1></div>;
+  return <ComingSoon />;
 }
 
 export default Leaderboard;

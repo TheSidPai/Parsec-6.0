@@ -1,7 +1,8 @@
 import React from 'react';
+import ComingSoon from '../../components/ComingSoon';
 
 function DashboardEvents() {
-  return <div><h1>Dashboard Events</h1></div>;
+  return <ComingSoon />;
 }
 
 export default DashboardEvents;

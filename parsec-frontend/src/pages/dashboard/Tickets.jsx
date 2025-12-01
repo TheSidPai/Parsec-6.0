@@ -1,7 +1,8 @@
 import React from 'react';
+import ComingSoon from '../../components/ComingSoon';
 
 function Tickets() {
-  return <div><h1>Tickets</h1></div>;
+  return <ComingSoon />;
 }
 
 export default Tickets;

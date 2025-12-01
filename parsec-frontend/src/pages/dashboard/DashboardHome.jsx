@@ -1,7 +1,8 @@
 import React from 'react';
+import ComingSoon from '../../components/ComingSoon';
 
 function DashboardHome() {
-  return <div><h1>Dashboard Home</h1></div>;
+  return <ComingSoon />;
 }
 
 export default DashboardHome;
