@@ -151,9 +151,9 @@ const OnboardingForm = () => {
       setSuccess(true);
       console.log("Onboarding successful:", data);
 
-      // Redirect to dashboard after brief delay
+      // Redirect to sorting ceremony after brief delay
       setTimeout(() => {
-        navigate('/dashboard');
+        navigate('/signup/sorting');
       }, 1500);
     } catch (err) {
       // ========== ERROR HANDLING ==========
@@ -175,7 +175,7 @@ const OnboardingForm = () => {
               ✨ Onboarding Complete!
             </h2>
             <p className="success-message">
-              Your profile has been successfully set up. Redirecting to dashboard...
+              Your profile has been successfully set up. Preparing the Sorting Hat ceremony...
             </p>
           </div>
         </div>

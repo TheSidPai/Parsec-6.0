@@ -62,13 +62,9 @@ const getBaseURL = () => {
     return process.env.REACT_APP_API_URL;
   }
 
-  // Default URLs based on environment
-  if (process.env.NODE_ENV === 'production') {
-    return 'https://parsec.iitdh.ac.in/api/parsec/v1';
-  }
-
-  // For development, use relative path (will be proxied)
-  return '/api/parsec/v1';
+  // Always use production URL (no proxy needed)
+  // The backend is already hosted and CORS is enabled
+  return 'https://parsec.iitdh.ac.in/api/parsec/v1';
 };
 
 export const API_BASE_URL = getBaseURL();
@@ -104,6 +100,15 @@ export const API_ENDPOINTS = {
   // Orders (Merchandise)
   ORDERS: '/orders',
   ORDERS_MY: '/orders/my',
+
+  // Admin - All admin routes prefixed with /paneermoms
+  ADMIN_LOGIN: '/paneermoms/login',
+  ADMIN_PAYMENTS_GET: '/paneermoms/payments',
+  ADMIN_PAYMENTS_VERIFY: '/paneermoms/payments/:id/verify', // Replace :id with actual payment ID
+  ADMIN_PAYMENTS_REJECT: '/paneermoms/payments/:id/reject', // Replace :id with actual payment ID
+  ADMIN_PAYMENTS_STATS: '/paneermoms/payments/stats',
+  ADMIN_POINTS_ADD: '/paneermoms/points/add',
+  ADMIN_POINTS_SUBTRACT: '/paneermoms/points/subtract',
 };
 
 /**

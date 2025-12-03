@@ -15,6 +15,7 @@ export const ThemeProvider = ({ children }) => {
   const setHouseTheme = (house) => {
     if (!house) return;
     localStorage.setItem('house', house);
+    localStorage.setItem('user_house', house); // Also store as user_house for consistency
     // Only apply immediately if on dashboard; public pages remain Hogwarts
     if (location.pathname.startsWith('/dashboard')) {
       setThemeName(house);
@@ -30,8 +31,10 @@ export const ThemeProvider = ({ children }) => {
       const fromQuery = params.get('house');
       if (fromQuery) {
         localStorage.setItem('house', fromQuery);
+        localStorage.setItem('user_house', fromQuery);
       }
-      const stored = localStorage.getItem('house');
+      // Check both house and user_house in localStorage
+      const stored = localStorage.getItem('house') || localStorage.getItem('user_house');
       const target = stored || 'Hogwarts';
       setThemeName(target);
       applyTheme(target);

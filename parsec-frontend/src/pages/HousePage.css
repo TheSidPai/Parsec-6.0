@@ -1,0 +1,210 @@
+/* ========== HOUSE PAGE STYLING ========== */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+.house-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--house-primary) 0%, #0a0a0f 100%);
+  padding: 40px 20px;
+  color: white;
+}
+
+.house-page-loading,
+.house-page-error {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+  color: white;
+  padding: 40px;
+  text-align: center;
+}
+
+.loading-spinner {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  color: #FFD700;
+}
+
+.house-page-error h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ff6b6b;
+}
+
+.house-page-error p {
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 30px;
+}
+
+.house-page-error button {
+  padding: 14px 30px;
+  background: linear-gradient(135deg, #FFD700, #B8860B);
+  border: none;
+  border-radius: 8px;
+  color: #1a1a1a;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.house-page-error button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+}
+
+/* ========== HOUSE HEADER ========== */
+.house-header {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 40px 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  border: 2px solid var(--house-secondary);
+  backdrop-filter: blur(10px);
+}
+
+.house-emoji {
+  font-size: 6rem;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 10px 30px var(--house-secondary));
+}
+
+.house-title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--house-secondary);
+  margin-bottom: 15px;
+  text-shadow: 0 0 30px var(--house-secondary);
+  letter-spacing: 0.05em;
+}
+
+.house-traits {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  color: #E8D4A0;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.house-founder {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ========== HOUSE CONTENT ========== */
+.house-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ========== HOUSE NAVIGATION ========== */
+.house-nav {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 15px 25px;
+  border-radius: 50px;
+  border: 1px solid var(--house-secondary);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+.house-nav button {
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid var(--house-secondary);
+  border-radius: 20px;
+  color: var(--house-secondary);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.house-nav button:hover {
+  background: var(--house-secondary);
+  color: var(--house-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px var(--house-secondary);
+}
+
+/* ========== HOUSE-SPECIFIC STYLING ========== */
+.house-page.gryffindor {
+  --house-primary: #740001;
+  --house-secondary: #D3A625;
+}
+
+.house-page.slytherin {
+  --house-primary: #1A472A;
+  --house-secondary: #AAAAAA;
+}
+
+.house-page.ravenclaw {
+  --house-primary: #0E1A40;
+  --house-secondary: #946B2D;
+}
+
+.house-page.hufflepuff {
+  --house-primary: #FFD800;
+  --house-secondary: #000000;
+}
+
+/* ========== RESPONSIVE ========== */
+@media screen and (max-width: 768px) {
+  .house-title {
+    font-size: 2rem;
+  }
+
+  .house-emoji {
+    font-size: 4rem;
+  }
+
+  .house-nav {
+    flex-wrap: wrap;
+    bottom: 20px;
+    padding: 12px 20px;
+    gap: 10px;
+  }
+
+  .house-nav button {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .house-page {
+    padding: 20px 15px;
+  }
+
+  .house-header {
+    padding: 30px 15px;
+    margin-bottom: 40px;
+  }
+
+  .house-title {
+    font-size: 1.8rem;
+  }
+
+  .house-traits {
+    font-size: 1rem;
+  }
+
+  .house-nav {
+    width: calc(100% - 40px);
+    justify-content: center;
+  }
+}
