@@ -22,7 +22,6 @@ const HousePage = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem('jwt_token');
   
-  const [userHouse, setUserHouse] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -78,7 +77,6 @@ const HousePage = () => {
 
         if (response.ok && data.data?.house) {
           const assignedHouse = data.data.house.name.toLowerCase();
-          setUserHouse(assignedHouse);
 
           // Redirect if user is trying to access wrong house page
           if (assignedHouse !== houseName?.toLowerCase()) {

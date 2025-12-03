@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { RiRefreshLine, RiCameraLine, RiStopLine, RiCheckLine, RiCloseLine, RiQrScanLine } from '@remixicon/react';
+import { RiRefreshLine, RiCameraLine, RiStopLine, RiCheckLine, RiCloseLine } from '@remixicon/react';
 import { BrowserMultiFormatReader } from '@zxing/library';
 import axios from 'axios';
 import './AdminComponents.css';

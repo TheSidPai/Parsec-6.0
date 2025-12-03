@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { RiDashboardLine, RiUserLine, RiFileListLine, RiLogoutBoxLine, RiRefreshLine, RiTicketLine, RiShoppingCartLine } from '@remixicon/react';
+import { RiDashboardLine, RiUserLine, RiFileListLine, RiLogoutBoxLine, RiTicketLine, RiShoppingCartLine } from '@remixicon/react';
 import { RiQrScanLine } from '@remixicon/react';
 import { useNavigate } from 'react-router-dom';
 import OrderManagement from './OrderManagement';

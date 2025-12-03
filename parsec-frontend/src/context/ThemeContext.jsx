@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import React, { createContext, useContext, useEffect, useMemo, useState, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import themes, { applyTheme } from '../assets/themes';
 
@@ -12,7 +12,7 @@ export const ThemeProvider = ({ children }) => {
   const location = useLocation();
   const [themeName, setThemeName] = useState('Hogwarts');
 
-  const setHouseTheme = (house) => {
+  const setHouseTheme = useCallback((house) => {
     if (!house) return;
     localStorage.setItem('house', house);
     localStorage.setItem('user_house', house); // Also store as user_house for consistency
@@ -21,7 +21,7 @@ export const ThemeProvider = ({ children }) => {
       setThemeName(house);
       applyTheme(house);
     }
-  };
+  }, [location.pathname]);
 
   // Update theme based on route changes
   useEffect(() => {
@@ -49,7 +49,7 @@ export const ThemeProvider = ({ children }) => {
     return found || themes[0];
   }, [themeName]);
 
-  const value = useMemo(() => ({ themeName, theme, setHouseTheme }), [themeName, theme]);
+  const value = useMemo(() => ({ themeName, theme, setHouseTheme }), [themeName, theme, setHouseTheme]);
 
   return (
     <ThemeContext.Provider value={value}>
