@@ -97,19 +97,29 @@ function Auth() {
           storedToken  // ✅ NOW PASSING THE TOKEN!
         );
 
+        console.log('📡 Full response status:', resp.status);
+        console.log('📡 Response ok:', resp.ok);
+        console.log('📡 Full response data:', JSON.stringify(data, null, 2));
+
         if (!resp.ok) {
           // If fetch completely fails (network/CORS), provide helpful error
           if (!resp.status) {
             throw new Error(`Network error: Cannot reach backend at ${API_BASE_URL}. This is likely a CORS issue. Backend needs to allow requests from ${window.location.origin}`);
           }
-          throw new Error(`Auth verification failed: ${resp.status}`);
+          const errorMsg = data?.message || data?.error || JSON.stringify(data);
+          throw new Error(`Auth verification failed (${resp.status}): ${errorMsg}`);
         }
 
         console.log('📥 Auth response:', data);
         
-        // Expected shape: { status: 'success', data: { user: {...}, isOnboardingComplete: true/false } }
-        if (data.status !== "success") {
-          throw new Error(data.message || "Authentication failed");
+        // Accept both response formats: { status: 'success' } OR { success: true }
+        const successFlag =
+          data.status === "success" ||
+          data.success === true;
+
+        if (!successFlag) {
+          const errorDetail = data?.message || data?.error || `Unexpected response format: ${JSON.stringify(data)}`;
+          throw new Error(`Backend returned non-success status: ${errorDetail}`);
         }
 
         // Extract token if provided (for localStorage backup)

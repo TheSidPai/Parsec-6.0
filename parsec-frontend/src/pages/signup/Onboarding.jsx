@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { API_ENDPOINTS, authenticatedFetch } from "../../config/api";
+import "./Onboarding.css";
 
 /**
  * ONBOARDING FORM COMPONENT
@@ -150,9 +151,9 @@ const OnboardingForm = () => {
       setSuccess(true);
       console.log("Onboarding successful:", data);
 
-      // Redirect to dashboard after brief delay
+      // Redirect to sorting ceremony after brief delay
       setTimeout(() => {
-        navigate('/dashboard');
+        navigate('/signup/sorting');
       }, 1500);
     } catch (err) {
       // ========== ERROR HANDLING ==========
@@ -167,214 +168,174 @@ const OnboardingForm = () => {
   // Show this after successful onboarding
   if (success) {
     return (
-      <div style={{ textAlign: "center", padding: "40px 20px" }}>
-        <h2 style={{ color: "#28a745", marginBottom: "12px" }}>
-          ✅ Onboarding Complete!
-        </h2>
-        <p>Your profile has been successfully set up.</p>
+      <div className="onboarding-container">
+        <div className="onboarding-card">
+          <div className="success-container">
+            <h2 className="success-title">
+              ✨ Onboarding Complete!
+            </h2>
+            <p className="success-message">
+              Your profile has been successfully set up. Preparing the Sorting Hat ceremony...
+            </p>
+          </div>
+        </div>
       </div>
     );
   }
 
   // ========== FORM VIEW ==========
   return (
-    <div style={{ maxWidth: "500px", margin: "0 auto", padding: "20px" }}>
-      <h1 style={{ marginBottom: "24px" }}>Complete Your Profile</h1>
+    <div className="onboarding-container">
+      {/* Floating orbs */}
+      <div className="floating-orb-1"></div>
+      <div className="floating-orb-2"></div>
+      
+      {/* Shooting stars */}
+      <div className="shooting-star"></div>
+      <div className="shooting-star"></div>
+      <div className="shooting-star"></div>
+      <div className="shooting-star"></div>
+      
+      {/* Magical fog */}
+      <div className="fog"></div>
+      
+      {/* Glow rings */}
+      <div className="glow-ring"></div>
+      <div className="glow-ring"></div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-        {/* College Name */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-          <label htmlFor="college" style={{ fontWeight: 500 }}>
-            College *
-          </label>
-          <input
-            type="text"
-            id="college"
-            name="college"
-            value={formData.college}
-            onChange={handleChange}
-            placeholder="e.g., IIT Dharwad"
-            disabled={loading}
-            style={{
-              padding: "8px 12px",
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-              fontSize: "14px",
-              backgroundColor: loading ? "#f5f5f5" : "white",
-              cursor: loading ? "not-allowed" : "text",
-            }}
-          />
-        </div>
+      <div className="onboarding-card">
+        <h1 className="onboarding-title">Complete Your Profile</h1>
 
-        {/* Batch Year */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-          <label htmlFor="batch" style={{ fontWeight: 500 }}>
-            Batch Year *
-          </label>
-          <input
-            type="number"
-            id="batch"
-            name="batch"
-            value={formData.batch}
-            onChange={handleChange}
-            placeholder="e.g., 2024"
-            disabled={loading}
-            style={{
-              padding: "8px 12px",
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-              fontSize: "14px",
-              backgroundColor: loading ? "#f5f5f5" : "white",
-              cursor: loading ? "not-allowed" : "text",
-            }}
-          />
-        </div>
-
-        {/* Gender */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-          <label htmlFor="gender" style={{ fontWeight: 500 }}>
-            Gender *
-          </label>
-          <select
-            id="gender"
-            name="gender"
-            value={formData.gender}
-            onChange={handleChange}
-            disabled={loading}
-            style={{
-              padding: "8px 12px",
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-              fontSize: "14px",
-              backgroundColor: loading ? "#f5f5f5" : "white",
-              cursor: loading ? "not-allowed" : "pointer",
-            }}
-          >
-            <option value="">Select gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-
-        {/* Contact Number */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-          <label htmlFor="contactNumber" style={{ fontWeight: 500 }}>
-            Contact Number *
-          </label>
-          <input
-            type="tel"
-            id="contactNumber"
-            name="contactNumber"
-            value={formData.contactNumber}
-            onChange={handleChange}
-            placeholder="10-digit mobile number"
-            maxLength="10"
-            disabled={loading}
-            style={{
-              padding: "8px 12px",
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-              fontSize: "14px",
-              backgroundColor: loading ? "#f5f5f5" : "white",
-              cursor: loading ? "not-allowed" : "text",
-            }}
-          />
-        </div>
-
-        {/* Aadhar or College ID */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-          <label htmlFor="aadharOrCollegeId" style={{ fontWeight: 500 }}>
-            Aadhar or College ID *
-          </label>
-          <input
-            type="text"
-            id="aadharOrCollegeId"
-            name="aadharOrCollegeId"
-            value={formData.aadharOrCollegeId}
-            onChange={handleChange}
-            placeholder="Enter Aadhar number or College ID"
-            disabled={loading}
-            style={{
-              padding: "8px 12px",
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-              fontSize: "14px",
-              backgroundColor: loading ? "#f5f5f5" : "white",
-              cursor: loading ? "not-allowed" : "text",
-            }}
-          />
-        </div>
-
-        {/* Merch Size */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-          <label htmlFor="merchSize" style={{ fontWeight: 500 }}>
-            Merch Size *
-          </label>
-          <select
-            id="merchSize"
-            name="merchSize"
-            value={formData.merchSize}
-            onChange={handleChange}
-            disabled={loading}
-            style={{
-              padding: "8px 12px",
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-              fontSize: "14px",
-              backgroundColor: loading ? "#f5f5f5" : "white",
-              cursor: loading ? "not-allowed" : "pointer",
-            }}
-          >
-            <option value="">Select size</option>
-            <option value="XS">XS</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-            <option value="XXL">XXL</option>
-            <option value="XXXL">XXXL</option>
-          </select>
-        </div>
-
-        {/* Error Message */}
-        {error && (
-          <div
-            style={{
-              padding: "12px",
-              backgroundColor: "#fee",
-              color: "#c00",
-              borderRadius: "4px",
-              fontSize: "14px",
-            }}
-          >
-            {error}
+        <div className="onboarding-form">
+          {/* College Name */}
+          <div className="form-field">
+            <label htmlFor="college" className="form-label">
+              College *
+            </label>
+            <input
+              type="text"
+              id="college"
+              name="college"
+              value={formData.college}
+              onChange={handleChange}
+              placeholder="e.g., IIT Dharwad"
+              disabled={loading}
+              className="form-input"
+            />
           </div>
-        )}
 
-        {/* Submit Button */}
-        <button
-          onClick={handleSubmit}
-          disabled={loading}
-          style={{
-            padding: "12px 24px",
-            backgroundColor: loading ? "#ccc" : "#007bff",
-            color: "white",
-            border: "none",
-            borderRadius: "4px",
-            fontSize: "16px",
-            cursor: loading ? "not-allowed" : "pointer",
-            marginTop: "8px",
-          }}
-          onMouseOver={(e) => {
-            if (!loading) e.target.style.backgroundColor = "#0056b3";
-          }}
-          onMouseOut={(e) => {
-            if (!loading) e.target.style.backgroundColor = "#007bff";
-          }}
-        >
-          {loading ? "Submitting..." : "Complete Onboarding"}
-        </button>
+          {/* Batch Year */}
+          <div className="form-field">
+            <label htmlFor="batch" className="form-label">
+              Batch Year *
+            </label>
+            <input
+              type="number"
+              id="batch"
+              name="batch"
+              value={formData.batch}
+              onChange={handleChange}
+              placeholder="e.g., 2024"
+              disabled={loading}
+              className="form-input"
+            />
+          </div>
+
+          {/* Gender */}
+          <div className="form-field">
+            <label htmlFor="gender" className="form-label">
+              Gender *
+            </label>
+            <select
+              id="gender"
+              name="gender"
+              value={formData.gender}
+              onChange={handleChange}
+              disabled={loading}
+              className="form-select"
+            >
+              <option value="">Select gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          {/* Contact Number */}
+          <div className="form-field">
+            <label htmlFor="contactNumber" className="form-label">
+              Contact Number *
+            </label>
+            <input
+              type="tel"
+              id="contactNumber"
+              name="contactNumber"
+              value={formData.contactNumber}
+              onChange={handleChange}
+              placeholder="10-digit mobile number"
+              maxLength="10"
+              disabled={loading}
+              className="form-input"
+            />
+          </div>
+
+          {/* Aadhar or College ID */}
+          <div className="form-field">
+            <label htmlFor="aadharOrCollegeId" className="form-label">
+              Aadhar or College ID *
+            </label>
+            <input
+              type="text"
+              id="aadharOrCollegeId"
+              name="aadharOrCollegeId"
+              value={formData.aadharOrCollegeId}
+              onChange={handleChange}
+              placeholder="Enter Aadhar number or College ID"
+              disabled={loading}
+              className="form-input"
+            />
+          </div>
+
+          {/* Merch Size */}
+          <div className="form-field">
+            <label htmlFor="merchSize" className="form-label">
+              Merch Size *
+            </label>
+            <select
+              id="merchSize"
+              name="merchSize"
+              value={formData.merchSize}
+              onChange={handleChange}
+              disabled={loading}
+              className="form-select"
+            >
+              <option value="">Select size</option>
+              <option value="XS">XS</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+              <option value="XXL">XXL</option>
+              <option value="XXXL">XXXL</option>
+            </select>
+          </div>
+
+          {/* Error Message */}
+          {error && (
+            <div className="error-message">
+              {error}
+            </div>
+          )}
+
+          {/* Submit Button */}
+          <button
+            onClick={handleSubmit}
+            disabled={loading}
+            className="submit-button"
+          >
+            {loading ? "✨ Submitting..." : "Complete Onboarding"}
+          </button>
+        </div>
       </div>
     </div>
   );

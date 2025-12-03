@@ -1,25 +1,23 @@
-# Parsec Backend API Documentation for Frontend Developers
+# Parsec Backend API Documentation
 
-> **Made by:** Ayush Raj
+> **Made by:** Ayush Raj  
+> **Last Updated:** November 30, 2025
 
 ---
 
 ## 📋 Table of Contents
 - [Base URL](#base-url)
+- [API Response Format](#api-response-format)
 - [Authentication](#authentication)
-- [User Routes](#user-routes)
-  - [Authentication & Profile](#authentication--profile)
-  - [Onboarding](#onboarding)
-  - [Sorting Hat](#sorting-hat)
-  - [Payments](#payments)
-  - [Points](#points)
-  - [Orders (Merchandise)](#orders-merchandise)
-- [Admin Routes](#admin-routes)
-  - [Admin Authentication](#admin-authentication)
-  - [Admin Payments](#admin-payments)
-  - [Admin Points](#admin-points)
+- [User Endpoints](#user-endpoints)
+  - [Authentication](#authentication-endpoints)
+  - [Onboarding](#onboarding-endpoints)
+  - [Sorting Hat](#sorting-hat-endpoints)
+  - [Payments](#payment-endpoints)
+  - [Points](#points-endpoints)
+  - [Orders](#order-endpoints)
+- [Admin Endpoints](#admin-endpoints)
 - [Error Handling](#error-handling)
-- [HTTP Status Codes](#http-status-codes)
 
 ---
 
@@ -37,66 +35,130 @@ https://parsec.iitdh.ac.in/api/parsec/v1
 
 ---
 
+## 📊 API Response Format
+
+All responses follow JSend specification:
+
+**Success:**
+```json
+{
+    "status": "success",
+    "data": { /* response data */ }
+}
+```
+
+**Fail (Client Error):**
+```json
+{
+    "status": "fail",
+    "message": "Error description"
+}
+```
+
+**Error (Server Error):**
+```json
+{
+    "status": "error",
+    "message": "Something went wrong"
+}
+```
+
+---
+
 ## 🔐 Authentication
 
-All protected routes require a JWT token in the request header:
-
+**JWT Token in Headers:**
 ```javascript
-Headers: {
+{
     "Authorization": "Bearer <your_jwt_token>"
 }
 ```
 
-The token is obtained after successful Google OAuth login.
+**Access Levels:**
+- **Public**: No authentication required
+- **Private**: Requires JWT token (`protect` middleware)
+- **Onboarding Required**: Requires JWT + completed onboarding (`protect` + `requireOnboarding`)
+- **Admin**: Requires admin JWT token (`verifyAdminToken`)
 
 ---
 
-## 👤 User Routes
+## 👤 User Endpoints
 
-### Authentication & Profile
+### Authentication Endpoints
 
-#### 1. Initiate Google OAuth Login
+#### 1. Initiate Google OAuth
 
-**Endpoint:** `GET /auth/google`
+```http
+GET /auth/google
+```
 
 **Description:** Redirects user to Google OAuth consent screen
 
 **Access:** Public
 
-**Request:**
+**Usage:**
 ```javascript
-// No body required - just redirect user to this URL
 window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
 ```
 
-**Response:**
-- Redirects to Google OAuth page
-- After successful authentication, redirects to `/auth/google/callback`
-- Finally redirects to frontend with JWT token in cookie
+**Flow:**
+1. User clicks "Login with Google"
+2. Backend redirects to Google
+3. User approves
+4. Google redirects back to `/auth/google/callback`
+5. Backend processes OAuth and redirects to frontend with token
 
 ---
 
 #### 2. Google OAuth Callback
 
-**Endpoint:** `GET /auth/google/callback`
+```http
+GET /auth/google/callback
+```
 
 **Description:** Handles Google OAuth callback (automatic)
 
 **Access:** Public
 
-**Response:**
-- Sets JWT token in httpOnly cookie
-- Redirects to frontend dashboard
+**Response:** Redirects to:
+```
+https://parsec-6-0.vercel.app/signup/auth?token=<jwt_token>
+```
+
+**Frontend Handling:**
+```javascript
+// On /signup/auth page
+const urlParams = new URLSearchParams(window.location.search);
+const token = urlParams.get('token');
+
+if (token) {
+    localStorage.setItem('jwt', token);
+    
+    // Check onboarding status
+    const response = await fetch('/api/parsec/v1/auth/me', {
+        headers: { 'Authorization': `Bearer ${token}` }
+    });
+    
+    const data = await response.json();
+    if (data.data.user.isOnboardingComplete) {
+        router.push('/dashboard');
+    } else {
+        router.push('/onboarding');
+    }
+}
+```
 
 ---
 
 #### 3. Get Current User
 
-**Endpoint:** `GET /auth/me`
+```http
+GET /auth/me
+```
 
-**Description:** Get current logged-in user's information
+**Description:** Get logged-in user information
 
-**Access:** Private (requires JWT)
+**Access:** Private (JWT required)
 
 **Headers:**
 ```javascript
@@ -104,8 +166,6 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
     "Authorization": "Bearer <jwt_token>"
 }
 ```
-
-**Request:** No body required
 
 **Response:**
 ```json
@@ -113,39 +173,28 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
     "status": "success",
     "data": {
         "user": {
-            "_id": "673c3e6912abd5e72d56f9cb",
-            "googleId": "112345678901234567890",
-            "name": "Ayush Raj",
-            "email": "ayush@example.com",
-            "profilePicture": "https://lh3.googleusercontent.com/...",
-            "college": "IIT Delhi",
-            "batch": "2024",
-            "gender": "Male",
-            "contactNumber": "9876543210",
-            "aadharOrCollegeId": "1234-5678-9012",
-            "merchSize": "L",
+            "email": "user@example.com",
+            "name": "John Doe",
+            "avatar": "https://lh3.googleusercontent.com/...",
             "house": "Gryffindor",
             "points": 150,
-            "createdAt": "2024-11-19T10:30:00.000Z",
-            "updatedAt": "2024-11-19T12:00:00.000Z"
-        },
-        "isOnboardingComplete": true
+            "isOnboardingComplete": true
+        }
     }
 }
 ```
-
-**Field Descriptions:**
-- `isOnboardingComplete`: `true` if all onboarding fields are filled, `false` otherwise
 
 ---
 
 #### 4. Logout
 
-**Endpoint:** `POST /auth/logout`
+```http
+POST /auth/logout
+```
 
 **Description:** Logout user and clear JWT cookie
 
-**Access:** Private (requires JWT)
+**Access:** Private (JWT required)
 
 **Headers:**
 ```javascript
@@ -153,8 +202,6 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
     "Authorization": "Bearer <jwt_token>"
 }
 ```
-
-**Request:** No body required
 
 **Response:**
 ```json
@@ -166,15 +213,17 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
 
 ---
 
-### Onboarding
+### Onboarding Endpoints
 
-#### 5. Complete User Onboarding
+#### 5. Submit Onboarding
 
-**Endpoint:** `POST /onboarding`
+```http
+POST /onboarding/submit
+```
 
-**Description:** Complete user profile with required information
+**Description:** Complete user onboarding with required information
 
-**Access:** Private (requires JWT)
+**Access:** Private (JWT required)
 
 **Headers:**
 ```javascript
@@ -189,39 +238,34 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
 {
     "college": "IIT Delhi",
     "batch": "2024",
-    "gender": "Male",
+    "gender": "male",
     "contactNumber": "9876543210",
     "aadharOrCollegeId": "1234-5678-9012",
     "merchSize": "L"
 }
 ```
 
-**Field Validations:**
-- `college`: String, required
-- `batch`: String, required (e.g., "2024", "2025")
-- `gender`: String, required, enum: `["Male", "Female", "Other"]`
-- `contactNumber`: String, required (10 digits)
-- `aadharOrCollegeId`: String, required
-- `merchSize`: String, required, enum: `["XS", "S", "M", "L", "XL", "XXL", "XXXL"]`
+**Validations:**
+- `gender`: `"male"` | `"female"` | `"other"`
+- `merchSize`: `"XS"` | `"S"` | `"M"` | `"L"` | `"XL"` | `"XXL"` | `"XXXL"`
+- All fields are **required**
 
 **Response:**
 ```json
 {
     "status": "success",
-    "message": "Onboarding completed successfully",
+    "message": "Onboarding information submitted successfully",
     "data": {
         "user": {
-            "_id": "673c3e6912abd5e72d56f9cb",
-            "name": "Ayush Raj",
-            "email": "ayush@example.com",
+            "id": "673c3e6912abd5e72d56f9cb",
+            "email": "user@example.com",
+            "name": "John Doe",
             "college": "IIT Delhi",
             "batch": "2024",
-            "gender": "Male",
+            "gender": "male",
             "contactNumber": "9876543210",
             "aadharOrCollegeId": "1234-5678-9012",
-            "merchSize": "L",
-            "house": null,
-            "points": 0
+            "merchSize": "L"
         }
     }
 }
@@ -229,17 +273,17 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
 
 ---
 
-### Sorting Hat
+### Sorting Hat Endpoints
 
 #### 6. Get House Statistics (Public)
 
-**Endpoint:** `GET /sorting-hat/stats`
+```http
+GET /sorting-hat/stats
+```
 
-**Description:** Get statistics of all houses (public leaderboard)
+**Description:** Get statistics of all houses (leaderboard)
 
-**Access:** Public (no authentication required)
-
-**Request:** No body or headers required
+**Access:** Public
 
 **Response:**
 ```json
@@ -280,11 +324,13 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
 
 #### 7. Get My House
 
-**Endpoint:** `GET /sorting-hat/my-house`
+```http
+GET /sorting-hat/my-house
+```
 
 **Description:** Get current user's house information
 
-**Access:** Private (requires JWT + completed onboarding)
+**Access:** Private (JWT + Onboarding required)
 
 **Headers:**
 ```javascript
@@ -293,9 +339,7 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
 }
 ```
 
-**Request:** No body required
-
-**Response (If sorted):**
+**Response (Sorted):**
 ```json
 {
     "status": "success",
@@ -310,7 +354,7 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
 }
 ```
 
-**Response (If not sorted yet):**
+**Response (Not Sorted):**
 ```json
 {
     "status": "fail",
@@ -322,11 +366,13 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
 
 #### 8. Sort User into House
 
-**Endpoint:** `POST /sorting-hat/sort`
+```http
+POST /sorting-hat/sort
+```
 
 **Description:** Assign user to a house using sorting algorithm
 
-**Access:** Private (requires JWT + completed onboarding)
+**Access:** Private (JWT + Onboarding required)
 
 **Headers:**
 ```javascript
@@ -334,8 +380,6 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
     "Authorization": "Bearer <jwt_token>"
 }
 ```
-
-**Request:** No body required
 
 **Response:**
 ```json
@@ -345,7 +389,7 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
     "data": {
         "user": {
             "_id": "673c3e6912abd5e72d56f9cb",
-            "name": "Ayush Raj",
+            "name": "John Doe",
             "house": "Gryffindor"
         },
         "house": {
@@ -358,7 +402,7 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
 }
 ```
 
-**Error (Already sorted):**
+**Error (Already Sorted):**
 ```json
 {
     "status": "fail",
@@ -368,15 +412,17 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
 
 ---
 
-### Payments
+### Payment Endpoints
 
-#### 9. Record Payment
+#### 9. Create Payment
 
-**Endpoint:** `POST /payments`
+```http
+POST /payments
+```
 
 **Description:** Submit a payment for verification
 
-**Access:** Private (requires JWT + completed onboarding)
+**Access:** Private (JWT + Onboarding required)
 
 **Headers:**
 ```javascript
@@ -394,10 +440,6 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
 }
 ```
 
-**Field Validations:**
-- `amount`: Number, required, must be positive
-- `paymentUTR`: String, required, unique (UTR/Transaction Reference Number)
-
 **Response:**
 ```json
 {
@@ -406,8 +448,8 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
         "paymentHistory": {
             "_id": "673c40a512abd5e72d56f9d8",
             "userId": "673c3e6912abd5e72d56f9cb",
-            "name": "Ayush Raj",
-            "email": "ayush@example.com",
+            "name": "John Doe",
+            "email": "user@example.com",
             "contactNumber": "9876543210",
             "amount": 999,
             "paymentUTR": "423456789012",
@@ -419,23 +461,22 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
 }
 ```
 
-**Error (Duplicate UTR):**
-```json
-{
-    "status": "fail",
-    "message": "Payment with this UTR already exists."
-}
-```
+**Payment Status:**
+- `pending`: Awaiting admin verification
+- `verified`: Approved by admin
+- `rejected`: Rejected by admin
 
 ---
 
 #### 10. Get My Payment History
 
-**Endpoint:** `GET /payments/me`
+```http
+GET /payments/me
+```
 
-**Description:** Get all payments made by the logged-in user
+**Description:** Get all payments made by logged-in user
 
-**Access:** Private (requires JWT + completed onboarding)
+**Access:** Private (JWT + Onboarding required)
 
 **Headers:**
 ```javascript
@@ -443,8 +484,6 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
     "Authorization": "Bearer <jwt_token>"
 }
 ```
-
-**Request:** No body required
 
 **Response:**
 ```json
@@ -455,48 +494,33 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
             {
                 "_id": "673c40a512abd5e72d56f9d8",
                 "userId": "673c3e6912abd5e72d56f9cb",
-                "name": "Ayush Raj",
-                "email": "ayush@example.com",
+                "name": "John Doe",
+                "email": "user@example.com",
                 "contactNumber": "9876543210",
                 "amount": 999,
                 "paymentUTR": "423456789012",
                 "status": "verified",
                 "createdAt": "2024-11-19T14:30:00.000Z",
                 "updatedAt": "2024-11-19T15:00:00.000Z"
-            },
-            {
-                "_id": "673c41b612abd5e72d56f9da",
-                "userId": "673c3e6912abd5e72d56f9cb",
-                "name": "Ayush Raj",
-                "email": "ayush@example.com",
-                "contactNumber": "9876543210",
-                "amount": 699,
-                "paymentUTR": "523456789013",
-                "status": "pending",
-                "createdAt": "2024-11-18T10:15:00.000Z",
-                "updatedAt": "2024-11-18T10:15:00.000Z"
             }
         ]
     }
 }
 ```
 
-**Payment Status Values:**
-- `pending`: Payment submitted, awaiting verification
-- `verified`: Payment approved by admin
-- `rejected`: Payment rejected by admin
-
 ---
 
-### Points
+### Points Endpoints
 
 #### 11. Get My Points
 
-**Endpoint:** `GET /points`
+```http
+GET /points
+```
 
 **Description:** Get current user's points
 
-**Access:** Private (requires JWT + completed onboarding)
+**Access:** Private (JWT + Onboarding required)
 
 **Headers:**
 ```javascript
@@ -504,8 +528,6 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
     "Authorization": "Bearer <jwt_token>"
 }
 ```
-
-**Request:** No body required
 
 **Response:**
 ```json
@@ -519,15 +541,17 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
 
 ---
 
-### Orders (Merchandise)
+### Order Endpoints
 
 #### 12. Create Order
 
-**Endpoint:** `POST /orders`
+```http
+POST /orders
+```
 
 **Description:** Create a new merchandise order
 
-**Access:** Private (requires JWT + completed onboarding)
+**Access:** Private (JWT + Onboarding required)
 
 **Headers:**
 ```javascript
@@ -559,15 +583,11 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
 }
 ```
 
-**Field Validations:**
-- `items`: Array, required, must not be empty
-  - `merchId`: ObjectId, required (merchandise item ID)
-  - `quantity`: Number, required, minimum 1
-  - `size`: String, enum: `["XS", "S", "M", "L", "XL", "XXL", "XXXL", "N/A"]` (required for wearable items)
-- `shippingAddress`: Object, optional
-  - `hostel`: String
-  - `roomNumber`: String
-  - `additionalInfo`: String
+**Notes:**
+- `size` is required for wearable items
+- Server validates stock availability
+- Server calculates total amount (don't send it)
+- Stock is automatically decremented
 
 **Response:**
 ```json
@@ -583,19 +603,10 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
                     "name": "Parsec T-Shirt",
                     "size": "L",
                     "quantity": 2,
-                    "pricePerItem": 500,
-                    "_id": "673c43e912abd5e72d56f9e0"
-                },
-                {
-                    "merchId": "673c42d812abd5e72d56f9dd",
-                    "name": "Parsec Sticker Pack",
-                    "size": "N/A",
-                    "quantity": 1,
-                    "pricePerItem": 100,
-                    "_id": "673c43e912abd5e72d56f9e1"
+                    "pricePerItem": 500
                 }
             ],
-            "totalAmount": 1100,
+            "totalAmount": 1000,
             "orderStatus": "pending",
             "paymentStatus": "pending",
             "shippingAddress": {
@@ -610,9 +621,15 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
 }
 ```
 
-**Error Responses:**
+**Order Status:**
+- `pending` → `confirmed` → `processing` → `shipped` → `delivered`
+- `cancelled`
 
-**Insufficient Stock:**
+**Payment Status:**
+- `pending` → `completed`
+- `failed` | `refunded`
+
+**Common Errors:**
 ```json
 {
     "status": "fail",
@@ -620,39 +637,17 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
 }
 ```
 
-**Size Required:**
-```json
-{
-    "status": "fail",
-    "message": "Size is required for wearable item: Parsec T-Shirt"
-}
-```
-
-**Size Not Available:**
-```json
-{
-    "status": "fail",
-    "message": "Size XXL is not available for Parsec T-Shirt"
-}
-```
-
-**Merchandise Not Found:**
-```json
-{
-    "status": "fail",
-    "message": "Merchandise with ID 673c42c712abd5e72d56f9dc not found."
-}
-```
-
 ---
 
 #### 13. Get My Orders
 
-**Endpoint:** `GET /orders/me`
+```http
+GET /orders/me
+```
 
-**Description:** Get all orders placed by the logged-in user (sorted by newest first)
+**Description:** Get all orders (sorted by newest first)
 
-**Access:** Private (requires JWT + completed onboarding)
+**Access:** Private (JWT + Onboarding required)
 
 **Headers:**
 ```javascript
@@ -660,8 +655,6 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
     "Authorization": "Bearer <jwt_token>"
 }
 ```
-
-**Request:** No body required
 
 **Response:**
 ```json
@@ -692,66 +685,29 @@ window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
                 "deliveredAt": "2024-11-20T10:00:00.000Z",
                 "createdAt": "2024-11-19T16:00:00.000Z",
                 "updatedAt": "2024-11-20T10:00:00.000Z"
-            },
-            {
-                "_id": "673c44fa12abd5e72d56f9e2",
-                "userId": "673c3e6912abd5e72d56f9cb",
-                "items": [
-                    {
-                        "merchId": "673c42d812abd5e72d56f9dd",
-                        "name": "Parsec Sticker Pack",
-                        "size": "N/A",
-                        "quantity": 1,
-                        "pricePerItem": 100
-                    }
-                ],
-                "totalAmount": 100,
-                "orderStatus": "pending",
-                "paymentStatus": "pending",
-                "createdAt": "2024-11-19T14:00:00.000Z",
-                "updatedAt": "2024-11-19T14:00:00.000Z"
             }
         ]
     }
 }
 ```
 
-**Order Status Values:**
-- `pending`: Order placed, awaiting confirmation
-- `confirmed`: Order confirmed by admin
-- `processing`: Order is being prepared
-- `shipped`: Order has been shipped
-- `delivered`: Order delivered to customer
-- `cancelled`: Order cancelled
-
-**Payment Status Values:**
-- `pending`: Payment not completed
-- `completed`: Payment successful
-- `failed`: Payment failed
-- `refunded`: Payment refunded
-
 ---
 
-## 🔑 Admin Routes
+## 🔑 Admin Endpoints
 
-All admin routes are prefixed with `/paneermoms` and require admin authentication token obtained from admin login.
+All admin routes are under `/paneermoms` prefix and require admin authentication.
 
 ### Admin Authentication
 
 #### 14. Admin Login
 
-**Endpoint:** `POST /paneermoms/login`
+```http
+POST /paneermoms/login
+```
 
 **Description:** Login as admin using secret key
 
 **Access:** Public
-
-**Headers:**
-```javascript
-{
-    "Content-Type": "application/json"
-}
-```
 
 **Request Body:**
 ```json
@@ -763,13 +719,15 @@ All admin routes are prefixed with `/paneermoms` and require admin authenticatio
 **Response (Success):**
 ```json
 {
-    "success": true,
+    "status": "success",
     "message": "Admin authenticated successfully",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc0FkbWluIjp0cnVlLCJ0eXBlIjoiYWRtaW4iLCJpYXQiOjE3MzE5OTAwMDAsImV4cCI6MTczMTk5MzYwMH0.xxxxx"
+    "data": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+    }
 }
 ```
 
-**Response (Invalid Key):**
+**Response (Invalid):**
 ```json
 {
     "status": "fail",
@@ -778,18 +736,20 @@ All admin routes are prefixed with `/paneermoms` and require admin authenticatio
 ```
 
 **Notes:**
-- Admin token expires in **1 hour**
-- Use this token in `Authorization` header for all admin routes
+- Token expires in **1 hour**
+- Use in Authorization header for all admin routes
 
 ---
 
-### Admin Payments
+### Admin Payment Management
 
-#### 15. Get All Payment Histories
+#### 15. Get All Payments
 
-**Endpoint:** `GET /paneermoms/payments`
+```http
+GET /paneermoms/payments
+```
 
-**Description:** Get all payment records from all users
+**Description:** Get all payment records
 
 **Access:** Admin only
 
@@ -799,8 +759,6 @@ All admin routes are prefixed with `/paneermoms` and require admin authenticatio
     "Authorization": "Bearer <admin_token>"
 }
 ```
-
-**Request:** No body required
 
 **Response:**
 ```json
@@ -812,35 +770,13 @@ All admin routes are prefixed with `/paneermoms` and require admin authenticatio
                 "_id": "673c40a512abd5e72d56f9d8",
                 "userId": {
                     "_id": "673c3e6912abd5e72d56f9cb",
-                    "name": "Ayush Raj",
-                    "email": "ayush@example.com",
-                    "contactNumber": "9876543210"
+                    "name": "John Doe",
+                    "email": "user@example.com"
                 },
-                "name": "Ayush Raj",
-                "email": "ayush@example.com",
-                "contactNumber": "9876543210",
                 "amount": 999,
                 "paymentUTR": "423456789012",
                 "status": "pending",
-                "createdAt": "2024-11-19T14:30:00.000Z",
-                "updatedAt": "2024-11-19T14:30:00.000Z"
-            },
-            {
-                "_id": "673c41b612abd5e72d56f9da",
-                "userId": {
-                    "_id": "673c3f2012abd5e72d56f9d5",
-                    "name": "Priya Sharma",
-                    "email": "priya@example.com",
-                    "contactNumber": "9876543211"
-                },
-                "name": "Priya Sharma",
-                "email": "priya@example.com",
-                "contactNumber": "9876543211",
-                "amount": 699,
-                "paymentUTR": "523456789013",
-                "status": "verified",
-                "createdAt": "2024-11-18T10:15:00.000Z",
-                "updatedAt": "2024-11-18T11:00:00.000Z"
+                "createdAt": "2024-11-19T14:30:00.000Z"
             }
         ]
     }
@@ -851,9 +787,11 @@ All admin routes are prefixed with `/paneermoms` and require admin authenticatio
 
 #### 16. Verify Payment
 
-**Endpoint:** `PATCH /paneermoms/payments/:id/verify`
+```http
+PATCH /paneermoms/payments/:id/verify
+```
 
-**Description:** Mark a payment as verified/approved
+**Description:** Approve a payment
 
 **Access:** Admin only
 
@@ -864,10 +802,8 @@ All admin routes are prefixed with `/paneermoms` and require admin authenticatio
 }
 ```
 
-**URL Parameters:**
+**URL Params:**
 - `id`: Payment ID (ObjectId)
-
-**Request:** No body required
 
 **Response:**
 ```json
@@ -876,25 +812,10 @@ All admin routes are prefixed with `/paneermoms` and require admin authenticatio
     "data": {
         "payment": {
             "_id": "673c40a512abd5e72d56f9d8",
-            "userId": "673c3e6912abd5e72d56f9cb",
-            "name": "Ayush Raj",
-            "email": "ayush@example.com",
-            "contactNumber": "9876543210",
-            "amount": 999,
-            "paymentUTR": "423456789012",
             "status": "verified",
-            "createdAt": "2024-11-19T14:30:00.000Z",
             "updatedAt": "2024-11-19T15:00:00.000Z"
         }
     }
-}
-```
-
-**Error (Payment Not Found):**
-```json
-{
-    "status": "fail",
-    "message": "Payment not found."
 }
 ```
 
@@ -902,9 +823,11 @@ All admin routes are prefixed with `/paneermoms` and require admin authenticatio
 
 #### 17. Reject Payment
 
-**Endpoint:** `PATCH /paneermoms/payments/:id/reject`
+```http
+PATCH /paneermoms/payments/:id/reject
+```
 
-**Description:** Mark a payment as rejected
+**Description:** Reject a payment
 
 **Access:** Admin only
 
@@ -915,10 +838,8 @@ All admin routes are prefixed with `/paneermoms` and require admin authenticatio
 }
 ```
 
-**URL Parameters:**
+**URL Params:**
 - `id`: Payment ID (ObjectId)
-
-**Request:** No body required
 
 **Response:**
 ```json
@@ -927,14 +848,7 @@ All admin routes are prefixed with `/paneermoms` and require admin authenticatio
     "data": {
         "payment": {
             "_id": "673c40a512abd5e72d56f9d8",
-            "userId": "673c3e6912abd5e72d56f9cb",
-            "name": "Ayush Raj",
-            "email": "ayush@example.com",
-            "contactNumber": "9876543210",
-            "amount": 999,
-            "paymentUTR": "423456789012",
             "status": "rejected",
-            "createdAt": "2024-11-19T14:30:00.000Z",
             "updatedAt": "2024-11-19T15:05:00.000Z"
         }
     }
@@ -945,9 +859,11 @@ All admin routes are prefixed with `/paneermoms` and require admin authenticatio
 
 #### 18. Get Payment Statistics
 
-**Endpoint:** `GET /paneermoms/payments/stats`
+```http
+GET /paneermoms/payments/stats
+```
 
-**Description:** Get overall payment statistics for admin dashboard
+**Description:** Get payment statistics for dashboard
 
 **Access:** Admin only
 
@@ -957,8 +873,6 @@ All admin routes are prefixed with `/paneermoms` and require admin authenticatio
     "Authorization": "Bearer <admin_token>"
 }
 ```
-
-**Request:** No body required
 
 **Response:**
 ```json
@@ -975,13 +889,15 @@ All admin routes are prefixed with `/paneermoms` and require admin authenticatio
 
 ---
 
-### Admin Points
+### Admin Points Management
 
 #### 19. Add Points to User
 
-**Endpoint:** `POST /paneermoms/points/add`
+```http
+POST /paneermoms/points/add
+```
 
-**Description:** Add points to a specific user (and their house)
+**Description:** Add points to user and their house
 
 **Access:** Admin only
 
@@ -1001,10 +917,6 @@ All admin routes are prefixed with `/paneermoms` and require admin authenticatio
 }
 ```
 
-**Field Validations:**
-- `userId`: String (ObjectId), required
-- `pointsToAdd`: Number, required, must be positive
-
 **Response:**
 ```json
 {
@@ -1013,7 +925,7 @@ All admin routes are prefixed with `/paneermoms` and require admin authenticatio
     "data": {
         "user": {
             "id": "673c3e6912abd5e72d56f9cb",
-            "name": "Ayush Raj",
+            "name": "John Doe",
             "points": 200,
             "house": "Gryffindor"
         },
@@ -1025,29 +937,15 @@ All admin routes are prefixed with `/paneermoms` and require admin authenticatio
 }
 ```
 
-**Error (User Not Found):**
-```json
-{
-    "status": "fail",
-    "message": "User not found"
-}
-```
-
-**Error (User Not Sorted):**
-```json
-{
-    "status": "fail",
-    "message": "User has not been sorted into a house yet"
-}
-```
-
 ---
 
 #### 20. Subtract Points from User
 
-**Endpoint:** `POST /paneermoms/points/subtract`
+```http
+POST /paneermoms/points/subtract
+```
 
-**Description:** Subtract points from a specific user (and their house)
+**Description:** Subtract points from user and their house
 
 **Access:** Admin only
 
@@ -1067,10 +965,6 @@ All admin routes are prefixed with `/paneermoms` and require admin authenticatio
 }
 ```
 
-**Field Validations:**
-- `userId`: String (ObjectId), required
-- `pointsToSubtract`: Number, required, must be positive
-
 **Response:**
 ```json
 {
@@ -1079,7 +973,7 @@ All admin routes are prefixed with `/paneermoms` and require admin authenticatio
     "data": {
         "user": {
             "id": "673c3e6912abd5e72d56f9cb",
-            "name": "Ayush Raj",
+            "name": "John Doe",
             "points": 170,
             "house": "Gryffindor"
         },
@@ -1091,253 +985,174 @@ All admin routes are prefixed with `/paneermoms` and require admin authenticatio
 }
 ```
 
-**Error (Insufficient Points):**
-```json
-{
-    "status": "fail",
-    "message": "Cannot subtract 50 points. User only has 30 points"
-}
-```
-
 ---
 
 ## ❌ Error Handling
 
-### Common Error Response Format
-
-All errors follow this structure:
-
-```json
-{
-    "status": "fail",  // or "error" for server errors
-    "message": "Error description here"
-}
-```
-
-### Development Mode Errors (Detailed)
+### Error Response Format
 
 ```json
 {
     "status": "fail",
-    "error": {
-        "statusCode": 400,
-        "status": "fail",
-        "isOperational": true
-    },
-    "message": "Error description here",
-    "stack": "Error: Error description here\n    at file:line:column..."
-}
-```
-
-### Production Mode Errors (Clean)
-
-```json
-{
-    "status": "fail",
-    "message": "Error description here"
+    "message": "Error description"
 }
 ```
 
 ### Common Error Messages
 
-**Authentication Errors:**
-- `"You are not logged in. Please log in to get access."` (401)
-- `"The user belonging to this token no longer exists."` (401)
-- `"Invalid token. Please log in again."` (401)
-- `"Your token has expired. Please log in again."` (401)
+**Authentication (401):**
+- `"You are not logged in. Please log in to get access."`
+- `"Invalid token. Please log in again."`
+- `"Your token has expired. Please log in again."`
 
-**Onboarding Errors:**
-- `"Please complete your onboarding before accessing this resource."` (403)
+**Authorization (403):**
+- `"Please complete your onboarding before accessing this resource."`
+- `"Access denied. Admin privileges required."`
 
-**Validation Errors:**
-- `"Amount and Payment UTR are required."` (400)
-- `"User has already been sorted."` (400)
-- `"Items array is required and must not be empty."` (400)
-- `"Each item must have merchId and quantity."` (400)
-- `"Insufficient stock for Parsec T-Shirt. Available: 5, Requested: 10"` (400)
-- `"Size is required for wearable item: Parsec T-Shirt"` (400)
-- `"Size XXL is not available for Parsec T-Shirt"` (400)
+**Validation (400):**
+- `"All onboarding fields are required."`
+- `"Items array is required and must not be empty."`
+- `"Each item must have merchId and quantity."`
+- `"Insufficient stock for Parsec T-Shirt. Available: 5, Requested: 10"`
+- `"Size is required for wearable item: Parsec T-Shirt"`
 
-**Not Found Errors:**
-- `"User not found."` (404)
-- `"Payment not found."` (404)
-- `"Merchandise with ID ... not found."` (404)
+**Not Found (404):**
+- `"User not found."`
+- `"Payment not found."`
+- `"Merchandise with ID ... not found."`
 
-**Server Errors:**
-- `"Something went wrong!"` (500)
+**Server Error (500):**
+- `"Something went wrong!"`
 
 ---
 
 ## 📊 HTTP Status Codes
 
-| Status Code | Meaning | Usage |
-|------------|---------|-------|
-| **200** | OK | Successful GET, PATCH requests |
-| **201** | Created | Successful POST (resource created) |
-| **400** | Bad Request | Validation errors, missing fields |
-| **401** | Unauthorized | Authentication required or failed |
-| **403** | Forbidden | User doesn't have permission (onboarding incomplete) |
+| Code | Meaning | Usage |
+|------|---------|-------|
+| **200** | OK | Successful GET, PATCH |
+| **201** | Created | Successful POST |
+| **400** | Bad Request | Validation errors |
+| **401** | Unauthorized | Authentication failed |
+| **403** | Forbidden | Insufficient permissions |
 | **404** | Not Found | Resource doesn't exist |
-| **500** | Internal Server Error | Unexpected server error |
+| **500** | Server Error | Unexpected error |
 
 ---
 
-## 🎯 Important Notes for Frontend Developers
+## 🎯 Frontend Integration Guide
 
-### 1. **JWT Token Storage**
-- Store JWT token securely (httpOnly cookie is set automatically)
-- For API calls, include token in Authorization header
-- Token expires after 7 days for users, 1 hour for admins
+### 1. Authentication Flow
 
-### 2. **Onboarding Flow**
 ```javascript
-// Step 1: User logs in with Google
-GET /auth/google
+// Step 1: Redirect to Google OAuth
+const handleLogin = () => {
+    window.location.href = 'https://parsec.iitdh.ac.in/api/parsec/v1/auth/google';
+};
 
-// Step 2: Check if onboarding is complete
-GET /auth/me
-// If isOnboardingComplete === false, redirect to onboarding page
-
-// Step 3: Complete onboarding
-POST /onboarding
-{
-    "college": "...",
-    "batch": "...",
-    // ... other fields
-}
-
-// Step 4: Get sorted into a house
-POST /sorting-hat/sort
-
-// Step 5: Now user can access all features
+// Step 2: Handle callback on /signup/auth page
+useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+    
+    if (token) {
+        localStorage.setItem('jwt', token);
+        
+        // Check onboarding
+        fetch('/api/parsec/v1/auth/me', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.data.user.isOnboardingComplete) {
+                router.push('/dashboard');
+            } else {
+                router.push('/onboarding');
+            }
+        });
+    }
+}, []);
 ```
 
-### 3. **Error Handling Example**
+### 2. Axios Setup
+
+```javascript
+import axios from 'axios';
+
+const api = axios.create({
+    baseURL: 'https://parsec.iitdh.ac.in/api/parsec/v1',
+    withCredentials: true
+});
+
+// Add token to all requests
+api.interceptors.request.use(config => {
+    const token = localStorage.getItem('jwt');
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+});
+
+// Handle errors
+api.interceptors.response.use(
+    response => response,
+    error => {
+        if (error.response?.status === 401) {
+            localStorage.removeItem('jwt');
+            router.push('/login');
+        }
+        return Promise.reject(error);
+    }
+);
+
+export default api;
+```
+
+### 3. Error Handling
+
 ```javascript
 try {
-    const response = await fetch('https://parsec.iitdh.ac.in/api/parsec/v1/payments', {
-        method: 'POST',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            amount: 999,
-            paymentUTR: "423456789012"
-        })
+    const response = await api.post('/payments', {
+        amount: 999,
+        paymentUTR: '423456789012'
     });
-
-    const data = await response.json();
-
-    if (data.status === 'fail' || data.status === 'error') {
-        // Show error message to user
-        showErrorToast(data.message);
-    } else {
-        // Success handling
-        showSuccessToast('Payment submitted successfully!');
+    
+    if (response.data.status === 'success') {
+        showSuccess('Payment submitted!');
     }
 } catch (error) {
-    // Network or parsing error
-    showErrorToast('Something went wrong. Please try again.');
+    const message = error.response?.data?.message || 'Something went wrong';
+    showError(message);
 }
 ```
 
-### 4. **Admin Panel Flow**
+### 4. Admin Panel
+
 ```javascript
-// Step 1: Admin logs in
-POST /paneermoms/login
-{
-    "adminKey": "kulhadpizza"
-}
+// Admin login
+const handleAdminLogin = async (adminKey) => {
+    const response = await api.post('/paneermoms/login', { adminKey });
+    localStorage.setItem('adminToken', response.data.data.token);
+};
 
-// Step 2: Store admin token
-localStorage.setItem('adminToken', response.token);
-
-// Step 3: Use admin token for all admin operations
-fetch('https://parsec.iitdh.ac.in/api/parsec/v1/paneermoms/payments', {
-    headers: {
-        'Authorization': `Bearer ${adminToken}`
-    }
-});
-```
-
-### 5. **Order Creation Best Practices**
-- Frontend should validate stock availability before submission (optional - server validates anyway)
-- Show clear error messages for stock issues
-- For wearable items, make size selection mandatory in UI
-- Calculate total amount on frontend for preview (server will recalculate for security)
-- Server automatically:
-  - Validates merchandise exists
-  - Checks stock availability
-  - Validates size for wearables
-  - Calculates correct total amount
-  - Decrements stock quantity
-
-### 6. **House Leaderboard**
-- Public route `/sorting-hat/stats` doesn't require authentication
-- Refresh periodically to show updated standings
-- Sort by points for leaderboard display
-
-### 7. **Order Status Tracking**
-- Orders are sorted by `createdAt` in descending order (newest first)
-- Display order status and payment status separately
-- Show `deliveredAt` timestamp when order status is "delivered"
-- Order statuses: pending → confirmed → processing → shipped → delivered
-- Payment statuses: pending → completed (or failed/refunded)
-
----
-
-## 🧪 Testing with Postman
-
-### Environment Variables
-Create a Postman environment with:
-```
-BASE_URL = https://parsec.iitdh.ac.in/api/parsec/v1
-DEV_BASE_URL = http://localhost:3000/api/parsec/v1
-JWT_TOKEN = <your_jwt_token>
-ADMIN_TOKEN = <admin_token>
-```
-
-### Example Collection Structure
-```
-Parsec Backend
-├── Auth
-│   ├── Google Login (GET)
-│   ├── Get Current User (GET)
-│   └── Logout (POST)
-├── Onboarding
-│   └── Complete Onboarding (POST)
-├── Sorting Hat
-│   ├── Get House Stats (GET)
-│   ├── Get My House (GET)
-│   └── Sort User (POST)
-├── Payments
-│   ├── Record Payment (POST)
-│   └── Get My Payment History (GET)
-├── Points
-│   └── Get My Points (GET)
-├── Orders
-│   ├── Create Order (POST)
-│   └── Get My Orders (GET)
-└── Admin
-    ├── Admin Login (POST)
-    ├── Get All Payments (GET)
-    ├── Verify Payment (PATCH)
-    ├── Reject Payment (PATCH)
-    ├── Get Payment Stats (GET)
-    ├── Add Points (POST)
-    └── Subtract Points (POST)
+// Use admin token
+const getPayments = async () => {
+    const adminToken = localStorage.getItem('adminToken');
+    const response = await api.get('/paneermoms/payments', {
+        headers: { 'Authorization': `Bearer ${adminToken}` }
+    });
+    return response.data.data.paymentHistories;
+};
 ```
 
 ---
 
 ## 📞 Support
 
-For any questions or issues, please contact the backend team or create an issue in the repository.
+For questions or issues, contact the backend team (Ayush Raj).
 
 **Happy Coding! 🚀**
 
 ---
 
-*Last Updated: November 19, 2024*
-*Made by: Ayush Raj*
+*Made by: Ayush Raj with ❤️*

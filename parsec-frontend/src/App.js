@@ -12,6 +12,7 @@ import Onboarding from './pages/signup/Onboarding';
 import Terms from './pages/signup/Terms';
 import Auth from './pages/signup/Auth';
 import ManualAuth from './pages/signup/ManualAuth';
+import SortingHat from './pages/signup/SortingHat';
 import Events from './pages/Events';
 import EventDetail from './pages/EventDetail';
 import Schedule from './pages/Schedule';
@@ -27,6 +28,10 @@ import Leaderboard from './pages/dashboard/Leaderboard';
 import DashboardTeam from './pages/dashboard/Team';
 import Contact from './pages/dashboard/Contact';
 import NotFound from './pages/NotFound';
+import HousePage from './pages/HousePage';
+import AdminAuth from './components/admin/AdminAuth';
+import AdminDashboard from './components/admin/AdminDashboard';
+import AdminProtectedRoute from './components/admin/AdminProtectedRoute';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -44,6 +49,7 @@ function AnimatedRoutes() {
         {/* Signup Flow (nested routes) */}
         <Route path="/signup" element={<SignupLayout />}>
           <Route path="onboarding" element={<Onboarding />} />
+          <Route path="sorting" element={<SortingHat />} />
           <Route path="auth" element={<Auth />} />
           <Route path="manual" element={<ManualAuth />} />
           <Route path="terms" element={<Terms />} />
@@ -54,6 +60,20 @@ function AnimatedRoutes() {
         <Route path="/events/:id" element={<EventDetail />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/team" element={<Team />} />
+
+        {/* House-Specific Pages (Protected) */}
+        <Route path="/house/:houseName" element={<HousePage />} />
+
+        {/* Admin Routes */}
+        <Route path="/admin/login" element={<AdminAuth />} />
+        <Route 
+          path="/admin/dashboard" 
+          element={
+            <AdminProtectedRoute>
+              <AdminDashboard />
+            </AdminProtectedRoute>
+          } 
+        />
 
         {/* Protected Dashboard Routes */}
         <Route path="/dashboard" element={<DashboardLayout />}>
