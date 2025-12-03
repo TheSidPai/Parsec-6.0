@@ -3,6 +3,7 @@ import { Outlet, Link, useNavigate } from 'react-router-dom';
 import './DashboardLayout.css';
 import HouseSwitcher from '../components/HouseSwitcher';
 import { buildApiUrl, API_ENDPOINTS } from '../config/api';
+import { applyTheme } from '../assets/themes';
 
 function DashboardLayout() {
   const navigate = useNavigate();
@@ -48,11 +49,19 @@ function DashboardLayout() {
           console.log('✅ User house:', house, name);
           setUserHouse(house);
           setHouseName(name);
+          
+          // Apply house theme colors
+          applyTheme(house);
+          console.log('🎨 Applied', house, 'theme colors');
         } else {
           console.warn('⚠️ No house found in response:', data);
+          // Apply default Hogwarts theme if no house
+          applyTheme('hogwarts');
         }
       } catch (error) {
         console.error('❌ Failed to fetch user house:', error);
+        // Apply default Hogwarts theme on error
+        applyTheme('hogwarts');
       } finally {
         setIsLoadingHouse(false);
       }
