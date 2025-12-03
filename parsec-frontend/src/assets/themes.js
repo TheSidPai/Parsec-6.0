@@ -14,12 +14,16 @@ const themes = [
     fontMain: "#F5F1E6",      // warm off-white for body text
     fontSub: "#CFC7B9",       // secondary text
     fontAccent: "#D4AF37",    // classic gold accent
+    fontAccentDark: "#8B6914", // darker gold for light backgrounds
     link: "#D4AF37",
     linkHover: "#FFF7D6",
 
-    buttonBg: "#daa702ff",
-    buttonHoverBg: "#121A36",
+    buttonBg: "#0b0027ff",      // darker gold for light backgrounds
+    buttonHoverBg: "#A0771A",
     buttonText: "#F5F1E6",
+    buttonBgLight: "#daa702ff", // original bright gold for dark backgrounds
+    buttonHoverBgLight: "#121A36",
+    buttonTextLight: "#F5F1E6",
     cardHover: "#162042",
 
     glow: "rgba(212, 175, 55, 0.18)",   // soft gold glow
@@ -44,12 +48,16 @@ const themes = [
     fontMain: "#FFFFFF",
     fontSub: "#B3B3B3",
     fontAccent: "#FFD700",
+    fontAccentDark: "#8B0000", // dark red for light backgrounds
     link: "#FFC500",
     linkHover: "#FFFFFF",
 
-    buttonBg: "#7F0909",
-    buttonHoverBg: "#9B1C1C",
+    buttonBg: "#8B0000",      // darker red for light backgrounds
+    buttonHoverBg: "#A01010",
     buttonText: "#FFFFFF",
+    buttonBgLight: "#7F0909", // original red for dark backgrounds
+    buttonHoverBgLight: "#9B1C1C",
+    buttonTextLight: "#FFFFFF",
     cardHover: "#2C2C2C",
 
     glow: "rgba(255, 215, 0, 0.4)",
@@ -74,12 +82,16 @@ const themes = [
     fontMain: "#E0E0E0",
     fontSub: "#A0A0A0",
     fontAccent: "#00FF99",
+    fontAccentDark: "#0D5C2E", // dark green for light backgrounds
     link: "#AAAAAA",
     linkHover: "#FFFFFF",
 
-    buttonBg: "#1A472A",
-    buttonHoverBg: "#2E6042",
+    buttonBg: "#0D5C2E",      // darker green for light backgrounds
+    buttonHoverBg: "#1A7A3E",
     buttonText: "#FFFFFF",
+    buttonBgLight: "#1A472A", // original green for dark backgrounds
+    buttonHoverBgLight: "#2E6042",
+    buttonTextLight: "#FFFFFF",
     cardHover: "#242424",
 
     glow: "rgba(0, 255, 153, 0.3)",
@@ -104,12 +116,16 @@ const themes = [
     fontMain: "#E6E6E6",
     fontSub: "#B0B0B0",
     fontAccent: "#A67C52",
+    fontAccentDark: "#5C4A2E", // darker bronze for light backgrounds
     link: "#946B2D",
     linkHover: "#FFFFFF",
 
-    buttonBg: "#0E1A40",
-    buttonHoverBg: "#182C60",
+    buttonBg: "#5C4A2E",      // darker bronze for light backgrounds
+    buttonHoverBg: "#6E5838",
     buttonText: "#FFFFFF",
+    buttonBgLight: "#0E1A40", // original blue for dark backgrounds
+    buttonHoverBgLight: "#182C60",
+    buttonTextLight: "#FFFFFF",
     cardHover: "#1E1E33",
 
     glow: "rgba(148, 107, 45, 0.4)",
@@ -134,12 +150,16 @@ const themes = [
     fontMain: "#FFFFFF",
     fontSub: "#BEBEBE",
     fontAccent: "#FFF799",
+    fontAccentDark: "#8B7E00", // darker yellow for light backgrounds
     link: "#EEE117",
     linkHover: "#FFFFFF",
 
-    buttonBg: "#EEE117",
-    buttonHoverBg: "#FFD700",
-    buttonText: "#000000",
+    buttonBg: "#8B7E00",      // darker yellow for light backgrounds
+    buttonHoverBg: "#A09000",
+    buttonText: "#FFFFFF",
+    buttonBgLight: "#EEE117", // original bright yellow for dark backgrounds
+    buttonHoverBgLight: "#FFD700",
+    buttonTextLight: "#000000",
     cardHover: "#2A2A2A",
 
     glow: "rgba(238, 225, 23, 0.4)",

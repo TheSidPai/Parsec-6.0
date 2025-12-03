@@ -46,7 +46,7 @@ export const ThemeProvider = ({ children }) => {
     return found || themes[0];
   }, [themeName]);
 
-  const value = useMemo(() => ({ themeName, theme, setHouseTheme }), [themeName, theme]);
+  const value = useMemo(() => ({ themeName, theme, setHouseTheme }), [themeName, theme, setHouseTheme]);
 
   return (
     <ThemeContext.Provider value={value}>

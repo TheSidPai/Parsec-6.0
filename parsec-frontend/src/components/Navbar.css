@@ -1,6 +1,6 @@
 /* ========== BASE NAVBAR ========== */
 .navbar {
-  background: var(--gradient);
+  /* background: var(--gradient); */
   min-height: 80px;
   display: flex;
   justify-content: center;

@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import EventCard from "../components/EventCard";
+import EventCard2 from "../components/EventCard2";
 import events from "../assets/data/events.json";
 import Particles from '../components/Particles';
 import './Events.css';
@@ -28,7 +28,7 @@ function Events() {
 
         <div className="events-grid">
           {events.map((ev) => (
-            <EventCard
+            <EventCard2
               key={ev.id}
               id={ev.id}
               title={ev.title}

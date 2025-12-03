@@ -7,6 +7,9 @@
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: 'JosefinSans';
+    position: relative;
+    z-index: 10;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
   }
   
   .btn:hover {

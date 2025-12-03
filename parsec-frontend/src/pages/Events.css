@@ -4,6 +4,8 @@
   /* Offset for fixed navbar */
   margin-top: 100px;
   padding: 2rem 1.25rem;
+  position: relative;
+  z-index: 10;
 }
 
 .events-header {
