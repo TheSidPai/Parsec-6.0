@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './EventCard2.css';
 import Button from './Button';
+import './LeatherSpan.css';
 
 function EventCard2({ 
   id, 
@@ -35,7 +36,7 @@ function EventCard2({
         className="event-card-image" 
         style={bgStyle}
       >
-        <span className="event-category">{category}</span>
+        <span className=" leather-span">{category}</span>
       </div>
       
       <div className="event-card-content">

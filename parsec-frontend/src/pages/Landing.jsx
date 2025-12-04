@@ -35,7 +35,7 @@ function Landing() {
           inertia={0.5}
           // Post-processing
           grainIntensity={0.05}
-          bloomStrength={0.2}
+          bloomStrength={0.3}
           bloomRadius={1.0}
           bloomThreshold={0.025}
           // Fade-out behavior

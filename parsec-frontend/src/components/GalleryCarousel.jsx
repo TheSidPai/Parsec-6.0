@@ -4,15 +4,27 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "./GalleryCarousel.css";
 
+// Import event images
+import ABC from "../assets/images/event-images/FinalImages/ABC.webp";
+import BAB from "../assets/images/event-images/FinalImages/BAB.webp";
+import BAB2 from "../assets/images/event-images/FinalImages/BAB2.webp";
+import BAB3 from "../assets/images/event-images/FinalImages/BAB3.webp";
+import crowd from "../assets/images/event-images/FinalImages/crowd.webp";
+import Event from "../assets/images/event-images/FinalImages/Event.webp";
+import Event2 from "../assets/images/event-images/FinalImages/Event2.webp";
+import RedAlert from "../assets/images/event-images/FinalImages/RedAlert.webp";
+import StandUp from "../assets/images/event-images/FinalImages/StandUp.webp";
 
-
-const placeholderImages = [
-  "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1519985176271-adb1088fa94c?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=600&q=80"
+const eventImages = [
+  ABC,
+  BAB,
+  BAB2,
+  BAB3,
+  crowd,
+  Event,
+  Event2,
+  RedAlert,
+  StandUp
 ];
 
 function GalleryCarousel() {
@@ -32,7 +44,7 @@ function GalleryCarousel() {
           1024: { slidesPerView: 3 }
         }}
       >
-        {placeholderImages.map((src, idx) => (
+        {eventImages.map((src, idx) => (
           <SwiperSlide key={idx}>
             <div className="gallery-carousel-card">
               <img src={src} alt={`Gallery ${idx + 1}`} className="gallery-carousel-img" />

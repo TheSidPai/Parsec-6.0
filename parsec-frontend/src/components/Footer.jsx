@@ -10,13 +10,13 @@ function Footer() {
         <div className="footer-section footer-brand">
           <div className="footer-logos">
             <img
-              src={require("../assets/images/parsec-logo-white.png")}
+              src={require("../assets/images/parsec-logo-white.webp")}
               alt="PARSEC Logo"
               className="footer-logo-parsec"
             />
             {/* Tech Council logo - to be added */}
             <img
-              src={require("../assets/images/tech-council-logo.png")}
+              src={require("../assets/images/tech-council-logo.webp")}
               alt="Tech Council Logo"
               className="footer-logo-tech"
             />
