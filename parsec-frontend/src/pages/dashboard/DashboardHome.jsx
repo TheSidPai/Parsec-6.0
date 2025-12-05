@@ -6,28 +6,30 @@ import './DashboardHome.css';
 function DashboardHome() {
   const navigate = useNavigate();
   const token = localStorage.getItem('jwt_token');
-  
+
   const [userData, setUserData] = useState({
     name: 'Student',
     house: null,
-    eventsRegistered: 0,
     housePoints: 0,
-    tickets: 0,
-    streak: 0,
-    rank: '-'
+    rank: 'Coming Soon'
   });
+
   const [loading, setLoading] = useState(true);
   const [greeting, setGreeting] = useState('');
+
+  // ✅ UPDATED: Daily challenge shows only 1 event
   const [dailyChallenge] = useState({
-    title: 'Attend 3 Events',
-    progress: 1,
-    total: 3,
-    reward: 50
+    title: 'Attend 1 Event Today',
+    progress: 0,
+    total: 1,
+    reward: 20
   });
+
   const [recentAchievements] = useState([
     { icon: '🎯', title: 'First Event', desc: 'Registered for your first event' },
     { icon: '🏠', title: 'House Pride', desc: 'Joined your house' }
   ]);
+
   const [activityFeed] = useState([
     { icon: '🎫', text: 'Registered for Aurora 2.0', time: '2 hours ago' },
     { icon: '⭐', text: 'Earned 25 house points', time: '5 hours ago' },
@@ -36,33 +38,18 @@ function DashboardHome() {
 
   // House emoji mapping
   const houseEmojis = {
-    'gryffindor': '🦁',
-    'slytherin': '🐍',
-    'ravenclaw': '🦅',
-    'hufflepuff': '🦡',
-    'hogwarts': '🏰'
+    gryffindor: '🦁',
+    slytherin: '🐍',
+    ravenclaw: '🦅',
+    hufflepuff: '🦡',
+    hogwarts: '🏰'
   };
 
-  // Get house emoji with fallback
   const getHouseEmoji = (houseName) => {
-    if (!houseName) {
-      console.log('⚠️ No house name provided');
-      return '🏰';
-    }
-    const normalizedHouse = houseName.toLowerCase().trim();
-    const emoji = houseEmojis[normalizedHouse] || '🏰';
-    console.log(`🎨 Getting emoji for "${normalizedHouse}": ${emoji}`);
-    return emoji;
+    if (!houseName) return '🏰';
+    return houseEmojis[houseName.toLowerCase()] || '🏰';
   };
 
-  // Get formatted house name
-  const getHouseName = (houseName) => {
-    if (!houseName) return 'Hogwarts';
-    const normalizedHouse = houseName.toLowerCase().trim();
-    return normalizedHouse.charAt(0).toUpperCase() + normalizedHouse.slice(1);
-  };
-
-  // Time-based greeting
   useEffect(() => {
     const hour = new Date().getHours();
     if (hour < 12) setGreeting('Good Morning');
@@ -70,7 +57,7 @@ function DashboardHome() {
     else setGreeting('Good Evening');
   }, []);
 
-  // Fetch user data and house
+  // Fetch user data
   useEffect(() => {
     const fetchUserData = async () => {
       if (!token) {
@@ -79,7 +66,6 @@ function DashboardHome() {
       }
 
       try {
-        // Fetch user's house
         const { response, data } = await authenticatedFetch(
           API_ENDPOINTS.SORTING_HAT_MY_HOUSE,
           { method: 'GET' },
@@ -92,12 +78,11 @@ function DashboardHome() {
             ...prev,
             name: data.data.name || 'Student',
             house: houseName.toLowerCase(),
-            streak: Math.floor(Math.random() * 15) + 1, // Simulate streak
-            rank: Math.floor(Math.random() * 100) + 1 // Simulate rank
+            rank: "Coming Soon"
           }));
         }
-      } catch (error) {
-        console.error('Error fetching user data:', error);
+      } catch (e) {
+        console.error("User fetch error:", e);
       } finally {
         setLoading(false);
       }
@@ -105,29 +90,6 @@ function DashboardHome() {
 
     fetchUserData();
   }, [token, navigate]);
-
-  // Animated counter effect
-  useEffect(() => {
-    if (!loading) {
-      const counters = document.querySelectorAll('.stat-value');
-      counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute('data-target'));
-        const duration = 1000;
-        const step = target / (duration / 16);
-        let current = 0;
-
-        const timer = setInterval(() => {
-          current += step;
-          if (current >= target) {
-            counter.textContent = target;
-            clearInterval(timer);
-          } else {
-            counter.textContent = Math.floor(current);
-          }
-        }, 16);
-      });
-    }
-  }, [loading]);
 
   if (loading) {
     return (
@@ -146,19 +108,12 @@ function DashboardHome() {
 
   return (
     <div className="dashboard-home">
-      {/* Quick Info Bar */}
+
+      {/* ⭐ UPDATED: ONLY HOUSE RANK ON TOP */}
       <div className="quick-info-bar">
-        <div className="info-item">
-          <span className="info-icon">🔥</span>
-          <span className="info-text">{userData.streak} Day Streak</span>
-        </div>
-        <div className="info-item">
-          <span className="info-icon">📊</span>
-          <span className="info-text">Rank #{userData.rank}</span>
-        </div>
-        <div className="info-item">
-          <span className="info-icon">🎯</span>
-          <span className="info-text">Level {Math.floor(userData.housePoints / 100) + 1}</span>
+        <div className="info-item" style={{ animation: "pulse 1.6s infinite" }}>
+          <span className="info-icon">🏆</span>
+          <span className="info-text">House Rank: {userData.rank} / 4</span>
         </div>
       </div>
 
@@ -170,6 +125,7 @@ function DashboardHome() {
         <p className="welcome-subtext">
           Your magical journey continues at Parsec 2026
         </p>
+
         {userData.house && (
           <div className="house-badge">
             <span className="house-badge-icon">
@@ -184,21 +140,21 @@ function DashboardHome() {
       <div className="stats-grid">
         <div className="stat-card" onClick={() => navigate('/dashboard/events')}>
           <span className="stat-icon">🎯</span>
-          <div className="stat-value" data-target={userData.eventsRegistered}>0</div>
+          <div className="stat-value" data-target={0}>0</div>
           <div className="stat-label">Events Registered</div>
-          <div className="stat-trend positive">↑ 2 this week</div>
+          <div className="stat-trend positive">↑ Coming soon</div>
         </div>
 
         <div className="stat-card" onClick={() => navigate('/dashboard/leaderboard')}>
           <span className="stat-icon">⭐</span>
           <div className="stat-value" data-target={userData.housePoints}>0</div>
           <div className="stat-label">House Points</div>
-          <div className="stat-trend positive">↑ 15%</div>
+          <div className="stat-trend positive">↑ Coming soon</div>
         </div>
 
         <div className="stat-card" onClick={() => navigate('/dashboard/tickets')}>
           <span className="stat-icon">🎫</span>
-          <div className="stat-value" data-target={userData.tickets}>0</div>
+          <div className="stat-value" data-target={0}>0</div>
           <div className="stat-label">Active Tickets</div>
           <div className="stat-trend neutral">→ No change</div>
         </div>
@@ -206,9 +162,11 @@ function DashboardHome() {
 
       {/* Main Content Grid */}
       <div className="main-content-grid">
+
         {/* Left Column */}
         <div className="left-column">
-          {/* Daily Challenge */}
+
+          {/* ⭐ Updated Daily Challenge */}
           <div className="daily-challenge-card">
             <div className="challenge-header">
               <h3 className="challenge-title">
@@ -221,8 +179,8 @@ function DashboardHome() {
             <div className="challenge-progress">
               <div className="progress-bar">
                 <div 
-                  className="progress-fill" 
-                  style={{ width: `${(dailyChallenge.progress / dailyChallenge.total) * 100}%` }}
+                  className="progress-fill"
+                  style={{ width: "0%" }}
                 ></div>
               </div>
               <span className="progress-text">
@@ -235,34 +193,22 @@ function DashboardHome() {
           <div className="quick-actions">
             <h2 className="section-title">Quick Actions</h2>
             <div className="actions-grid">
-              <button 
-                className="action-btn"
-                onClick={() => navigate('/dashboard/events')}
-              >
+              <button className="action-btn" onClick={() => navigate('/dashboard/events')}>
                 <span className="action-icon">🎪</span>
                 <span>Browse Events</span>
               </button>
 
-              <button 
-                className="action-btn"
-                onClick={() => navigate('/dashboard/profile')}
-              >
+              <button className="action-btn" onClick={() => navigate('/dashboard/profile')}>
                 <span className="action-icon">👤</span>
                 <span>My Profile</span>
               </button>
 
-              <button 
-                className="action-btn"
-                onClick={() => navigate('/dashboard/leaderboard')}
-              >
+              <button className="action-btn" onClick={() => navigate('/dashboard/leaderboard')}>
                 <span className="action-icon">🏆</span>
                 <span>Leaderboard</span>
               </button>
 
-              <button 
-                className="action-btn"
-                onClick={() => navigate('/dashboard/schedule')}
-              >
+              <button className="action-btn" onClick={() => navigate('/dashboard/schedule')}>
                 <span className="action-icon">📅</span>
                 <span>Schedule</span>
               </button>
@@ -290,6 +236,7 @@ function DashboardHome() {
 
         {/* Right Column */}
         <div className="right-column">
+
           {/* Recent Achievements */}
           <div className="achievements-card">
             <h3 className="card-title">
@@ -297,12 +244,12 @@ function DashboardHome() {
               Recent Achievements
             </h3>
             <div className="achievements-list">
-              {recentAchievements.map((achievement, index) => (
-                <div key={index} className="achievement-item">
-                  <span className="achievement-icon">{achievement.icon}</span>
+              {recentAchievements.map((a, i) => (
+                <div key={i} className="achievement-item">
+                  <span className="achievement-icon">{a.icon}</span>
                   <div className="achievement-info">
-                    <h4>{achievement.title}</h4>
-                    <p>{achievement.desc}</p>
+                    <h4>{a.title}</h4>
+                    <p>{a.desc}</p>
                   </div>
                 </div>
               ))}
@@ -330,6 +277,7 @@ function DashboardHome() {
               ))}
             </div>
           </div>
+
         </div>
       </div>
     </div>
