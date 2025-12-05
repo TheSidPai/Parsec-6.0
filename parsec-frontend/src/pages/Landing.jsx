@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Particles from '../components/Particles.jsx';
 import GalleryCarousel from '../components/GalleryCarousel';
 import TeamsCarousel from '../components/TeamsCarousel';
+import AboutSection from '../components/landing/AboutSection';
 import "./Landing.css";
 import { useTheme } from "../context/ThemeContext";
 
@@ -73,6 +74,7 @@ function Landing() {
           <p className="landing-motto">Techno-Cultural Fest</p>
         </div>
       </div>
+      <AboutSection />
       <GalleryCarousel />
       {/* <TeamsCarousel /> */}
       <Footer />
