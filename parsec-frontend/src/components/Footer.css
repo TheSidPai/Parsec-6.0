@@ -1,12 +1,13 @@
 .footer {
   /* background: var(--gradient); */
   backdrop-filter: blur(2px);
-  border-top: 2px solid var(--fontAccent);
+  /* border-top: 2px solid var(--fontAccent); */
   padding: 3rem 0 1.5rem;
   margin-top: auto;
   width: 100%;
   position: relative;
   z-index: 5;
+  box-shadow: 0 0 20px var(--glow);
 }
 
 .footer-container {
@@ -50,7 +51,7 @@
 }
 
 .footer-text {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   font-size: 0.95rem;
   color: var(--fontSub);
   margin: 0;
@@ -83,7 +84,7 @@
 }
 
 .footer-heading {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-size: 1.3rem;
   color: var(--linkHover);
   margin-bottom: 1rem;
@@ -100,7 +101,7 @@
 }
 
 .footer-nav li a {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   font-size: 1rem;
   color: var(--fontSub);
   text-decoration: none;
@@ -150,7 +151,7 @@
 }
 
 .footer-copyright {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   font-size: 0.9rem;
   color: var(--fontSub);
   margin: 0;
