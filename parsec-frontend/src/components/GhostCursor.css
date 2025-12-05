@@ -2,7 +2,26 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
+    /* Fade effect: gradual transparency at bottom to avoid hard cut-off */
+    mask-image: linear-gradient(to bottom, 
+      black 0%, 
+      black 55vh, 
+      transparent 100vh
+    );
+    -webkit-mask-image: linear-gradient(to bottom, 
+      black 0%, 
+      black 55vh, 
+      transparent 100vh
+    );
   }
+  
+  /* ORIGINAL CODE (comment out the above and uncomment this to revert):
+  .ghost-cursor {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  */
   
   .ghost-cursor > canvas {
     display: block;

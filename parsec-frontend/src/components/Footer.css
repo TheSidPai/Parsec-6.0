@@ -1,5 +1,6 @@
 .footer {
-  background: var(--gradient);
+  /* background: var(--gradient); */
+  backdrop-filter: blur(2px);
   border-top: 2px solid var(--fontAccent);
   padding: 3rem 0 1.5rem;
   margin-top: auto;

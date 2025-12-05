@@ -4,6 +4,8 @@ import GhostCursor from "../components/GhostCursor";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Particles from '../components/Particles.jsx';
+import GalleryCarousel from '../components/GalleryCarousel';
+import TeamsCarousel from '../components/TeamsCarousel';
 import "./Landing.css";
 import { useTheme } from "../context/ThemeContext";
 
@@ -27,13 +29,13 @@ function Landing() {
           // Visuals
           color={(theme.fontMain || "#F5F1E6" || "#fffeecff")}
           brightness={1}
-          edgeIntensity={0.8}
+          edgeIntensity={0.2}
           // Trail and motion
           trailLength={90}
           inertia={0.5}
           // Post-processing
           grainIntensity={0.05}
-          bloomStrength={0.2}
+          bloomStrength={0.3}
           bloomRadius={1.0}
           bloomThreshold={0.025}
           // Fade-out behavior
@@ -71,6 +73,8 @@ function Landing() {
           <p className="landing-motto">Techno-Cultural Fest</p>
         </div>
       </div>
+      <GalleryCarousel />
+      {/* <TeamsCarousel /> */}
       <Footer />
     </div>
   );

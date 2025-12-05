@@ -11,7 +11,7 @@
 /* ========== MYSTICAL ONBOARDING CONTAINER ========== */
 .onboarding-container {
   min-height: 100vh;
-  background-image: url('../../assets/images/onboarding.png');
+  background-image: url('../../assets/images/onboarding.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -18,7 +18,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/landing" className="navbar-logo" onClick={closeMenu}>
-          <img src={require('../assets/images/parsec-logo-white.png')} alt="PARSEC 6.0" className="navbar-logo-img" />
+          <img src={require('../assets/images/parsec-logo-white.webp')} alt="PARSEC 6.0" className="navbar-logo-img" />
         </Link>
 
         {/* Hamburger Icon */}
