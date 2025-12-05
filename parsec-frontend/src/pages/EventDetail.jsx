@@ -150,7 +150,6 @@ function EventDetail() {
                 <li key={`org-${i}`}>
                   {o.role ? `${o.role} – ` : ''}{o.name}
                   {o.email ? ` | ${o.email}` : ''}
-                  {o.phone ? ` | ${o.phone}` : ''}
                   {o.discord ? ` | ${o.discord}` : ''}
                 </li>
               ))}

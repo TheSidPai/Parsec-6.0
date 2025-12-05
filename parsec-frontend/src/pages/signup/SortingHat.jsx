@@ -23,20 +23,20 @@ const SortingHat = () => {
   const [houseData, setHouseData] = useState(null);
   const [error, setError] = useState(null);
 
-  // House emoji mapping
-  const houseEmojis = {
-    'Gryffindor': '🦁',
-    'Hufflepuff': '🦡',
-    'Ravenclaw': '🦅',
-    'Slytherin': '🐍'
+  // House emoji mapping - using actual house images
+  const houseImages = {
+    'Gryffindor': '/houses/gryffindor.png',
+    'Hufflepuff': '/houses/hufflepuff.png',
+    'Ravenclaw': '/houses/ravenclaw.png',
+    'Slytherin': '/houses/slytherin.png'
   };
 
   // House colors for the reveal
   const houseColors = {
-    'Gryffindor': { primary: '#740001', secondary: '#D3A625' },
-    'Hufflepuff': { primary: '#FFD800', secondary: '#000000' },
-    'Ravenclaw': { primary: '#0E1A40', secondary: '#946B2D' },
-    'Slytherin': { primary: '#1A472A', secondary: '#5D5D5D' }
+    'Gryffindor': { primary: '#740001', secondary: '#D3A625', glow: '#ff6b35' },
+    'Hufflepuff': { primary: '#FFD800', secondary: '#000000', glow: '#ffd700' },
+    'Ravenclaw': { primary: '#0E1A40', secondary: '#946B2D', glow: '#4a9eff' },
+    'Slytherin': { primary: '#1A472A', secondary: '#5D5D5D', glow: '#2ecc71' }
   };
 
   // Start sorting ceremony automatically
@@ -205,28 +205,42 @@ const SortingHat = () => {
             className={`sorting-stage reveal-stage ${stage === 'complete' ? 'complete' : ''}`}
             style={{
               '--house-color': houseColors[assignedHouse]?.primary || '#FFD700',
-              '--house-secondary': houseColors[assignedHouse]?.secondary || '#B8860B'
+              '--house-secondary': houseColors[assignedHouse]?.secondary || '#B8860B',
+              '--house-glow': houseColors[assignedHouse]?.glow || '#FFD700'
             }}
           >
-            <h1 className="reveal-title">
-              You belong in...
+            <h1 className="reveal-announcement">
+              YOU BELONG IN...
             </h1>
-            <div className="house-reveal">
-              <div className="house-name">{assignedHouse}!</div>
-              <div className="house-emoji">{houseEmojis[assignedHouse]}</div>
+            <div className="house-reveal-container">
+              <div className="house-crest-wrapper">
+                <img 
+                  src={houseImages[assignedHouse]} 
+                  alt={assignedHouse}
+                  className="house-crest"
+                />
+                <div className="crest-glow"></div>
+              </div>
+              <div className="house-name-banner">
+                {assignedHouse.toUpperCase()}
+              </div>
             </div>
             {houseData && (
-              <div className="house-stats">
-                <p className="house-count">
-                  {houseData.count} students in your house
-                </p>
-                <p className="house-points">
-                  {houseData.points} house points
-                </p>
+              <div className="house-info-grid">
+                <div className="info-item">
+                  <div className="info-icon">👥</div>
+                  <div className="info-value">{houseData.count}</div>
+                  <div className="info-label">students in your house</div>
+                </div>
+                <div className="info-item">
+                  <div className="info-icon">⭐</div>
+                  <div className="info-value">{houseData.points}</div>
+                  <div className="info-label">house points</div>
+                </div>
               </div>
             )}
             <p className="redirect-message">
-              Entering your house common room...
+              ✨ Entering your house common room...
             </p>
           </div>
         )}

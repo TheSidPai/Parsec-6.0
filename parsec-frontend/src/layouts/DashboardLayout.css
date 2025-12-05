@@ -49,6 +49,43 @@
   color: #FFD700;
   text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
   margin-bottom: 8px;
+  padding: 10px 12px;
+}
+
+.dashboard-link.house-link:hover {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(218, 165, 32, 0.2));
+  border-color: rgba(255, 215, 0, 0.5);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  transform: translateX(4px);
+}
+
+/* House Crest Icon Styling */
+.house-crest-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 215, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px;
+  object-fit: cover;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.dashboard-link.house-link:hover .house-crest-icon {
+  border-color: rgba(255, 215, 0, 0.8);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* House Link Special Styling */
+.dashboard-link.house-link {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(218, 165, 32, 0.1));
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  font-weight: 600;
+  color: #FFD700;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+  margin-bottom: 8px;
 }
 
 .dashboard-link.house-link:hover {
@@ -92,5 +129,10 @@
     width: 100%;
     border-right: none;
     border-bottom: 1px solid var(--border);
+  }
+  
+  .house-crest-icon {
+    width: 24px;
+    height: 24px;
   }
 }
