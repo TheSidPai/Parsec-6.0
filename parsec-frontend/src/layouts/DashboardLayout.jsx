@@ -103,7 +103,12 @@ function DashboardLayout() {
           ) : userHouse ? (
             <li>
               <Link className="dashboard-link house-link" to={`/house/${userHouse}`}>
-                {getHouseEmoji(userHouse)} My House ({houseName})
+                <img 
+                  src={`/houses/${userHouse}.png`}
+                  alt={houseName}
+                  className="house-crest-icon"
+                />
+                <span>My House ({houseName})</span>
               </Link>
             </li>
           ) : (

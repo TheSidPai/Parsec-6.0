@@ -60,12 +60,13 @@
 }
 
 .event-detail-info {
-  color: var(--fontSub);
+  color: var(--fontAccent);
   margin-top: 0.5rem;
   margin-bottom: 2.5rem;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-family: 'Josefin Sans', sans-serif;
-  font-weight: 400;
+  font-weight: 700;
+  text-shadow: 0 0 6px var(--glow);
 }
 
 .event-detail-section {
