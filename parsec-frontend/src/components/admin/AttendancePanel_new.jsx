@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { RiRefreshLine, RiCameraLine, RiStopLine } from '@remixicon/react';
 import { BrowserMultiFormatReader } from '@zxing/library';
 import axios from 'axios';
+import './AttendancePanel.css';
 
 function AttendancePanel() {
   const [status, setStatus] = useState('idle'); // idle, scanning, loading

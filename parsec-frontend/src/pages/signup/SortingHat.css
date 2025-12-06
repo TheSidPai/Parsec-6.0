@@ -354,13 +354,13 @@
 
 .house-name-banner {
   font-family: 'Cinzel', serif;
-  font-size: 4.5rem;
+  font-size: 3.5rem;
   font-weight: 900;
   color: var(--house-color, #FFD700);
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
   text-align: center;
-  padding: 25px 40px;
+  padding: 25px 30px;
   background: linear-gradient(135deg,
     rgba(0, 0, 0, 0.6),
     rgba(0, 0, 0, 0.4)
@@ -378,6 +378,8 @@
   animation: bannerReveal 1s ease-out 0.8s both, bannerPulse 3s ease-in-out 1.8s infinite;
   position: relative;
   overflow: hidden;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .house-name-banner::before {
@@ -593,6 +595,12 @@
 
   .sorting-thought {
     font-size: 1rem;
+  }
+
+  .house-name-banner {
+    font-size: 2.5rem;
+    padding: 20px 25px;
+    letter-spacing: 0.08em;
   }
 
   .sorting-orb-1,

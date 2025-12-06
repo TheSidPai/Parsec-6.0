@@ -48,14 +48,22 @@ function Team() {
                 {members.map((member, index) => (
                   <div key={index} className="team-card">
                     <div className="team-card-photo-wrapper">
-                      <img 
-                        src={member.photo} 
-                        alt={member.name}
-                        className="team-card-photo"
-                        onError={(e) => {
-                          e.target.src = 'https://via.placeholder.com/150?text=No+Image';
-                        }}
-                      />
+                      {member.photo ? (
+                        <img
+                          src={member.photo}
+                          alt={member.name}
+                          className="team-card-photo"
+                          loading="lazy"
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Crect fill='%23333' width='200' height='200'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='60' fill='%23FFD700'%3E${member.name.charAt(0)}%3C/text%3E%3C/svg%3E`;
+                          }}
+                        />
+                      ) : (
+                        <div className="team-card-photo-placeholder">
+                          {member.name.charAt(0)}
+                        </div>
+                      )}
                     </div>
                     <div className="team-card-content">
                       <h3 className="team-card-name">{member.name}</h3>

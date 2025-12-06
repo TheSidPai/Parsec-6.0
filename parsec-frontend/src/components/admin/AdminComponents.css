@@ -4,6 +4,7 @@
 .admin-section-container {
   max-width: 1200px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .admin-section-title-wrapper {
@@ -38,6 +39,13 @@
 .admin-section-subtitle {
   color: #aaa;
   font-size: 1rem;
+}
+
+/* Form elements should be left-aligned for better readability */
+.admin-form,
+.admin-filters,
+.admin-how-to-use {
+  text-align: left;
 }
 
 /* Content Card */
