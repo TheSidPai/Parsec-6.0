@@ -1,4 +1,4 @@
-.event-card {
+.event-card-2 {
   position: relative;
   background: url("../assets/images/parchment.webp");
   background-blend-mode: overlay;
@@ -16,14 +16,14 @@
   z-index: 5;
 }
 
-.event-card:hover {
+.event-card-2:hover {
   transform: translateY(-8px);
   border-color: var(--fontAccent);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 50px var(--glow),
     inset 0 0 60px rgba(232, 213, 181, 0.05);
 }
 
-.event-card::before {
+.event-card-2::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -342,14 +342,14 @@
 }
 
 /* Themed buttons inside EventCard */
-.event-card .btn {
+.event-card-2 .btn {
   border-radius: 8px;
   letter-spacing: 0.04em;
   position: relative;
   overflow: hidden;
 }
 
-.event-card .btn::before {
+.event-card-2 .btn::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -362,31 +362,31 @@
   transition: width 0.6s, height 0.6s;
 }
 
-.event-card .btn:hover::before {
+.event-card-2 .btn:hover::before {
   width: 300px;
   height: 300px;
 }
 
-.event-card .btn-primary {
+.event-card-2 .btn-primary {
   background: var(--buttonBg);
   color: var(--buttonText);
   border: 1px solid #8b7355;
   box-shadow: 0 0 14px rgba(139, 115, 85, 0.3);
 }
 
-.event-card .btn-primary:hover {
+.event-card-2 .btn-primary:hover {
   background: var(--buttonHoverBg);
   box-shadow: 0 0 22px rgba(139, 115, 85, 0.5);
   transform: translateY(-2px);
 }
 
-.event-card .btn-secondary {
+.event-card-2 .btn-secondary {
   background: transparent;
   color: #5d4e37;
   border: 1.5px solid #8b7355;
 }
 
-.event-card .btn-secondary:hover {
+.event-card-2 .btn-secondary:hover {
   background: rgba(139, 115, 85, 0.12);
   box-shadow: 0 0 14px rgba(139, 115, 85, 0.3);
   transform: translateY(-2px);

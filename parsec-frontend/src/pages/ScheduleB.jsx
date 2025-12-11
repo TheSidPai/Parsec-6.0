@@ -59,14 +59,10 @@ function Schedule() {
   }, []);
 
   useEffect(() => {
-    let scroll = null;
-    let handleResize = null;
-    const refreshTimeouts = [];
-
     // Add delay to ensure DOM is ready
     const initTimeout = setTimeout(() => {
       // Initialize Locomotive Scroll
-      scroll = new LocomotiveScroll({
+      const scroll = new LocomotiveScroll({
         el: scrollRef.current,
         smooth: true,
         multiplier: 0.8,
@@ -98,9 +94,6 @@ function Schedule() {
         },
         pinType: scrollRef.current.style.transform ? "transform" : "fixed",
       });
-
-      // Force Locomotive to update its internal calculations
-      scroll.update();
 
       // Hero zoom effect on scroll
       if (heroRef.current) {
@@ -147,37 +140,24 @@ function Schedule() {
         });
       }
 
-      // Multiple refresh attempts at staggered intervals
-      // This mimics what happens when DevTools opens (resize triggers refresh)
-      const refreshDelays = [0, 100, 300, 500, 1000];
-      refreshDelays.forEach((delay) => {
-        const timeoutId = setTimeout(() => {
-          scroll.update();
-          ScrollTrigger.refresh();
-        }, delay);
-        refreshTimeouts.push(timeoutId);
-      });
+      ScrollTrigger.refresh();
 
       // Handle window resize
-      handleResize = () => {
+      const handleResize = () => {
         ScrollTrigger.refresh();
       };
 
       window.addEventListener("resize", handleResize);
-    }, 100);
 
-    // Cleanup
-    return () => {
-      clearTimeout(initTimeout);
-      refreshTimeouts.forEach((id) => clearTimeout(id));
-      if (handleResize) {
+      // Cleanup
+      return () => {
         window.removeEventListener("resize", handleResize);
-      }
-      if (scroll) {
         scroll.destroy();
-      }
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      };
+    }, 100); // 100ms delay
+
+    return () => clearTimeout(initTimeout);
   }, [events.length]);
 
   return (

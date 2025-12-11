@@ -19,7 +19,7 @@ function EventCard2({
     : { background: 'linear-gradient(135deg, #222 0%, #333 100%)' };
   
   return (
-    <div className="event-card">
+    <div className="event-card-2">
       {/* Sparkle effects */}
       <div className="sparkle"></div>
       <div className="sparkle"></div>
