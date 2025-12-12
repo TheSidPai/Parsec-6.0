@@ -5,7 +5,6 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Particles from '../components/Particles.jsx';
 import GalleryCarousel from '../components/GalleryCarousel';
-import TeamsCarousel from '../components/TeamsCarousel';
 import AboutSection from '../components/landing/AboutSection';
 import "./Landing.css";
 import { useTheme } from "../context/ThemeContext";

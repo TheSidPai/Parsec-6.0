@@ -76,7 +76,7 @@ function DashboardLayout() {
   };
 
   // House emoji mapping
-  const getHouseEmoji = (house) => {
+  /* const getHouseEmoji = (house) => {
     const emojis = {
       'gryffindor': '🦁',
       'slytherin': '🐍',
@@ -84,7 +84,7 @@ function DashboardLayout() {
       'hufflepuff': '🦡'
     };
     return emojis[house] || '🏰';
-  };
+  }; */
 
   return (
     <div className="dashboard-root">

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Leaderboard.css';
 
 function Leaderboard() {
-  const [houses, setHouses] = useState([
+  const [houses] = useState([
     {
       name: 'Gryffindor',
       points: 0,

@@ -6,7 +6,6 @@ import events from "../assets/data/events.json";
 import Particles from "../components/Particles";
 import "./Events.css";
 import { useTheme } from "../context/ThemeContext";
-import ElectricBorder from "../components/ElectricBorder";
 
 function Events() {
   const { theme } = useTheme();
