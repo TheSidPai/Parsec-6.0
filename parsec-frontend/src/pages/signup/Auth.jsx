@@ -157,7 +157,15 @@ function Auth() {
           isOnboardingComplete === 1
         ) {
           console.log('➡️ Redirecting to dashboard');
-          navigate("/dashboard", { replace: true });
+          
+          // Check if user was trying to register for an event
+          const pendingEventId = localStorage.getItem('pendingEventRegistration');
+          if (pendingEventId) {
+            console.log('🎟️ Redirecting to event registration page for:', pendingEventId);
+            navigate("/dashboard/events", { replace: true });
+          } else {
+            navigate("/dashboard", { replace: true });
+          }
         } else {
           console.log('❓ Onboarding status unclear, defaulting to onboarding');
           navigate("/signup/onboarding", { replace: true, state: { token: storedToken } });

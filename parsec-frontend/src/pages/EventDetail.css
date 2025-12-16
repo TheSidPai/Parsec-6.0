@@ -165,6 +165,76 @@
   background: color-mix(in srgb, var(--primary) 15%, transparent);
 }
 
+/* ========== REGISTRATION BUTTON ========== */
+.event-detail-registration {
+  margin: 2.5rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.event-registration-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, #8B5CF6, #6366F1, #3B82F6);
+  background-size: 200% 200%;
+  border: 2px solid rgba(139, 92, 246, 0.5);
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 
+    0 8px 24px rgba(139, 92, 246, 0.3),
+    0 0 20px rgba(139, 92, 246, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.event-registration-button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+}
+
+.event-registration-button:hover {
+  background-position: 100% 0;
+  border-color: rgba(139, 92, 246, 0.8);
+  box-shadow: 
+    0 12px 32px rgba(139, 92, 246, 0.5),
+    0 0 40px rgba(139, 92, 246, 0.4),
+    inset 0 0 20px rgba(139, 92, 246, 0.2);
+  transform: translateY(-3px);
+}
+
+.event-registration-button:hover::before {
+  left: 150%;
+}
+
+.event-registration-button:active {
+  transform: translateY(-1px);
+  box-shadow: 
+    0 6px 20px rgba(139, 92, 246, 0.4),
+    0 0 30px rgba(139, 92, 246, 0.3);
+}
+
 /* Back Link */
 .event-detail-back {
   display: inline-block;

@@ -1,9 +1,8 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import ComingSoon from '../../components/ComingSoon';
 
 function DashboardEventDetail() {
-  const { id } = useParams();
-  return <div><h1>Dashboard Event Detail - ID: {id}</h1></div>;
+  return <ComingSoon />;
 }
 
 export default DashboardEventDetail;

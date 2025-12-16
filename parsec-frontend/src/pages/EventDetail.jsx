@@ -44,6 +44,20 @@ function EventDetail() {
           <p>{ev.description}</p>
         </Section>
 
+        {ev.registrationLink && (
+          <div className="event-detail-registration">
+            <button 
+              onClick={() => {
+                localStorage.setItem('pendingEventRegistration', ev.id);
+                window.location.href = '/login';
+              }}
+              className="event-registration-button"
+            >
+              Login to Register →
+            </button>
+          </div>
+        )}
+
         {(ev.rules?.important?.length || ev.rules?.others?.length) && (
           <Section title="Rules & Guidelines">
             {ev.rules?.important?.length ? (

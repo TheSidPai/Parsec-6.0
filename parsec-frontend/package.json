@@ -34,7 +34,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint . --ext .js,.jsx --report-unused-disable-directives --max-warnings=0"
+    "lint": "eslint . --ext .js,.jsx --report-unused-disable-directives --max-warnings=0",
+    "validate-images": "node scripts/validate-team-images.js",
+    "validate-all": "node scripts/validate-all-images.js",
+    "fix-image-paths": "node scripts/fix-team-image-paths.js",
+    "prebuild": "node scripts/validate-all-images.js"
   },
   "eslintConfig": {
     "extends": [

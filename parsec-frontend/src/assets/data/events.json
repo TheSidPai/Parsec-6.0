@@ -9,6 +9,7 @@
     "registrationFee": "Free",
     "date": "Dec 22, 2025 – Jan 26, 2026",
     "image": "",
+    "registrationLink": "https://unstop.com/hackathons/aurora-parsec-60-indian-institute-of-technology-iit-dharwad-1609211",
     "description": "Aurora 2.0 is a hackathon that brings together satellite datasets, AI-powered analysis, and practical problem-solving to address pressing challenges in space tech and geospatial analytics.",
     "rules": {
       "important": [
@@ -70,6 +71,7 @@
     "registrationFee": "Free",
     "date": "Jan 13–25, 2026",
     "image": "",
+    "registrationLink": "https://unstop.com/o/CBjMbSn?lb=qkhVYy9&utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "Theme-based mechanical design challenge—sketch, model, simulate, and present your engineering solution.",
     "rules": {
       "important": [
@@ -122,7 +124,8 @@
     "registrationFee": "Free",
     "date": "Jan 24–26, 2026",
     "image": "",
-    "description": "PARSEC’s 30-hour flagship hackathon to prototype impactful solutions, mentored and judged by industry experts.",
+    "registrationLink": "https://unstop.com/o/WC9SqsL?lb=qkhVYy9&utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
+    "description": "PARSEC's 30-hour flagship hackathon to prototype impactful solutions, mentored and judged by industry experts.",
     "rules": {
       "important": [
         "Every team must register on the official PARSEC website.",
@@ -180,6 +183,7 @@
     "registrationFee": "Free",
     "date": "48-hour CTF (Dates TBA)",
     "image": "",
+    "registrationLink": "https://unstop.com/o/ofhlBtk?lb=qkhVYy9&utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "CTF covering cryptography, forensics, reversing, web, OSINT and more. Jeopardy style with dynamic scoring.",
     "rules": {
       "important": [
@@ -278,6 +282,7 @@
     "registrationFee": "Free",
     "date": "Jan 16–27, 2026",
     "image": "",
+    "registrationLink": "https://unstop.com/o/ortjivD?utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "Two-round technical treasure hunt blending coding, aptitude, and on-campus clue solving.",
     "rules": {
       "important": [
@@ -382,6 +387,7 @@
     "registrationFee": "Free",
     "date": "Jan 25–27, 2026",
     "image": "",
+    "registrationLink": "https://unstop.com/o/kTlp7rB?utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "30-hour agentic AI hackathon building autonomous multi-agent systems with tool use and real-time decision-making.",
     "format": [
       "Preliminary (Online): report submission and shortlisting.",
@@ -474,6 +480,7 @@
     "registrationFee": "Free",
     "date": "Jan 2–25, 2026",
     "image": "",
+    "registrationLink": "https://unstop.com/o/XTF4qhd?lb=qkhVYy9&utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "Flagship robotics challenge focusing on Perception and Motion Control. Two tracks: Junior and Senior.",
     "format": [
       "Round 1: Online qualifier (design/simulate/propose). Top 10 per track qualify.",
@@ -558,6 +565,7 @@
     "registrationFee": "Free",
     "date": "Jan 10–23, 2026",
     "image": "",
+    "registrationLink": "https://unstop.com/o/gqyVMbX?utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "EMG-based dual-mode prosthetic control using Myoware 2.0 sensors: continuous proportional control and discrete gesture recognition.",
     "format": [
       "Phase 1 (Online): Submit trained model predictions on hidden ground-truth test dataset.",
