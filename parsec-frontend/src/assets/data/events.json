@@ -622,5 +622,591 @@
     },
     "registrationForm": { "required": ["Name", "Phone Number", "Email ID"], "optional": ["Merch Size"] },
     "comments": ["Accommodation limited/exclusive; see website."]
+  },
+  {
+    "id": "drip-n-click",
+    "title": "DRIP N CLICK",
+    "category": "Cultural",
+    "mode": "online",
+    "venue": "Online Submission",
+    "team": { "min": 1, "max": 20, "individualAllowed": true },
+    "registrationFee": "Free",
+    "date": "Jan 10 – 18, 2026",
+    "image": "",
+    "description": "DRIP N CLICK is a fashion-themed photography competition where participants must submit a set of high-quality edited and raw images. With no limit on team size and complete creative freedom in location and equipment, the event tests originality, fashion aesthetics, photography skills, editing proficiency, and innovative storytelling.",
+    "rules": {
+      "important": [
+        "Every team has to register online on the official Techfest website for the competition.",
+        "A Team ID will be allocated to the team on registration which shall be used for future references.",
+        "The decision of the organizers or judges shall be treated as final and binding on all."
+      ],
+      "others": [
+        "Minimum 5 edited photos required (JPG, high resolution).",
+        "Raw images mandatory (CR2/NEF/SR2 for camera, unedited originals for phone).",
+        "EXIF data must be present in all images.",
+        "Less than 5 photos → 10% penalty.",
+        "Missing raw images or EXIF data → Disqualification.",
+        "AI-generated images and plagiarism strictly prohibited."
+      ]
+    },
+    "timeline": [
+      { "title": "Theme Announcement", "date": "2026-01-10", "description": "Participants receive the official theme and can begin shooting." },
+      { "title": "Final Submission Deadline", "date": "2026-01-18", "time": "EOD", "description": "Online submission of raw + edited photos. Late entries not accepted." }
+    ],
+    "deliverables": [
+      "Minimum 5 edited photos (JPG, high resolution)",
+      "Raw images in camera raw formats (CR2/NEF/SR2) or unedited phone images",
+      "EXIF data mandatory in all images",
+      "Optional: Captions or fashion notes"
+    ],
+    "organizers": [
+      { "name": "Penumaka Ricky Charan", "phone": "+91 9110372770" },
+      { "name": "Ayush Raj", "phone": "+91 9006777089" }
+    ],
+    "prizes": {
+      "prizePool": 6000,
+      "breakdown": [
+        { "place": "1st", "amount": 3000 },
+        { "place": "2nd", "amount": 2000 },
+        { "place": "3rd", "amount": 1000 }
+      ]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
+    "comments": ["For offline events - accommodation shall be limited/exclusive; keep an eye on the website."]
+  },
+  {
+    "id": "b-yond-the-roll",
+    "title": "B-YOND THE ROLL",
+    "category": "Cultural",
+    "mode": "offline",
+    "venue": "IIT Dharwad Permanent Campus",
+    "team": { "min": 1, "max": 6, "individualAllowed": true },
+    "registrationFee": "Free",
+    "date": "Jan 24 – 25, 2026",
+    "image": "",
+    "description": "B-YOND THE ROLL is a 15-hour cinematic B-Roll videography challenge where participants must shoot and edit an original 30–60 second video entirely within IIT Dharwad. Open to individuals and teams of up to 6, the event tests creativity, storytelling, cinematography, and editing skills.",
+    "rules": {
+      "important": [
+        "Every team has to register online on the official Techfest website for the competition.",
+        "A Team ID will be allocated to the team on registration which shall be used for future references.",
+        "The decision of the organizers or judges shall be treated as final and binding on all."
+      ],
+      "others": [
+        "Shooting must be done entirely within IIT Dharwad campus.",
+        "Video duration: 30–60 seconds.",
+        "Both raw footage and edited B-Roll must be submitted offline.",
+        "All content must be original and created within the 15-hour window.",
+        "AI-generated footage, plagiarism, and inappropriate content strictly prohibited.",
+        "Background music/SFX must be properly credited."
+      ]
+    },
+    "timeline": [
+      { "title": "Theme Announcement", "date": "2026-01-24", "time": "8:00 PM", "description": "Theme for the B-Roll competition will be revealed. Shooting and editing window begins." },
+      { "title": "B-Roll Creation Window", "date": "2026-01-24", "endDate": "2026-01-25", "duration": "15 hours", "description": "Participants must shoot and edit their original B-Roll within the allotted timeframe." },
+      { "title": "Submission Deadline", "date": "2026-01-25", "time": "11:00 AM", "description": "Offline submission of both raw and edited clips. Late submissions may face penalties." },
+      { "title": "Screening of Entries", "date": "2026-01-25", "description": "All B-Roll videos will be showcased on the big screen." },
+      { "title": "Judging & Results", "date": "2026-01-25", "description": "Entries evaluated based on cinematography, creativity, editing flow, and theme relevance." }
+    ],
+    "deliverables": [
+      "Raw footage - All original unedited clips shot within IIT Dharwad",
+      "Edited B-Roll - Final cinematic sequence (30-60 seconds)",
+      "Background music/SFX with proper credits",
+      "Offline submission of both raw and edited files"
+    ],
+    "organizers": [
+      { "name": "Apratim Das", "phone": "+91 6909568296" },
+      { "name": "Samit Aridaman Rakesh", "phone": "+91 9473764726" }
+    ],
+    "prizes": {
+      "prizePool": 6000,
+      "breakdown": [
+        { "place": "1st", "amount": 3000 },
+        { "place": "2nd", "amount": 2000 },
+        { "place": "3rd", "amount": 1000 }
+      ]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
+    "comments": ["Accommodation limited/exclusive; keep an eye on the website."]
+  },
+  {
+    "id": "gyanotsav",
+    "title": "GYANOTSAV",
+    "category": "Cultural",
+    "mode": "offline",
+    "venue": "IIT Dharwad Permanent Campus",
+    "team": { "min": 1, "max": 3, "individualAllowed": true },
+    "registrationFee": "Free",
+    "date": "Jan 24, 2026",
+    "image": "",
+    "description": "Gyanotsav is an exciting cultural quiz designed to test participants' knowledge of India's vast heritage, traditions, and culture. The event is a one-hour intellectual challenge where knowledge meets enthusiasm.",
+    "rules": {
+      "important": [
+        "Every team has to register online on the official Techfest website for the competition.",
+        "A Team ID will be allocated to the team on registration which shall be used for future references.",
+        "The decision of the organizers or judges shall be treated as final and binding on all."
+      ],
+      "others": [
+        "Duration: 1 hour",
+        "Quiz format focused on Indian heritage, traditions, and culture",
+        "Team size: 1-3 members"
+      ]
+    },
+    "timeline": [
+      { "title": "Quiz Competition", "date": "2026-01-24", "duration": "1 hour", "description": "An intellectual challenge testing knowledge of India's heritage and culture." }
+    ],
+    "organizers": [
+      { "name": "Kunal Sharma", "phone": "+91 9352805712", "email": "ch23bt011@iitdh.ac.in" },
+      { "name": "Anubhav Goyal", "phone": "+91 8290051782", "email": "mc24bt005@iitdh.ac.in" }
+    ],
+    "prizes": {
+      "prizePool": 8000,
+      "breakdown": [
+        { "place": "1st", "amount": 3500 },
+        { "place": "2nd", "amount": 2500 },
+        { "place": "3rd", "amount": 2000 }
+      ]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
+    "comments": ["Accommodation limited/exclusive; keep an eye on the website."]
+  },
+  {
+    "id": "hogwarts-knowledge-quest",
+    "title": "Hogwarts Knowledge Quest",
+    "category": "Cultural",
+    "mode": "offline",
+    "venue": "IIT Dharwad Permanent Campus",
+    "team": { "min": 1, "max": 3, "individualAllowed": true },
+    "registrationFee": "Free",
+    "date": "Jan 24, 2026",
+    "image": "",
+    "description": "Hogwarts Knowledge Quest is a magical quiz adventure designed for true Harry Potter enthusiasts. From spells to secrets, from Hogwarts houses to magical creatures, this one-hour quiz will test your wizarding wisdom to the fullest!",
+    "rules": {
+      "important": [
+        "Every team has to register online on the official Techfest website for the competition.",
+        "A Team ID will be allocated to the team on registration which shall be used for future references.",
+        "The decision of the organizers or judges shall be treated as final and binding on all."
+      ],
+      "others": [
+        "Duration: 1 hour",
+        "Harry Potter themed quiz covering spells, characters, houses, and magical creatures",
+        "Team size: 1-3 members"
+      ]
+    },
+    "timeline": [
+      { "title": "Quiz Competition", "date": "2026-01-24", "duration": "1 hour", "description": "A magical intellectual challenge for Harry Potter enthusiasts." }
+    ],
+    "organizers": [
+      { "name": "Kunal Sharma", "phone": "+91 9352805712", "email": "ch23bt011@iitdh.ac.in" },
+      { "name": "Anubhav Goyal", "phone": "+91 8290051782", "email": "mc24bt005@iitdh.ac.in" }
+    ],
+    "prizes": {
+      "prizePool": 8000,
+      "breakdown": [
+        { "place": "1st", "amount": 3500 },
+        { "place": "2nd", "amount": 2500 },
+        { "place": "3rd", "amount": 2000 }
+      ]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
+    "comments": ["Accommodation limited/exclusive; keep an eye on the website."]
+  },
+  {
+    "id": "pensieve-chronicles",
+    "title": "The Pensieve Chronicles",
+    "category": "Cultural",
+    "mode": "offline",
+    "venue": "IIT Dharwad Permanent Campus",
+    "team": { "min": 1, "max": 1, "individualAllowed": true },
+    "registrationFee": "Free",
+    "date": "Jan 24, 2026",
+    "image": "",
+    "description": "An on-the-spot literary event designed to encourage and showcase the creative expression of students in both English and Hindi. Participants can explore their imagination through Poetry, Prose, or Drama/Story Writing, crafting original works under timed conditions.",
+    "rules": {
+      "important": [
+        "Every team has to register online on the official Techfest website for the competition.",
+        "A Team ID will be allocated to the team on registration which shall be used for future references.",
+        "The decision of the organizers or judges shall be treated as final and binding on all."
+      ],
+      "others": [
+        "All entries must be written on the spot within the allotted time.",
+        "No external materials or reference aids (internet, mobile, notes, or dictionaries) are permitted.",
+        "Participants may bring their own stationery but the submission paper would be provided at the hall.",
+        "Word limit: 1200 words for prose & drama, 350 words for poetry.",
+        "Submissions must be legible and original. Any evidence of plagiarism will lead to disqualification.",
+        "Late submissions will not be accepted under any circumstances.",
+        "Participants are requested to be there at the venue 30 minutes prior to the event starting time.",
+        "The time limit is 2 hours.",
+        "Participants will choose one of the 3 announced themes revealed on spot."
+      ]
+    },
+    "format": [
+      "Languages: English and Hindi",
+      "Categories: Poetry, Prose, Drama/Story Writing",
+      "Each category will be judged separately in both languages",
+      "Themes will be revealed on spot for the competitors"
+    ],
+    "timeline": [
+      { "title": "Competition", "date": "2026-01-24", "time": "3:00–5:00 PM", "description": "On-the-spot creative writing competition with announced themes." }
+    ],
+    "organizers": [
+      { "name": "Sudhakar S Dalawayi", "role": "Event Lead (Secretary Literary Club)", "phone": "+91 9037228517", "email": "literaryclub@iitdh.ac.in" }
+    ],
+    "prizes": {
+      "notes": ["2 Separate prizes will be awarded for each category (Poetry, Prose, Drama/Story) in both languages"],
+      "inKind": ["Certificates of Participation for all valid entries"]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
+    "comments": ["Accommodation limited/exclusive; keep an eye on the website."]
+  },
+  {
+    "id": "ek-shakhs-sau-chehre",
+    "title": "Ek Shakhs, Sau Chehre",
+    "category": "Cultural",
+    "mode": "mixed",
+    "venue": "IIT Dharwad (Final Round)",
+    "team": { "min": 1, "max": 5, "individualAllowed": false },
+    "registrationFee": "Free",
+    "date": "Dec 27, 2025 – Jan 26, 2026",
+    "image": "",
+    "description": "Ek Shakhs, Sau Chehre is a monoacting competition where a single actor portrays one or multiple characters using expressions, voice modulation, physicality, and emotional storytelling. Supporting members may assist with music, lights, and backstage cues, but no one except the actor may appear on stage.",
+    "rules": {
+      "important": [
+        "The preliminary round is online via Google Form with mandatory 2-minute video submission.",
+        "Final round is offline at IIT Dharwad during PARSEC.",
+        "A total of 8 finalists will be selected.",
+        "Team composition: 1 actor (mandatory) + Up to 4 backstage members (optional).",
+        "Every team has to register online on the official Techfest website for the competition.",
+        "A Team ID will be allocated to the team on registration which shall be used for future references.",
+        "The decision of the organizers or judges shall be treated as final and binding on all."
+      ],
+      "others": [
+        "Performance duration must be 8–10 minutes (empty stage to empty stage).",
+        "The act may be performed in English, Hindi, or both (limited use of other languages permitted).",
+        "Participants must bring their own props. Additional technical needs must be specified beforehand.",
+        "Original and adapted scripts are allowed.",
+        "Vulgar or explicit content is strictly prohibited and may lead to immediate disqualification.",
+        "Inter-college and inter-branch teams are allowed.",
+        "All team members must purchase PARSEC passes.",
+        "Technical requirements must be provided in advance; availability is not guaranteed."
+      ]
+    },
+    "timeline": [
+      { "title": "Entry Submission Window", "date": "2025-12-27", "endDate": "2026-01-04", "description": "Submit synopsis, 2-minute video, technical details" },
+      { "title": "Announcement of Finalists", "date": "2026-01-07", "description": "Top 8 finalists announced" },
+      { "title": "Final Showcase (Offline)", "date": "2026-01-26", "description": "Live monoacting performances at IIT Dharwad" }
+    ],
+    "deliverables": [
+      "2–5 page synopsis",
+      "2-minute monoact video (mandatory)",
+      "Approximate performance duration",
+      "Technical requirements",
+      "Contact details"
+    ],
+    "organizers": [
+      { "name": "Kirtiraj Mallik", "phone": "+91 7749876341", "email": "is23bm006@iitdh.ac.in" }
+    ],
+    "prizes": {
+      "prizePool": 10000,
+      "breakdown": [
+        { "place": "1st", "amount": 5000 },
+        { "place": "2nd", "amount": 3000 },
+        { "place": "3rd", "amount": 2000 }
+      ]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
+    "comments": ["Accommodation limited/exclusive; keep an eye on the website."]
+  },
+  {
+    "id": "synerzz",
+    "title": "SYNERZZ",
+    "category": "Cultural",
+    "mode": "offline",
+    "venue": "IIT Dharwad Permanent Campus",
+    "team": { "min": 8, "max": 20, "individualAllowed": false },
+    "registrationFee": "Free",
+    "date": "Jan 26, 2026",
+    "image": "",
+    "description": "Synerzz is the flagship Group Dance Competition organized by the Sapphire Dance Club, dedicated to showcasing the finest collective talent on campus. More than a display of individual skill, Synerzz places a premium on synchronization, choreography, and thematic storytelling.",
+    "rules": {
+      "important": [
+        "Every team has to register online on the official Techfest website for the competition.",
+        "A Team ID will be allocated to the team on registration which shall be used for future references.",
+        "The decision of the organizers or judges shall be treated as final and binding on all."
+      ],
+      "others": [
+        "Team size: 8-20 members",
+        "Performance must demonstrate synchronization, choreography, and thematic storytelling",
+        "Participating groups are challenged to harmonize their movements"
+      ]
+    },
+    "timeline": [
+      { "title": "Submission of Final Team", "date": "2026-01-20", "description": "Team Lead must submit an Excel Sheet containing team member's details like Name, Roll Number, Branch, Batch, Mail-Id and Name of the Institute." },
+      { "title": "Submission of Final Audio", "date": "2026-01-21", "description": "Final Audio in accordance with the official Rulebook must be sent to the Event Lead." },
+      { "title": "Competition Day", "date": "2026-01-26", "description": "Live group dance performances at IIT Dharwad." }
+    ],
+    "organizers": [
+      { "name": "Mayank Mishra", "phone": "+91 9548701496", "email": "is24bm002@iitdh.ac.in" },
+      { "name": "Varaprasad", "phone": "+91 7013943406", "email": "cs23bt050@iitdh.ac.in" }
+    ],
+    "prizes": {
+      "prizePool": 22000,
+      "breakdown": [
+        { "place": "1st", "amount": 10000 },
+        { "place": "2nd", "amount": 7000 },
+        { "place": "3rd", "amount": 5000 }
+      ]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Name of the Institute"], "optional": [] },
+    "comments": ["Accommodation limited/exclusive; keep an eye on the website."]
+  },
+  {
+    "id": "beatblitzz",
+    "title": "BeatBlitzz",
+    "category": "Cultural",
+    "mode": "offline",
+    "venue": "IIT Dharwad Permanent Campus",
+    "team": { "min": 2, "max": 2, "individualAllowed": false },
+    "registrationFee": "Free",
+    "date": "Jan 26, 2026",
+    "image": "",
+    "description": "Beatblitzz is an event crafted to highlight and celebrate the precision, chemistry, and artistic unity between two performers. The event emphasizes synchronized movement, seamless partnering, and impactful storytelling. Duos are challenged to blend their individual strengths into a single cohesive performance.",
+    "rules": {
+      "important": [
+        "Every team has to register online on the official Techfest website for the competition.",
+        "A Team ID will be allocated to the team on registration which shall be used for future references.",
+        "The decision of the organizers or judges shall be treated as final and binding on all."
+      ],
+      "others": [
+        "Duo performance (exactly 2 performers)",
+        "Performance must demonstrate precision, chemistry, and artistic unity",
+        "Emphasis on synchronized movement and seamless partnering"
+      ]
+    },
+    "timeline": [
+      { "title": "Submission of Final Duos", "date": "2026-01-20", "description": "Team Lead must submit an Excel Sheet containing team member's details like Name, Roll Number, Branch, Batch, Mail-Id and Name of the Institute." },
+      { "title": "Submission of Final Audio", "date": "2026-01-21", "description": "Final Audio in accordance with the official Rulebook must be sent to the Event Lead." },
+      { "title": "Competition Day", "date": "2026-01-26", "description": "Live duo dance performances at IIT Dharwad." }
+    ],
+    "organizers": [
+      { "name": "Mayank Mishra", "phone": "+91 9548701496", "email": "is24bm002@iitdh.ac.in" },
+      { "name": "Veeksha Nagaraj", "phone": "+91 9019971059", "email": "ep24bt013@iitdh.ac.in" }
+    ],
+    "prizes": {
+      "prizePool": 10000,
+      "breakdown": [
+        { "place": "1st", "amount": 5000 },
+        { "place": "2nd", "amount": 3000 },
+        { "place": "3rd", "amount": 2000 }
+      ]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Name of the Institute"], "optional": [] },
+    "comments": ["Accommodation limited/exclusive; keep an eye on the website."]
+  },
+  {
+    "id": "colorscape",
+    "title": "ColorScape",
+    "category": "Cultural",
+    "mode": "offline",
+    "venue": "IIT Dharwad Permanent Campus",
+    "team": { "min": 1, "max": 1, "individualAllowed": true },
+    "registrationFee": "Free",
+    "date": "Jan 27, 2026",
+    "image": "",
+    "description": "Express your imagination through colors and brushstrokes! This event invites participants to create vibrant artworks on canvas, capturing their creativity and emotions in unique and beautiful ways.",
+    "rules": {
+      "important": [
+        "Every team has to register online on the official Techfest website for the competition.",
+        "A Team ID will be allocated to the team on registration which shall be used for future references.",
+        "The decision of the organizers or judges shall be treated as final and binding on all.",
+        "Theme will be revealed on spot for the competitors."
+      ],
+      "others": [
+        "Medium: Acrylic paints only (use of any other paint will lead to disqualification)",
+        "Participants will be provided with a 30cm X 40cm canvas board",
+        "Participants need to bring their own paints and brushes",
+        "Participants may bring other needful stationery such as painting knives, palettes, fixatives, and driers",
+        "The judge would provide an object or prompt on the day of the event to be included in the submission",
+        "No external help (e.g., internet/photograph on phone or camera) is allowed during the event",
+        "Word limit for the write-up is 100 words. Exceeding it shall lead to a penalty",
+        "Duration: 3 hours"
+      ]
+    },
+    "timeline": [
+      { "title": "Competition", "date": "2026-01-27", "time": "9:00 AM – 12:00 PM", "description": "On-the-spot painting competition with acrylic paints on canvas." }
+    ],
+    "organizers": [
+      { "name": "L Shreya", "role": "Event Lead", "phone": "+91 8088968977", "email": "ee24bt015@iitdh.ac.in" }
+    ],
+    "prizes": {
+      "notes": ["3 Separate prizes will be awarded for the overall event"],
+      "inKind": ["Certificates of Participation for all valid entries"]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
+    "comments": ["Accommodation limited/exclusive; keep an eye on the website."]
+  },
+  {
+    "id": "wizengamot-cmun",
+    "title": "The Wizengamot – Corporate Model United Nations (CMUN)",
+    "category": "Cultural",
+    "mode": "offline",
+    "venue": "IIT Dharwad Permanent Campus",
+    "team": { "min": 2, "max": 2, "individualAllowed": false },
+    "registrationFee": "Free",
+    "date": "Jan 27, 2026",
+    "image": "",
+    "description": "The Wizengamot – Corporate MUN is a reimagined diplomatic simulation designed to immerse participants in the dynamics of international policy, corporate strategy, innovation governance, and global socio-economic negotiation. Delegates represent global corporations, tech giants, international organizations, and entrepreneurial bodies.",
+    "rules": {
+      "important": [
+        "Every team has to register online on the official Techfest website for the competition.",
+        "A Team ID will be allocated to the team on registration which shall be used for future references.",
+        "The decision of the organizers or judges shall be treated as final and binding on all."
+      ],
+      "others": [
+        "Each participant will be assigned a corporation or organization one week prior to the event",
+        "Each delegation will comprise of 2 members",
+        "The structure will follow standard MUN rules (moderated/unmoderated caucuses, directives, etc.)",
+        "Crisis updates will be issued periodically, requiring real-time strategy shifts",
+        "Delegates will represent company founders or key corporate figures, not countries",
+        "Maintain decorum throughout the event. Disruptive behaviour will lead to disqualification",
+        "Delegates must come well-researched about their assigned character and domain",
+        "Formal Western attire is mandatory for all participants. Blazers or suits are recommended",
+        "Unauthorised online collaboration or plagiarism will result in disqualification",
+        "The Chair's decision is final in all procedural and disciplinary matters"
+      ]
+    },
+    "timeline": [
+      { "title": "Session 1", "date": "2026-01-27", "time": "9:00 AM – 11:45 AM", "description": "The first session of 2 meetings" },
+      { "title": "Committee Break", "date": "2026-01-27", "time": "11:45 AM – 12:15 PM", "description": "Break time" },
+      { "title": "Session 2", "date": "2026-01-27", "time": "12:15 PM – 3:00 PM", "description": "The second session of 2 meetings" }
+    ],
+    "deliverables": [
+      "Any legal binding document/paper work to be submitted to chairperson",
+      "Ideas or business deals to be put up for consideration"
+    ],
+    "organizers": [
+      { "name": "Sudhakar S Dalawayi", "role": "Event Lead (Secretary Literary Club)", "phone": "+91 9037228517", "email": "literaryclub@iitdh.ac.in" }
+    ],
+    "prizes": {
+      "notes": ["Top 3 Teams based on overall performance", "Best Delegate", "High Commendation (runner-up individual award)"],
+      "inKind": ["Certificates of Participation for all delegates"]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
+    "comments": ["Accommodation limited/exclusive; keep an eye on the website.", "Reference: https://youtu.be/zhFfZSkMp2s and https://www.munprep.org/mun-crisis-committees-ultimate-guide/"]
+  },
+  {
+    "id": "illustre",
+    "title": "ILLUSTRE - Fashion Sketch Competition",
+    "category": "Cultural",
+    "mode": "offline",
+    "venue": "IIT Dharwad Permanent Campus",
+    "team": { "min": 1, "max": 1, "individualAllowed": true },
+    "registrationFee": "Free",
+    "date": "Jan 26, 2026",
+    "image": "",
+    "registrationLink": "",
+    "description": "Unleash your creativity and bring your style visions to life! This event invites participants to showcase their unique fashion ideas through stunning sketches. Whether modern, traditional, or experimental, let your imagination shape the runway on paper.",
+    "rules": {
+      "important": [
+        "Every team has to register online on the official Techfest website for the competition",
+        "A Team ID will be allocated to the team on registration which shall be used for future references",
+        "The decision of the organizers or judges shall be treated as final and binding on all"
+      ],
+      "others": [
+        "Medium: Graphite pencils only. Participants need to bring their own pencils for the event",
+        "Not allowed: Charcoal, coloured pencils, scale, and mechanical pencils",
+        "Drawing Sheet: Off-white A3 cartridge sheet will be provided",
+        "Allowed personal items: Pencils, erasers, sharpeners, tissue, cotton, blending stumps, and a firm base (A3 sketchbook/cardboard)",
+        "No external help: No use of photos, internet, or references apart from the live model. Penalty will be imposed as per the judge's discretion if there is any reference taken from external sources (internet, other arts, etc)",
+        "Theme will be revealed on spot for the competitors"
+      ]
+    },
+    "timeline": [
+      { "title": "Final Round", "date": "2026-01-26", "time": "10:00 AM – 1:00 PM", "description": "The competition is open for all and unrestricted (no restriction on number of teams from any college)" }
+    ],
+    "deliverables": ["Finalized work at the end of the 3 Hour time limit"],
+    "organizers": [
+      { "name": "L Shreya", "role": "Event Lead", "phone": "+91 8088968977", "email": "ee24bt015@iitdh.ac.in" }
+    ],
+    "prizes": {
+      "notes": ["3 Separate prizes will be awarded for the overall event"],
+      "inKind": ["Certificates of Participation will be issued to all valid entries"]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
+    "comments": ["For offline events - accommodation shall be limited/exclusive keep an eye on website"]
+  },
+  {
+    "id": "amped-up",
+    "title": "Amped Up - Battle of the Bands",
+    "category": "Cultural",
+    "mode": "offline",
+    "venue": "IIT Dharwad Permanent Campus",
+    "team": { "min": 3, "max": 15, "individualAllowed": false },
+    "registrationFee": "Free",
+    "date": "Jan 23, 2026",
+    "image": "",
+    "registrationLink": "",
+    "description": "A group event where participants of the band will perform in synchrony with various instruments and vocal artists in multiple genres.",
+    "rules": {
+      "important": [
+        "Every team has to register online on the official Techfest website for the competition",
+        "A Team ID will be allocated to the team on registration which shall be used for future references",
+        "The decision of the organizers or judges shall be treated as final and binding on all"
+      ],
+      "others": ["Refer to Amped Up- Battle of Bands Rulebook for complete rules"]
+    },
+    "timeline": [
+      { "title": "Entry Submission Opens", "date": "2026-01-01", "time": "All Day", "description": "Registration for the event starts for the colleges" },
+      { "title": "Submission Deadline", "date": "2026-01-18", "time": "End of Day", "description": "Last date for submission of teams" },
+      { "title": "Sound Check", "date": "2026-01-22", "time": "TBD", "description": "The bands must do a sound check of their performance" },
+      { "title": "Main Event", "date": "2026-01-23", "time": "6:00 PM – 10:00 PM", "description": "All the bands will perform on this day" }
+    ],
+    "deliverables": [],
+    "organizers": [
+      { "name": "Soumya Basuli", "role": "Event Lead", "phone": "+91 8617489965", "email": "ce24bt023@iitdh.ac.in" },
+      { "name": "Siddhant Pai", "role": "Co-Lead", "phone": "+91 9028652518", "email": "mc24bt017@iitdh.ac.in" }
+    ],
+    "prizes": {
+      "prizePool": "₹5,000",
+      "breakdown": ["1st Place: ₹2,500", "2nd Place: ₹1,500", "3rd Place: ₹1,000"]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
+    "comments": ["For offline events - accommodation shall be limited/exclusive keep an eye on website"]
+  },
+  {
+    "id": "jugalbandi",
+    "title": "Jugalbandi - Duet Competition",
+    "category": "Cultural",
+    "mode": "offline",
+    "venue": "IIT Dharwad Permanent Campus",
+    "team": { "min": 2, "max": 2, "individualAllowed": false },
+    "registrationFee": "Free",
+    "date": "Jan 23, 2026",
+    "image": "",
+    "registrationLink": "",
+    "description": "This is a duet competition allowing any combination of instrumentalists and vocalists, with no restrictions on the type of music or genre. This is a group Event.",
+    "rules": {
+      "important": [
+        "Every team has to register online on the official Techfest website for the competition",
+        "A Team ID will be allocated to the team on registration which shall be used for future references",
+        "The decision of the organizers or judges shall be treated as final and binding on all"
+      ],
+      "others": ["Refer to Duet Competition- Jugalbandi Rulebook for complete rules"]
+    },
+    "timeline": [
+      { "title": "Entry Submission Opens", "date": "2026-01-01", "time": "All Day", "description": "Registration for the event starts for the colleges" },
+      { "title": "Submission Deadline", "date": "2026-01-18", "time": "End of Day", "description": "Last date for submission of teams" },
+      { "title": "Main Event", "date": "2026-01-23", "time": "2:00 PM – 4:00 PM", "description": "All the pairs will perform on this day" }
+    ],
+    "deliverables": [],
+    "organizers": [
+      { "name": "Rushikesh Ajay Deshmukh", "role": "Event Lead", "phone": "+91 8208416382", "email": "me24bt020@iitdh.ac.in" },
+      { "name": "Thella Namratha", "role": "Co-Lead", "phone": "+91 9963101704", "email": "ep23bt003@iitdh.ac.in" }
+    ],
+    "prizes": {
+      "prizePool": "₹5,000",
+      "breakdown": ["1st Place: ₹2,500", "2nd Place: ₹1,500", "3rd Place: ₹1,000"]
+    },
+    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
+    "comments": ["For offline events - accommodation shall be limited/exclusive keep an eye on website"]
   }
 ]

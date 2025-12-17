@@ -252,6 +252,238 @@
   .navbar-menu.active {
     right: 0;
   }
+}
+
+/* ========== EVENTS DROPDOWN ========== */
+.navbar-dropdown {
+  position: relative;
+}
+
+.navbar-dropdown-toggle {
+  background: none;
+  border: none;
+  color: var(--fontAccent);
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.navbar-dropdown-toggle::before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--fontAccent));
+  transition: width 0.3s ease;
+}
+
+.navbar-dropdown:hover .navbar-dropdown-toggle,
+.navbar-dropdown-toggle:hover {
+  color: var(--fontAccent);
+}
+
+.navbar-dropdown:hover .navbar-dropdown-toggle::before {
+  width: 100%;
+}
+
+.navbar-dropdown-menu {
+  position: absolute;
+  top: 140%;
+  left: 50%;
+  transform: translateX(-50%) scale(0.95);
+  width: 280px;
+  
+  /* Enchanted Parchment Background */
+  background: linear-gradient(
+    180deg,
+    rgba(15, 20, 50, 0.98),
+    rgba(8, 10, 30, 0.98)
+  );
+  
+  border-radius: 16px;
+  border: 1px solid rgba(255, 200, 120, 0.25);
+  
+  /* Golden Glow */
+  box-shadow:
+    0 0 30px rgba(255, 200, 120, 0.15),
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 0 20px rgba(255, 200, 120, 0.08);
+  
+  padding: 18px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1000;
+  
+  /* Magical Reveal */
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    visibility 0.3s ease;
+}
+
+.navbar-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid rgba(255, 200, 120, 0.25);
+  filter: drop-shadow(0 -2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.navbar-dropdown:hover .navbar-dropdown-menu,
+.navbar-dropdown-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) scale(1);
+  pointer-events: auto;
+}
+
+.navbar-dropdown-menu li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Divider between items */
+.navbar-dropdown-menu li:first-child::after {
+  content: '';
+  display: block;
+  height: 1px;
+  background: rgba(255, 200, 120, 0.2);
+  margin: 10px 0;
+}
+
+.navbar-dropdown-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: #f5e6c8;
+  padding: 12px;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  position: relative;
+  
+  /* Spell-reveal animation */
+  opacity: 0;
+  transform: translateY(5px);
+  animation: spellReveal 0.35s ease forwards;
+}
+
+/* Staggered reveal */
+.navbar-dropdown-menu li:nth-child(1) .navbar-dropdown-link {
+  animation-delay: 0.05s;
+}
+
+.navbar-dropdown-menu li:nth-child(2) .navbar-dropdown-link {
+  animation-delay: 0.12s;
+}
+
+@keyframes spellReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navbar-dropdown-link:hover {
+  background: rgba(255, 215, 130, 0.08);
+}
+
+/* Icon with magical glow */
+.dropdown-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  transition: filter 0.3s ease;
+}
+
+.navbar-dropdown-link:hover .dropdown-icon {
+  filter: drop-shadow(0 0 6px gold);
+}
+
+.dropdown-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.dropdown-text strong {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #f5e6c8;
+  transition: color 0.3s ease;
+}
+
+.navbar-dropdown-link:hover .dropdown-text strong {
+  color: rgba(255, 215, 130, 1);
+}
+
+.dropdown-text small {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  font-style: italic;
+  color: #c9b07a;
+  letter-spacing: 0.02em;
+}
+
+/* ========== RESPONSIVE - TABLET ========== */
+
+/* ========== RESPONSIVE - TABLET ========== */
+@media screen and (max-width: 960px) {
+  .navbar-dropdown-menu {
+    position: static;
+    transform: none;
+    margin-top: 0;
+    opacity: 1;
+    visibility: visible;
+    border: none;
+    border-radius: 0;
+    background: color-mix(in srgb, var(--surface) 90%, transparent);
+    backdrop-filter: none;
+    box-shadow: none;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .navbar-dropdown-menu::before {
+    display: none;
+  }
+
+  .navbar-dropdown-menu.active {
+    max-height: 300px;
+  }
+
+  .navbar-dropdown-toggle {
+    display: block;
+    width: 100%;
+    padding: 20px 30px;
+    font-size: 1.1rem;
+    text-align: left;
+  }
+
+  .navbar-dropdown-link {
+    padding: 15px 30px 15px 50px;
+  }
 
   .navbar-item {
     width: 100%;

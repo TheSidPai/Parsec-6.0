@@ -9,6 +9,9 @@ import { useTheme } from "../context/ThemeContext";
 
 function Events() {
   const { theme } = useTheme();
+  // Filter only technical events (non-cultural)
+  const technicalEvents = events.filter(ev => ev.category !== "Cultural");
+  
   return (
     <div>
       <Navbar />
@@ -26,13 +29,13 @@ function Events() {
         disableRotation={false}
       />
       <main className="events-container">
-        <h1 className="events-header">Events</h1>
+        <h1 className="events-header">PARSEC Events</h1>
         <p className="events-description">
           Explore hackathons, competitions, and workshops at PARSEC 6.0.
         </p>
 
         <div className="events-grid">
-          {events.map((ev) => (
+          {technicalEvents.map((ev) => (
             <EventCard2
                 key={ev.id}
                 id={ev.id}

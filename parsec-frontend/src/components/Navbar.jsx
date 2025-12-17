@@ -5,6 +5,7 @@ import Button from './Button';
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [eventsDropdownOpen, setEventsDropdownOpen] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -12,6 +13,11 @@ function Navbar() {
 
   const closeMenu = () => {
     setMenuOpen(false);
+    setEventsDropdownOpen(false);
+  };
+
+  const toggleEventsDropdown = () => {
+    setEventsDropdownOpen(!eventsDropdownOpen);
   };
 
   return (
@@ -34,8 +40,33 @@ function Navbar() {
 
         {/* Menu */}
         <ul className={`navbar-menu ${menuOpen ? 'active' : ''}`}>
-          <li className="navbar-item">
-            <Link to="/events" className="navbar-link" onClick={closeMenu}>Events</Link>
+          <li className="navbar-item navbar-dropdown">
+            <button 
+              className="navbar-link navbar-dropdown-toggle" 
+              onClick={toggleEventsDropdown}
+            >
+              Events ▼
+            </button>
+            <ul className={`navbar-dropdown-menu ${eventsDropdownOpen ? 'active' : ''}`}>
+              <li>
+                <Link to="/events" className="navbar-dropdown-link" onClick={closeMenu}>
+                  <span className="dropdown-icon">⚡</span>
+                  <span className="dropdown-text">
+                    <strong>PARSEC</strong>
+                    <small>Technical Events</small>
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/harshtaal" className="navbar-dropdown-link" onClick={closeMenu}>
+                  <span className="dropdown-icon">🎭</span>
+                  <span className="dropdown-text">
+                    <strong>Harshtaal</strong>
+                    <small>Cultural Events</small>
+                  </span>
+                </Link>
+              </li>
+            </ul>
           </li>
           <li className="navbar-item">
             <Link to="/schedule" className="navbar-link" onClick={closeMenu}>Schedule</Link>

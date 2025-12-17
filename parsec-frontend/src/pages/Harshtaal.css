@@ -1,0 +1,124 @@
+/* ========== HARSHTAAL PAGE - CULTURAL THEME ========== */
+.harshtaal-page {
+  background: var(--background);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ========== HARSHTAAL CONTAINER ========== */
+.harshtaal-container {
+  padding: 6rem 2rem 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== HEADER SECTION ========== */
+.harshtaal-header-section {
+  text-align: center;
+  margin-bottom: 4rem;
+  animation: fadeSlideDown 1s ease-out;
+}
+
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.harshtaal-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.harshtaal-title-main {
+  font-family: 'Cinzel', serif;
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--fontAccent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  position: relative;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; transform: translateY(-50%) scale(1); }
+  50% { opacity: 1; transform: translateY(-50%) scale(1.2); }
+}
+
+.harshtaal-title-sub {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--fontSub);
+  font-style: italic;
+  letter-spacing: 0.1em;
+}
+
+.harshtaal-description {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--fontSub);
+  font-weight: 400;
+  font-style: italic;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* ========== NO EVENTS MESSAGE ========== */
+.no-events {
+  text-align: center;
+  padding: 4rem 2rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--fontSub);
+  font-style: italic;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .harshtaal-title-main {
+    font-size: 2.5rem;
+  }
+
+  .harshtaal-title-main::before,
+  .harshtaal-title-main::after {
+    font-size: 1.5rem;
+    left: -40px;
+    right: -40px;
+  }
+
+  .harshtaal-title-sub {
+    font-size: 1.2rem;
+  }
+
+  .harshtaal-description {
+    font-size: 1rem;
+  }
+
+  .harshtaal-container {
+    padding: 5rem 1.5rem 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .harshtaal-title-main {
+    font-size: 2rem;
+  }
+
+  .harshtaal-title-main::before,
+  .harshtaal-title-main::after {
+    display: none;
+  }
+}
