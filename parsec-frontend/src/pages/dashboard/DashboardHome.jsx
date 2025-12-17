@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API_ENDPOINTS, authenticatedFetch } from '../../config/api';
+import eventsData from '../../assets/data/events.json';
 import './DashboardHome.css';
 
 function DashboardHome() {
@@ -140,9 +141,9 @@ function DashboardHome() {
       <div className="stats-grid">
         <div className="stat-card" onClick={() => navigate('/dashboard/events')}>
           <span className="stat-icon">🎯</span>
-          <div className="stat-value" data-target={0}>0</div>
-          <div className="stat-label">Events Registered</div>
-          <div className="stat-trend positive">↑ Coming soon</div>
+          <div className="stat-value" data-target={eventsData.length}>{eventsData.length}</div>
+          <div className="stat-label">Total Events</div>
+          <div className="stat-trend positive">↑ Ready to explore</div>
         </div>
 
         <div className="stat-card" onClick={() => navigate('/dashboard/leaderboard')}>
@@ -219,17 +220,36 @@ function DashboardHome() {
           <div className="upcoming-events">
             <h2 className="section-title">Upcoming Events</h2>
             <div className="event-list">
-              <div className="event-item" onClick={() => navigate('/dashboard/events/aurora-2')}>
-                <div className="event-info">
-                  <h3>Aurora 2.0: Beyond the Horizon</h3>
-                  <p>📅 Dec 22, 2025 – Jan 26, 2026 • Hackathon</p>
-                </div>
-                <div className="event-badge">VIEW</div>
-              </div>
+              {eventsData
+                .filter(event => {
+                  // Parse dates from the event.date string
+                  const dateMatch = event.date.match(/([A-Za-z]+)\s+(\d+),\s+(\d{4})/);
+                  if (dateMatch) {
+                    const [, month, day, year] = dateMatch;
+                    const eventDate = new Date(`${month} ${day}, ${year}`);
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    // Show events that haven't ended yet (within 60 days)
+                    return eventDate >= today || (today - eventDate) / (1000 * 60 * 60 * 24) < 60;
+                  }
+                  return true; // Show events without parseable dates
+                })
+                .slice(0, 3)
+                .map(event => (
+                  <div key={event.id} className="event-item" onClick={() => navigate(`/events/${event.id}`)}>
+                    <div className="event-info">
+                      <h3>{event.title}</h3>
+                      <p>📅 {event.date} • {event.category}</p>
+                    </div>
+                    <div className="event-badge">VIEW</div>
+                  </div>
+                ))}
 
-              <div className="no-events">
-                <p>🔮 More events will appear here as they're announced</p>
-              </div>
+              {eventsData.length === 0 && (
+                <div className="no-events">
+                  <p>🔮 More events will appear here as they're announced</p>
+                </div>
+              )}
             </div>
           </div>
         </div>

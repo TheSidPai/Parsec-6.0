@@ -115,17 +115,17 @@
 /* ========== EVENT CARD ========== */
 .dashboard-event-card {
   background: linear-gradient(135deg, 
-    color-mix(in srgb, var(--surface) 90%, var(--primary) 10%), 
-    color-mix(in srgb, var(--surface) 80%, var(--secondary) 20%),
-    color-mix(in srgb, var(--surface) 85%, var(--fontAccent) 15%),
-    color-mix(in srgb, var(--surface) 75%, var(--primary) 25%));
-  background-size: 400% 400%;
+    color-mix(in srgb, var(--surface) 85%, var(--primary) 15%), 
+    color-mix(in srgb, var(--surface) 70%, var(--secondary) 30%),
+    color-mix(in srgb, var(--surface) 75%, var(--fontAccent) 25%),
+    color-mix(in srgb, var(--surface) 65%, var(--primary) 35%));
+  background-size: 600% 600%;
   background-position: 0% 0%;
   backdrop-filter: blur(20px);
   border: 2px solid color-mix(in srgb, var(--secondary) 30%, transparent);
   border-radius: 12px;
   padding: 1.25rem;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1), background-position 1s ease-in-out;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1), background-position 1.2s ease;
   position: relative;
   overflow: hidden;
   animation: cardFadeIn 0.8s ease-out backwards;
