@@ -7,7 +7,7 @@
     "venue": "IIT Dharwad (Quiz + Presentations)",
     "team": { "min": 2, "max": 6, "individualAllowed": false },
     "registrationFee": "Free",
-    "date": "Dec 22, 2025 – Jan 26, 2026",
+    "date": "Dec 22, 2025 - Jan 26, 2026",
     "image": "",
     "registrationLink": "https://unstop.com/hackathons/aurora-parsec-60-indian-institute-of-technology-iit-dharwad-1609211",
     "description": "Aurora 2.0 is a hackathon that brings together satellite datasets, AI-powered analysis, and practical problem-solving to address pressing challenges in space tech and geospatial analytics.",
@@ -18,7 +18,7 @@
         "The decision of the organizers or judges is final and binding."
       ],
       "others": [
-        "Team size: 2–6.",
+        "Team size: 2-6.",
         "3 Stages: Stage 1 (50%) Remote Sensing Hackathon (online); Stage 2 (15%) Quiz on space and data science (offline); Stage 3 (35%) Presentation (offline).",
         "Mode: Online hackathon; Offline Quiz + Presentation.",
         "Teams must maintain a public GitHub repository.",
@@ -35,8 +35,8 @@
       { "title": "Hackathon Launch", "date": "2025-12-22", "description": "Release of problem statement and dataset. Teams begin working." },
       { "title": "Hackathon Submission Deadline", "date": "2026-01-04", "time": "EOD", "description": "Teams submit complete solutions for evaluation." },
       { "title": "Shortlist Announcement", "date": "2026-01-07", "time": "EOD", "description": "Top 8 teams announced for onsite stages." },
-      { "title": "Technical Quiz (Stage 2)", "date": "2026-01-26", "time": "10:00–11:00 AM", "description": "One-hour quiz on astronomy, remote sensing, and geospatial data science." },
-      { "title": "Final Presentations (Stage 3)", "date": "2026-01-26", "time": "3:00–6:00 PM", "description": "Onsite presentations before the jury at CLT, IIT Dharwad." }
+      { "title": "Technical Quiz (Stage 2)", "date": "2026-01-26", "time": "10:00-11:00 AM", "description": "One-hour quiz on astronomy, remote sensing, and geospatial data science." },
+      { "title": "Final Presentations (Stage 3)", "date": "2026-01-26", "time": "3:00-6:00 PM", "description": "Onsite presentations before the jury at CLT, IIT Dharwad." }
     ],
     "deliverables": [
       "Public GitHub repository with code in a Jupyter Notebook (well-commented).",
@@ -68,7 +68,7 @@
     "venue": "IIT Dharwad (final presentation)",
     "team": { "min": 1, "max": 3, "individualAllowed": true },
     "registrationFee": "Free",
-    "date": "Dec 22, 2025 – Jan 4, 2026",
+    "date": "Dec 22, 2025 - Jan 4, 2026",
     "image": "/events_main_img/LOGO/protocraft_logo.jpeg",
     "registrationLink": "https://unstop.com/o/CBjMbSn?lb=qkhVYy9&utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "Theme-based mechanical design challenge—sketch, model, simulate, and present your engineering solution.",
@@ -94,7 +94,7 @@
     ],
     "timeline": [
       { "title": "Round 1 (Online)", "date": "2026-01-13", "endDate": "2026-01-22" },
-      { "title": "Round 2 (Offline Presentation)", "date": "2026-01-25", "time": "2:00–5:00 PM" }
+      { "title": "Round 2 (Offline Presentation)", "date": "2026-01-25", "time": "2:00-5:00 PM" }
     ],
     "organizers": [
       { "name": "Farhaan Nasir | Kavichelvan K", "email": "outreach.parsec@iitdh.ac.in" }
@@ -120,7 +120,7 @@
     "venue": "IIT Dharwad, Permanent Campus",
     "team": { "min": 3, "max": 4, "individualAllowed": false },
     "registrationFee": "Free",
-    "date": "Dec 22, 2025 – Jan 4, 2026",
+    "date": "Dec 22, 2025 - Jan 4, 2026",
     "image": "/events_main_img/LOGO/devhack_logo.jpeg",
     "registrationLink": "https://unstop.com/o/WC9SqsL?lb=qkhVYy9&utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "PARSEC's 30-hour flagship hackathon to prototype impactful solutions, mentored and judged by industry experts.",
@@ -129,7 +129,7 @@
         "Every team must register on the official PARSEC website.",
         "A Team ID will be allocated upon registration.",
         "Organizers’/judges’ decisions are final.",
-        "Top 33–34 teams shortlisted from online round."
+        "Top 33-34 teams shortlisted from online round."
       ],
       "others": [
         "Eligibility: Any UG/PG students across India.",
@@ -140,8 +140,8 @@
     },
     "format": [
       "Preliminary Phase (Online Submission): report on approach/methodology.",
-      "Hackathon Phase (Offline – 30 hours): build working prototype; deliverables include GitHub repo and demo video.",
-      "Final Presentation Round (Offline – 3 hours): evaluation on innovation, creativity, applicability."
+      "Hackathon Phase (Offline - 30 hours): build working prototype; deliverables include GitHub repo and demo video.",
+      "Final Presentation Round (Offline - 3 hours): evaluation on innovation, creativity, applicability."
     ],
     "timeline": [
       { "title": "Preliminary Phase Start", "date": "2025-12-22" },
@@ -177,7 +177,7 @@
     "venue": "Website",
     "team": { "min": 1, "max": 3, "individualAllowed": true },
     "registrationFee": "Free",
-    "date": "Dec 22, 2025 – Jan 18, 2026",
+    "date": "Dec 22, 2025 - Jan 18, 2026",
     "image": "",
     "registrationLink": "https://unstop.com/o/ofhlBtk?lb=qkhVYy9&utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "CTF covering cryptography, forensics, reversing, web, OSINT and more. Jeopardy style with dynamic scoring.",
@@ -198,7 +198,7 @@
       ]
     },
     "timeline": [
-      { "title": "CTF Window", "dateText": "9 PM Friday 16th – 9 PM Sunday 18th" }
+      { "title": "CTF Window", "dateText": "9 PM Friday 16th - 9 PM Sunday 18th" }
     ],
     "organizers": [
       { "name": "Vishvanathan K | Sreejita Chatterjee | Amogh R", "email": "outreach.parsec@iitdh.ac.in", "role": "Event Lead" }
@@ -224,7 +224,7 @@
     "venue": "IIT Dharwad Permanent Campus",
     "team": { "min": 1, "max": 1, "individualAllowed": true },
     "registrationFee": "Free",
-    "date": "Jan 18, 2026 – Jan 27, 2026",
+    "date": "Jan 18, 2026 - Jan 27, 2026",
     "image": "",
     "registrationLink": "https://unstop.com/o/04aO7qg?lb=qkhVYy9&utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "Individual competitive programming contest (single round, 2 hours).",
@@ -242,13 +242,13 @@
       ]
     },
     "format": [
-      "6–8 problems of varying difficulty; ranked by problems solved then by lowest cumulative time."
+      "6-8 problems of varying difficulty; ranked by problems solved then by lowest cumulative time."
     ],
     "timeline": [
-      { "title": "Contest", "date": "2026-01-27", "time": "9:30–11:30 AM" }
+      { "title": "Contest", "date": "2026-01-27", "time": "9:30-11:30 AM" }
     ],
     "organizers": [
-      { "name": "Dileepan S K | Aayushi Singh", "email": "outreeach.parsec@iitdh.ac.in" }
+      { "name": "Dileepan S K | Aayushi Singh", "email": "outreach.parsec@iitdh.ac.in" }
     ],
     "prizes": {
       "prizePool": 10750,
@@ -274,7 +274,7 @@
     "venue": "IIT Dharwad (Round 2)",
     "team": { "min": 3, "max": 4, "individualAllowed": false },
     "registrationFee": "Free",
-    "date": "Dec 22, 2025 – Jan 2, 2026",
+    "date": "Dec 22, 2025 - Jan 2, 2026",
     "image": "/events_main_img/LOGO/bithunt_logo.jpeg",
     "registrationLink": "https://unstop.com/o/ortjivD?utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "Two-round technical treasure hunt blending coding, aptitude, and on-campus clue solving.",
@@ -282,7 +282,7 @@
       "important": [
         "Register on Unstop.",
         "Team ID allocated upon registration.",
-        "Teams must be 3–4 members from the same college.",
+        "Teams must be 3-4 members from the same college.",
         "No internet during online round (Unstop Smart Hire app).",
         "Organizers’ decisions are final; misconduct or plagiarism leads to disqualification."
       ],
@@ -297,7 +297,7 @@
       { "title": "Registrations Open", "dateText": "TBD", "mode": "online" },
       { "title": "Round 1: Aptitude + DSA Quiz", "date": "2026-01-16", "time": "8:00 PM", "mode": "online" },
       { "title": "Announcement of Qualifiers", "date": "2026-01-18", "time": "12:00 AM", "mode": "online" },
-      { "title": "Round 2: The Bit Chase", "date": "2026-01-26", "time": "3:00–7:00 PM", "mode": "offline" },
+      { "title": "Round 2: The Bit Chase", "date": "2026-01-26", "time": "3:00-7:00 PM", "mode": "offline" },
       { "title": "Results & Prize Distribution", "date": "2026-01-27", "time": "Closing ceremony", "mode": "offline" }
     ],
     "organizers": [
@@ -324,12 +324,12 @@
     "venue": "IIT Dharwad",
     "team": { "min": 1, "max": 1, "individualAllowed": true },
     "registrationFee": "Rs. 599 (tentative)",
-    "date": "Jan 24–25, 2026",
+    "date": "Jan 24-25, 2026",
     "image": "",
     "description": "Finance workshop exploring quantitative finance and algo trading.",
     "timeline": [
-      { "title": "Day 1", "date": "2026-01-24", "time": "9:00 AM – 12:00 PM" },
-      { "title": "Day 2", "date": "2026-01-25", "time": "9:00 AM – 12:00 PM" }
+      { "title": "Day 1", "date": "2026-01-24", "time": "9:00 AM - 12:00 PM" },
+      { "title": "Day 2", "date": "2026-01-25", "time": "9:00 AM - 12:00 PM" }
     ],
     "organizers": [
       { "name": "Samarth M", "email": "outreach.parsec@iitdh.ac.in" }
@@ -350,12 +350,12 @@
     "venue": "IIT Dharwad",
     "team": { "min": 1, "max": 1, "individualAllowed": true },
     "registrationFee": "Free",
-    "date": "Jan 24–25, 2026",
+    "date": "Jan 24-25, 2026",
     "image": "",
     "description": "Gamified design thinking workshop with interactive activities, quick challenges, and team tasks.",
     "timeline": [
-      { "title": "Day 1", "date": "2026-01-24", "time": "9:00 AM – 12:00 PM" },
-      { "title": "Day 2", "date": "2026-01-25", "time": "9:00 AM – 12:00 PM" }
+      { "title": "Day 1", "date": "2026-01-24", "time": "9:00 AM - 12:00 PM" },
+      { "title": "Day 2", "date": "2026-01-25", "time": "9:00 AM - 12:00 PM" }
     ],
     "organizers": [
       { "name": "Rajat Gupta", "email": "outreach.parsec@iitdh.ac.in" }
@@ -377,14 +377,14 @@
     "venue": "IIT Dharwad, Permanent Campus",
     "team": { "min": 2, "max": 4, "individualAllowed": false },
     "registrationFee": "Free",
-    "date": "Dec 22, 2025 – Jan 4, 2026",
+    "date": "Dec 22, 2025 - Jan 4, 2026",
     "image": "/events_main_img/LOGO/singularity_logo.jpeg",
     "registrationLink": "https://unstop.com/o/kTlp7rB?utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "30-hour agentic AI hackathon building autonomous multi-agent systems with tool use and real-time decision-making.",
     "format": [
       "Preliminary (Online): report submission and shortlisting.",
-      "Hackathon (Offline – 30 hours): build and refine solutions; deliver repo and demo video.",
-      "Final Presentation (Offline – 3 hours): judged on innovation, technical depth, applicability, autonomy."
+      "Hackathon (Offline - 30 hours): build and refine solutions; deliver repo and demo video.",
+      "Final Presentation (Offline - 3 hours): judged on innovation, technical depth, applicability, autonomy."
     ],
     "timeline": [
       { "title": "Registration Opens", "date": "2025-12-22" },
@@ -418,7 +418,7 @@
     "venue": "StockGro platform",
     "team": { "min": 1, "max": 1, "individualAllowed": true },
     "registrationFee": "Free",
-    "date": "Jan 19–23, 2026",
+    "date": "Jan 19-23, 2026",
     "image": "",
     "description": "Mock stock market competition on StockGro with simulated funds and real-time market dynamics.",
     "rules": {
@@ -468,7 +468,7 @@
     "venue": "IIT Dharwad (Onsite Buildathon)",
     "team": { "min": 1, "max": 4, "individualAllowed": false },
     "registrationFee": "Free",
-    "date": "Jan 2–25, 2026",
+    "date": "Jan 2-25, 2026",
     "image": "",
     "registrationLink": "https://unstop.com/o/XTF4qhd?lb=qkhVYy9&utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "Flagship robotics challenge focusing on Perception and Motion Control. Two tracks: Junior and Senior.",
@@ -512,9 +512,9 @@
     "registrationFee": "Free",
     "date": "Jan 24, 2026",
     "image": "",
-    "description": "On-campus astronomy quiz (1–2 hours) with prizes and workshop access for top scorers. Followed by optional stargazing night.",
+    "description": "On-campus astronomy quiz (1-2 hours) with prizes and workshop access for top scorers. Followed by optional stargazing night.",
     "timeline": [
-      { "title": "Astronomy Quiz", "date": "2026-01-24", "time": "1–2 hours" },
+      { "title": "Astronomy Quiz", "date": "2026-01-24", "time": "1-2 hours" },
       { "title": "Stargazing Night", "date": "2026-01-24", "time": "After quiz", "description": "Open stargazing session with telescope." }
     ],
     "rules": {
@@ -550,7 +550,7 @@
     "venue": "IIT Dharwad (Phase II)",
     "team": { "min": 2, "max": 4, "individualAllowed": false },
     "registrationFee": "Free",
-    "date": "Dec 22, 2025 – Jan 18, 2026",
+    "date": "Dec 22, 2025 - Jan 18, 2026",
     "image": "/events_main_img/LOGO/Synapse_logo.jpeg",
     "registrationLink": "https://unstop.com/o/gqyVMbX?utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "EMG-based dual-mode prosthetic control using Myoware 2.0 sensors: continuous proportional control and discrete gesture recognition.",
@@ -592,10 +592,10 @@
     "image": "",
     "description": "Hands-on night-sky photography: telescope-mounted DSLR imaging, framing, exposure, and basic post-processing.",
     "timeline": [
-      { "title": "Workshop", "date": "2026-01-26", "time": "9:00 PM – 12:00 AM" }
+      { "title": "Workshop", "date": "2026-01-26", "time": "9:00 PM - 12:00 AM" }
     ],
     "organizers": [
-      { "name": "Rithika Athawade | Ranit Maity", "email": "outreac.parsec@iitdh.ac.in" }
+      { "name": "Rithika Athawade | Ranit Maity", "email": "outreach.parsec@iitdh.ac.in" }
     ],
     "rules": {
       "others": [
@@ -615,7 +615,7 @@
     "venue": "Online Submission",
     "team": { "min": 1, "max": 20, "individualAllowed": true },
     "registrationFee": "Free",
-    "date": "Jan 10 – 18, 2026",
+    "date": "Jan 10 - 18, 2026",
     "image": "",
     "description": "DRIP N CLICK is a fashion-themed photography competition where participants must submit a set of high-quality edited and raw images. With no limit on team size and complete creative freedom in location and equipment, the event tests originality, fashion aesthetics, photography skills, editing proficiency, and innovative storytelling.",
     "rules": {
@@ -666,9 +666,9 @@
     "venue": "IIT Dharwad Permanent Campus",
     "team": { "min": 1, "max": 6, "individualAllowed": true },
     "registrationFee": "Free",
-    "date": "Jan 24 – 25, 2026",
+    "date": "Jan 24 - 25, 2026",
     "image": "",
-    "description": "B-YOND THE ROLL is a 15-hour cinematic B-Roll videography challenge where participants must shoot and edit an original 30–60 second video entirely within IIT Dharwad. Open to individuals and teams of up to 6, the event tests creativity, storytelling, cinematography, and editing skills.",
+    "description": "B-YOND THE ROLL is a 15-hour cinematic B-Roll videography challenge where participants must shoot and edit an original 30-60 second video entirely within IIT Dharwad. Open to individuals and teams of up to 6, the event tests creativity, storytelling, cinematography, and editing skills.",
     "rules": {
       "important": [
         "Every team has to register online on the official Techfest website for the competition.",
@@ -677,7 +677,7 @@
       ],
       "others": [
         "Shooting must be done entirely within IIT Dharwad campus.",
-        "Video duration: 30–60 seconds.",
+        "Video duration: 30-60 seconds.",
         "Both raw footage and edited B-Roll must be submitted offline.",
         "All content must be original and created within the 15-hour window.",
         "AI-generated footage, plagiarism, and inappropriate content strictly prohibited.",
@@ -830,7 +830,7 @@
       "Themes will be revealed on spot for the competitors"
     ],
     "timeline": [
-      { "title": "Competition", "date": "2026-01-24", "time": "3:00–5:00 PM", "description": "On-the-spot creative writing competition with announced themes." }
+      { "title": "Competition", "date": "2026-01-24", "time": "3:00-5:00 PM", "description": "On-the-spot creative writing competition with announced themes." }
     ],
     "organizers": [
       { "name": "Sudhakar S Dalawayi", "role": "Event Lead (Secretary Literary Club)", "phone": "+91 9037228517", "email": "literaryclub@iitdh.ac.in" }
@@ -850,7 +850,7 @@
     "venue": "IIT Dharwad (Final Round)",
     "team": { "min": 1, "max": 5, "individualAllowed": false },
     "registrationFee": "Free",
-    "date": "Dec 27, 2025 – Jan 26, 2026",
+    "date": "Dec 27, 2025 - Jan 26, 2026",
     "image": "",
     "description": "Ek Shakhs, Sau Chehre is a monoacting competition where a single actor portrays one or multiple characters using expressions, voice modulation, physicality, and emotional storytelling. Supporting members may assist with music, lights, and backstage cues, but no one except the actor may appear on stage.",
     "rules": {
@@ -864,7 +864,7 @@
         "The decision of the organizers or judges shall be treated as final and binding on all."
       ],
       "others": [
-        "Performance duration must be 8–10 minutes (empty stage to empty stage).",
+        "Performance duration must be 8-10 minutes (empty stage to empty stage).",
         "The act may be performed in English, Hindi, or both (limited use of other languages permitted).",
         "Participants must bring their own props. Additional technical needs must be specified beforehand.",
         "Original and adapted scripts are allowed.",
@@ -880,7 +880,7 @@
       { "title": "Final Showcase (Offline)", "date": "2026-01-26", "description": "Live monoacting performances at IIT Dharwad" }
     ],
     "deliverables": [
-      "2–5 page synopsis",
+      "2-5 page synopsis",
       "2-minute monoact video (mandatory)",
       "Approximate performance duration",
       "Technical requirements",
@@ -1016,7 +1016,7 @@
       ]
     },
     "timeline": [
-      { "title": "Competition", "date": "2026-01-27", "time": "9:00 AM – 12:00 PM", "description": "On-the-spot painting competition with acrylic paints on canvas." }
+      { "title": "Competition", "date": "2026-01-27", "time": "9:00 AM - 12:00 PM", "description": "On-the-spot painting competition with acrylic paints on canvas." }
     ],
     "organizers": [
       { "name": "L Shreya", "role": "Event Lead", "phone": "+91 8088968977", "email": "ee24bt015@iitdh.ac.in" }
@@ -1030,7 +1030,7 @@
   },
   {
     "id": "wizengamot-cmun",
-    "title": "The Wizengamot – Corporate Model United Nations (CMUN)",
+    "title": "The Wizengamot - Corporate Model United Nations (CMUN)",
     "category": "Cultural",
     "mode": "offline",
     "venue": "IIT Dharwad Permanent Campus",
@@ -1038,7 +1038,7 @@
     "registrationFee": "Free",
     "date": "Jan 27, 2026",
     "image": "",
-    "description": "The Wizengamot – Corporate MUN is a reimagined diplomatic simulation designed to immerse participants in the dynamics of international policy, corporate strategy, innovation governance, and global socio-economic negotiation. Delegates represent global corporations, tech giants, international organizations, and entrepreneurial bodies.",
+    "description": "The Wizengamot - Corporate MUN is a reimagined diplomatic simulation designed to immerse participants in the dynamics of international policy, corporate strategy, innovation governance, and global socio-economic negotiation. Delegates represent global corporations, tech giants, international organizations, and entrepreneurial bodies.",
     "rules": {
       "important": [
         "Every team has to register online on the official Techfest website for the competition.",
@@ -1059,9 +1059,9 @@
       ]
     },
     "timeline": [
-      { "title": "Session 1", "date": "2026-01-27", "time": "9:00 AM – 11:45 AM", "description": "The first session of 2 meetings" },
-      { "title": "Committee Break", "date": "2026-01-27", "time": "11:45 AM – 12:15 PM", "description": "Break time" },
-      { "title": "Session 2", "date": "2026-01-27", "time": "12:15 PM – 3:00 PM", "description": "The second session of 2 meetings" }
+      { "title": "Session 1", "date": "2026-01-27", "time": "9:00 AM - 11:45 AM", "description": "The first session of 2 meetings" },
+      { "title": "Committee Break", "date": "2026-01-27", "time": "11:45 AM - 12:15 PM", "description": "Break time" },
+      { "title": "Session 2", "date": "2026-01-27", "time": "12:15 PM - 3:00 PM", "description": "The second session of 2 meetings" }
     ],
     "deliverables": [
       "Any legal binding document/paper work to be submitted to chairperson",
@@ -1105,7 +1105,7 @@
       ]
     },
     "timeline": [
-      { "title": "Final Round", "date": "2026-01-26", "time": "10:00 AM – 1:00 PM", "description": "The competition is open for all and unrestricted (no restriction on number of teams from any college)" }
+      { "title": "Final Round", "date": "2026-01-26", "time": "10:00 AM - 1:00 PM", "description": "The competition is open for all and unrestricted (no restriction on number of teams from any college)" }
     ],
     "deliverables": ["Finalized work at the end of the 3 Hour time limit"],
     "organizers": [
@@ -1142,7 +1142,7 @@
       { "title": "Entry Submission Opens", "date": "2026-01-01", "time": "All Day", "description": "Registration for the event starts for the colleges" },
       { "title": "Submission Deadline", "date": "2026-01-18", "time": "End of Day", "description": "Last date for submission of teams" },
       { "title": "Sound Check", "date": "2026-01-22", "time": "TBD", "description": "The bands must do a sound check of their performance" },
-      { "title": "Main Event", "date": "2026-01-23", "time": "6:00 PM – 10:00 PM", "description": "All the bands will perform on this day" }
+      { "title": "Main Event", "date": "2026-01-23", "time": "6:00 PM - 10:00 PM", "description": "All the bands will perform on this day" }
     ],
     "deliverables": [],
     "organizers": [
@@ -1179,7 +1179,7 @@
     "timeline": [
       { "title": "Entry Submission Opens", "date": "2026-01-01", "time": "All Day", "description": "Registration for the event starts for the colleges" },
       { "title": "Submission Deadline", "date": "2026-01-18", "time": "End of Day", "description": "Last date for submission of teams" },
-      { "title": "Main Event", "date": "2026-01-23", "time": "2:00 PM – 4:00 PM", "description": "All the pairs will perform on this day" }
+      { "title": "Main Event", "date": "2026-01-23", "time": "2:00 PM - 4:00 PM", "description": "All the pairs will perform on this day" }
     ],
     "deliverables": [],
     "organizers": [
