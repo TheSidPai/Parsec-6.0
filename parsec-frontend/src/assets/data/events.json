@@ -45,8 +45,7 @@
       "Concise presentation (if shortlisted)."
     ],
     "organizers": [
-      { "name": "Aniruddh Pandav", "role": "Event Lead", "email": "ee23bt031@iitdh.ac.in", "phone": "+91-9618218601" },
-      { "name": "Balamurali V B", "role": "Event Co-Lead", "email": "me24bt047@iitdh.ac.in", "phone": "+91-6383651842" }
+      { "name": "Aniruddh Pandav | Balamurali V B", "role": "Event Lead", "email": "outreach.parsec@iitdh.ac.in" }
     ],
     "prizes": {
       "prizePool": 14000,
@@ -98,8 +97,7 @@
       { "title": "Round 2 (Offline Presentation)", "date": "2026-01-25", "time": "2:00–5:00 PM" }
     ],
     "organizers": [
-      { "name": "FARHAAN NASIR", "email": "me23bt023@iitdh.ac.in", "phone": "+91 88842 65444" },
-      { "name": "KAVICHELVAN K", "email": "me23bt028@iitdh.ac.in", "phone": "+91 97895 92295" }
+      { "name": "Farhaan Nasir | Kavichelvan K", "email": "outreach.parsec@iitdh.ac.in" }
     ],
     "prizes": {
       "prizePool": 9000,
@@ -154,10 +152,7 @@
       { "title": "Presentation Round", "date": "2026-01-26", "time": "10:00 AM" }
     ],
     "organizers": [
-      { "name": "Nidhish Doshi", "role": "Event Lead", "email": "cs23bt009@iitdh.ac.in", "phone": "+91-8240525200" },
-      { "name": "Anant Tripathi", "role": "Event Co-Lead", "email": "mc24bt001@iitdh.ac.in", "phone": "+91-8400990007" },
-      { "name": "Gourav Sherikar", "role": "Event Co-Lead", "email": "mc24bt009@iitdh.ac.in", "phone": "+91-9742626777" }
-    ],
+      { "name": "Nidhish Doshi | Anant Tripathi | Gourav Sherikar", "role": "Event Lead", "email": "outreach.parsec@iitdh.ac.in" }
     "prizes": {
       "prizePool": 24500,
       "breakdown": [
@@ -205,9 +200,7 @@
       { "title": "CTF Window", "dateText": "9 PM Friday 16th – 9 PM Sunday 18th" }
     ],
     "organizers": [
-      { "name": "Vishvanathan K", "email": "ep23bt002@iitdh.ac.in", "phone": "+91 8903883306", "discord": "Jerrasterix" },
-      { "name": "Amogh R" },
-      { "name": "Sreejita Chatterjee", "email": "mc24bt002@iitdh.ac.in", "phone": "+91 9987261023", "discord": "sreejitachatterjee9768" }
+      { "name": "Vishvanathan K | Sreejita Chatterjee | Amogh R", "email": "outreach.parsec@iitdh.ac.in", "role": "Event Lead" }
     ],
     "prizes": {
       "prizePool": 10000,
@@ -254,8 +247,7 @@
       { "title": "Contest", "date": "2026-01-27", "time": "9:30–11:30 AM" }
     ],
     "organizers": [
-      { "name": "Dileepan S K", "email": "cs23bt049@iitdh.ac.in", "phone": "+91 86609 94853" },
-      { "name": "Aayushi Singh", "email": "is24bm037@iitdh.ac.in", "phone": "+91 77353 89083" }
+      { "name": "Dileepan S K | Aayushi Singh", "email": "outreeach.parsec@iitdh.ac.in" }
     ],
     "prizes": {
       "prizePool": 10750,
@@ -308,9 +300,7 @@
       { "title": "Results & Prize Distribution", "date": "2026-01-27", "time": "Closing ceremony", "mode": "offline" }
     ],
     "organizers": [
-      { "name": "P Sri Smaran", "email": "cs23bt039@iitdh.ac.in", "phone": "+91 6309776899" },
-      { "name": "Saikat Ghosh", "email": "ce24bt001@iitdh.ac.in", "phone": "+91 70012 92174" },
-      { "name": "Outreach Parsec", "email": "outreach.parsec@iitdh.ac.in" }
+      { "name": "P Sri Smaran | Saikat Ghosh", "email": "outreach.parsec@iitdh.ac.in" }
     ],
     "prizes": {
       "prizePool": 10000,
@@ -405,9 +395,7 @@
       { "title": "Presentation Round", "date": "2026-01-27", "time": "9:00 AM" }
     ],
     "organizers": [
-      { "name": "SURYA PRAKASH S", "role": "Event Lead", "email": "CS23BT068@iitdh.ac.in", "phone": "+91-9344191103" },
-      { "name": "SHREYA S BHAT", "role": "Event Co-Lead", "email": "CS23BT070@iitdh.ac.in", "phone": "+91-7795348992" },
-      { "name": "MEDA VARSHITH", "role": "Event Co-Lead", "email": "CS23BT066@iitdh.ac.in", "phone": "+91-7382165165" }
+      { "name": "Surya Prakash S | Shreya S Bhat | Meda Varshith", "role": "Event Lead", "email": "outreach.parsec@iitdh.ac.in" }
     ],
     "prizes": {
       "prizePool": 15000,
@@ -457,7 +445,7 @@
       { "title": "End", "date": "2026-01-23" }
     ],
     "organizers": [
-      { "name": "Swarup Sahoo", "email": "mc24bt022@iitdh.ac.in", "phone": "7030758790" }
+      { "name": "Swarup Sahoo", "email": "outreach.parsec@iitdh.ac.in" }
     ],
     "prizes": {
       "prizePool": 6500,
@@ -498,9 +486,7 @@
       { "title": "Round 2 (Onsite Buildathon)", "date": "2026-01-25" }
     ],
     "organizers": [
-      { "name": "Affan Pathan", "email": "affanp1399@icloud.com", "phone": "+91 8983976975" },
-      { "name": "Suchitra Dabholkar", "email": "me24bt041@iitdh.ac.in", "phone": "+91 93599 85161" },
-      { "name": "Outreach Parsec", "email": "outreach.parsec@iitdh.ac.in" }
+      { "name": "Affan Pathan | Suchitra Dabholkar", "email": "outreach.parsec@iitdh.ac.in" }
     ],
     "prizes": {
       "notes": ["Cash Prize - 5k + 3k + 2k PER problem statement", "Exclusive Merch"]
@@ -541,8 +527,7 @@
       ]
     },
     "organizers": [
-      { "name": "Rithika Athawade", "email": "is24bm031@iitdh.ac.in", "phone": "+91 8976072606" },
-      { "name": "Ranit Maity", "email": "me24bt050@iitdh.ac.in", "phone": "+91 6289541702" }
+      { "name": "Rithika Athawade | Ranit Maity", "email": "outreach.parsec@iitdh.ac.in" }
     ],
     "prizes": {
       "prizePool": 10000,
@@ -579,8 +564,7 @@
       { "title": "Phase II Live Demo", "date": "2026-01-23" }
     ],
     "organizers": [
-      { "name": "Aayushi Singh", "email": "is24bm037@iitdh.ac.in", "phone": "+91 7735389083" },
-      { "name": "Affan Pathan", "email": "affanp1399@icloud.com", "phone": "+91 898397695" }
+      { "name": "Aayushi Singh | Affan Pathan", "email": "outreach.parsec@iitdh.ac.in" }
     ],
     "prizes": {
       "prizePool": 10000,
@@ -610,8 +594,7 @@
       { "title": "Workshop", "date": "2026-01-26", "time": "9:00 PM – 12:00 AM" }
     ],
     "organizers": [
-      { "name": "Rithika Athawade", "email": "is24bm031@iitdh.ac.in" },
-      { "name": "Ranit Maity", "email": "me24bt050@iitdh.ac.in" }
+      { "name": "Rithika Athawade | Ranit Maity", "email": "outreac.parsec@iitdh.ac.in" }
     ],
     "rules": {
       "others": [
