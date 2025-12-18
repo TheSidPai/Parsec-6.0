@@ -4,16 +4,16 @@ import Footer from "../components/Footer";
 import EventCard2 from "../components/EventCard2";
 import events from "../assets/data/events.json";
 import Particles from "../components/Particles";
-import "./Harshtaal.css";
+import "./Harshtal.css";
 import { useTheme } from "../context/ThemeContext";
 
-function Harshtaal() {
+function Harshtal() {
   const { theme } = useTheme();
   // Filter only cultural events
   const culturalEvents = events.filter(ev => ev.category === "Cultural");
 
   return (
-    <div className="harshtaal-page">
+    <div className="harshtal-page">
       <Navbar />
       <Particles
         particleColors={[
@@ -28,13 +28,13 @@ function Harshtaal() {
         alphaParticles={false}
         disableRotation={false}
       />
-      <main className="harshtaal-container">
-        <div className="harshtaal-header-section">
-          <h1 className="harshtaal-header">
-            <span className="harshtaal-title-main">Harshtaal</span>
-            <span className="harshtaal-title-sub">Cultural Extravaganza</span>
+      <main className="harshtal-container">
+        <div className="harshtal-header-section">
+          <h1 className="harshtal-header">
+            <span className="harshtal-title-main">Harshtal</span>
+            <span className="harshtl-title-sub">Cultural Extravaganza</span>
           </h1>
-          <p className="harshtaal-description">
+          <p className="harshtal-description">
             Experience the magic of culture and creativity 
           </p>
         </div>
@@ -66,4 +66,4 @@ function Harshtaal() {
   );
 }
 
-export default Harshtaal;
+export default Harshtal;

@@ -34,6 +34,15 @@ function Events() {
           Explore hackathons, competitions, and workshops at PARSEC 6.0.
         </p>
 
+        {/* Scroll Indicator */}
+        <div className="events-scroll-indicator">
+          <div className="scroll-icon">
+            <div className="scroll-wheel"></div>
+          </div>
+          <p className="scroll-text">Scroll to explore</p>
+          <div className="scroll-arrow">↓</div>
+        </div>
+
         <div className="events-grid">
           {technicalEvents.map((ev) => (
             <EventCard2

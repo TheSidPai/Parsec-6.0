@@ -49,13 +49,14 @@ function Team() {
               <div className="team-grid">
                 {members.map((member, index) => (
                   <ElectricBorder
+                    key={`${member.name}-${index}`}
                     color="#7df9ff"
                     speed={1}
                     chaos={0.5}
                     thickness={2}
                     style={{ borderRadius: 16 }}
                   >
-                    <div key={index} className="team-card">
+                    <div className="team-card">
                       <div className="team-card-photo-wrapper">
                         <img
                           src={member.photo}

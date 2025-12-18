@@ -58,11 +58,20 @@ function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link to="/harshtaal" className="navbar-dropdown-link" onClick={closeMenu}>
+                <Link to="/harshtal" className="navbar-dropdown-link" onClick={closeMenu}>
                   <span className="dropdown-icon">🎭</span>
                   <span className="dropdown-text">
-                    <strong>Harshtaal</strong>
+                    <strong>Harshtal</strong>
                     <small>Cultural Events</small>
+                  </span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/tesseract" className="navbar-dropdown-link" onClick={closeMenu}>
+                  <span className="dropdown-icon">🧊</span>
+                  <span className="dropdown-text">
+                    <strong>Tesseract</strong>
+                    <small>Innovation Challenge</small>
                   </span>
                 </Link>
               </li>

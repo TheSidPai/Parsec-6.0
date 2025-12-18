@@ -32,7 +32,7 @@ function AboutSection() {
           </p>
           
           <p className="about-description">
-            Dive into a world of circuits, algorithms, machines, and minds — and let your creativity rise in ways that feel almost… <span className="enchanted">enchanted</span>.
+            Dive into a world of circuits, algorithms, machines, and minds — and let your creativity rise in ways that feel almost <span className="enchanted">enchanted</span>.
           </p>
         </motion.div>
       </div>

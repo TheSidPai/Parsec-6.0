@@ -14,7 +14,8 @@ import Auth from './pages/signup/Auth';
 import ManualAuth from './pages/signup/ManualAuth';
 import SortingHat from './pages/signup/SortingHat';
 import Events from './pages/Events';
-import Harshtaal from './pages/Harshtaal';
+import Harshtal from './pages/Harshtal';
+import Tesseract from './pages/Tesseract';
 import EventDetail from './pages/EventDetail';
 import Schedule from './pages/Schedule';
 import Team from './pages/Team';
@@ -59,7 +60,8 @@ function AnimatedRoutes() {
 
         {/* Public Events, Schedule & Team */}
         <Route path="/events" element={<Events />} />
-        <Route path="/harshtaal" element={<Harshtaal />} />
+        <Route path="/harshtal" element={<Harshtal />} />
+        <Route path="/tesseract" element={<Tesseract />} />
         <Route path="/events/:id" element={<EventDetail />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/team" element={<Team />} />
