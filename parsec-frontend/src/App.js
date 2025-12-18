@@ -33,6 +33,7 @@ import HousePage from './pages/HousePage';
 import AdminAuth from './components/admin/AdminAuth';
 import AdminDashboard from './components/admin/AdminDashboard';
 import AdminProtectedRoute from './components/admin/AdminProtectedRoute';
+import ComingSoon from './components/ComingSoon';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -62,6 +63,7 @@ function AnimatedRoutes() {
         <Route path="/events/:id" element={<EventDetail />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/team" element={<Team />} />
+        <Route path="/accommodation" element={<ComingSoon />} />
 
         {/* House-Specific Pages (Protected) */}
         <Route path="/house/:houseName" element={<HousePage />} />

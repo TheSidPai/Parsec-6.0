@@ -139,7 +139,7 @@ const SortingHat = () => {
           <p className="error-text">{error}</p>
           <button 
             className="retry-button"
-            onClick={() => navigate('/dashboard')}
+            onClick={() => navigate('/dashboard/events')}
           >
             Go to Dashboard
           </button>

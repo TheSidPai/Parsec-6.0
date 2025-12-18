@@ -145,8 +145,7 @@
   font-size: 0.85rem;
   color: var(--fontSub);
   margin-top: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .countdown-date {
@@ -154,6 +153,86 @@
   font-size: 1.4rem;
   color: var(--fontAccent);
   font-weight: 500;
+}
+
+/* ========== SCROLL INDICATOR ========== */
+.scroll-indicator {
+  position: absolute;
+  bottom: 60px;
+  left: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 100;
+  animation: fadeInBounce 2s ease-in-out infinite;
+}
+
+.scroll-icon {
+  width: 30px;
+  height: 50px;
+  border: 2px solid var(--fontAccent);
+  border-radius: 15px;
+  position: relative;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.scroll-wheel {
+  width: 6px;
+  height: 10px;
+  background: var(--fontAccent);
+  border-radius: 3px;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollWheel 1.5s ease-in-out infinite;
+}
+
+@keyframes scrollWheel {
+  0%, 100% {
+    top: 8px;
+    opacity: 1;
+  }
+  50% {
+    top: 25px;
+    opacity: 0.5;
+  }
+}
+
+.scroll-text {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  color: var(--fontAccent);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  white-space: nowrap;
+}
+
+.scroll-arrow {
+  font-size: 1.5rem;
+  color: var(--fontAccent);
+  animation: bounceArrow 1.5s ease-in-out infinite;
+}
+
+@keyframes fadeInBounce {
+  0%, 100% {
+    opacity: 0.7;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes bounceArrow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
 }
 
 /* ========== JOURNEY SECTION (Horizontal Scroll) ========== */
@@ -383,9 +462,8 @@
   border-radius: 6px;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 0.9rem;
-  text-transform: uppercase;
   font-weight: 500;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .status-upcoming {

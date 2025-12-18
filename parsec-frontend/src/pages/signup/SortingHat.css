@@ -648,40 +648,45 @@
   }
 
   .sorting-card {
-    padding: 40px 30px;
+    padding: 30px 20px;
     min-height: 350px;
   }
 
   .sorting-title {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-bottom: 15px;
+    word-wrap: break-word;
+    line-height: 1.4;
   }
 
   .sorting-subtitle {
-    font-size: 0.95rem;
-    margin-bottom: 30px;
+    font-size: 0.85rem;
+    margin-bottom: 25px;
+    line-height: 1.5;
   }
 
   .house-name {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 
   .house-emoji {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
 
   .sorting-hat-icon {
-    font-size: 5rem;
+    font-size: 4.5rem;
   }
 
   .sorting-thought {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .house-name-banner {
-    font-size: 2.5rem;
-    padding: 20px 25px;
-    letter-spacing: 0.08em;
+    font-size: 2rem;
+    padding: 15px 20px;
+    letter-spacing: 0.05em;
+    line-height: 1.3;
+    word-wrap: break-word;
   }
 
   .sorting-orb-1,

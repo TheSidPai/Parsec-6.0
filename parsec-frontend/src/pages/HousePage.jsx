@@ -120,7 +120,7 @@ const HousePage = () => {
       <div className="house-page-error">
         <h2>🏰 House Not Found</h2>
         <p>The house "{houseName}" does not exist.</p>
-        <button onClick={() => navigate('/dashboard')}>Go to Dashboard</button>
+        <button onClick={() => navigate('/dashboard/events')}>Go to Dashboard</button>
       </div>
     );
   }
@@ -157,7 +157,7 @@ const HousePage = () => {
 
       {/* Quick navigation */}
       <div className="house-nav">
-        <button onClick={() => navigate('/dashboard')}>Dashboard</button>
+        <button onClick={() => navigate('/dashboard/events')}>Dashboard</button>
         <button onClick={() => navigate('/dashboard/events')}>Events</button>
         <button onClick={() => navigate('/dashboard/leaderboard')}>Leaderboard</button>
         <button onClick={() => navigate('/dashboard/profile')}>Profile</button>

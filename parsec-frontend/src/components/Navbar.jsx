@@ -75,6 +75,9 @@ function Navbar() {
             <Link to="/team" className="navbar-link" onClick={closeMenu}>Team</Link>
           </li>
           <li className="navbar-item">
+            <Link to="/accommodation" className="navbar-link" onClick={closeMenu}>Accommodation</Link>
+          </li>
+          <li className="navbar-item">
             <Link to="/login" className="navbar-signup" onClick={closeMenu}>
               <Button variant="primary">Login/signup</Button>
             </Link>

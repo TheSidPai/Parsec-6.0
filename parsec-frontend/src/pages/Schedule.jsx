@@ -373,6 +373,15 @@ function Schedule() {
                 </div>
               </div>
             </div>
+
+            {/* Scroll Indicator */}
+            <div className="scroll-indicator">
+              <div className="scroll-icon">
+                <div className="scroll-wheel"></div>
+              </div>
+              <p className="scroll-text">Scroll to move the train</p>
+              <div className="scroll-arrow">↓</div>
+            </div>
           </div>
         </section>
 

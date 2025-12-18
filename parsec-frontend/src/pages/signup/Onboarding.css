@@ -301,7 +301,47 @@
   color: white;
   font-weight: 400;
 }
+/* ========== TERMS & CONDITIONS ========== */
+.terms-field {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
 
+.terms-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.terms-checkbox {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  cursor: pointer;
+  accent-color: #FFD700;
+  flex-shrink: 0;
+}
+
+.terms-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: #e0e0e0;
+  line-height: 1.5;
+}
+
+.terms-link {
+  color: #FFD700;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.terms-link:hover {
+  color: #FFA500;
+  text-decoration: underline;
+}
 /* ========== SUBMIT BUTTON ========== */
 .submit-button {
   margin-top: 15px;

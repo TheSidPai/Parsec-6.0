@@ -29,6 +29,7 @@ const OnboardingForm = () => {
     contactNumber: "",
     aadharOrCollegeId: "",
     merchSize: "",
+    acceptedTerms: false,
   });
 
   // UI state management
@@ -98,6 +99,11 @@ const OnboardingForm = () => {
 
     if (!formData.merchSize) {
       setError("Merch size is required");
+      return false;
+    }
+
+    if (!formData.acceptedTerms) {
+      setError("You must accept the Terms & Conditions to continue");
       return false;
     }
 
@@ -315,6 +321,37 @@ const OnboardingForm = () => {
               <option value="L">L</option>
               <option value="XL">XL</option>
               <option value="XXL">XXL</option>
+              <option value="XXXL">XXXL</option>
+            </select>
+          </div>
+
+          {/* Terms & Conditions */}
+          <div className="form-field terms-field">
+            <label className="terms-label">
+              <input
+                type="checkbox"
+                name="acceptedTerms"
+                checked={formData.acceptedTerms}
+                onChange={(e) => handleChange({ target: { name: 'acceptedTerms', value: e.target.checked } })}
+                disabled={loading}
+                className="terms-checkbox"
+              />
+              <span className="terms-text">
+                I accept the{' '}
+                <a 
+                  href="/terms-and-conditions.pdf" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="terms-link"
+                >
+                  Terms & Conditions
+                </a>
+                {' '}*
+              </span>
+            </label>
+          </div>
+
+          {/* <option value="XXL">XXL</option>
               <option value="XXXL">XXXL</option>
             </select>
           </div>
