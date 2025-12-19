@@ -20,10 +20,21 @@ function Schedule() {
     minutes: 0,
     seconds: 0,
   });
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const journeyRef = useRef(null);
   const containerRef = useRef(null);
   const scrollRef = useRef(null);
   const heroRef = useRef(null);
+
+  // Handle window resize for mobile detection
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Sort events by date and apply alternating positioning
   const events = [...scheduleData.preliminaryEvents]
@@ -59,6 +70,9 @@ function Schedule() {
   }, []);
 
   useEffect(() => {
+    // Skip Locomotive Scroll and GSAP horizontal scroll on mobile
+    if (isMobile) return;
+
     let scroll = null;
     let handleResize = null;
     const refreshTimeouts = [];
@@ -178,7 +192,7 @@ function Schedule() {
       }
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, [events.length]);
+  }, [events.length, isMobile]);
 
   return (
     <>
@@ -374,124 +388,201 @@ function Schedule() {
               </div>
             </div>
 
-            {/* Scroll Indicator */}
-            <div className="scroll-indicator">
-              <div className="scroll-icon">
-                <div className="scroll-wheel"></div>
+            {/* Scroll Indicator - only show on desktop */}
+            {!isMobile && (
+              <div className="scroll-indicator">
+                <div className="scroll-icon">
+                  <div className="scroll-wheel"></div>
+                </div>
+                <p className="scroll-text">Scroll to move the train</p>
+                <div className="scroll-arrow">↓</div>
               </div>
-              <p className="scroll-text">Scroll to move the train</p>
-              <div className="scroll-arrow">↓</div>
-            </div>
+            )}
           </div>
         </section>
 
-        {/* Journey Section - Horizontal Scroll */}
-        <section className="schedule-journey" ref={journeyRef}>
-          <div className="journey-container" ref={containerRef}>
-            <div className="track-background">
-              {/* Railroad track */}
-              <div className="railroad-track" style={{ zIndex: 1 }}>
-                <div className="rail rail-top" style={{ zIndex: 1 }}></div>
-                <div className="rail rail-bottom" style={{ zIndex: 1 }}></div>
-                <div className="sleepers" style={{ zIndex: 1 }}>
-                  {Array.from({ length: 100 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="sleeper"
-                      style={{ left: `${i * 50}px` }}
-                    ></div>
-                  ))}
+        {/* Mobile: Vertical Timeline */}
+        {isMobile ? (
+          <section className="schedule-mobile-timeline">
+            <h2 className="timeline-header">Event Timeline</h2>
+            <div className="mobile-timeline">
+              {/* Vertical line */}
+              <div className="timeline-line"></div>
+
+              {/* Event Cards */}
+              {events.map((event, index) => (
+                <div key={event.id} className="mobile-event-item">
+                  <div className="timeline-node"></div>
+                  <div className="mobile-event-card">
+                    <h3 className="event-name">{event.name}</h3>
+                    <div className="event-dates">
+                      <div className="date-item">
+                        <span className="date-icon">📅</span>
+                        <span className="date-label">Start</span>
+                        <span className="date-value">
+                          {new Date(event.startDate).toLocaleDateString(
+                            "en-GB",
+                            {
+                              day: "2-digit",
+                              month: "short",
+                            }
+                          )}
+                        </span>
+                      </div>
+                      <div className="date-item">
+                        <span className="date-icon">📤</span>
+                        <span className="date-label">Deadline</span>
+                        <span className="date-value">
+                          {new Date(
+                            event.submissionDeadline
+                          ).toLocaleDateString("en-GB", {
+                            day: "2-digit",
+                            month: "short",
+                          })}
+                        </span>
+                      </div>
+                    </div>
+                    <div className={`event-status status-${event.status}`}>
+                      {event.status}
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              {/* Destination - Main Event */}
+              <div className="mobile-event-item destination">
+                <div className="timeline-node destination-node"></div>
+                <div className="mobile-destination-card">
+                  <div className="castle-icon">🏰</div>
+                  <h2 className="destination-title">PARSEC 6.0</h2>
+                  <p className="destination-dates">23rd - 27th January 2026</p>
+
+                  <div className="main-week-preview-mobile">
+                    {scheduleData.mainEvent.days.map((day) => (
+                      <div key={day.day} className="day-card">
+                        <div className="day-number">Day {day.day}</div>
+                        <div className="day-date">
+                          {new Date(day.date).toLocaleDateString("en-GB", {
+                            day: "2-digit",
+                            month: "short",
+                          })}
+                        </div>
+                        <div className="day-placeholder">Schedule TBA</div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
+            </div>
+          </section>
+        ) : (
+          /* Desktop: Horizontal Journey Section */
+          <section className="schedule-journey" ref={journeyRef}>
+            <div className="journey-container" ref={containerRef}>
+              <div className="track-background">
+                {/* Railroad track */}
+                <div className="railroad-track" style={{ zIndex: 1 }}>
+                  <div className="rail rail-top" style={{ zIndex: 1 }}></div>
+                  <div className="rail rail-bottom" style={{ zIndex: 1 }}></div>
+                  <div className="sleepers" style={{ zIndex: 1 }}>
+                    {Array.from({ length: 100 }).map((_, i) => (
+                      <div
+                        key={i}
+                        className="sleeper"
+                        style={{ left: `${i * 50}px` }}
+                      ></div>
+                    ))}
+                  </div>
+                </div>
 
-              {/* Event Stations */}
-              <div className="event-stations" style={{ zIndex: 2 }}>
-                {events.map((event, index) => {
-                  const startPadding = 300;
-                  const eventSpacing = 350;
-                  const leftPosition = startPadding + index * eventSpacing;
-                  return (
-                    <div
-                      key={event.id}
-                      className={`event-station ${event.position}`}
-                      style={{ left: `${leftPosition}px` }}
-                    >
-                      {/* Station Node */}
-                      <div className="station-node"></div>
+                {/* Event Stations */}
+                <div className="event-stations" style={{ zIndex: 2 }}>
+                  {events.map((event, index) => {
+                    const startPadding = 300;
+                    const eventSpacing = 350;
+                    const leftPosition = startPadding + index * eventSpacing;
+                    return (
+                      <div
+                        key={event.id}
+                        className={`event-station ${event.position}`}
+                        style={{ left: `${leftPosition}px` }}
+                      >
+                        {/* Station Node */}
+                        <div className="station-node"></div>
 
-                      {/* Event Card */}
-                      <div className="event-card">
-                        {/* <div className="event-number">#{event.serialNumber}</div> */}
-                        <h3 className="event-name">{event.name}</h3>
-                        <div className="event-dates">
-                          <div className="date-item">
-                            <span className="date-icon">📅</span>
-                            <span className="date-label">Start</span>
-                            <span className="date-value">
-                              {new Date(event.startDate).toLocaleDateString(
-                                "en-GB",
-                                {
+                        {/* Event Card */}
+                        <div className="event-card">
+                          <h3 className="event-name">{event.name}</h3>
+                          <div className="event-dates">
+                            <div className="date-item">
+                              <span className="date-icon">📅</span>
+                              <span className="date-label">Start</span>
+                              <span className="date-value">
+                                {new Date(event.startDate).toLocaleDateString(
+                                  "en-GB",
+                                  {
+                                    day: "2-digit",
+                                    month: "short",
+                                  }
+                                )}
+                              </span>
+                            </div>
+                            <div className="date-item">
+                              <span className="date-icon">📤</span>
+                              <span className="date-label">Deadline</span>
+                              <span className="date-value">
+                                {new Date(
+                                  event.submissionDeadline
+                                ).toLocaleDateString("en-GB", {
                                   day: "2-digit",
                                   month: "short",
-                                }
-                              )}
-                            </span>
+                                })}
+                              </span>
+                            </div>
                           </div>
-                          <div className="date-item">
-                            <span className="date-icon">📤</span>
-                            <span className="date-label">Deadline</span>
-                            <span className="date-value">
-                              {new Date(
-                                event.submissionDeadline
-                              ).toLocaleDateString("en-GB", {
+                          <div className={`event-status status-${event.status}`}>
+                            {event.status}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+
+                  {/* Destination - Main Event */}
+                  <div
+                    className="destination-station"
+                    style={{
+                      left: `${300 + events.length * 350}px`,
+                    }}
+                  >
+                    <div className="destination-marker">
+                      <div className="castle-icon">🏰</div>
+                      <h2 className="destination-title">PARSEC 6.0</h2>
+                      <p className="destination-dates">
+                        23rd - 27th January 2026
+                      </p>
+
+                      <div className="main-week-preview">
+                        {scheduleData.mainEvent.days.map((day) => (
+                          <div key={day.day} className="day-card">
+                            <div className="day-number">Day {day.day}</div>
+                            <div className="day-date">
+                              {new Date(day.date).toLocaleDateString("en-GB", {
                                 day: "2-digit",
                                 month: "short",
                               })}
-                            </span>
+                            </div>
+                            <div className="day-placeholder">Schedule TBA</div>
                           </div>
-                        </div>
-                        <div className={`event-status status-${event.status}`}>
-                          {event.status}
-                        </div>
+                        ))}
                       </div>
-                    </div>
-                  );
-                })}
-
-                {/* Destination - Main Event */}
-                <div
-                  className="destination-station"
-                  style={{
-                    left: `${300 + events.length * 350}px`,
-                  }}
-                >
-                  <div className="destination-marker">
-                    <div className="castle-icon">🏰</div>
-                    <h2 className="destination-title">PARSEC 6.0</h2>
-                    <p className="destination-dates">
-                      23rd - 27th January 2026
-                    </p>
-
-                    <div className="main-week-preview">
-                      {scheduleData.mainEvent.days.map((day) => (
-                        <div key={day.day} className="day-card">
-                          <div className="day-number">Day {day.day}</div>
-                          <div className="day-date">
-                            {new Date(day.date).toLocaleDateString("en-GB", {
-                              day: "2-digit",
-                              month: "short",
-                            })}
-                          </div>
-                          <div className="day-placeholder">Schedule TBA</div>
-                        </div>
-                      ))}
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         <Footer />
       </div>

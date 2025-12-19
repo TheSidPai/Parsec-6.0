@@ -861,3 +861,206 @@
     text-shadow: 0 0 15px rgba(255, 215, 0, 0.9);
   }
 }
+
+/* ========== MOBILE VERTICAL TIMELINE ========== */
+.schedule-mobile-timeline {
+  padding: 2rem 1.5rem 4rem;
+  min-height: auto;
+}
+
+.timeline-header {
+  font-family: 'Cinzel', 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--fontAccent);
+  text-align: center;
+  margin-bottom: 2.5rem;
+  text-shadow: 0 0 20px var(--glow);
+}
+
+.mobile-timeline {
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+  padding-left: 40px;
+}
+
+/* Vertical timeline line */
+.timeline-line {
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom,
+    var(--fontAccent) 0%,
+    var(--linkHover) 50%,
+    var(--fontAccent) 100%
+  );
+  box-shadow: 0 0 15px var(--glow);
+  border-radius: 2px;
+}
+
+/* Timeline node (dots on the line) */
+.timeline-node {
+  position: absolute;
+  left: -32px;
+  top: 20px;
+  width: 16px;
+  height: 16px;
+  background: var(--linkHover);
+  border: 3px solid var(--fontAccent);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--glow);
+  z-index: 2;
+}
+
+.destination-node {
+  width: 24px;
+  height: 24px;
+  left: -36px;
+  top: 30px;
+  background: var(--fontAccent);
+  border-width: 4px;
+}
+
+/* Mobile event item container */
+.mobile-event-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.mobile-event-item.destination {
+  margin-bottom: 0;
+}
+
+/* Mobile event card */
+.mobile-event-card {
+  background: url("../assets/images/parchment.webp");
+  background-blend-mode: overlay;
+  background-size: cover;
+  border: 2px solid #3d2817;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 25px var(--glow),
+    inset 0 0 40px rgba(232, 213, 181, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mobile-event-card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4), 0 0 35px var(--glow),
+    inset 0 0 40px rgba(232, 213, 181, 0.05);
+}
+
+.mobile-event-card .event-name {
+  font-family: 'Cinzel', 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: #3d2817;
+  margin-bottom: 0.8rem;
+  text-align: left;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.mobile-event-card .event-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.mobile-event-card .date-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.85rem;
+}
+
+.mobile-event-card .event-status {
+  text-align: center;
+  padding: 0.4rem;
+  border-radius: 6px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Mobile destination card */
+.mobile-destination-card {
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  border: 3px solid var(--fontAccent);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 30px var(--shadow), 0 0 30px var(--glow);
+  text-align: center;
+}
+
+.mobile-destination-card .castle-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.mobile-destination-card .destination-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
+  color: var(--linkHover);
+  text-shadow: 0 0 15px var(--glow);
+  margin-bottom: 0.3rem;
+}
+
+.mobile-destination-card .destination-dates {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--fontAccent);
+  margin-bottom: 1.5rem;
+}
+
+/* Mobile main week preview */
+.main-week-preview-mobile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.main-week-preview-mobile .day-card {
+  background: color-mix(in srgb, var(--background) 50%, transparent);
+  border: 1px solid var(--fontAccent);
+  border-radius: 8px;
+  padding: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.main-week-preview-mobile .day-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 12px var(--glow);
+}
+
+.main-week-preview-mobile .day-number {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: var(--linkHover);
+  margin-bottom: 0.3rem;
+}
+
+.main-week-preview-mobile .day-date {
+  font-family: 'Josefin Sans', sans-serif;
+  color: var(--fontMain);
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+}
+
+.main-week-preview-mobile .day-placeholder {
+  font-family: 'Josefin Sans', sans-serif;
+  color: var(--fontSub);
+  font-size: 0.75rem;
+  font-style: italic;
+}
+
+/* Handle 5th day in mobile grid */
+.main-week-preview-mobile .day-card:nth-child(5) {
+  grid-column: 1 / -1;
+  max-width: 50%;
+  margin: 0 auto;
+}
