@@ -145,8 +145,7 @@
   font-size: 0.85rem;
   color: var(--fontSub);
   margin-top: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .countdown-date {
@@ -156,6 +155,86 @@
   font-weight: 500;
 }
 
+/* ========== SCROLL INDICATOR ========== */
+.scroll-indicator {
+  position: absolute;
+  bottom: 60px;
+  left: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 100;
+  animation: fadeInBounce 2s ease-in-out infinite;
+}
+
+.scroll-icon {
+  width: 30px;
+  height: 50px;
+  border: 2px solid var(--fontAccent);
+  border-radius: 15px;
+  position: relative;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.scroll-wheel {
+  width: 6px;
+  height: 10px;
+  background: var(--fontAccent);
+  border-radius: 3px;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollWheel 1.5s ease-in-out infinite;
+}
+
+@keyframes scrollWheel {
+  0%, 100% {
+    top: 8px;
+    opacity: 1;
+  }
+  50% {
+    top: 25px;
+    opacity: 0.5;
+  }
+}
+
+.scroll-text {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  color: var(--fontAccent);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  white-space: nowrap;
+}
+
+.scroll-arrow {
+  font-size: 1.5rem;
+  color: var(--fontAccent);
+  animation: bounceArrow 1.5s ease-in-out infinite;
+}
+
+@keyframes fadeInBounce {
+  0%, 100% {
+    opacity: 0.7;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes bounceArrow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
 /* ========== JOURNEY SECTION (Horizontal Scroll) ========== */
 .schedule-journey {
   min-height: 100vh;
@@ -163,6 +242,74 @@
   overflow: hidden;
   position: relative;
   z-index: 10;
+}
+
+/* Journey Scroll Indicator */
+.journey-scroll-indicator {
+  position: absolute;
+  top: 20%;
+  left: 30px;
+  transform: translateY(0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 1000;
+  animation: fadeInSlide 2s ease-in-out infinite;
+}
+
+.scroll-icon-horizontal {
+  width: 50px;
+  height: 30px;
+  border: 2px solid var(--fontAccent);
+  border-radius: 15px;
+  position: relative;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  transform: rotate(90deg);
+}
+
+.scroll-wheel-horizontal {
+  width: 10px;
+  height: 6px;
+  background: var(--fontAccent);
+  border-radius: 3px;
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  transform: translateY(-50%);
+  animation: scrollWheelHorizontal 1.5s ease-in-out infinite;
+}
+
+@keyframes scrollWheelHorizontal {
+  0%, 100% {
+    left: 8px;
+    opacity: 1;
+  }
+  50% {
+    left: 25px;
+    opacity: 0.5;
+  }
+}
+
+.scroll-text-horizontal {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  color: var(--fontAccent);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+@keyframes fadeInSlide {
+  0%, 100% {
+    opacity: 0.7;
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0) translateX(10px);
+  }
 }
 
 .journey-container {
@@ -383,9 +530,8 @@
   border-radius: 6px;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 0.9rem;
-  text-transform: uppercase;
   font-weight: 500;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .status-upcoming {
@@ -540,18 +686,64 @@
 
   .hero-title {
     font-size: 2rem;
+    line-height: 1.2;
   }
 
   .hero-subtitle {
     font-size: 1.2rem;
   }
 
+  .hero-description {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .countdown-box {
+    padding: 1.5rem;
+  }
+
   .countdown-number {
-    font-size: 3rem;
+    font-size: 2rem;
+  }
+
+  .countdown-separator {
+    font-size: 2rem;
+  }
+
+  .countdown-label {
+    font-size: 0.75rem;
+  }
+
+  .countdown-date {
+    font-size: 1rem;
   }
 
   .train-svg {
     max-width: 250px;
+  }
+
+  .scroll-indicator {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 40px;
+  }
+
+  .scroll-text {
+    font-size: 0.75rem;
+    text-align: center;
+    color: var(--fontAccent);
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    font-weight: bold;
+  }
+
+  .scroll-arrow {
+    color: var(--fontAccent);
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+  }
+
+  .scroll-icon {
+    border-color: var(--fontAccent);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
   }
 
   .journey-container {
@@ -561,6 +753,7 @@
   .event-card {
     width: 220px;
     padding: 1rem;
+    background: color-mix(in srgb, var(--surface) 95%, transparent);
   }
 
   .event-name {
@@ -574,15 +767,30 @@
   .main-week-preview {
     grid-template-columns: 1fr 1fr;
   }
+
+  .journey-scroll-indicator {
+    left: 20px;
+  }
+
+  .scroll-text-horizontal {
+    font-size: 0.75rem;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+  }
 }
 
 @media (max-width: 480px) {
   .hero-title {
     font-size: 1.6rem;
+    padding: 0 1rem;
   }
 
   .hero-subtitle {
     font-size: 1rem;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+    padding: 0 1rem;
   }
 
   .countdown-box {
@@ -590,7 +798,36 @@
   }
 
   .countdown-number {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
+  }
+
+  .countdown-separator {
+    font-size: 1.8rem;
+  }
+
+  .countdown-label {
+    font-size: 0.65rem;
+  }
+
+  .countdown-date {
+    font-size: 0.85rem;
+  }
+
+  .scroll-indicator {
+    bottom: 30px;
+  }
+
+  .scroll-text {
+    font-size: 0.7rem;
+    max-width: 150px;
+    text-align: center;
+    line-height: 1.3;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.9);
+  }
+
+  .scroll-icon {
+    width: 25px;
+    height: 45px;
   }
 
   .event-card {
@@ -608,5 +845,19 @@
 
   .main-week-preview {
     grid-template-columns: 1fr;
+  }
+
+  .journey-scroll-indicator {
+    left: 15px;
+  }
+
+  .scroll-icon-horizontal {
+    width: 40px;
+    height: 25px;
+  }
+
+  .scroll-text-horizontal {
+    font-size: 0.7rem;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.9);
   }
 }

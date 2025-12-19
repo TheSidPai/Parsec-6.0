@@ -35,6 +35,8 @@ import AdminAuth from './components/admin/AdminAuth';
 import AdminDashboard from './components/admin/AdminDashboard';
 import AdminProtectedRoute from './components/admin/AdminProtectedRoute';
 import ComingSoon from './components/ComingSoon';
+import AuthComingSoon from './pages/AuthComingSoon';
+import AccommodationComingSoon from './pages/AccommodationComingSoon';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -47,9 +49,13 @@ function AnimatedRoutes() {
 
         {/* Public Routes */}
         <Route path="/landing" element={<Landing />} />
-        <Route path="/login" element={<Login />} />
         
-        {/* Signup Flow (nested routes) */}
+        {/* TEMPORARY: Auth Coming Soon - Remove when ready to launch */}
+        <Route path="/login" element={<AuthComingSoon />} />
+        <Route path="/signup/*" element={<AuthComingSoon />} />
+        
+        {/* ORIGINAL AUTH ROUTES - Uncomment when ready to launch:
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignupLayout />}>
           <Route path="onboarding" element={<Onboarding />} />
           <Route path="sorting" element={<SortingHat />} />
@@ -57,6 +63,7 @@ function AnimatedRoutes() {
           <Route path="manual" element={<ManualAuth />} />
           <Route path="terms" element={<Terms />} />
         </Route>
+        */}
 
         {/* Public Events, Schedule & Team */}
         <Route path="/events" element={<Events />} />
@@ -65,7 +72,7 @@ function AnimatedRoutes() {
         <Route path="/events/:id" element={<EventDetail />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/team" element={<Team />} />
-        <Route path="/accommodation" element={<ComingSoon />} />
+        <Route path="/accommodation" element={<AccommodationComingSoon />} />
 
         {/* House-Specific Pages (Protected) */}
         <Route path="/house/:houseName" element={<HousePage />} />
