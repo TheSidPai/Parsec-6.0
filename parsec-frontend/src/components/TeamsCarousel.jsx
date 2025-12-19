@@ -28,8 +28,17 @@ function TeamsCarousel() {
       >
         {members.map((member, idx) => (
           <SwiperSlide key={idx}>
-            <div className="teams-carousel-card" style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "space-around", gap: "5px" }}>
-              <div >
+            <div
+              className="teams-carousel-card"
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-around",
+                gap: "5px",
+              }}
+            >
+              <div>
                 {member.photo ? (
                   <img
                     src={member.photo}
