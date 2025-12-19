@@ -1,10 +1,38 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import teamData from "../assets/data/team.json";
+import teamData from "../assets/data/team.json"; // Ensure this path is correct
 import Particles from "../components/Particles";
 import "./Team.css";
 import ElectricBorder from "../components/ElectricBorder";
+
+// ==========================================
+// 1. SETUP IMAGE LOADER (The Fix)
+// ==========================================
+// This creates a "context" that knows about every .webp file in that folder.
+// NOTE: The path inside require.context MUST be a literal string.
+// It cannot be a variable.
+// Make sure '../assets/images/team-images' is correct relative to Team.jsx
+const teamImagesContext = require.context(
+  "../assets/images/teams-images",
+  false,
+  /\.webp$/
+);
+
+// Helper function to lookup image from the context
+const getMemberPhoto = (photoName) => {
+  if (!photoName) return "https://via.placeholder.com/150";
+
+  try {
+    // The context keys are like "./ShreyaBhat.webp"
+    // So we add "./" to your JSON filename
+    return teamImagesContext(`./${photoName}`);
+  } catch (error) {
+    // If the file isn't found in the folder, return fallback
+    console.warn(`Image not found: ${photoName}`);
+    return "https://via.placeholder.com/150?text=Not+Found";
+  }
+};
 
 function Team() {
   // Group team members by team category
@@ -58,8 +86,9 @@ function Team() {
                   >
                     <div className="team-card">
                       <div className="team-card-photo-wrapper">
+                        {/* 2. USE THE HELPER FUNCTION */}
                         <img
-                          src={member.photo}
+                          src={getMemberPhoto(member.photo)}
                           alt={member.name}
                           className="team-card-photo"
                           onError={(e) => {
@@ -82,7 +111,6 @@ function Team() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="social-link"
-                                aria-label="LinkedIn"
                               >
                                 <svg
                                   width="20"
@@ -106,7 +134,6 @@ function Team() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="social-link"
-                                aria-label="Instagram"
                               >
                                 <svg
                                   width="20"
