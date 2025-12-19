@@ -1,0 +1,273 @@
+/* ========== SCREEN SIZE ALERT ========== */
+.screen-alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9998;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.screen-alert-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  
+  /* Magical Parchment Style */
+  background: linear-gradient(
+    135deg,
+    rgba(20, 15, 40, 0.98),
+    rgba(30, 20, 50, 0.98)
+  );
+  
+  border: 2px solid rgba(255, 200, 120, 0.4);
+  border-radius: 20px;
+  
+  /* Enchanted Glow */
+  box-shadow:
+    0 0 40px rgba(255, 200, 120, 0.3),
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    inset 0 0 40px rgba(255, 200, 120, 0.1);
+  
+  padding: 2.5rem;
+  max-width: 500px;
+  width: 90%;
+  
+  text-align: center;
+  
+  animation: slideInScale 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes slideInScale {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* ========== ALERT ICON ========== */
+.screen-alert-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.laptop-icon {
+  width: 80px;
+  height: 80px;
+  color: var(--fontAccent);
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+/* ========== ALERT TEXT ========== */
+.screen-alert-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--fontAccent);
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  }
+  to {
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+  }
+}
+
+.screen-alert-message {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #f5e6c8;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.screen-alert-submessage {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.95rem;
+  color: #c9b07a;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* ========== ALERT BUTTON ========== */
+.screen-alert-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  
+  background: linear-gradient(135deg, var(--fontAccent), rgba(255, 215, 0, 0.8));
+  color: #0a0a0a;
+  
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  
+  cursor: pointer;
+  
+  box-shadow: 
+    0 8px 20px rgba(255, 215, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  
+  transition: all 0.3s ease;
+  
+  position: relative;
+  overflow: hidden;
+}
+
+.screen-alert-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.screen-alert-button:hover::before {
+  left: 100%;
+}
+
+.screen-alert-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 30px rgba(255, 215, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.screen-alert-button:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 4px 10px rgba(255, 215, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.button-icon {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.screen-alert-button:hover .button-icon {
+  transform: translateX(5px);
+}
+
+/* ========== CLOSE BUTTON ========== */
+.screen-alert-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  
+  background: rgba(255, 200, 120, 0.1);
+  border: 1px solid rgba(255, 200, 120, 0.3);
+  border-radius: 50%;
+  
+  width: 36px;
+  height: 36px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  font-size: 1.8rem;
+  color: var(--fontAccent);
+  
+  cursor: pointer;
+  
+  transition: all 0.3s ease;
+}
+
+.screen-alert-close:hover {
+  background: rgba(255, 200, 120, 0.2);
+  transform: rotate(90deg);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 600px) {
+  .screen-alert-container {
+    padding: 2rem 1.5rem;
+    max-width: 95%;
+  }
+
+  .laptop-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .screen-alert-title {
+    font-size: 1.6rem;
+  }
+
+  .screen-alert-message {
+    font-size: 1rem;
+  }
+
+  .screen-alert-submessage {
+    font-size: 0.85rem;
+  }
+
+  .screen-alert-button {
+    font-size: 1rem;
+    padding: 0.85rem 1.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .screen-alert-title {
+    font-size: 1.4rem;
+  }
+
+  .screen-alert-message {
+    font-size: 0.95rem;
+  }
+
+  .screen-alert-button {
+    font-size: 0.95rem;
+    padding: 0.75rem 1.25rem;
+  }
+}

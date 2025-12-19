@@ -98,13 +98,12 @@
 
 /* Enchanted text with subtle glow */
 .enchanted {
-  color: var(--fontAccent);
-  font-style: italic;
+  color: var(--fontMain);
+  font-style: normal;
   font-weight: 400;
   position: relative;
-  text-shadow: 0 0 20px var(--fontAccent);
-  opacity: 0.95;
-  animation: subtleGlow 3s ease-in-out infinite;
+  text-shadow: none;
+  opacity: 1;
 }
 
 @keyframes subtleGlow {

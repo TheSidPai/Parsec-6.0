@@ -4,27 +4,17 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "./GalleryCarousel.css";
 
-// Import event images
-import ABC from "../assets/images/event-images/FinalImages/ABC.webp";
-import BAB from "../assets/images/event-images/FinalImages/BAB.webp";
-import BAB2 from "../assets/images/event-images/FinalImages/BAB2.webp";
-import BAB3 from "../assets/images/event-images/FinalImages/BAB3.webp";
-import crowd from "../assets/images/event-images/FinalImages/crowd.webp";
-import Event from "../assets/images/event-images/FinalImages/Event.webp";
-import Event2 from "../assets/images/event-images/FinalImages/Event2.webp";
-import RedAlert from "../assets/images/event-images/FinalImages/RedAlert.webp";
-import StandUp from "../assets/images/event-images/FinalImages/StandUp.webp";
-
+// Use public folder images for Vercel deployment
 const eventImages = [
-  ABC,
-  BAB,
-  BAB2,
-  BAB3,
-  crowd,
-  Event,
-  Event2,
-  RedAlert,
-  StandUp
+  "/gallery/ABC.webp",
+  "/gallery/BAB.webp",
+  "/gallery/BAB2.webp",
+  "/gallery/BAB3.webp",
+  "/gallery/crowd.webp",
+  "/gallery/Event.webp",
+  "/gallery/Event2.webp",
+  "/gallery/RedAlert.webp",
+  "/gallery/StandUp.webp"
 ];
 
 function GalleryCarousel() {

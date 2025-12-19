@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Particles from '../components/Particles.jsx';
 import GalleryCarousel from '../components/GalleryCarousel';
 import AboutSection from '../components/landing/AboutSection';
+import ScreenSizeAlert from '../components/ScreenSizeAlert';
 import "./Landing.css";
 import { useTheme } from "../context/ThemeContext";
 
@@ -13,6 +14,7 @@ function Landing() {
   const { theme } = useTheme();
   return (
     <div>
+      <ScreenSizeAlert />
       <Navbar />
       <div style={{ height: "100vh", position: "relative" }}>
         <Particles
