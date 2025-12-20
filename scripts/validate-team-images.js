@@ -11,7 +11,7 @@ const teamData = JSON.parse(fs.readFileSync(TEAM_JSON_PATH, 'utf-8'));
 
 // Get all image files in teams directory
 const actualFiles = fs.readdirSync(TEAMS_DIR);
-const actualImagesSet = new Set(actualFiles.map(f => f.toLowerCase()));
+// const actualImagesSet = new Set(actualFiles.map(f => f.toLowerCase()));
 
 console.log(`📁 Found ${actualFiles.length} files in /teams directory\n`);
 

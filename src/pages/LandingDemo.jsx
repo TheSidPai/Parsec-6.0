@@ -21,7 +21,8 @@ function LandingDemo() {
   useLocomotiveScroll(true);
   
   // Track scroll progress for progress bar
-  const { scrollProgress, scrollDirection } = useScrollProgress();
+  // const { scrollProgress, scrollDirection } = useScrollProgress();
+  const { scrollProgress } = useScrollProgress();
   
   // Parallax for hero particles
   const { ref: particlesRef, offset: particlesOffset } = useParallax(0.5);

@@ -6,13 +6,13 @@ import { ThemeProvider } from './context/ThemeContext';
 
 // Import page components (we'll create these next)
 import Landing from './pages/Landing';
-import Login from './pages/Login';
-import SignupLayout from './pages/signup/SignupLayout';
-import Onboarding from './pages/signup/Onboarding';
-import Terms from './pages/signup/Terms';
-import Auth from './pages/signup/Auth';
-import ManualAuth from './pages/signup/ManualAuth';
-import SortingHat from './pages/signup/SortingHat';
+// import Login from './pages/Login';
+// import SignupLayout from './pages/signup/SignupLayout';
+// import Onboarding from './pages/signup/Onboarding';
+// import Terms from './pages/signup/Terms';
+// import Auth from './pages/signup/Auth';
+// import ManualAuth from './pages/signup/ManualAuth';
+// import SortingHat from './pages/signup/SortingHat';
 import Events from './pages/Events';
 import Harshtal from './pages/Harshtal';
 import Tesseract from './pages/Tesseract';
@@ -34,7 +34,7 @@ import HousePage from './pages/HousePage';
 import AdminAuth from './components/admin/AdminAuth';
 import AdminDashboard from './components/admin/AdminDashboard';
 import AdminProtectedRoute from './components/admin/AdminProtectedRoute';
-import ComingSoon from './components/ComingSoon';
+// import ComingSoon from './components/ComingSoon';
 import AuthComingSoon from './pages/AuthComingSoon';
 import AccommodationComingSoon from './pages/AccommodationComingSoon';
 

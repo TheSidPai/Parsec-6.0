@@ -18,10 +18,10 @@ export const useParallax = (speed = 0.5, direction = 'vertical') => {
       const rect = element.getBoundingClientRect();
       const scrolled = window.pageYOffset;
       const elementTop = rect.top + scrolled;
-      const windowHeight = window.innerHeight;
+      // const windowHeight = window.innerHeight;
       
-      // Calculate parallax offset based on scroll position
-      const scrollProgress = (scrolled + windowHeight - elementTop) / (windowHeight + rect.height);
+      // // Calculate parallax offset based on scroll position
+      // const scrollProgress = (scrolled + windowHeight - elementTop) / (windowHeight + rect.height);
       
       if (direction === 'vertical') {
         const parallaxOffset = (scrolled - elementTop) * (1 - speed);
