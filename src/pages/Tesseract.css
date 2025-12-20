@@ -1,0 +1,332 @@
+/* ========== TESSERACT PAGE ========== */
+.tesseract-page {
+  background: var(--background);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ========== TESSERACT CONTAINER ========== */
+.tesseract-container {
+  padding: 6rem 2rem 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== HEADER SECTION ========== */
+.tesseract-header-section {
+  text-align: center;
+  margin-bottom: 4rem;
+  animation: fadeSlideDown 1s ease-out;
+}
+
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tesseract-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tesseract-icon {
+  font-size: 5rem;
+  filter: drop-shadow(0 0 20px var(--glow));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(180deg);
+  }
+}
+
+.tesseract-title-main {
+  font-family: 'Cinzel', serif;
+  font-size: 4rem;
+  font-weight: 900;
+  color: var(--fontAccent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 30px var(--glow);
+}
+
+.tesseract-title-sub {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--fontSub);
+  font-style: italic;
+  letter-spacing: 0.1em;
+}
+
+.tesseract-description {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--fontSub);
+  font-weight: 400;
+  font-style: italic;
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0.9;
+  line-height: 1.8;
+}
+
+/* ========== CONTENT SECTIONS ========== */
+.tesseract-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  color: var(--fontAccent);
+  text-align: center;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 15px var(--glow);
+  letter-spacing: 0.1em;
+}
+
+.section-text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.1rem;
+  color: var(--fontMain);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ========== ABOUT SECTION ========== */
+.tesseract-about {
+  padding: 2rem;
+  background: color-mix(in srgb, var(--surface) 30%, transparent);
+  border-radius: 20px;
+  border: 1px solid var(--fontAccent);
+  box-shadow: 0 0 30px var(--glow);
+}
+
+/* ========== DETAILS GRID ========== */
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.detail-card {
+  background: color-mix(in srgb, var(--surface) 40%, transparent);
+  border: 2px solid var(--fontAccent);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detail-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 40px var(--glow);
+}
+
+.detail-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.detail-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  color: var(--linkHover);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.detail-text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.1rem;
+  color: var(--fontSub);
+}
+
+/* ========== REGISTRATION SECTION ========== */
+.tesseract-registration {
+  background: color-mix(in srgb, var(--surface) 30%, transparent);
+  border-radius: 20px;
+  border: 2px solid var(--fontAccent);
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 0 40px var(--glow);
+}
+
+.registration-text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.2rem;
+  color: var(--fontMain);
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.registration-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.form-container {
+  margin-top: 2rem;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid var(--fontAccent);
+  box-shadow: 0 0 20px var(--glow);
+  background: #ffffff;
+}
+
+.form-container iframe {
+  background: #ffffff;
+}
+
+/* ========== HIGHLIGHTS GRID ========== */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.highlight-card {
+  background: color-mix(in srgb, var(--surface) 30%, transparent);
+  border: 1px solid var(--fontAccent);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 10px 40px var(--glow);
+}
+
+.highlight-icon {
+  font-size: 3.5rem;
+  display: block;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px var(--glow));
+}
+
+.highlight-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  color: var(--fontAccent);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.highlight-text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--fontSub);
+  line-height: 1.6;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .tesseract-container {
+    padding: 5rem 1rem 3rem;
+  }
+
+  .tesseract-title-main {
+    font-size: 2.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  .tesseract-title-sub {
+    font-size: 1.2rem;
+  }
+
+  .tesseract-description {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .details-grid,
+  .highlights-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .registration-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .registration-buttons button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .tesseract-registration {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tesseract-icon {
+    font-size: 3.5rem;
+  }
+
+  .tesseract-title-main {
+    font-size: 2rem;
+  }
+
+  .tesseract-title-sub {
+    font-size: 1rem;
+  }
+
+  .tesseract-description {
+    font-size: 0.9rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .detail-icon,
+  .highlight-icon {
+    font-size: 2.5rem;
+  }
+
+  .detail-card,
+  .highlight-card {
+    padding: 1.5rem;
+  }
+
+  .form-container iframe {
+    height: 600px;
+  }
+}

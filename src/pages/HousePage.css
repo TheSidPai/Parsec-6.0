@@ -1,0 +1,269 @@
+/* ========== HOUSE PAGE STYLING ========== */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+.house-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--house-primary) 0%, #0a0a0f 100%);
+  padding: 40px 20px;
+  color: white;
+}
+
+.house-page-loading,
+.house-page-error {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+  color: white;
+  padding: 40px;
+  text-align: center;
+}
+
+.loading-spinner {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  color: #FFD700;
+}
+
+.house-page-error h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ff6b6b;
+}
+
+.house-page-error p {
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 30px;
+}
+
+.house-page-error button {
+  padding: 14px 30px;
+  background: linear-gradient(135deg, #FFD700, #B8860B);
+  border: none;
+  border-radius: 8px;
+  color: #1a1a1a;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.house-page-error button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+}
+
+/* ========== HOUSE HEADER ========== */
+.house-header {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 40px 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  border: 2px solid var(--house-secondary);
+  backdrop-filter: blur(10px);
+}
+
+.house-emoji {
+  font-size: 6rem;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 10px 30px var(--house-secondary));
+}
+
+.house-title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--house-secondary);
+  margin-bottom: 15px;
+  letter-spacing: 0.05em;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  /* Enhanced text visibility with multiple techniques */
+  text-shadow: 
+    0 0 20px var(--house-secondary),
+    0 0 40px var(--house-secondary),
+    0 0 60px var(--house-secondary),
+    2px 2px 4px rgba(0, 0, 0, 0.8),
+    -1px -1px 2px rgba(0, 0, 0, 0.8);
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.5);
+  paint-order: stroke fill;
+}
+
+/* Slytherin specific - make text more visible with lighter color and stronger effects */
+.house-page.slytherin .house-title {
+  color: #5ECC7B; /* Brighter green */
+  text-shadow: 
+    0 0 30px #5ECC7B,
+    0 0 50px #5ECC7B,
+    0 0 70px #2D8B47,
+    3px 3px 6px rgba(0, 0, 0, 0.9),
+    -2px -2px 4px rgba(0, 0, 0, 0.9),
+    0 0 100px rgba(94, 204, 123, 0.5);
+  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.7);
+}
+
+/* Ravenclaw - ensure blue text is visible */
+.house-page.ravenclaw .house-title {
+  color: #6B9BD1; /* Brighter blue */
+  text-shadow: 
+    0 0 30px #6B9BD1,
+    0 0 50px #6B9BD1,
+    0 0 70px #4A7BA7,
+    3px 3px 6px rgba(0, 0, 0, 0.9),
+    -2px -2px 4px rgba(0, 0, 0, 0.9);
+  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.7);
+}
+
+/* Hufflepuff - yellow needs dark background contrast */
+.house-page.hufflepuff .house-title {
+  color: #FFE44D; /* Slightly toned yellow */
+  text-shadow: 
+    0 0 30px #FFE44D,
+    0 0 50px #FFE44D,
+    0 0 70px #D4B91F,
+    3px 3px 8px rgba(0, 0, 0, 1),
+    -2px -2px 4px rgba(0, 0, 0, 1);
+  -webkit-text-stroke: 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Gryffindor - red and gold */
+.house-page.gryffindor .house-title {
+  color: #E8C547; /* Gold */
+  text-shadow: 
+    0 0 30px #E8C547,
+    0 0 50px #E8C547,
+    0 0 70px #D3A625,
+    3px 3px 6px rgba(0, 0, 0, 0.9),
+    -2px -2px 4px rgba(0, 0, 0, 0.9);
+  -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.7);
+}
+
+.house-traits {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  color: #E8D4A0;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.house-founder {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ========== HOUSE CONTENT ========== */
+.house-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ========== HOUSE NAVIGATION ========== */
+.house-nav {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 15px 25px;
+  border-radius: 50px;
+  border: 1px solid var(--house-secondary);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+.house-nav button {
+  padding: 10px 20px;
+  background: transparent;
+  border: 1px solid var(--house-secondary);
+  border-radius: 20px;
+  color: var(--house-secondary);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.house-nav button:hover {
+  background: var(--house-secondary);
+  color: var(--house-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px var(--house-secondary);
+}
+
+/* ========== HOUSE-SPECIFIC STYLING ========== */
+.house-page.gryffindor {
+  --house-primary: #740001;
+  --house-secondary: #E8C547;
+}
+
+.house-page.slytherin {
+  --house-primary: #1A472A;
+  --house-secondary: #5ECC7B;
+}
+
+.house-page.ravenclaw {
+  --house-primary: #0E1A40;
+  --house-secondary: #6B9BD1;
+}
+
+.house-page.hufflepuff {
+  --house-primary: #ECB939;
+  --house-secondary: #FFE44D;
+}
+
+/* ========== RESPONSIVE ========== */
+@media screen and (max-width: 768px) {
+  .house-title {
+    font-size: 2rem;
+  }
+
+  .house-emoji {
+    font-size: 4rem;
+  }
+
+  .house-nav {
+    flex-wrap: wrap;
+    bottom: 20px;
+    padding: 12px 20px;
+    gap: 10px;
+  }
+
+  .house-nav button {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .house-page {
+    padding: 20px 15px;
+  }
+
+  .house-header {
+    padding: 30px 15px;
+    margin-bottom: 40px;
+  }
+
+  .house-title {
+    font-size: 1.8rem;
+  }
+
+  .house-traits {
+    font-size: 1rem;
+  }
+
+  .house-nav {
+    width: calc(100% - 40px);
+    justify-content: center;
+  }
+}

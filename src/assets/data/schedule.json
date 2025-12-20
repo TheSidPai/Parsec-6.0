@@ -1,0 +1,141 @@
+{
+  "preliminaryEvents": [
+    {
+      "id": 1,
+      "serialNumber": 1,
+      "name": "DevHack (idea pitching)",
+      "startDate": "2025-12-22",
+      "submissionDeadline": "2026-01-04",
+      "position": "above",
+      "category": "hackathon",
+      "status": "upcoming"
+    },
+    {
+      "id": 2,
+      "serialNumber": 2,
+      "name": "Build A Bot",
+      "startDate": "2025-12-22",
+      "submissionDeadline": "2026-01-04",
+      "position": "below",
+      "category": "robotics",
+      "status": "upcoming"
+    },
+    {
+      "id": 3,
+      "serialNumber": 3,
+      "name": "Synapse",
+      "startDate": "2026-01-09",
+      "submissionDeadline": "2026-01-18",
+      "position": "above",
+      "category": "technical",
+      "status": "upcoming"
+    },
+    {
+      "id": 4,
+      "serialNumber": 4,
+      "name": "VVV",
+      "startDate": "2026-01-16",
+      "submissionDeadline": "2026-01-18",
+      "position": "below",
+      "category": "competition",
+      "status": "upcoming"
+    },
+    {
+      "id": 5,
+      "serialNumber": 5,
+      "name": "Aurora",
+      "startDate": "2025-12-22",
+      "submissionDeadline": "2026-01-04",
+      "position": "above",
+      "category": "cultural",
+      "status": "upcoming"
+    },
+    {
+      "id": 6,
+      "serialNumber": 6,
+      "name": "Trumble",
+      "startDate": "2026-01-19",
+      "submissionDeadline": "2026-01-23",
+      "position": "below",
+      "category": "debate",
+      "status": "upcoming"
+    },
+    {
+      "id": 7,
+      "serialNumber": 7,
+      "name": "Singularity",
+      "startDate": "2025-12-22",
+      "submissionDeadline": "2026-01-04",
+      "position": "above",
+      "category": "ai",
+      "status": "upcoming"
+    },
+    {
+      "id": 8,
+      "serialNumber": 8,
+      "name": "DrIP N Click",
+      "startDate": "2026-01-10",
+      "submissionDeadline": "2026-01-18",
+      "position": "below",
+      "category": "photography",
+      "status": "upcoming"
+    },
+    {
+      "id": 9,
+      "serialNumber": 9,
+      "name": "Bithunt",
+      "startDate": "2026-01-03",
+      "submissionDeadline": "2026-01-03",
+      "position": "above",
+      "category": "treasure-hunt",
+      "status": "upcoming"
+    },
+    {
+      "id": 10,
+      "serialNumber": 10,
+      "name": "Protocraft",
+      "startDate": "2025-12-22",
+      "submissionDeadline": "2026-01-04",
+      "position": "below",
+      "category": "design",
+      "status": "upcoming"
+    }
+  ],
+  "mainEvent": {
+    "name": "PARSEC 6.0",
+    "startDate": "2026-01-23",
+    "endDate": "2026-01-27",
+    "days": [
+      {
+        "day": 1,
+        "date": "2026-01-23",
+        "dayName": "Thursday",
+        "events": []
+      },
+      {
+        "day": 2,
+        "date": "2026-01-24",
+        "dayName": "Friday",
+        "events": []
+      },
+      {
+        "day": 3,
+        "date": "2026-01-25",
+        "dayName": "Saturday",
+        "events": []
+      },
+      {
+        "day": 4,
+        "date": "2026-01-26",
+        "dayName": "Sunday",
+        "events": []
+      },
+      {
+        "day": 5,
+        "date": "2026-01-27",
+        "dayName": "Monday",
+        "events": []
+      }
+    ]
+  }
+}

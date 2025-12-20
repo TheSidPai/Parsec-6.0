@@ -1,0 +1,351 @@
+.event-detail-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  /* Offset for fixed navbar (desktop ~80px, mobile ~70px) */
+  margin-top: 100px;
+  padding: 3rem 2.5rem;
+  color: var(--fontMain);
+  font-family: 'Josefin Sans', sans-serif;
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px var(--shadow), 0 0 20px var(--glow);
+  position: relative;
+}
+
+/* Subtle magical corner accents */
+.event-detail-container::before,
+.event-detail-container::after {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--fontAccent);
+  filter: drop-shadow(0 0 6px var(--glow));
+}
+
+.event-detail-container::before {
+  top: 12px;
+  left: 12px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.event-detail-container::after {
+  bottom: 12px;
+  right: 12px;
+  border-left: none;
+  border-top: none;
+}
+
+.event-detail-meta {
+  color: var(--fontSub);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 500;
+}
+
+.event-detail-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 0.75rem;
+  color: var(--fontAccent);
+  line-height: 1.2;
+  text-shadow: 0 0 10px var(--glow), 0 0 20px var(--shadow);
+}
+
+.event-detail-info {
+  color: var(--fontAccent);
+  margin-top: 0.5rem;
+  margin-bottom: 2.5rem;
+  font-size: 1.15rem;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700;
+  text-shadow: 0 0 6px var(--glow);
+}
+
+.event-detail-section {
+  margin-top: 3rem;
+  padding: 2rem 1.5rem;
+  background: color-mix(in srgb, var(--surface) 65%, transparent);
+  border-left: 3px solid var(--fontAccent);
+  border-radius: 8px;
+  box-shadow: inset 0 0 20px var(--shadow);
+}
+
+.event-detail-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--fontAccent);
+  margin-bottom: 1.25rem;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0.75rem;
+  text-shadow: 0 0 8px var(--glow);
+}
+
+.event-detail-section h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--linkHover);
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.event-detail-section p {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--fontSub);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.event-detail-section ul {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--fontSub);
+  line-height: 1.8;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.event-detail-section li {
+  margin-bottom: 0.65rem;
+}
+
+.event-detail-section strong {
+  font-weight: 600;
+  color: var(--linkHover);
+}
+
+/* Timeline Table */
+.event-detail-table-wrapper {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.event-detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.event-detail-table thead th {
+  text-align: left;
+  background: color-mix(in srgb, var(--primary) 25%, transparent);
+  border-bottom: 2px solid var(--border);
+  padding: 0.85rem;
+  color: var(--linkHover);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.event-detail-table tbody td {
+  padding: 0.85rem;
+  border-bottom: 1px solid #374151;
+  color: var(--fontSub);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.event-detail-table tbody tr:hover {
+  background: color-mix(in srgb, var(--primary) 15%, transparent);
+}
+
+/* ========== REGISTRATION BUTTON ========== */
+.event-detail-registration {
+  margin: 2.5rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.event-registration-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, #8B5CF6, #6366F1, #3B82F6);
+  background-size: 200% 200%;
+  border: 2px solid rgba(139, 92, 246, 0.5);
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 
+    0 8px 24px rgba(139, 92, 246, 0.3),
+    0 0 20px rgba(139, 92, 246, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.event-registration-button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+}
+
+.event-registration-button:hover {
+  background-position: 100% 0;
+  border-color: rgba(139, 92, 246, 0.8);
+  box-shadow: 
+    0 12px 32px rgba(139, 92, 246, 0.5),
+    0 0 40px rgba(139, 92, 246, 0.4),
+    inset 0 0 20px rgba(139, 92, 246, 0.2);
+  transform: translateY(-3px);
+}
+
+.event-registration-button:hover::before {
+  left: 150%;
+}
+
+.event-registration-button:active {
+  transform: translateY(-1px);
+  box-shadow: 
+    0 6px 20px rgba(139, 92, 246, 0.4),
+    0 0 30px rgba(139, 92, 246, 0.3);
+}
+
+/* Back Link */
+.event-detail-back {
+  display: inline-block;
+  margin-top: 3.5rem;
+  color: var(--link);
+  text-decoration: none;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.event-detail-back:hover {
+  color: var(--linkHover);
+}
+
+/* Not Found State */
+.event-not-found {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3rem 2.5rem;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.event-not-found h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--fontAccent);
+  margin-bottom: 1rem;
+}
+
+.event-not-found p {
+  font-family: 'Josefin Sans', sans-serif;
+  color: var(--fontSub);
+  font-size: 1.15rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+.event-not-found a {
+  font-family: 'Josefin Sans', sans-serif;
+  color: var(--link);
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.event-not-found a:hover {
+  color: var(--linkHover);
+}
+
+/* Responsive adjustments for fixed navbar spacing */
+@media (max-width: 768px) {
+  .event-detail-container {
+    margin-top: 90px;
+    padding: 2rem 1.5rem;
+  }
+  
+  .event-detail-title {
+    font-size: 2.25rem;
+  }
+  
+  .event-detail-section {
+    padding: 1.5rem 1rem;
+    margin-top: 2.5rem;
+  }
+  
+  .event-detail-section h2 {
+    font-size: 1.65rem;
+  }
+  
+  .event-detail-section h3 {
+    font-size: 1.3rem;
+  }
+  
+  .event-detail-section p,
+  .event-detail-section ul {
+    font-size: 1rem;
+  }
+  
+  .event-not-found {
+    margin-top: 90px;
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-detail-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .event-detail-title {
+    font-size: 1.85rem;
+  }
+  
+  .event-detail-section {
+    padding: 1.25rem 0.875rem;
+  }
+  
+  .event-detail-section h2 {
+    font-size: 1.45rem;
+  }
+  
+  .event-detail-section h3 {
+    font-size: 1.2rem;
+  }
+  
+  .event-detail-section p,
+  .event-detail-section ul {
+    font-size: 0.95rem;
+  }
+}
