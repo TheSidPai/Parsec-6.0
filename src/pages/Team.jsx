@@ -17,7 +17,14 @@ function Team() {
   }, {});
 
   // Define team order
-  const teamOrder = ["Core Team", "Mentors", "Web Team", "Events Team"];
+  const teamOrder = [
+    "Core Team - PARSEC",
+    "Core Team - Harshtal",
+    "Mentors",
+    "Events Team",
+    "Web Team",
+    "Marketing Team",
+  ];
 
   return (
     <div>

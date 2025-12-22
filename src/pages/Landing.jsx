@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 import GhostCursor from "../components/GhostCursor";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Particles from '../components/Particles.jsx';
-import GalleryCarousel from '../components/GalleryCarousel';
-import AboutSection from '../components/landing/AboutSection';
-import ScreenSizeAlert from '../components/ScreenSizeAlert';
+import Particles from "../components/Particles.jsx";
+import GalleryCarousel from "../components/GalleryCarousel";
+import AboutSection from "../components/landing/AboutSection";
+import ScreenSizeAlert from "../components/ScreenSizeAlert";
 import "./Landing.css";
 import { useTheme } from "../context/ThemeContext";
 
@@ -18,7 +18,10 @@ function Landing() {
       <Navbar />
       <div style={{ height: "100vh", position: "relative" }}>
         <Particles
-          particleColors={[theme.fontMain || "#ffffff", theme.fontMain || "#ffffff"]}
+          particleColors={[
+            theme.fontMain || "#ffffff",
+            theme.fontMain || "#ffffff",
+          ]}
           particleCount={600}
           particleSpread={15}
           speed={0.1}
@@ -29,8 +32,8 @@ function Landing() {
         />
         <GhostCursor
           // Visuals
-          color={(theme.fontMain || "#F5F1E6" || "#fffeecff")}
-          brightness={1}
+          color={theme.fontMain || "#F5F1E6" || "#fffeecff"}
+          brightness={0.45}
           edgeIntensity={0.2}
           // Trail and motion
           trailLength={90}
@@ -72,7 +75,9 @@ function Landing() {
               6.0
             </motion.span>
           </h1>
-          <p className="landing-motto">Techno-Cultural Fest</p>
+          <p className="landing-motto">
+            Techno-Cultural Festival | IIT Dharwad
+          </p>
         </div>
       </div>
       <AboutSection />

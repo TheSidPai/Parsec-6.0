@@ -5,44 +5,40 @@
     "category": "Hackathon",
     "mode": "mixed",
     "venue": "IIT Dharwad (Quiz + Presentations)",
-    "team": { "min": 2, "max": 6, "individualAllowed": false },
+    "team": { "min": 1, "max": 6, "individualAllowed": true },
     "registrationFee": "Free",
     "date": "Dec 22, 2025 – Jan 26, 2026",
     "image": "",
     "registrationLink": "https://unstop.com/hackathons/aurora-parsec-60-indian-institute-of-technology-iit-dharwad-1609211",
-    "description": "Aurora 2.0 is a hackathon that brings together satellite datasets, AI-powered analysis, and practical problem-solving to address pressing challenges in space tech and geospatial analytics.",
+    "description": "Partnered with SAC-ISRO, Aurora 2.0 focuses on mining activity monitoring using multispectral satellite imagery and Geospatial AI. The event aims to spark creativity by bridging space technology, remote sensing, and AI-driven analytics.",
     "rules": {
       "important": [
-        "Every team has to register online on the official Techfest website for the competition.",
+        "Every team has to register online on the official Techfest website.",
         "A Team ID will be allocated on registration for future references.",
         "The decision of the organizers or judges is final and binding."
       ],
       "others": [
-        "Team size: 2–6.",
-        "3 Stages: Stage 1 (50%) Remote Sensing Hackathon (online); Stage 2 (15%) Quiz on space and data science (offline); Stage 3 (35%) Presentation (offline).",
-        "Mode: Online hackathon; Offline Quiz + Presentation.",
-        "Teams must maintain a public GitHub repository.",
-        "At least one team member must join the WhatsApp group (link).",
-        "Submit the public repository link as per instructions (link to be made)."
+        "Team size: 1–6 members.",
+        "3 Stages: Round 1 (20%) Midterm Report; Round 2 (40%) Endterm Report + Code/UI; Round 3 (40%) Offline Presentation.",
+        "Team members must join the Discord server for updates.",
+        "Teams must maintain a public GitHub repository."
       ]
     },
     "rounds": [
-      { "name": "Remote Sensing Hackathon", "mode": "online", "weight": 50 },
-      { "name": "Quiz on space and data science", "mode": "offline", "weight": 15 },
-      { "name": "Presentation", "mode": "offline", "weight": 35 }
+      { "name": "Midterm Submission (Report)", "mode": "online", "weight": 20 },
+      { "name": "Endterm Submission (Code + UI)", "mode": "online", "weight": 40 },
+      { "name": "Final Presentation", "mode": "offline", "weight": 40 }
     ],
     "timeline": [
-      { "title": "Hackathon Launch", "date": "2025-12-22", "description": "Release of problem statement and dataset. Teams begin working." },
-      { "title": "Hackathon Submission Deadline", "date": "2026-01-04", "time": "EOD", "description": "Teams submit complete solutions for evaluation." },
-      { "title": "Shortlist Announcement", "date": "2026-01-07", "time": "EOD", "description": "Top 8 teams announced for onsite stages." },
-      { "title": "Technical Quiz (Stage 2)", "date": "2026-01-26", "time": "10:00–11:00 AM", "description": "One-hour quiz on astronomy, remote sensing, and geospatial data science." },
-      { "title": "Final Presentations (Stage 3)", "date": "2026-01-26", "time": "3:00–6:00 PM", "description": "Onsite presentations before the jury at CLT, IIT Dharwad." }
+      { "title": "Hackathon Launch", "date": "2025-12-22", "description": "Release of problem statement and dataset." },
+      { "title": "Midterm Submission", "date": "2026-01-04", "description": "Report of pipeline/strategies with reasoning." },
+      { "title": "Endterm Submission", "date": "2026-01-18", "description": "Final report, code base, and UI." },
+      { "title": "Final Presentations (Stage 3)", "date": "2026-01-26", "description": "Onsite presentations before panel of experts from SAC-ISRO and IIT Professors." }
     ],
     "deliverables": [
-      "Public GitHub repository with code in a Jupyter Notebook (well-commented).",
-      "README with instructions to run the code.",
-      "Report detailing thought process, experiments, research, and future scope.",
-      "Concise presentation (if shortlisted)."
+      "Midterm: Concise report on ideas and approach.",
+      "Endterm: Github repo, User Interface (UI), Readme, and Report on experiments/research.",
+      "Presentation: Concise presentation with UI demo."
     ],
     "organizers": [
       { "name": "Aniruddh Pandav | Balamurali V B", "role": "Event Lead", "email": "outreach.parsec@iitdh.ac.in" }
@@ -57,7 +53,9 @@
       "inKind": ["Coffee Mugs for Quiz Winners", "Participation token"]
     },
     "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
-    "links": {},
+    "links": {
+      "discord": "link_to_be_updated"
+    },
     "comments": ["For offline events - accommodation shall be limited/exclusive; keep an eye on website."]
   },
   {
@@ -71,25 +69,22 @@
     "date": "Dec 22, 2025 – Jan 4, 2026",
     "image": "/events_main_img/LOGO/protocraft_logo.jpeg",
     "registrationLink": "https://unstop.com/o/CBjMbSn?lb=qkhVYy9&utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
-    "description": "Theme-based mechanical design challenge—sketch, model, simulate, and present your engineering solution.",
+    "description": "Theme-based mechanical design challenge. Think like an engineer and build like a creator: sketch, model, and refine your ideas using solid mechanical principles.",
     "rules": {
       "important": [
-        "Every team has to register online on the official Techfest website for the competition.",
-        "A Team ID will be allocated on registration for future references.",
-        "The decision of the organizers or judges is final and binding."
+        "Every team has to register online on the official Techfest website.",
+        "Team Leads must join the Discord groups compulsorily.",
+        "Only top 12 teams shortlisted based on midterm submission."
       ],
       "others": [
-        "Individual or teams up to 3.",
-        "All design work must be original and created during the event.",
-        "Any CAD and simulation tools allowed.",
-        "Submission: Final CAD model (STEP/SLDPRT/SLDASM/STL) + 2-page design explanation (reasoning, performance advantage).",
-        "Shortlisted participants present (7 min + 3 min Q&A).",
-        "Disqualification: plagiarism, AI-generated CAD, misrepresentation, no-show in presentation.",
-        "Only top 12 teams shortlisted from online round; judged on Functionality, Creativity, Theme relevance."
+        "Originality: All design work must be created during the event.",
+        "Software: Any CAD software (SolidWorks, Fusion 360, CATIA, etc.) allowed.",
+        "Disqualification: Plagiarism, AI-generated CAD, misrepresentation, or no-show in presentation.",
+        "Judging: Functionality, Creativity, Relevance to Theme."
       ]
     },
     "rounds": [
-      { "name": "Online Round", "mode": "online", "duration": "10 days" },
+      { "name": "Midterm Submission", "mode": "online", "description": "Basis for shortlisting top 12 teams." },
       { "name": "Offline Presentation", "mode": "offline", "duration": "3 hours" }
     ],
     "timeline": [
@@ -108,8 +103,12 @@
       ],
       "inKind": ["1st: Hoodie", "2nd: Oversized Tee", "3rd: T-Shirts"]
     },
+    "links": {
+      "problem_statement": "https://drive.google.com/file/d/1u4-aUYzRP1QPQVhFSVO5w9DBvXQe7KvQ/view",
+      "discord_main": "https://discord.com/invite/ccR2xWHxE",
+      "discord_qna": "https://discord.com/invite/C43hymAuP"
+    },
     "registrationForm": { "required": ["Team Name", "Members Name", "Phone Number", "Mail-Id"], "optional": ["Merch Size"] },
-    "links": {},
     "comments": ["For offline events - accommodation shall be limited/exclusive; keep an eye on website."]
   },
   {
@@ -120,28 +119,27 @@
     "venue": "IIT Dharwad, Permanent Campus",
     "team": { "min": 3, "max": 4, "individualAllowed": false },
     "registrationFee": "Free",
-    "date": "Dec 22, 2025 – Jan 4, 2026",
+    "date": "Dec 22, 2025 – Jan 26, 2026",
     "image": "/events_main_img/LOGO/devhack_logo.jpeg",
     "registrationLink": "https://unstop.com/o/WC9SqsL?lb=qkhVYy9&utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
-    "description": "PARSEC's 30-hour flagship hackathon to prototype impactful solutions, mentored and judged by industry experts.",
+    "description": "PARSEC's 30-hour flagship hackathon. Participants embark on a journey of brainstorming, coding, and problem-solving to turn bold ideas into working prototypes under the mentorship of industry experts.",
     "rules": {
       "important": [
         "Every team must register on the official PARSEC website.",
         "A Team ID will be allocated upon registration.",
-        "Organizers’/judges’ decisions are final.",
-        "Top 33–34 teams shortlisted from online round."
+        "Top 30 teams shortlisted from online round based on PS understanding and approach."
       ],
       "others": [
         "Eligibility: Any UG/PG students across India.",
+        "Team Size: 3-4 members.",
         "Duration: 30 hours + 3 hours presentation.",
-        "Mode: Offline.",
-        "Carry college ID cards; open-source tools allowed; no plagiarism or misconduct."
+        "Carry college ID cards; open-source tools allowed; no plagiarism."
       ]
     },
     "format": [
-      "Preliminary Phase (Online Submission): report on approach/methodology.",
-      "Hackathon Phase (Offline – 30 hours): build working prototype; deliverables include GitHub repo and demo video.",
-      "Final Presentation Round (Offline – 3 hours): evaluation on innovation, creativity, applicability."
+      "Preliminary Phase (Online): Shortlisting based on approach to PS.",
+      "Hackathon Phase (Offline – 30 hours): Build working prototype.",
+      "Final Presentation Round (Offline – 3 hours): Evaluation."
     ],
     "timeline": [
       { "title": "Preliminary Phase Start", "date": "2025-12-22" },
@@ -165,8 +163,11 @@
       ],
       "inKind": ["Goodies for all shortlisted teams", "Certificates for all participants"]
     },
+    "links": {
+      "problem_statement": "https://drive.google.com/file/d/1-0rl-y9hC4I4jkAHE5AUzV5Wj9xEoZ9y/view",
+      "discord": "Link_to_be_updated"
+    },
     "registrationForm": { "required": ["Team Name", "Members Name", "Phone Number", "Mail-Id", "Institute Name", "Batch"], "optional": ["Merch Size"] },
-    "links": {},
     "comments": ["Accommodation limited/exclusive; see website."]
   },
   {
@@ -180,21 +181,19 @@
     "date": "Dec 22, 2025 – Jan 18, 2026",
     "image": "",
     "registrationLink": "https://unstop.com/o/ofhlBtk?lb=qkhVYy9&utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
-    "description": "CTF covering cryptography, forensics, reversing, web, OSINT and more. Jeopardy style with dynamic scoring.",
+    "description": "PARSEC's premier Capture The Flag (CTF) competition. Covers cryptography, forensics, reverse engineering, web exploitation, and OSINT. Jeopardy style with dynamic scoring.",
     "rules": {
       "important": [
         "Register on the official Techfest website.",
-        "Team ID issued upon registration.",
+        "Use same email as Unstop for CTF account.",
         "Organizers’/judges’ decisions are final."
       ],
       "others": [
-        "Eligibility: Any UG/PG worldwide; Prize eligibility: UG/PG in India.",
-        "Team size: up to 3.",
-        "Duration: 48 hours; Style: Jeopardy; Mode: Online.",
-        "Use same email as Unstop for CTF account.",
-        "No attacking infrastructure; report vulnerabilities responsibly.",
-        "No flag sharing; dynamic scoring enabled; flags format: parsec{flag_text}.",
-        "AI tools allowed responsibly and ethically."
+        "Eligibility: Any UG/PG worldwide; Prize eligibility: India only.",
+        "Dynamic scoring: As more teams solve a challenge, its point value decreases.",
+        "Flag format: parsec{flag_text}.",
+        "No attacking infrastructure or brute-forcing flags.",
+        "No flag sharing."
       ]
     },
     "timeline": [
@@ -227,17 +226,16 @@
     "date": "Jan 18, 2026 – Jan 27, 2026",
     "image": "",
     "registrationLink": "https://unstop.com/o/04aO7qg?lb=qkhVYy9&utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
-    "description": "Individual competitive programming contest (single round, 2 hours).",
+    "description": "High-stakes individual competitive programming contest. 6-8 problems to be solved in 2 hours under pressure.",
     "rules": {
       "important": [
         "Register on the official Techfest website.",
-        "Participant ID issued upon registration.",
+        "Individual participation only.",
         "Organizers’/judges’ decisions are final."
       ],
       "others": [
-        "Strictly individual; no team participation.",
         "No copying or AI-generated code; plagiarism leads to disqualification.",
-        "Duration 2 hours; rule changes at organizers’ discretion.",
+        "Duration 2 hours; no extra time.",
         "On-site only; remote not permitted."
       ]
     },
@@ -274,31 +272,26 @@
     "venue": "IIT Dharwad (Round 2)",
     "team": { "min": 3, "max": 4, "individualAllowed": false },
     "registrationFee": "Free",
-    "date": "Dec 22, 2025 – Jan 2, 2026",
+    "date": "Jan 3, 2026 – Jan 27, 2026",
     "image": "/events_main_img/LOGO/bithunt_logo.jpeg",
     "registrationLink": "https://unstop.com/o/ortjivD?utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
-    "description": "Two-round technical treasure hunt blending coding, aptitude, and on-campus clue solving.",
+    "description": "A two-round event combining coding, problem-solving, and adventure. Round 2 features a War Room mechanic where a coder unlocks clues for outdoor teammates to find bases on campus.",
     "rules": {
       "important": [
         "Register on Unstop.",
-        "Team ID allocated upon registration.",
-        "Teams must be 3–4 members from the same college.",
-        "No internet during online round (Unstop Smart Hire app).",
-        "Organizers’ decisions are final; misconduct or plagiarism leads to disqualification."
+        "Team size: 3–4 members from the same college.",
+        "No internet during Round 1 (Unstop Smart Hire app).",
+        "Teams with least score after each zone in Round 2 are disqualified."
       ],
       "others": [
         "Round 1: 10 aptitude + 10 DSA questions; 25 minutes; online.",
-        "Round 2: On-campus Bit Chase with zones, bases, QR codes, and live War Room coding.",
-        "Hidden gems for bonus or steal; scoreboard live in War Room.",
-        "Elimination after each zone for lowest-scoring teams."
+        "Round 2: On-campus Bit Chase with 3-4 zones. War Room member solves code -> unlocks Base clue -> Outdoor members scan QR -> Solve DSA.",
+        "Hidden gems for bonus points/stealing points available."
       ]
     },
     "timeline": [
-      { "title": "Registrations Open", "dateText": "TBD", "mode": "online" },
-      { "title": "Round 1: Aptitude + DSA Quiz", "date": "2026-01-16", "time": "8:00 PM", "mode": "online" },
-      { "title": "Announcement of Qualifiers", "date": "2026-01-18", "time": "12:00 AM", "mode": "online" },
-      { "title": "Round 2: The Bit Chase", "date": "2026-01-26", "time": "3:00–7:00 PM", "mode": "offline" },
-      { "title": "Results & Prize Distribution", "date": "2026-01-27", "time": "Closing ceremony", "mode": "offline" }
+      { "title": "Round 1: Aptitude + DSA Quiz", "date": "2026-01-03", "time": "8:00 PM – 9:00 PM", "mode": "online" },
+      { "title": "Round 2: The Bit Chase", "date": "2026-01-27", "time": "3:00 PM – 7:00 PM", "mode": "offline" }
     ],
     "organizers": [
       { "name": "P Sri Smaran | Saikat Ghosh", "email": "outreach.parsec@iitdh.ac.in" }
@@ -312,6 +305,9 @@
       ],
       "inKind": ["Goodies for winners of round-2", "Goodies for participants of round-2", "Certificates"],
       "notes": ["Certificate of participation for all participants"]
+    },
+    "links": {
+      "discord": "https://discord.gg/QhTYyrTf"
     },
     "registrationForm": { "required": ["Team Name", "Members Name", "Phone Number", "Mail-Id"], "optional": ["Merch Size"] },
     "comments": ["Accommodation limited/exclusive; see website", "Get ready for the Ultimate Bit Chase !"]
@@ -471,7 +467,7 @@
     "date": "Jan 2–25, 2026",
     "image": "",
     "registrationLink": "https://unstop.com/o/XTF4qhd?lb=qkhVYy9&utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
-    "description": "Flagship robotics challenge focusing on Perception and Motion Control. Two tracks: Junior and Senior.",
+    "description": "Flagship robotics challenge. Two tracks: Junior (newcomers) and Senior (experienced). Teams design and build functional robots.",
     "format": [
       "Round 1: Online qualifier (design/simulate/propose). Top 10 per track qualify.",
       "Round 2: Onsite Buildathon (24 hours) with hardware and new PS released a week prior."
@@ -492,6 +488,10 @@
     "prizes": {
       "notes": ["Cash Prize - 5k + 3k + 2k PER problem statement", "Exclusive Merch"]
     },
+    "links": {
+      "junior_ps": "https://drive.google.com/file/d/14VNuI9LIcqV1TIheb7yYa6VOSudSXzSR/view",
+      "senior_ps": "https://drive.google.com/file/d/1blq_9BN7ad0EGkEu0ORHfUAPcqc3W9ub/view"
+    },
     "registrationForm": { "required": ["Team Name", "Members Name", "Phone Number", "Mail-Id"], "optional": ["Merch Size"] },
     "rules": {
       "others": [
@@ -508,23 +508,24 @@
     "category": "Competition",
     "mode": "offline",
     "venue": "IIT Dharwad Permanent Campus",
-    "team": { "min": 1, "max": 1, "individualAllowed": true },
+    "team": { "min": 3, "max": 3, "individualAllowed": false },
     "registrationFee": "Free",
     "date": "Jan 24, 2026",
     "image": "",
-    "description": "On-campus astronomy quiz (1–2 hours) with prizes and workshop access for top scorers. Followed by optional stargazing night.",
+    "description": "On-campus astronomy quiz with MCQs, image identification, and rapid-fire segments. Followed by an Observational Astronomy / Astrophotography Workshop.",
     "timeline": [
       { "title": "Astronomy Quiz", "date": "2026-01-24", "time": "1–2 hours" },
-      { "title": "Stargazing Night", "date": "2026-01-24", "time": "After quiz", "description": "Open stargazing session with telescope." }
+      { "title": "Workshop", "date": "2026-01-25", "description": "Hands-on exposure to night-sky observation." }
     ],
     "rules": {
       "important": [
-        "Register via official Parsec 6.0 website.",
-        "Participant ID issued upon registration.",
-        "Organizers’/judges’ decisions are final."
+        "Register via Unstop AND Google Form.",
+        "Team size: 3 members.",
+        "Limited to 10 teams (First-come, first-served)."
       ],
       "others": [
-        "Individual event; open to UG/PG across India; on-site presence required; timed round; no cheating; rule modifications possible."
+        "Timed round; no extra time allowed.",
+        "On-site presence required."
       ]
     },
     "organizers": [
@@ -538,6 +539,9 @@
         { "place": "3rd", "amount": 2000 }
       ],
       "inKind": ["Goodies", "Free workshop access for top scorers"]
+    },
+    "links": {
+      "google_form": "Link_to_be_updated"
     },
     "registrationForm": { "required": ["Participant Name", "Phone Number", "Email ID", "College Name", "Year of Study"], "optional": ["Merch Size"] },
     "comments": ["Accommodation limited/exclusive; see website."]
@@ -553,10 +557,10 @@
     "date": "Dec 22, 2025 – Jan 18, 2026",
     "image": "/events_main_img/LOGO/Synapse_logo.jpeg",
     "registrationLink": "https://unstop.com/o/gqyVMbX?utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
-    "description": "EMG-based dual-mode prosthetic control using Myoware 2.0 sensors: continuous proportional control and discrete gesture recognition.",
+    "description": "Decode Surface Electromyography (sEMG) signals to control a prosthetic limb. Train a model to recognize 5 gestures (Open, Closed, Lateral Pinch, Signalling, Rock) and map them to a gaming interface.",
     "format": [
       "Phase 1 (Online): Submit trained model predictions on hidden ground-truth test dataset.",
-      "Phase 2 (Offline, top 5): Live demo with EMG streaming to trained model; control prosthetic arm/simulation; optional gaming interface."
+      "Phase 2 (Offline, top 5): Live demo with EMG streaming to trained model; control prosthetic arm/simulation; gaming interface provided."
     ],
     "timeline": [
       { "title": "Problem Statement Release", "date": "2026-01-10" },

@@ -540,7 +540,9 @@ function Schedule() {
                               </span>
                             </div>
                           </div>
-                          <div className={`event-status status-${event.status}`}>
+                          <div
+                            className={`event-status status-${event.status}`}
+                          >
                             {event.status}
                           </div>
                         </div>
@@ -552,7 +554,7 @@ function Schedule() {
                   <div
                     className="destination-station"
                     style={{
-                      left: `${300 + events.length * 350}px`,
+                      left: `${450 + events.length * 350}px`,
                     }}
                   >
                     <div className="destination-marker">
