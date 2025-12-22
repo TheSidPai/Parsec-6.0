@@ -266,6 +266,7 @@
     {
         "name": "Vidit Parikh",
         "team": "Core Team - PARSEC",
+        "displayRole": "Overall Coordinator - PARSEC",
         "role": "",
         "photo": "/teams/ViditParikh.webp",
         "linkedin": "https://www.linkedin.com/in/vidit-parikh/",
@@ -274,6 +275,7 @@
     {
         "name": "Yash Halbhavi",
         "team": "Core Team - PARSEC",
+        "displayRole": "Finance Head - PARSEC",
         "role": "",
         "photo": "/teams/YashHalbhavi.webp",
         "linkedin": "https://www.linkedin.com/in/yash-halbhavi-53672927b",
@@ -282,6 +284,7 @@
     {
         "name": "Saipushkar Nagaraj",
         "team": "Core Team - PARSEC",
+        "displayRole": "Operations Head - PARSEC",
         "role": "",
         "photo": "/teams/SaipushkarNagaraj.webp",
         "linkedin": "https://www.linkedin.com/in/saipushkar-nagaraj-71364728a/",
@@ -289,7 +292,8 @@
     },
     {
         "name": "Dev Kaushal",
-        "team": "Core Team - PARSEC",
+        "team": "Core Team - PARSEC - PARSEC",
+        "displayRole": "Events Head",
         "role": "",
         "photo": "/teams/DevKaushal.webp",
         "linkedin": "https://www.linkedin.com/in/dev-kaushal-645734248/",
@@ -322,6 +326,7 @@
     {
         "name": "Prajwal Prasad",
         "team": "Core Team - Harshtal",
+        "displayRole": "Overall Coordinator - harSHtAl",
         "role": "",
         "photo": "/teams/PrajwalPrasad.webp",
         "linkedin": "https://www.linkedin.com/in/prajwalprasad24/",
@@ -330,6 +335,7 @@
     {
         "name": "Yashas Subramanya",
         "team": "Core Team - Harshtal",
+        "displayRole": "Finance Head - harSHtAl",
         "role": "",
         "photo": "/teams/YashasSubramanhya.webp",
         "linkedin": "https://www.linkedin.com/in/yashas-subramanya",
@@ -338,6 +344,7 @@
     {
         "name": "Nihar Sagar G",
         "team": "Core Team - Harshtal",
+        "displayRole": "Operations Head - harSHtAl",
         "role": "",
         "photo": "/teams/NiharSagar.webp",
         "linkedin": "https://linkedin.com/in/nihar-s-g",
@@ -346,6 +353,7 @@
     {
         "name": "Prakruthi KS",
         "team": "Core Team - Harshtal",
+        "displayRole": "Events Head - harSHtAl",
         "role": "",
         "photo": "/teams/PrakruthiKS.webp",
         "linkedin": "https://www.linkedin.com/in/prakruthi-k-s-2663ba355?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
