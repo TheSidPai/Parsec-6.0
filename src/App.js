@@ -1,11 +1,17 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
-import './App.css';
-import { ThemeProvider } from './context/ThemeContext';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+} from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import "./App.css";
+import { ThemeProvider } from "./context/ThemeContext";
 
 // Import page components (we'll create these next)
-import Landing from './pages/Landing';
+import Home from "./pages/Home";
 // import Login from './pages/Login';
 // import SignupLayout from './pages/signup/SignupLayout';
 // import Onboarding from './pages/signup/Onboarding';
@@ -13,47 +19,49 @@ import Landing from './pages/Landing';
 // import Auth from './pages/signup/Auth';
 // import ManualAuth from './pages/signup/ManualAuth';
 // import SortingHat from './pages/signup/SortingHat';
-import Events from './pages/Events';
-import Harshtal from './pages/Harshtal';
-import Tesseract from './pages/Tesseract';
-import EventDetail from './pages/EventDetail';
-import Schedule from './pages/Schedule';
-import Team from './pages/Team';
-import DashboardLayout from './layouts/DashboardLayout';
-import DashboardHome from './pages/dashboard/DashboardHome';
-import DashboardEvents from './pages/dashboard/DashboardEvents';
-import DashboardEventDetail from './pages/dashboard/DashboardEventDetail';
-import DashboardSchedule from './pages/dashboard/DashboardSchedule';
-import Tickets from './pages/dashboard/Tickets';
-import Profile from './pages/dashboard/Profile';
-import Leaderboard from './pages/dashboard/Leaderboard';
-import DashboardTeam from './pages/dashboard/Team';
-import Contact from './pages/dashboard/Contact';
-import NotFound from './pages/NotFound';
-import HousePage from './pages/HousePage';
-import AdminAuth from './components/admin/AdminAuth';
-import AdminDashboard from './components/admin/AdminDashboard';
-import AdminProtectedRoute from './components/admin/AdminProtectedRoute';
+import Events from "./pages/Events";
+import Harshtal from "./pages/Harshtal";
+import Tesseract from "./pages/Tesseract";
+import EventDetail from "./pages/EventDetail";
+import Schedule from "./pages/Schedule";
+import Team from "./pages/Team";
+import DashboardLayout from "./layouts/DashboardLayout";
+import DashboardHome from "./pages/dashboard/DashboardHome";
+import DashboardEvents from "./pages/dashboard/DashboardEvents";
+import DashboardEventDetail from "./pages/dashboard/DashboardEventDetail";
+import DashboardSchedule from "./pages/dashboard/DashboardSchedule";
+import Tickets from "./pages/dashboard/Tickets";
+import Profile from "./pages/dashboard/Profile";
+import Leaderboard from "./pages/dashboard/Leaderboard";
+import DashboardTeam from "./pages/dashboard/Team";
+import Contact from "./pages/dashboard/Contact";
+import NotFound from "./pages/NotFound";
+import HousePage from "./pages/HousePage";
+import AdminAuth from "./components/admin/AdminAuth";
+import AdminDashboard from "./components/admin/AdminDashboard";
+import AdminProtectedRoute from "./components/admin/AdminProtectedRoute";
 // import ComingSoon from './components/ComingSoon';
-import AuthComingSoon from './pages/AuthComingSoon';
-import AccommodationComingSoon from './pages/AccommodationComingSoon';
+import AuthComingSoon from "./pages/AuthComingSoon";
+import AccommodationComingSoon from "./pages/AccommodationComingSoon";
 
 function AnimatedRoutes() {
   const location = useLocation();
-  
+
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        {/* Root redirects to landing */}
-        <Route path="/" element={<Navigate to="/landing" replace />} />
+        {/* Root redirects to home */}
+        <Route path="/" element={<Navigate to="/home" replace />} />
 
         {/* Public Routes */}
-        <Route path="/landing" element={<Landing />} />
-        
+        <Route path="/home" element={<Home />} />
+
+        <Route path="/landing" element={<Navigate to="/home" replace />} />
+
         {/* TEMPORARY: Auth Coming Soon - Remove when ready to launch */}
         <Route path="/login" element={<AuthComingSoon />} />
         <Route path="/signup/*" element={<AuthComingSoon />} />
-        
+
         {/* ORIGINAL AUTH ROUTES - Uncomment when ready to launch:
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignupLayout />}>
@@ -79,13 +87,13 @@ function AnimatedRoutes() {
 
         {/* Admin Routes */}
         <Route path="/admin/login" element={<AdminAuth />} />
-        <Route 
-          path="/admin/dashboard" 
+        <Route
+          path="/admin/dashboard"
           element={
             <AdminProtectedRoute>
               <AdminDashboard />
             </AdminProtectedRoute>
-          } 
+          }
         />
 
         {/* Protected Dashboard Routes */}
