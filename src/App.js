@@ -35,6 +35,8 @@ import Profile from "./pages/dashboard/Profile";
 import Leaderboard from "./pages/dashboard/Leaderboard";
 import DashboardTeam from "./pages/dashboard/Team";
 import Contact from "./pages/dashboard/Contact";
+import Orders from "./pages/dashboard/Orders";
+import Accommodation from "./pages/dashboard/Accommodation";
 import NotFound from "./pages/NotFound";
 import HousePage from "./pages/HousePage";
 import AdminAuth from "./components/admin/AdminAuth";
@@ -102,7 +104,8 @@ function AnimatedRoutes() {
           <Route path="events" element={<DashboardEvents />} />
           <Route path="events/:id" element={<DashboardEventDetail />} />
           <Route path="schedule" element={<DashboardSchedule />} />
-          <Route path="tickets" element={<Tickets />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="accommodation" element={<Accommodation />} />
           <Route path="profile" element={<Profile />} />
           <Route path="leaderboard" element={<Leaderboard />} />
           <Route path="team" element={<DashboardTeam />} />
