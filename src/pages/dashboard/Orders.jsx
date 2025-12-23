@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { API_ENDPOINTS, authenticatedFetch } from '../../config/api';
-import './Orders.css';
+import React, { useState, useEffect } from "react";
+import { API_ENDPOINTS, authenticatedFetch } from "../../config/api";
+import "./Orders.css";
 
 function Orders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const token = localStorage.getItem('jwt_token');
+  const token = localStorage.getItem("jwt_token");
 
   useEffect(() => {
     fetchOrders();
@@ -15,29 +15,29 @@ function Orders() {
   const fetchOrders = async () => {
     try {
       setLoading(true);
-      
+
       // DEV MODE: Allow orders page to work without token
       if (!token) {
-        console.warn('⚠️ DEV MODE: No token - showing empty orders');
+        console.warn("⚠️ DEV MODE: No token - showing empty orders");
         setOrders([]);
         setLoading(false);
         return;
       }
-      
+
       const { response, data } = await authenticatedFetch(
         API_ENDPOINTS.ORDERS_MY,
-        { method: 'GET' },
+        { method: "GET" },
         token
       );
 
       if (response.ok && data) {
         setOrders(data.orders || []);
       } else {
-        setError('Failed to fetch orders');
+        setError("Failed to fetch orders");
       }
     } catch (err) {
-      console.error('Error fetching orders:', err);
-      setError('Unable to load orders');
+      console.error("Error fetching orders:", err);
+      setError("Unable to load orders");
     } finally {
       setLoading(false);
     }
@@ -45,25 +45,27 @@ function Orders() {
 
   const getStatusBadge = (status) => {
     const statusStyles = {
-      pending: { bg: '#ffc107', text: '#000' },
-      confirmed: { bg: '#28a745', text: '#fff' },
-      shipped: { bg: '#007bff', text: '#fff' },
-      delivered: { bg: '#6c757d', text: '#fff' },
-      cancelled: { bg: '#dc3545', text: '#fff' }
+      pending: { bg: "#ffc107", text: "#000" },
+      confirmed: { bg: "#28a745", text: "#fff" },
+      shipped: { bg: "#007bff", text: "#fff" },
+      delivered: { bg: "#6c757d", text: "#fff" },
+      cancelled: { bg: "#dc3545", text: "#fff" },
     };
 
     const style = statusStyles[status] || statusStyles.pending;
-    
+
     return (
-      <span style={{
-        background: style.bg,
-        color: style.text,
-        padding: '4px 12px',
-        borderRadius: '12px',
-        fontSize: '0.85rem',
-        fontWeight: '600',
-        textTransform: 'capitalize'
-      }}>
+      <span
+        style={{
+          background: style.bg,
+          color: style.text,
+          padding: "4px 12px",
+          borderRadius: "12px",
+          fontSize: "0.85rem",
+          fontWeight: "600",
+          textTransform: "capitalize",
+        }}
+      >
         {status}
       </span>
     );
@@ -86,7 +88,9 @@ function Orders() {
         <div className="error-message">
           <span className="error-icon">⚠️</span>
           <h3>{error}</h3>
-          <button onClick={fetchOrders} className="retry-btn">Try Again</button>
+          <button onClick={fetchOrders} className="retry-btn">
+            Try Again
+          </button>
         </div>
       </div>
     );
@@ -115,10 +119,10 @@ function Orders() {
                 <div className="order-info">
                   <h3>Order #{order.orderId || order._id.slice(-8)}</h3>
                   <span className="order-date">
-                    {new Date(order.createdAt).toLocaleDateString('en-IN', {
-                      day: 'numeric',
-                      month: 'short',
-                      year: 'numeric'
+                    {new Date(order.createdAt).toLocaleDateString("en-IN", {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric",
                     })}
                   </span>
                 </div>
@@ -130,8 +134,14 @@ function Orders() {
                   <div key={idx} className="order-item">
                     <div className="item-details">
                       <span className="item-name">{item.name}</span>
-                      {item.size && <span className="item-size">Size: {item.size}</span>}
-                      {item.quantity && <span className="item-quantity">Qty: {item.quantity}</span>}
+                      {item.size && (
+                        <span className="item-size">Size: {item.size}</span>
+                      )}
+                      {item.quantity && (
+                        <span className="item-quantity">
+                          Qty: {item.quantity}
+                        </span>
+                      )}
                     </div>
                     <span className="item-price">₹{item.price}</span>
                   </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -9,16 +9,10 @@ import {
 import { AnimatePresence } from "framer-motion";
 import "./App.css";
 import { ThemeProvider } from "./context/ThemeContext";
+import MagicalLoader from "./components/MagicalLoader";
 
-// Import page components (we'll create these next)
+// Import page components
 import Home from "./pages/Home";
-// import Login from './pages/Login';
-// import SignupLayout from './pages/signup/SignupLayout';
-// import Onboarding from './pages/signup/Onboarding';
-// import Terms from './pages/signup/Terms';
-// import Auth from './pages/signup/Auth';
-// import ManualAuth from './pages/signup/ManualAuth';
-// import SortingHat from './pages/signup/SortingHat';
 import Events from "./pages/Events";
 import Harshtal from "./pages/Harshtal";
 import Tesseract from "./pages/Tesseract";
@@ -42,7 +36,6 @@ import HousePage from "./pages/HousePage";
 import AdminAuth from "./components/admin/AdminAuth";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import AdminProtectedRoute from "./components/admin/AdminProtectedRoute";
-// import ComingSoon from './components/ComingSoon';
 import AuthComingSoon from "./pages/AuthComingSoon";
 import AccommodationComingSoon from "./pages/AccommodationComingSoon";
 
@@ -120,10 +113,33 @@ function AnimatedRoutes() {
 }
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasLoadedOnce, setHasLoadedOnce] = useState(false);
+
+  const handleLoadComplete = () => {
+    setIsLoading(false);
+    setHasLoadedOnce(true);
+    // Store in session storage so loader doesn't show again during this session
+    sessionStorage.setItem("hasLoadedOnce", "true");
+  };
+
   return (
     <Router>
       <ThemeProvider>
-        <AnimatedRoutes />
+        {/* Show loader only on first load */}
+        {isLoading && !hasLoadedOnce && (
+          <MagicalLoader onLoadComplete={handleLoadComplete} />
+        )}
+
+        {/* Main app content */}
+        <div
+          style={{
+            opacity: isLoading ? 0 : 1,
+            transition: "opacity 0.5s ease-in",
+          }}
+        >
+          <AnimatedRoutes />
+        </div>
       </ThemeProvider>
     </Router>
   );

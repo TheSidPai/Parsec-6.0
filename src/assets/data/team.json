@@ -293,7 +293,7 @@
     {
         "name": "Dev Kaushal",
         "team": "Core Team - PARSEC",
-        "displayRole": "Events Head",
+        "displayRole": "Events Head - PARSEC",
         "role": "",
         "photo": "/teams/DevKaushal.webp",
         "linkedin": "https://www.linkedin.com/in/dev-kaushal-645734248/",
@@ -362,6 +362,7 @@
     {
         "name": "K Sanjana",
         "team": "Marketing Team",
+        "displayRole": "Marketing Head",
         "role": "",
         "photo": "/teams/KopparaSanjana.webp",
         "linkedin": "https://www.linkedin.com/in/koppara-sanjana-5ba20b28a",
