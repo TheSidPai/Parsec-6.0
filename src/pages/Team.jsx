@@ -17,7 +17,14 @@ function Team() {
   }, {});
 
   // Define team order
-  const teamOrder = ["Core Team", "Mentors", "Web Team", "Events Team"];
+  const teamOrder = [
+    "Core Team - PARSEC",
+    "Core Team - Harshtal",
+    "Mentors",
+    "Events Team",
+    "Web Team",
+    "Marketing Team",
+  ];
 
   return (
     <div>
@@ -70,7 +77,9 @@ function Team() {
                       </div>
                       <div className="team-card-content">
                         <h3 className="team-card-name">{member.name}</h3>
-                        <p className="team-card-team">{member.team}</p>
+                        <p className="team-card-team">
+                          {member.displayRole || member.team}
+                        </p>
                         {member.role && (
                           <p className="team-card-role">{member.role}</p>
                         )}

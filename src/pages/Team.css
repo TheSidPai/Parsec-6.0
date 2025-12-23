@@ -62,10 +62,10 @@
   flex-shrink: 0;
 }
 
-.team-card:hover {
+/* .team-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 28px var(--shadow), 0 0 24px var(--glow);
-}
+} */
 
 .team-card-photo-wrapper {
   width: 150px;
