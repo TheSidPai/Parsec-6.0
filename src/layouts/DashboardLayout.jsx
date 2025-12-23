@@ -120,10 +120,9 @@ function DashboardLayout() {
           )}
           <li><Link className="dashboard-link" to="/dashboard/events">🎪 Events</Link></li>
           <li><Link className="dashboard-link" to="/dashboard/schedule">📅 Schedule</Link></li>
-          <li><Link className="dashboard-link" to="/dashboard/tickets">🎟️ Tickets</Link></li>
-          <li><Link className="dashboard-link" to="/dashboard/profile">👤 Profile</Link></li>
+          <li><Link className="dashboard-link" to="/dashboard/orders">🛍️ Orders</Link></li>
+          <li><Link className="dashboard-link" to="/dashboard/accommodation">🏨 Accommodation</Link></li>
           <li><Link className="dashboard-link" to="/dashboard/leaderboard">🏆 Leaderboard</Link></li>
-          <li><Link className="dashboard-link" to="/dashboard/team">👥 Team</Link></li>
           <li><Link className="dashboard-link" to="/dashboard/contact">📞 Contact</Link></li>
         </ul>
         <button onClick={handleLogout} className="logout-btn">

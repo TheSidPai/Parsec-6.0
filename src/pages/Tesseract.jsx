@@ -10,7 +10,8 @@ function Tesseract() {
   const { theme } = useTheme();
   const [showForm, setShowForm] = useState(false);
 
-  const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdZVRAhZPyHO2M5-XXnErp2Ve8s-pZ9vfqN6lFTRAevmKqSrg/viewform?usp=dialog";
+  const formUrl =
+    "https://docs.google.com/forms/d/e/1FAIpQLSdZVRAhZPyHO2M5-XXnErp2Ve8s-pZ9vfqN6lFTRAevmKqSrg/viewform?usp=dialog";
 
   return (
     <div className="tesseract-page">
@@ -31,13 +32,16 @@ function Tesseract() {
       <main className="tesseract-container">
         <div className="tesseract-header-section">
           <h1 className="tesseract-header">
-            <span className="tesseract-icon">🧊</span>
+            {/* <span className="tesseract-icon">🧊</span> */}
             <span className="tesseract-title-main">Tesseract</span>
-            <span className="tesseract-title-sub">Innovation Beyond Dimensions</span>
+            <span className="tesseract-title-sub">
+              Innovation Beyond Dimensions
+            </span>
           </h1>
           <p className="tesseract-description">
-            Step into the fourth dimension of innovation and creativity. 
-            Tesseract is more than an event—it's a gateway to boundless possibilities.
+            Step into the fourth dimension of innovation and creativity.
+            Tesseract is more than an event—it's a gateway to boundless
+            possibilities.
           </p>
         </div>
 
@@ -45,13 +49,15 @@ function Tesseract() {
           <section className="tesseract-about">
             <h2 className="section-title">About Tesseract</h2>
             <p className="section-text">
-              Tesseract represents the intersection of technology, creativity, and innovation. 
-              This unique event challenges participants to think beyond conventional boundaries, 
-              exploring ideas that transcend traditional dimensions of problem-solving.
+              Tesseract represents the intersection of technology, creativity,
+              and innovation. This unique event challenges participants to think
+              beyond conventional boundaries, exploring ideas that transcend
+              traditional dimensions of problem-solving.
             </p>
             <p className="section-text">
-              Whether you're a visionary coder, a creative designer, or an innovative thinker, 
-              Tesseract offers a platform to showcase your talents and push the limits of what's possible.
+              Whether you're a visionary coder, a creative designer, or an
+              innovative thinker, Tesseract offers a platform to showcase your
+              talents and push the limits of what's possible.
             </p>
           </section>
 
@@ -60,18 +66,18 @@ function Tesseract() {
             <div className="details-grid">
               <div className="detail-card">
                 <span className="detail-icon">📅</span>
-                <h3 className="detail-title">Date</h3>
-                <p className="detail-text">To be announced</p>
+                <h3 className="detail-title">Deadline</h3>
+                <p className="detail-text">10th January 2026</p>
               </div>
               <div className="detail-card">
                 <span className="detail-icon">⏰</span>
                 <h3 className="detail-title">Duration</h3>
-                <p className="detail-text">Full day event</p>
+                <p className="detail-text">24th January 2026</p>
               </div>
               <div className="detail-card">
                 <span className="detail-icon">🎯</span>
-                <h3 className="detail-title">Format</h3>
-                <p className="detail-text">Hybrid (Online & Offline)</p>
+                <h3 className="detail-title">Location</h3>
+                <p className="detail-text">IIT Dharwad Campus!</p>
               </div>
               <div className="detail-card">
                 <span className="detail-icon">🏆</span>
@@ -84,29 +90,29 @@ function Tesseract() {
           <section className="tesseract-registration">
             <h2 className="section-title">Register Now</h2>
             <p className="registration-text">
-              Don't miss this opportunity to be part of something extraordinary. 
+              Don't miss this opportunity to be part of something extraordinary.
               Register for Tesseract and unlock your potential!
             </p>
-            
+
             <div className="registration-buttons">
-              <Button 
-                variant="primary" 
-                onClick={() => window.open(formUrl, '_blank')}
+              <Button
+                variant="primary"
+                onClick={() => window.open(formUrl, "_blank")}
               >
                 Open Registration Form
               </Button>
-              <Button 
-                variant="secondary" 
+              <Button
+                variant="secondary"
                 onClick={() => setShowForm(!showForm)}
               >
-                {showForm ? 'Hide Form' : 'Show Form Here'}
+                {showForm ? "Hide Form" : "Show Form Here"}
               </Button>
             </div>
 
             {showForm && (
               <div className="form-container">
                 <iframe
-                  src={formUrl.replace('?usp=dialog', '?embedded=true')}
+                  src={formUrl.replace("?usp=dialog", "?embedded=true")}
                   width="100%"
                   height="800"
                   frameBorder="0"

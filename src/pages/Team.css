@@ -47,99 +47,240 @@
   justify-content: center;
 }
 
-.team-card {
-  background: color-mix(in srgb, var(--surface) 85%, transparent);
-  /* border: 3px solid var(--fontAccent); */
-  border-radius: 12px;
-  padding: 2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 12px var(--shadow);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+/* Chocolate Frog Card Container */
+.chocolate-frog-wrapper {
+  perspective: 1000px;
   width: 280px;
   flex-shrink: 0;
 }
 
-.team-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 28px var(--shadow), 0 0 24px var(--glow);
+.team-card {
+  width: 100%;
+  height: 420px;
+  background: linear-gradient(145deg, #d4af37 0%, #f4e4b6 50%, #d4af37 100%);
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
 }
 
-.team-card-photo-wrapper {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
+.chocolate-frog-wrapper:hover .team-card {
+  transform: rotateY(5deg) rotateX(5deg) translateY(-8px);
+}
+
+.team-card-inner {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #2c1810 0%, #1a0f0a 100%);
+  border-radius: 8px;
+  border: 2px solid #8b6914;
+  position: relative;
   overflow: hidden;
-  border: 3px solid var(--fontAccent);
-  margin-bottom: 1.5rem;
-  box-shadow: 0 0 15px var(--glow);
+}
+
+/* Decorative corners */
+.card-corner {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #d4af37;
+  z-index: 2;
+}
+
+.card-corner.top-left {
+  top: 6px;
+  left: 6px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.card-corner.top-right {
+  top: 6px;
+  right: 6px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.card-corner.bottom-left {
+  bottom: 6px;
+  left: 6px;
+  border-right: none;
+  border-top: none;
+}
+
+.card-corner.bottom-right {
+  bottom: 6px;
+  right: 6px;
+  border-left: none;
+  border-top: none;
+}
+
+/* Photo frame */
+.team-card-photo-wrapper {
+  width: 200px;
+  height: 240px;
+  margin: 20px auto 0;
+  background: linear-gradient(145deg, #d4af37, #f4e4b6);
+  padding: 3px;
+  border-radius: 6px;
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.5),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.team-card-photo-inner {
+  width: 100%;
+  height: 100%;
+  background: #1a0f0a;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .team-card-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: sepia(0.15);
 }
 
+/* Text section */
 .team-card-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.3rem;
   width: 100%;
+  padding: 12px 15px 15px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .team-card-name {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  color: var(--linkHover);
+  font-size: 1.3rem;
+  color: #d4af37;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   margin: 0;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
 }
 
 .team-card-team {
   font-family: 'Josefin Sans', sans-serif;
-  color: var(--fontAccent);
-  font-size: 1rem;
-  margin: 0.25rem 0 0.5rem 0;
+  font-size: 0.85rem;
+  color: #f4e4b6;
+  margin: 0;
   font-weight: 500;
+  font-style: italic;
 }
 
 .team-card-role {
   font-family: 'Josefin Sans', sans-serif;
-  color: var(--fontSub);
-  font-size: 0.95rem;
+  color: #c9a961;
+  font-size: 0.75rem;
   margin: 0;
-  line-height: 1.4;
-  min-height: 2.8rem;
+  line-height: 1.3;
+  min-height: auto;
   display: flex;
   align-items: center;
 }
 
+/* Social links */
 .team-card-socials {
   display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 12px;
+  margin-top: 8px;
 }
 
 .social-link {
-  color: var(--linkHover);
-  transition: color 0.3s ease, transform 0.3s ease;
+  width: 28px;
+  height: 28px;
+  background: #d4af37;
+  border-radius: 50%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .social-link:hover {
-  color: var(--link);
-  transform: scale(1.2);
+  background: #f4e4b6;
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .social-link svg {
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
+  fill: #1a0f0a;
+}
+
+/* Magical shimmer effect */
+.team-card-inner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg,
+      transparent,
+      transparent 40%,
+      rgba(212, 175, 55, 0.1) 45%,
+      rgba(212, 175, 55, 0.3) 50%,
+      rgba(212, 175, 55, 0.1) 55%,
+      transparent 60%,
+      transparent);
+  animation: shimmer 4s infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* Authenticity mark */
+.authenticity-mark {
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #d4af37;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 7px;
+  color: #d4af37;
+  text-align: center;
+  line-height: 1.1;
+  opacity: 0.5;
+  transform: rotate(-15deg);
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  z-index: 1;
 }
 
 /* Tablet */
@@ -164,28 +305,31 @@
 
   .team-grid {
     gap: 2rem 1.5rem;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+
+  .chocolate-frog-wrapper {
+    width: 260px;
   }
 
   .team-card {
-    padding: 1.5rem;
+    height: 400px;
   }
 
   .team-card-photo-wrapper {
-    width: 120px;
-    height: 120px;
+    width: 180px;
+    height: 220px;
   }
 
   .team-card-name {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
   .team-card-team {
-    font-size: 0.95rem;
+    font-size: 0.8rem;
   }
 
   .team-card-role {
-    font-size: 0.9rem;
+    font-size: 0.72rem;
   }
 }
 
@@ -200,11 +344,15 @@
   }
 
   .team-grid {
-    grid-template-columns: 1fr;
     gap: 2rem;
   }
 
+  .chocolate-frog-wrapper {
+    width: 100%;
+    max-width: 280px;
+  }
+
   .team-card {
-    max-width: 100%;
+    height: 420px;
   }
 }

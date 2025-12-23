@@ -30,9 +30,7 @@ function Footer() {
             <p className="footer-text footer-email">
               <a href="mailto:gstech@iitdh.ac.in">gstech@iitdh.ac.in</a>
               <br />
-              <span className="footer-text">
-                General Secretary Technical Affairs
-              </span>
+              <span className="footer-text">Technical Council IIT Dharwad</span>
             </p>
           </div>
         </div>
