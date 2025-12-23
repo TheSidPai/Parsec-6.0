@@ -6,13 +6,13 @@ import { ThemeProvider } from './context/ThemeContext';
 
 // Import page components (we'll create these next)
 import Landing from './pages/Landing';
-// import Login from './pages/Login';
-// import SignupLayout from './pages/signup/SignupLayout';
-// import Onboarding from './pages/signup/Onboarding';
-// import Terms from './pages/signup/Terms';
-// import Auth from './pages/signup/Auth';
-// import ManualAuth from './pages/signup/ManualAuth';
-// import SortingHat from './pages/signup/SortingHat';
+import Login from './pages/Login';
+import SignupLayout from './pages/signup/SignupLayout';
+import Onboarding from './pages/signup/Onboarding';
+import Terms from './pages/signup/Terms';
+import Auth from './pages/signup/Auth';
+import ManualAuth from './pages/signup/ManualAuth';
+import SortingHat from './pages/signup/SortingHat';
 import Events from './pages/Events';
 import Harshtal from './pages/Harshtal';
 import Tesseract from './pages/Tesseract';
@@ -29,6 +29,8 @@ import Profile from './pages/dashboard/Profile';
 import Leaderboard from './pages/dashboard/Leaderboard';
 import DashboardTeam from './pages/dashboard/Team';
 import Contact from './pages/dashboard/Contact';
+import Orders from './pages/dashboard/Orders';
+import Accommodation from './pages/dashboard/Accommodation';
 import NotFound from './pages/NotFound';
 import HousePage from './pages/HousePage';
 import AdminAuth from './components/admin/AdminAuth';
@@ -50,20 +52,16 @@ function AnimatedRoutes() {
         {/* Public Routes */}
         <Route path="/landing" element={<Landing />} />
         
-        {/* TEMPORARY: Auth Coming Soon - Remove when ready to launch */}
+        {/* TEMPORARY: Login/Signup Coming Soon for production */}
         <Route path="/login" element={<AuthComingSoon />} />
-        <Route path="/signup/*" element={<AuthComingSoon />} />
+        <Route path="/signup" element={<AuthComingSoon />} />
         
-        {/* ORIGINAL AUTH ROUTES - Uncomment when ready to launch:
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignupLayout />}>
-          <Route path="onboarding" element={<Onboarding />} />
-          <Route path="sorting" element={<SortingHat />} />
-          <Route path="auth" element={<Auth />} />
-          <Route path="manual" element={<ManualAuth />} />
-          <Route path="terms" element={<Terms />} />
-        </Route>
-        */}
+        {/* Direct Development Routes (bypass coming soon) */}
+        <Route path="/signup/onboarding" element={<Onboarding />} />
+        <Route path="/signup/sorting" element={<SortingHat />} />
+        <Route path="/signup/auth" element={<Auth />} />
+        <Route path="/signup/manual" element={<ManualAuth />} />
+        <Route path="/signup/terms" element={<Terms />} />
 
         {/* Public Events, Schedule & Team */}
         <Route path="/events" element={<Events />} />
@@ -94,7 +92,8 @@ function AnimatedRoutes() {
           <Route path="events" element={<DashboardEvents />} />
           <Route path="events/:id" element={<DashboardEventDetail />} />
           <Route path="schedule" element={<DashboardSchedule />} />
-          <Route path="tickets" element={<Tickets />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="accommodation" element={<Accommodation />} />
           <Route path="profile" element={<Profile />} />
           <Route path="leaderboard" element={<Leaderboard />} />
           <Route path="team" element={<DashboardTeam />} />

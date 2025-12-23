@@ -128,8 +128,13 @@ const OnboardingForm = () => {
     try {
       // ========== API CALL ==========
 
+      // DEV MODE: Skip token check for development (remove in production)
       if (!token) {
-        throw new Error("Authentication token not found. Please sign in again.");
+        // For development, show warning but allow form to work
+        console.warn("⚠️ DEV MODE: No token found. In production, this would require login.");
+        setError("Development Mode: Token not required for testing. Form data: " + JSON.stringify(formData, null, 2));
+        setLoading(false);
+        return;
       }
 
       // Prepare the request body (batch should be sent as string)
