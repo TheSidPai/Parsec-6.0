@@ -1,9 +1,16 @@
-/* ========== DASHBOARD HOME CONTAINER ========== */
+﻿/* ========== DASHBOARD HOME CONTAINER ========== */
 .dashboard-home {
   padding: 2.5rem;
   max-width: 1200px;
   margin: 0 auto;
   animation: fadeIn 0.6s ease-out;
+  background-image: url('../../assets/images/event-images/FinalImages/db.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  min-height: 100vh;
 }
 
 /* ========== LOADING SKELETON ========== */
@@ -941,5 +948,101 @@
 @media (max-width: 768px) {
   .progress-cards {
     grid-template-columns: 1fr;
+  }
+}
+
+.spell-text-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  z-index: 10001 !important;
+  pointer-events: none;
+  padding-bottom: 15vh;
+}
+
+.spell-text.classic {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(3.5rem, 12vw, 6rem);
+  letter-spacing: 0.3em;
+  color: #f0f4ff;
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 1),
+    0 0 20px rgba(199, 210, 254, 1),
+    0 0 40px rgba(147, 197, 253, 0.9),
+    0 0 60px rgba(99, 102, 241, 0.7),
+    0 0 90px rgba(79, 70, 229, 0.5),
+    0 0 120px rgba(67, 56, 202, 0.4),
+    0 5px 15px rgba(0, 0, 0, 0.8),
+    0 10px 30px rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: 700;
+  animation: spellGlow 1.5s ease-in-out;
+  position: relative;
+  z-index: 10002;
+}
+
+@keyframes spellGlow {
+  0%, 100% {
+    text-shadow:
+      0 0 10px rgba(255, 255, 255, 1),
+      0 0 20px rgba(199, 210, 254, 1),
+      0 0 40px rgba(147, 197, 253, 0.9),
+      0 0 60px rgba(99, 102, 241, 0.7),
+      0 0 90px rgba(79, 70, 229, 0.5),
+      0 0 120px rgba(67, 56, 202, 0.4),
+      0 5px 15px rgba(0, 0, 0, 0.8),
+      0 10px 30px rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    text-shadow:
+      0 0 20px rgba(255, 255, 255, 1),
+      0 0 40px rgba(199, 210, 254, 1),
+      0 0 60px rgba(147, 197, 253, 1),
+      0 0 90px rgba(99, 102, 241, 0.9),
+      0 0 120px rgba(79, 70, 229, 0.7),
+      0 0 150px rgba(67, 56, 202, 0.6),
+      0 5px 15px rgba(0, 0, 0, 0.8),
+      0 10px 30px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* ========== INTRO ANIMATION OVERLAY ========== */
+.intro-animation-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #060010;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.dashboard-content-wrapper {
+  animation: dashboardFadeIn 0.8s ease-out;
+}
+
+@keyframes dashboardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

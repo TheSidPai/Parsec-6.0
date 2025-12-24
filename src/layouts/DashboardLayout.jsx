@@ -94,30 +94,6 @@ function DashboardLayout() {
         <HouseSwitcher />
         <ul className="dashboard-nav">
           <li><Link className="dashboard-link" to="/dashboard">🏠 Home</Link></li>
-          {isLoadingHouse ? (
-            <li>
-              <span className="dashboard-link" style={{opacity: 0.5, cursor: 'wait'}}>
-                ⏳ Loading house...
-              </span>
-            </li>
-          ) : userHouse ? (
-            <li>
-              <Link className="dashboard-link house-link" to={`/house/${userHouse}`}>
-                <img 
-                  src={`/houses/${userHouse}.png`}
-                  alt={houseName}
-                  className="house-crest-icon"
-                />
-                <span>My House ({houseName})</span>
-              </Link>
-            </li>
-          ) : (
-            <li>
-              <Link className="dashboard-link" to="/signup/sorting">
-                🏰 My House
-              </Link>
-            </li>
-          )}
           <li><Link className="dashboard-link" to="/dashboard/events">🎪 Events</Link></li>
           <li><Link className="dashboard-link" to="/dashboard/schedule">📅 Schedule</Link></li>
           <li><Link className="dashboard-link" to="/dashboard/orders">🛍️ Orders</Link></li>

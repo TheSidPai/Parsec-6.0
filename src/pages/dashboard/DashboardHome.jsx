@@ -1,12 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API_ENDPOINTS, authenticatedFetch } from '../../config/api';
 import eventsData from '../../assets/data/events.json';
+import Lightning from '../../components/Lightning';
+import FuzzyText from '../../components/FuzzyText';
+import { gsap } from 'gsap';
 import './DashboardHome.css';
 
 function DashboardHome() {
   const navigate = useNavigate();
   const token = localStorage.getItem('jwt_token');
+  const textRef = useRef(null);
+  
+  const [showLightning, setShowLightning] = useState(true);
+  const [showGlitchText, setShowGlitchText] = useState(false);
+  const [showDashboard, setShowDashboard] = useState(false);
 
   const [userData, setUserData] = useState({
     name: 'Student',
@@ -18,7 +26,6 @@ function DashboardHome() {
   const [loading, setLoading] = useState(true);
   const [greeting, setGreeting] = useState('');
 
-  // House emoji mapping
   const houseEmojis = {
     gryffindor: '🦁',
     slytherin: '🐍',
@@ -37,12 +44,58 @@ function DashboardHome() {
     if (hour < 12) setGreeting('Good Morning');
     else if (hour < 18) setGreeting('Good Afternoon');
     else setGreeting('Good Evening');
+
+    // Hide sidebar during intro
+    const sidebar = document.querySelector('.dashboard-sidebar');
+    if (sidebar) sidebar.style.display = 'none';
+
+    // Text appears at 1.5s, smoothly fades in and slides left
+    setTimeout(() => {
+      console.log('✨ Text appearing now!');
+      setShowGlitchText(true);
+      
+      // Smooth fade in
+      if (textRef.current) {
+        console.log('🎬 GSAP animation starting');
+        gsap.fromTo(textRef.current,
+          { opacity: 0, scale: 0.8 },
+          { 
+            opacity: 1,
+            scale: 1,
+            duration: 0.4,
+            ease: 'power2.out'
+          }
+        );
+        
+        // Then slide to left after 0.5s
+        setTimeout(() => {
+          console.log('➡️ Text sliding left');
+          gsap.to(textRef.current, { 
+            x: -window.innerWidth - 200,
+            opacity: 0,
+            duration: 0.8,
+            ease: 'power2.in'
+          });
+        }, 500);
+      }
+    }, 1500);
+
+    // Everything ends at 2.8s, dashboard appears smoothly
+    setTimeout(() => {
+      setShowLightning(false);
+      setShowGlitchText(false);
+      setShowDashboard(true);
+      if (sidebar) {
+        sidebar.style.display = 'block';
+        // Smooth fade in for sidebar
+        gsap.fromTo(sidebar, { opacity: 0 }, { opacity: 1, duration: 0.6 });
+      }
+    }, 2800);
   }, []);
 
   // Fetch user data
   useEffect(() => {
     const fetchUserData = async () => {
-      // DEV MODE: Allow dashboard access without token
       if (!token) {
         console.warn('⚠️ DEV MODE: No token - using default data');
         setLoading(false);
@@ -91,15 +144,38 @@ function DashboardHome() {
   }
 
   return (
-    <div className="dashboard-home">
-
-      {/* ⭐ UPDATED: ONLY HOUSE RANK ON TOP */}
-      <div className="quick-info-bar">
-        <div className="info-item" style={{ animation: "pulse 1.6s infinite" }}>
-          <span className="info-icon">🏆</span>
-          <span className="info-text">House Rank: {userData.rank} / 4</span>
+    <div className="dashboard-home" data-house={userData.house}>
+      {/* Lightning Animation with Background Image */}
+      {showLightning && (
+        <div className="intro-animation-overlay">
+          <Lightning
+            hue={userData.house === 'gryffindor' ? 0 : userData.house === 'slytherin' ? 120 : userData.house === 'ravenclaw' ? 220 : userData.house === 'hufflepuff' ? 50 : 220}
+            xOffset={0}
+            speed={1.5}
+            intensity={1.2}
+            size={1}
+          />
+          {/* Spell Text "Revelio" */}
+          {showGlitchText && (
+            <div className="spell-text-container">
+              <div ref={textRef} className="spell-text classic">
+                Revelio
+              </div>
+            </div>
+          )}
         </div>
-      </div>
+      )}
+
+      {/* Dashboard Content */}
+      {showDashboard && (
+        <div className="dashboard-content-wrapper">
+          {/* House Rank */}
+          <div className="quick-info-bar">
+            <div className="info-item">
+              <span className="info-icon">🏆</span>
+              <span className="info-text">House Rank: {userData.rank} / 4</span>
+            </div>
+          </div>
 
       {/* Welcome Section */}
       <div className="welcome-section">
@@ -146,7 +222,6 @@ function DashboardHome() {
 
       {/* Single Column Content */}
       <div className="dashboard-content-section">
-
         {/* Quick Actions */}
         <div className="quick-actions">
           <h2 className="section-title">Quick Actions</h2>
@@ -208,6 +283,8 @@ function DashboardHome() {
           </div>
         </div>
       </div>
+        </div>
+      )}
     </div>
   );
 }

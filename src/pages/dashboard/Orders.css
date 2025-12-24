@@ -12,24 +12,44 @@
 }
 
 .orders-header {
-  margin-bottom: 2.5rem;
-  padding-left: 1.5rem;
-  border-left: 5px solid #FFD700;
-  box-shadow: -8px 0 16px rgba(255, 215, 0, 0.15);
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeSlideDown 0.8s ease-out;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .orders-header h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  color: #FFD700;
-  text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  font-family: 'Cinzel', serif;
+  font-size: 3rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--secondary, #DAA520), var(--fontAccent, #FFD700));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
+  position: relative;
 }
 
 .orders-header p {
-  color: #aaa;
+  font-family: 'Playfair Display', serif;
   font-size: 1.1rem;
-  font-family: 'Josefin Sans', sans-serif;
+  color: #aaa;
+  opacity: 0.9;
 }
 
 .loading-spinner {
