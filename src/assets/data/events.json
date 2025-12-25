@@ -4,7 +4,7 @@
     "title": "Aurora 2.0: Beyond the Horizon",
     "category": "Hackathon",
     "mode": "mixed",
-    "venue": "IIT Dharwad (Quiz + Presentations)",
+    "venue": "IIT Dharwad (Presentations)",
     "team": { "min": 1, "max": 6, "individualAllowed": true },
     "registrationFee": "Free",
     "date": "Dec 22, 2025 - Jan 26, 2026",
@@ -13,7 +13,7 @@
     "description": "Partnered with SAC-ISRO, Aurora 2.0 focuses on mining activity monitoring using multispectral satellite imagery and Geospatial AI. The event aims to spark creativity by bridging space technology, remote sensing, and AI-driven analytics.",
     "rules": {
       "important": [
-        "Every team has to register online on the official Techfest website.",
+        "Every team has to register online on the official PARSEC website.",
         "A Team ID will be allocated on registration for future references.",
         "The decision of the organizers or judges is final and binding."
       ],
@@ -51,11 +51,10 @@
         { "place": "3rd", "amount": 5500 },
         { "place": "4th", "amount": 2000 }
       ],
-      "inKind": ["Coffee Mugs for Quiz Winners", "Participation token"]
+      "inKind": ["Participation token"]
     },
-    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
     "links": {
-      "discord": "link_to_be_updated"
+      "discord": "https://discord.gg/WcGQbUXf8A"
     },
     "comments": ["For offline events - accommodation shall be limited/exclusive; keep an eye on website."]
   },
@@ -68,12 +67,12 @@
     "team": { "min": 1, "max": 3, "individualAllowed": true },
     "registrationFee": "Free",
     "date": "Dec 22, 2025 - Jan 25, 2026",
-    "image": "/events_main_img/LOGO/protocraft_logo.jpeg",
+    "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/protocraft_logo.jpeg",
     "registrationLink": "https://unstop.com/o/CBjMbSn?lb=qkhVYy9&utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "Theme-based mechanical design challenge. Think like an engineer and build like a creator: sketch, model, and refine your ideas using solid mechanical principles.",
     "rules": {
       "important": [
-        "Every team has to register online on the official Techfest website.",
+        "Every team has to register online on the official PARSEC website.",
         "Team Leads must join the Discord groups compulsorily.",
         "Only top 12 teams shortlisted based on midterm submission."
       ],
@@ -104,16 +103,14 @@
         { "place": "1st", "amount": 7000 },
         { "place": "2nd", "amount": 5000 },
         { "place": "3rd", "amount": 3000 }
-      ],
-      "inKind": ["1st: Hoodie", "2nd: Oversized Tee", "3rd: T-Shirts"]
+      ]
     },
     "links": {
       "problem_statement": "https://drive.google.com/file/d/1u4-aUYzRP1QPQVhFSVO5w9DBvXQe7KvQ/view",
       "discord_main": "https://discord.com/invite/ccR2xWHxE",
       "discord_qna": "https://discord.com/invite/C43hymAuP"
     },
-    "registrationForm": { "required": ["Team Name", "Members Name", "Phone Number", "Mail-Id"], "optional": ["Merch Size"] },
-    "comments": ["For offline events - accommodation shall be limited/exclusive; keep an eye on website."]
+    "comments": ["For offline events - accommodation shall be limited/exclusive; keep an eye on website and join our official Discord Channel."]
   },
   {
     "id": "devhack-7",
@@ -124,7 +121,7 @@
     "team": { "min": 3, "max": 4, "individualAllowed": false },
     "registrationFee": "Free",
     "date": "Dec 22, 2025 - Jan 26, 2026",
-    "image": "/events_main_img/LOGO/devhack_logo.jpeg",
+    "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/devhack_logo.jpeg",
     "registrationLink": "https://unstop.com/o/WC9SqsL?lb=qkhVYy9&utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "PARSEC's 30-hour flagship hackathon. Participants embark on a journey of brainstorming, coding, and problem-solving to turn bold ideas into working prototypes under the mentorship of industry experts.",
     "rules": {
@@ -158,18 +155,17 @@
     "prizes": {
       "prizePool": 40000,
       "breakdown": [
-        { "place": "1st", "amount": 10000, "additional": "Goodies worth 5000" },
-        { "place": "2nd", "amount": 7000, "additional": "Goodies worth 5000" },
-        { "place": "3rd", "amount": 4000, "additional": "Goodies worth 5000" },
-        { "place": "Innovative Domain Winners (x4)", "amount": 1000, "description": "Most innovative in respective domains" }
+        { "place": "1st", "amount": 15000 },
+        { "place": "2nd", "amount": 12000 },
+        { "place": "3rd", "amount": 9000 },
+        { "place": "Most Innovative Solution (x4)", "amount": 4000}
       ],
       "inKind": ["Goodies for all shortlisted teams", "Certificates for all participants"]
     },
     "links": {
       "problem_statement": "https://drive.google.com/file/d/1-0rl-y9hC4I4jkAHE5AUzV5Wj9xEoZ9y/view",
-      "discord": "Link_to_be_updated"
+      "discord": "https://discord.gg/WcGQbUXf8A"
     },
-    "registrationForm": { "required": ["Team Name", "Members Name", "Phone Number", "Mail-Id", "Institute Name", "Batch"], "optional": ["Merch Size"] },
     "comments": ["Accommodation limited/exclusive; see website."]
   },
   {
@@ -186,7 +182,7 @@
     "description": "PARSEC's premier Capture The Flag (CTF) competition. Covers cryptography, forensics, reverse engineering, web exploitation, and OSINT. Jeopardy style with dynamic scoring.",
     "rules": {
       "important": [
-        "Register on the official Techfest website.",
+        "Register on the official PARSEC website.",
         "Use same email as Unstop for CTF account.",
         "Organizers'/judges' decisions are final."
       ],
@@ -216,7 +212,6 @@
       "inKind": ["T-Shirts for Top 3 Place Members"],
       "notes": ["Prizes reserved only for current residents of India"]
     },
-    "registrationForm": { "required": ["Team Name", "Members Name", "Phone Number", "Mail-Id", "Country of Residence"], "optional": ["Merch Size"] },
     "links": {}
   },
   {
@@ -233,7 +228,7 @@
     "description": "High-stakes individual competitive programming contest. 6-8 problems to be solved in 2 hours under pressure.",
     "rules": {
       "important": [
-        "Register on the official Techfest website.",
+        "Register on the official PARSEC website.",
         "Individual participation only.",
         "Organizers'/judges' decisions are final."
       ],
@@ -253,7 +248,7 @@
       { "name": "Dileepan S K | Aayushi Singh", "email": "outreeach.parsec@iitdh.ac.in" }
     ],
     "prizes": {
-      "prizePool": 10750,
+      "prizePool": 9500,
       "breakdown": [
         { "place": "1st", "amount": 3000 },
         { "place": "2nd", "amount": 2000 },
@@ -265,7 +260,6 @@
       "inKind": ["Goodies for the top 10 participants"],
       "notes": ["Prizes reserved only for current residents of India"]
     },
-    "registrationForm": { "required": ["Name", "Phone Number", "Mail-Id"], "optional": ["Merch Size"] },
     "comments": ["Accommodation limited/exclusive; see website."]
   },
   {
@@ -277,7 +271,7 @@
     "team": { "min": 3, "max": 4, "individualAllowed": false },
     "registrationFee": "Free",
     "date": "Dec 22, 2025 - Jan 26, 2026",
-    "image": "/events_main_img/LOGO/bithunt_logo.jpeg",
+    "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/bithunt_logo.jpeg",
     "registrationLink": "https://unstop.com/o/ortjivD?utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "A two-round event combining coding, problem-solving, and adventure. Round 2 features a War Room mechanic where a coder unlocks clues for outdoor teammates to find bases on campus.",
     "rules": {
@@ -311,9 +305,8 @@
       "notes": ["Certificate of participation for all participants"]
     },
     "links": {
-      "discord": "https://discord.gg/QhTYyrTf"
+      "discord": "https://discord.gg/WcGQbUXf8A"
     },
-    "registrationForm": { "required": ["Team Name", "Members Name", "Phone Number", "Mail-Id"], "optional": ["Merch Size"] },
     "comments": ["Accommodation limited/exclusive; see website", "Get ready for the Ultimate Bit Chase !"]
   },
   {
@@ -340,8 +333,7 @@
         "Full attendance required for certificate.",
         "Registrations limited to 125 participants."
       ]
-    },
-    "registrationForm": { "required": ["Name", "Phone Number", "Mail-Id"], "optional": [] }
+    }
   },
   {
     "id": "design-playground",
@@ -368,8 +360,7 @@
         "Materials provided on-site.",
         "Team formation (if applicable) during the workshop."
       ]
-    },
-    "registrationForm": { "required": ["Name", "Phone Number", "Mail-Id"], "optional": [] }
+    }
   },
   {
     "id": "singularity",
@@ -380,7 +371,7 @@
     "team": { "min": 2, "max": 4, "individualAllowed": false },
     "registrationFee": "Free",
     "date": "Dec 22, 2025 - Jan 27, 2026",
-    "image": "/events_main_img/LOGO/singularity_logo.jpeg",
+    "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/singularity_logo.jpeg",
     "registrationLink": "https://unstop.com/o/kTlp7rB?utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "30-hour agentic AI hackathon building autonomous multi-agent systems with tool use and real-time decision-making.",
     "format": [
@@ -401,13 +392,13 @@
     "prizes": {
       "prizePool": 40000,
       "breakdown": [
-        { "place": "1st", "amount": 10000, "additional": "Goodies worth 5000" },
-        { "place": "2nd", "amount": 7000, "additional": "Goodies worth 5000" },
-        { "place": "3rd", "amount": 4000, "additional": "Goodies worth 5000" }
+        { "place": "1st", "amount": 15000},
+        { "place": "2nd", "amount": 12000},
+        { "place": "3rd", "amount": 9000},
+        { "place": "4th", "amount": 4000}
       ],
-      "inKind": ["Goodies for all shortlisted teams"]
+      "inKind": ["Goodies for all shortlisted teams and other in-kind rewards!"]
     },
-    "registrationForm": { "required": ["Team Name", "Members Name", "Phone Number", "Mail-Id"], "optional": ["Merch Size"], "additional": ["Solution draft required with registration (deadline slightly extended)"] },
     "comments": ["Accommodation limited/exclusive; see website."]
   },
   {
@@ -424,7 +415,7 @@
     "description": "Mock stock market competition on StockGro with simulated funds and real-time market dynamics.",
     "rules": {
       "important": [
-        "Register on the official Techfest website.",
+        "Register on the official PARSEC website.",
         "Team ID allocated upon registration.",
         "Organizers'/judges' decisions are final."
       ],
@@ -441,8 +432,8 @@
       ]
     },
     "timeline": [
-      { "title": "Registration Starts", "dateText": "TBD" },
-      { "title": "Registration Ends", "dateText": "TBD" },
+      { "title": "Registration Starts", "dateText": "22nd Decmeber 2025" },
+      { "title": "Registration Ends", "dateText": "18th January 2026" },
       { "title": "Start", "date": "2026-01-19" },
       { "title": "End", "date": "2026-01-23" }
     ],
@@ -458,7 +449,6 @@
       ],
       "inKind": ["Participation Certificates", "Mugs/T-shirts for top performers", "Book awards option"]
     },
-    "registrationForm": { "required": ["Name", "Phone Number", "Mail-Id"], "optional": ["Merch Size"] },
     "comments": ["Accommodation note applies only to offline events."]
   },
   {
@@ -467,7 +457,7 @@
     "category": "Hackathon",
     "mode": "mixed",
     "venue": "IIT Dharwad (Onsite Buildathon)",
-    "team": { "min": 1, "max": 4, "individualAllowed": false },
+      "team": { "min": 1, "max": 4, "individualAllowed": false },
     "registrationFee": "Free",
     "date": "Dec 22, 2025 - Jan 25, 2026",
     "image": "",
@@ -495,9 +485,9 @@
     "prizes": {
       "prizePool": 35000,
       "breakdown": [
-        { "place": "1st (Per Track)", "amount": 5000, "additional": "Goodies worth 2500" },
-        { "place": "2nd (Per Track)", "amount": 3000, "additional": "Goodies worth 2500" },
-        { "place": "3rd (Per Track)", "amount": 2000, "additional": "Goodies worth 2500" }
+        { "place": "1st (Per Track)", "amount": 7500},
+        { "place": "2nd (Per Track)", "amount": 5500},
+        { "place": "3rd (Per Track)", "amount": 4500}
       ],
       "notes": ["Senior + Junior separate tracks.", "Winner T-shirts + Goodies included."]
     },
@@ -505,7 +495,6 @@
       "junior_ps": "https://drive.google.com/file/d/14VNuI9LIcqV1TIheb7yYa6VOSudSXzSR/view",
       "senior_ps": "https://drive.google.com/file/d/1blq_9BN7ad0EGkEu0ORHfUAPcqc3W9ub/view"
     },
-    "registrationForm": { "required": ["Team Name", "Members Name", "Phone Number", "Mail-Id"], "optional": ["Merch Size"] },
     "rules": {
       "others": [
         "Carry college ID for onsite.",
@@ -546,11 +535,11 @@
       { "name": "Rithika Athawade | Ranit Maity", "email": "outreach.parsec@iitdh.ac.in" }
     ],
     "prizes": {
-      "prizePool": 20000,
+      "prizePool": 6000,
       "breakdown": [
-        { "place": "1st", "amount": 750, "additional": "Workshop pass worth 6000" },
-        { "place": "2nd", "amount": 500, "additional": "Workshop pass worth 6000" },
-        { "place": "3rd", "amount": 250, "additional": "Workshop pass worth 6000" }
+        { "place": "1st", "amount": 2500, "additional": "Workshop pass worth 6000" },
+        { "place": "2nd", "amount": 1500, "additional": "Workshop pass worth 6000" },
+        { "place": "3rd", "amount": 1000, "additional": "Workshop pass worth 6000" }
       ],
       "inKind": ["All top 3 will be attending 6k worth workshop for free!"],
       "notes": ["Cash component + 6000 INR worth of workshop waiver"]
@@ -558,7 +547,6 @@
     "links": {
       "google_form": "Link_to_be_updated"
     },
-    "registrationForm": { "required": ["Participant Name", "Phone Number", "Email ID", "College Name", "Year of Study"], "optional": ["Merch Size"] },
     "comments": ["Accommodation limited/exclusive; see website."]
   },
   {
@@ -570,7 +558,7 @@
     "team": { "min": 2, "max": 4, "individualAllowed": false },
     "registrationFee": "Free",
     "date": "Dec 22, 2025 - Jan 18, 2026",
-    "image": "/events_main_img/LOGO/Synapse_logo.jpeg",
+    "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/Synapse_logo.jpeg",
     "registrationLink": "https://unstop.com/o/gqyVMbX?utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "Decode Surface Electromyography (sEMG) signals to control a prosthetic limb. Train a model to recognize 5 gestures (Open, Closed, Lateral Pinch, Signalling, Rock) and map them to a gaming interface.",
     "format": [
@@ -594,35 +582,7 @@
       ],
       "inKind": ["Participation Certificates", "Exclusive Merch for winning team members"]
     },
-    "registrationForm": { "required": ["Team Name", "Members Name", "Phone Number", "Mail-Id"], "optional": ["Merch Size"] },
     "cap": { "phase2MaxTeams": 5 },
-    "comments": ["Accommodation limited/exclusive; see website."]
-  },
-  {
-    "id": "astrophotography-workshop",
-    "title": "Astrophotography Workshop",
-    "category": "Workshop",
-    "mode": "offline",
-    "venue": "IIT Dharwad",
-    "team": { "min": 1, "max": 1, "individualAllowed": true },
-    "registrationFee": "Free",
-    "date": "Jan 26, 2026",
-    "image": "",
-    "description": "Hands-on night-sky photography: telescope-mounted DSLR imaging, framing, exposure, and basic post-processing.",
-    "timeline": [
-      { "title": "Workshop", "date": "2026-01-26", "time": "9:00 PM - 12:00 AM" }
-    ],
-    "organizers": [
-      { "name": "Rithika Athawade | Ranit Maity", "email": "outreac.parsec@iitdh.ac.in" }
-    ],
-    "rules": {
-      "others": [
-        "Register via official Parsec 6.0 website; full attendance required for certificate.",
-        "Equipment provided on-site; bringing your own DSLR is optional.",
-        "Slots limited; first-come, first-served."
-      ]
-    },
-    "registrationForm": { "required": ["Name", "Phone Number", "Email ID"], "optional": ["Merch Size"] },
     "comments": ["Accommodation limited/exclusive; see website."]
   },
   {
@@ -639,7 +599,7 @@
     "description": "DRIP N CLICK is a fashion-themed photography competition where participants must submit a set of high-quality edited and raw images. With no limit on team size and complete creative freedom in location and equipment, the event tests originality, fashion aesthetics, photography skills, editing proficiency, and innovative storytelling.",
     "rules": {
       "important": [
-        "Every team has to register online on the official Techfest website for the competition.",
+        "Every team has to register online on the official PARSEC website for the competition.",
         "A Team ID will be allocated to the team on registration which shall be used for future references.",
         "The decision of the organizers or judges shall be treated as final and binding on all."
       ],
@@ -674,7 +634,6 @@
         { "place": "3rd", "amount": 1000 }
       ]
     },
-    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
     "comments": ["For offline events - accommodation shall be limited/exclusive; keep an eye on the website."]
   },
   {
@@ -691,7 +650,7 @@
     "description": "B-YOND THE ROLL is a 15-hour cinematic B-Roll videography challenge where participants must shoot and edit an original 30-60 second video entirely within IIT Dharwad. Open to individuals and teams of up to 6, the event tests creativity, storytelling, cinematography, and editing skills.",
     "rules": {
       "important": [
-        "Every team has to register online on the official Techfest website for the competition.",
+        "Every team has to register online on the official PARSEC website for the competition.",
         "A Team ID will be allocated to the team on registration which shall be used for future references.",
         "The decision of the organizers or judges shall be treated as final and binding on all."
       ],
@@ -729,7 +688,6 @@
         { "place": "3rd", "amount": 1000 }
       ]
     },
-    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
     "comments": ["Accommodation limited/exclusive; keep an eye on the website."]
   },
   {
@@ -745,7 +703,7 @@
     "description": "Gyanotsav is an exciting cultural quiz designed to test participants' knowledge of India's vast heritage, traditions, and culture. The event is a one-hour intellectual challenge where knowledge meets enthusiasm.",
     "rules": {
       "important": [
-        "Every team has to register online on the official Techfest website for the competition.",
+        "Every team has to register online on the official PARSEC website for the competition.",
         "A Team ID will be allocated to the team on registration which shall be used for future references.",
         "The decision of the organizers or judges shall be treated as final and binding on all."
       ],
@@ -771,7 +729,6 @@
       ]
     },
     "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLSe48bl3vPTNfb2a1JuAAs5HduaLkjkW5TYbj9bbuSc1RFspfg/viewform?usp=dialog",
-    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
     "comments": ["Accommodation limited/exclusive; keep an eye on the website."]
   },
   {
@@ -787,7 +744,7 @@
     "description": "Hogwarts Knowledge Quest is a magical quiz adventure designed for true Harry Potter enthusiasts. From spells to secrets, from Hogwarts houses to magical creatures, this one-hour quiz will test your wizarding wisdom to the fullest!",
     "rules": {
       "important": [
-        "Every team has to register online on the official Techfest website for the competition.",
+        "Every team has to register online on the official PARSEC website for the competition.",
         "A Team ID will be allocated to the team on registration which shall be used for future references.",
         "The decision of the organizers or judges shall be treated as final and binding on all."
       ],
@@ -813,7 +770,6 @@
       ]
     },
     "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLSfjZ6rB9a3e-xqZbjqlPDoec4PVrsS-VzCc0fYtOc_3ItsaOw/viewform?usp=dialog",
-    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
     "comments": ["Accommodation limited/exclusive; keep an eye on the website."]
   },
   {
@@ -829,7 +785,7 @@
     "description": "An on-the-spot literary event designed to encourage and showcase the creative expression of students in both English and Hindi. Participants can explore their imagination through Poetry, Prose, or Drama/Story Writing, crafting original works under timed conditions.",
     "rules": {
       "important": [
-        "Every team has to register online on the official Techfest website for the competition.",
+        "Every team has to register online on the official PARSEC website for the competition.",
         "A Team ID will be allocated to the team on registration which shall be used for future references.",
         "The decision of the organizers or judges shall be treated as final and binding on all."
       ],
@@ -862,7 +818,6 @@
       "inKind": ["Certificates of Participation for all valid entries"]
     },
     "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLSd8eLUjyRZFReXyBvAw005XjFpBTyWazjcHXkTHgZgXyDLLiA/viewform?usp=dialog",
-    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
     "comments": ["Accommodation limited/exclusive; keep an eye on the website."]
   },
   {
@@ -883,7 +838,7 @@
         "Final round is offline at IIT Dharwad during PARSEC.",
         "A total of 8 finalists will be selected.",
         "Team composition: 1 actor (mandatory) + Up to 4 backstage members (optional).",
-        "Every team has to register online on the official Techfest website for the competition.",
+        "Every team has to register online on the official PARSEC website for the competition.",
         "A Team ID will be allocated to the team on registration which shall be used for future references.",
         "The decision of the organizers or judges shall be treated as final and binding on all."
       ],
@@ -921,7 +876,6 @@
         { "place": "3rd", "amount": 2000 }
       ]
     },
-    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
     "comments": ["Accommodation limited/exclusive; keep an eye on the website."]
   },
   {
@@ -938,7 +892,7 @@
     "description": "Synerzz is the flagship Group Dance Competition organized by the Sapphire Dance Club, dedicated to showcasing the finest collective talent on campus. More than a display of individual skill, Synerzz places a premium on synchronization, choreography, and thematic storytelling.",
     "rules": {
       "important": [
-        "Every team has to register online on the official Techfest website for the competition.",
+        "Every team has to register online on the official PARSEC website for the competition.",
         "A Team ID will be allocated to the team on registration which shall be used for future references.",
         "The decision of the organizers or judges shall be treated as final and binding on all."
       ],
@@ -965,7 +919,6 @@
         { "place": "3rd", "amount": 5000 }
       ]
     },
-    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Name of the Institute"], "optional": [] },
     "comments": ["Accommodation limited/exclusive; keep an eye on the website."]
   },
   {
@@ -982,7 +935,7 @@
     "description": "Beatblitzz is an event crafted to highlight and celebrate the precision, chemistry, and artistic unity between two performers. The event emphasizes synchronized movement, seamless partnering, and impactful storytelling. Duos are challenged to blend their individual strengths into a single cohesive performance.",
     "rules": {
       "important": [
-        "Every team has to register online on the official Techfest website for the competition.",
+        "Every team has to register online on the official PARSEC website for the competition.",
         "A Team ID will be allocated to the team on registration which shall be used for future references.",
         "The decision of the organizers or judges shall be treated as final and binding on all."
       ],
@@ -1009,7 +962,6 @@
         { "place": "3rd", "amount": 2000 }
       ]
     },
-    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Name of the Institute"], "optional": [] },
     "comments": ["Accommodation limited/exclusive; keep an eye on the website."]
   },
   {
@@ -1026,7 +978,7 @@
     "description": "Express your imagination through colors and brushstrokes! This event invites participants to create vibrant artworks on canvas, capturing their creativity and emotions in unique and beautiful ways.",
     "rules": {
       "important": [
-        "Every team has to register online on the official Techfest website for the competition.",
+        "Every team has to register online on the official PARSEC website for the competition.",
         "A Team ID will be allocated to the team on registration which shall be used for future references.",
         "The decision of the organizers or judges shall be treated as final and binding on all.",
         "Theme will be revealed on spot for the competitors."
@@ -1052,7 +1004,6 @@
       "notes": ["3 Separate prizes will be awarded for the overall event"],
       "inKind": ["Certificates of Participation for all valid entries"]
     },
-    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
     "comments": ["Accommodation limited/exclusive; keep an eye on the website."]
   },
   {
@@ -1069,7 +1020,7 @@
     "description": "The Wizengamot - Corporate MUN is a reimagined diplomatic simulation designed to immerse participants in the dynamics of international policy, corporate strategy, innovation governance, and global socio-economic negotiation. Delegates represent global corporations, tech giants, international organizations, and entrepreneurial bodies.",
     "rules": {
       "important": [
-        "Every team has to register online on the official Techfest website for the competition.",
+        "Every team has to register online on the official PARSEC website for the competition.",
         "A Team ID will be allocated to the team on registration which shall be used for future references.",
         "The decision of the organizers or judges shall be treated as final and binding on all."
       ],
@@ -1102,7 +1053,6 @@
       "notes": ["Top 3 Teams based on overall performance", "Best Delegate", "High Commendation (runner-up individual award)"],
       "inKind": ["Certificates of Participation for all delegates"]
     },
-    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
     "comments": ["Accommodation limited/exclusive; keep an eye on the website.", "Reference: https://youtu.be/zhFfZSkMp2s and https://www.munprep.org/mun-crisis-committees-ultimate-guide/"]
   },
   {
@@ -1119,7 +1069,7 @@
     "description": "Unleash your creativity and bring your style visions to life! This event invites participants to showcase their unique fashion ideas through stunning sketches. Whether modern, traditional, or experimental, let your imagination shape the runway on paper.",
     "rules": {
       "important": [
-        "Every team has to register online on the official Techfest website for the competition",
+        "Every team has to register online on the official PARSEC website for the competition",
         "A Team ID will be allocated to the team on registration which shall be used for future references",
         "The decision of the organizers or judges shall be treated as final and binding on all"
       ],
@@ -1143,7 +1093,6 @@
       "notes": ["3 Separate prizes will be awarded for the overall event"],
       "inKind": ["Certificates of Participation will be issued to all valid entries"]
     },
-    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
     "comments": ["For offline events - accommodation shall be limited/exclusive keep an eye on website"]
   },
   {
@@ -1160,7 +1109,7 @@
     "description": "A group event where participants of the band will perform in synchrony with various instruments and vocal artists in multiple genres.",
     "rules": {
       "important": [
-        "Every team has to register online on the official Techfest website for the competition",
+        "Every team has to register online on the official PARSEC website for the competition",
         "A Team ID will be allocated to the team on registration which shall be used for future references",
         "The decision of the organizers or judges shall be treated as final and binding on all"
       ],
@@ -1181,7 +1130,6 @@
       "prizePool": "₹5,000",
       "breakdown": ["1st Place: ₹2,500", "2nd Place: ₹1,500", "3rd Place: ₹1,000"]
     },
-    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
     "comments": ["For offline events - accommodation shall be limited/exclusive keep an eye on website"]
   },
   {
@@ -1198,7 +1146,7 @@
     "description": "This is a duet competition allowing any combination of instrumentalists and vocalists, with no restrictions on the type of music or genre. This is a group Event.",
     "rules": {
       "important": [
-        "Every team has to register online on the official Techfest website for the competition",
+        "Every team has to register online on the official PARSEC website for the competition",
         "A Team ID will be allocated to the team on registration which shall be used for future references",
         "The decision of the organizers or judges shall be treated as final and binding on all"
       ],
@@ -1218,7 +1166,6 @@
       "prizePool": "₹5,000",
       "breakdown": ["1st Place: ₹2,500", "2nd Place: ₹1,500", "3rd Place: ₹1,000"]
     },
-    "registrationForm": { "required": ["Team Name", "Members Name", "Members Phone Number", "Members Mail-Id", "Members College Name"], "optional": [] },
     "comments": ["For offline events - accommodation shall be limited/exclusive keep an eye on website"]
   }
 ]

@@ -6,15 +6,15 @@ import "./GalleryCarousel.css";
 
 // Use public folder images for Vercel deployment
 const eventImages = [
-  "/gallery/ABC.webp",
-  "/gallery/BAB.webp",
-  "/gallery/BAB2.webp",
-  "/gallery/BAB3.webp",
-  "/gallery/crowd.webp",
-  "/gallery/Event.webp",
-  "/gallery/Event2.webp",
-  "/gallery/RedAlert.webp",
-  "/gallery/StandUp.webp"
+  "https://parsec-iitdh.github.io/assets/gallery/ABC.webp",
+  "https://parsec-iitdh.github.io/assets/gallery/BAB.webp",
+  "https://parsec-iitdh.github.io/assets/gallery/BAB2.webp",
+  "https://parsec-iitdh.github.io/assets/gallery/BAB3.webp",
+  "https://parsec-iitdh.github.io/assets/gallery/crowd.webp",
+  "https://parsec-iitdh.github.io/assets/gallery/Event.webp",
+  "https://parsec-iitdh.github.io/assets/gallery/Event2.webp",
+  "https://parsec-iitdh.github.io/assets/gallery/RedAlert.webp",
+  "https://parsec-iitdh.github.io/assets/gallery/StandUp.webp",
 ];
 
 function GalleryCarousel() {
@@ -31,13 +31,17 @@ function GalleryCarousel() {
         breakpoints={{
           480: { slidesPerView: 1 },
           768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 }
+          1024: { slidesPerView: 3 },
         }}
       >
         {eventImages.map((src, idx) => (
           <SwiperSlide key={idx}>
             <div className="gallery-carousel-card">
-              <img src={src} alt={`Gallery ${idx + 1}`} className="gallery-carousel-img" />
+              <img
+                src={src}
+                alt={`Gallery ${idx + 1}`}
+                className="gallery-carousel-img"
+              />
             </div>
           </SwiperSlide>
         ))}
