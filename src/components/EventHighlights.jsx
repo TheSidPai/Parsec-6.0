@@ -1,6 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./EventHighlights.css";
 
+/**
+ * Static configuration moved outside the component
+ * to avoid re-creation on every render.
+ */
+const stats = [
+  { key: "events", target: 30, suffix: "+", label: "Events" },
+  { key: "participants", target: 5000, suffix: "+", label: "Participants" },
+  {
+    key: "prizes",
+    target: 2,
+    suffix: "L+",
+    label: "Prize Pool",
+    prefix: "₹",
+  },
+  { key: "days", target: 5, suffix: "", label: "Days of Magic" },
+];
+
 const EventHighlights = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [counts, setCounts] = useState({
@@ -12,44 +29,37 @@ const EventHighlights = () => {
 
   const sectionRef = useRef(null);
 
-  const stats = [
-    { key: "events", target: 30, suffix: "+", label: "Events" },
-    { key: "participants", target: 5000, suffix: "+", label: "Participants" },
-    {
-      key: "prizes",
-      target: 2,
-      suffix: "L+",
-      label: "Prize Pool",
-      prefix: "₹",
-    },
-    { key: "days", target: 5, suffix: "", label: "Days of Magic" },
-  ];
-
+  /**
+   * Intersection Observer effect
+   */
   useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
+        if (entry.isIntersecting) {
           setIsVisible(true);
         }
       },
       { threshold: 0.3 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+    observer.observe(node);
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
+      observer.unobserve(node);
+      observer.disconnect();
     };
-  }, [isVisible]);
+  }, []);
 
+  /**
+   * Counter animation effect
+   */
   useEffect(() => {
     if (!isVisible) return;
 
-    const duration = 2000; // 2 seconds
+    const duration = 2000;
     const steps = 60;
     const stepDuration = duration / steps;
 
@@ -59,25 +69,26 @@ const EventHighlights = () => {
 
       return setInterval(() => {
         currentStep++;
-        if (currentStep <= steps) {
-          setCounts((prev) => ({
-            ...prev,
-            [stat.key]: Math.min(
-              Math.floor(increment * currentStep),
-              stat.target
-            ),
-          }));
-        }
+
+        setCounts((prev) => ({
+          ...prev,
+          [stat.key]: Math.min(
+            Math.floor(increment * currentStep),
+            stat.target
+          ),
+        }));
       }, stepDuration);
     });
 
-    return () => intervals.forEach(clearInterval);
+    return () => {
+      intervals.forEach(clearInterval);
+    };
   }, [isVisible]);
 
   return (
     <div className="highlights-section" ref={sectionRef}>
       <div className="highlights-container">
-        {stats.map((stat, index) => (
+        {stats.map((stat) => (
           <div key={stat.key} className="highlight-item">
             <div className="highlight-value">
               {stat.prefix || ""}
