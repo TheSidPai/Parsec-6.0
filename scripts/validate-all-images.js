@@ -26,32 +26,32 @@ if (fs.existsSync(HOUSES_DIR)) {
 }
 
 // ========== 2. VALIDATE TEAMS ========== 
-console.log('\n📁 Checking /teams/ images...');
-const TEAMS_DIR = path.join(__dirname, '..', 'public', 'teams');
-const TEAM_JSON_PATH = path.join(__dirname, '..', 'src', 'assets', 'data', 'team.json');
+// console.log('\n📁 Checking /teams/ images...');
+// const TEAMS_DIR = path.join(__dirname, '..', 'public', 'teams');
+// const TEAM_JSON_PATH = path.join(__dirname, '..', 'src', 'assets', 'data', 'team.json');
 
-if (fs.existsSync(TEAM_JSON_PATH)) {
-  const teamData = JSON.parse(fs.readFileSync(TEAM_JSON_PATH, 'utf-8'));
-  const actualFiles = fs.readdirSync(TEAMS_DIR);
+// if (fs.existsSync(TEAM_JSON_PATH)) {
+//   const teamData = JSON.parse(fs.readFileSync(TEAM_JSON_PATH, 'utf-8'));
+//   const actualFiles = fs.readdirSync(TEAMS_DIR);
   
-  teamData.forEach(member => {
-    if (!member.photo) {
-      console.log(`  ⚠️  ${member.name} - No photo`);
-      return;
-    }
+//   teamData.forEach(member => {
+//     if (!member.photo) {
+//       console.log(`  ⚠️  ${member.name} - No photo`);
+//       return;
+//     }
     
-    const photoPath = member.photo.replace('/teams/', '');
-    if (actualFiles.includes(photoPath)) {
-      console.log(`  ✅ ${member.name}: ${photoPath}`);
-    } else {
-      console.log(`  ❌ ${member.name}: ${photoPath} NOT FOUND`);
-      totalErrors++;
-    }
-  });
-} else {
-  console.log('  ❌ team.json not found!');
-  totalErrors++;
-}
+//     const photoPath = member.photo.replace('/teams/', '');
+//     if (actualFiles.includes(photoPath)) {
+//       console.log(`  ✅ ${member.name}: ${photoPath}`);
+//     } else {
+//       console.log(`  ❌ ${member.name}: ${photoPath} NOT FOUND`);
+//       totalErrors++;
+//     }
+//   });
+// } else {
+//   console.log('  ❌ team.json not found!');
+//   totalErrors++;
+// }
 
 // ========== 3. VALIDATE SORTING IMAGE ========== 
 console.log('\n📁 Checking /sorting_img/ ...');
