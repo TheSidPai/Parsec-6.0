@@ -28,9 +28,11 @@ function Footer() {
             <p className="footer-text">PIN - 580011</p>
             {/* Email to be provided */}
             <p className="footer-text footer-email">
-              <a href="mailto:gstech@iitdh.ac.in">gstech@iitdh.ac.in</a>
+              <a href="mailto:outreach.parsec@iitdh.ac.in">
+                outreach.parsec@iitdh.ac.in
+              </a>
               <br />
-              <span className="footer-text">Technical Council IIT Dharwad</span>
+              <span className="footer-text">Reach out to Team PARSEC!</span>
             </p>
           </div>
         </div>
@@ -141,7 +143,7 @@ function Footer() {
               </svg>
             </a>
             <a
-              href="https://discord.gg/REjx6BqD"
+              href="https://discord.gg/WcGQbUXf8A"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Discord"

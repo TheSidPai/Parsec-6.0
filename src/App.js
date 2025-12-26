@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -24,7 +24,7 @@ import DashboardHome from "./pages/dashboard/DashboardHome";
 import DashboardEvents from "./pages/dashboard/DashboardEvents";
 import DashboardEventDetail from "./pages/dashboard/DashboardEventDetail";
 import DashboardSchedule from "./pages/dashboard/DashboardSchedule";
-import Tickets from "./pages/dashboard/Tickets";
+// import Tickets from "./pages/dashboard/Tickets";
 import Profile from "./pages/dashboard/Profile";
 import Leaderboard from "./pages/dashboard/Leaderboard";
 import DashboardTeam from "./pages/dashboard/Team";

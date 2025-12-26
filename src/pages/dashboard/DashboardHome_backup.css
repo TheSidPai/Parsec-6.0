@@ -1,0 +1,39 @@
+﻿/* ========== INTRO ANIMATION STYLES ========== */
+
+.intro-animation-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #060010;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.glitch-text-container {
+  background-color: #060010;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.dashboard-content-wrapper {
+  animation: dashboardFadeIn 0.8s ease-out;
+}
+
+@keyframes dashboardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
