@@ -8,7 +8,7 @@
     "team": { "min": 1, "max": 6, "individualAllowed": true },
     "registrationFee": "Free",
     "date": "Dec 22, 2025 - Jan 26, 2026",
-    "image": "",
+    "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/aurora_logo.jpg",
     "registrationLink": "https://unstop.com/hackathons/aurora-parsec-60-indian-institute-of-technology-iit-dharwad-1609211",
     "description": "Partnered with SAC-ISRO, Aurora 2.0 focuses on mining activity monitoring using multispectral satellite imagery and Geospatial AI. The event aims to spark creativity by bridging space technology, remote sensing, and AI-driven analytics.",
     "rules": {
@@ -177,7 +177,7 @@
     "team": { "min": 1, "max": 3, "individualAllowed": true },
     "registrationFee": "Free",
     "date": "Dec 22, 2025 - Jan 18, 2026",
-    "image": "",
+    "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/vvv_logo.png",
     "registrationLink": "https://unstop.com/o/ofhlBtk?lb=qkhVYy9&utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "PARSEC's premier Capture The Flag (CTF) competition. Covers cryptography, forensics, reverse engineering, web exploitation, and OSINT. Jeopardy style with dynamic scoring.",
     "rules": {
@@ -223,7 +223,7 @@
     "team": { "min": 1, "max": 1, "individualAllowed": true },
     "registrationFee": "Free",
     "date": "Jan 18, 2026 - Jan 27, 2026",
-    "image": "",
+    "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/algostrike_logo.png",
     "registrationLink": "https://unstop.com/o/04aO7qg?lb=qkhVYy9&utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "High-stakes individual competitive programming contest. 6-8 problems to be solved in 2 hours under pressure.",
     "rules": {
@@ -319,7 +319,7 @@
     "registrationFee": "Rs. 599 (tentative)",
     "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLScWQtAvl8GCDY_2SiORe6Z4F8SHtnPb-LUwE324hot0EBKWcw/viewform?usp=dialog",
     "date": "Jan 24-25, 2026",
-    "image": "",
+    "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/gringotts_logo.png",
     "description": "Finance workshop exploring quantitative finance and algo trading.",
     "timeline": [
       { "title": "Day 1", "date": "2026-01-24", "time": "9:00 AM - 12:00 PM" },
@@ -345,7 +345,7 @@
     "registrationFee": "Free",
     "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLSeOlGd-MfLyrQttudYFfS97Pn9mByCDBRsUCpOD5_jEc1a2MQ/viewform?usp=dialog",
     "date": "Jan 24-25, 2026",
-    "image": "",
+    "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/design_logo.png",
     "description": "Gamified design thinking workshop with interactive activities, quick challenges, and team tasks.",
     "timeline": [
       { "title": "Day 1", "date": "2026-01-24", "time": "9:00 AM - 12:00 PM" },
@@ -411,7 +411,7 @@
     "registrationFee": "Free",
     "registrationLink": "https://unstop.com/competitions/trumble-invest-grow-and-prosper-parsec-60-indian-institute-of-technology-iit-dharwad-1612282",
     "date": "Jan 19-23, 2026",
-    "image": "",
+    "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/trumble_logo.png",
     "description": "Mock stock market competition on StockGro with simulated funds and real-time market dynamics.",
     "rules": {
       "important": [
@@ -460,7 +460,7 @@
       "team": { "min": 1, "max": 4, "individualAllowed": false },
     "registrationFee": "Free",
     "date": "Dec 22, 2025 - Jan 25, 2026",
-    "image": "",
+    "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/bab_logo.png",
     "registrationLink": "https://unstop.com/o/XTF4qhd?lb=qkhVYy9&utm_medium=Share&utm_source=outrepar7281&utm_campaign=Online_coding_challenge",
     "description": "Flagship robotics challenge. Two tracks: Junior (newcomers) and Senior (experienced). Teams design and build functional robots.",
     "format": [
@@ -514,7 +514,7 @@
     "registrationFee": "Free",
     "registrationLink": "https://unstop.com/workshops-webinars/star-quest-parsec-60-indian-institute-of-technology-iit-dharwad-1610208",
     "date": "Jan 24, 2026",
-    "image": "",
+    "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/starquest_logo.png",
     "description": "On-campus astronomy quiz with MCQs, image identification, and rapid-fire segments. Followed by an Observational Astronomy / Astrophotography Workshop.",
     "timeline": [
       { "title": "Astronomy Quiz", "date": "2026-01-24", "time": "5:00 PM - 6:00 PM" },
@@ -595,7 +595,7 @@
     "registrationFee": "Free",
     "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLSeINz1RUiZUqLK3wk8j0U6cEN1s5WvNI2VgRIppgIfD612iig/viewform?usp=dialog",
     "date": "Jan 10 - 18, 2026",
-    "image": "",
+    "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/Harshtal/click_logo.png",
     "description": "DRIP N CLICK is a fashion-themed photography competition where participants must submit a set of high-quality edited and raw images. With no limit on team size and complete creative freedom in location and equipment, the event tests originality, fashion aesthetics, photography skills, editing proficiency, and innovative storytelling.",
     "rules": {
       "important": [
@@ -646,7 +646,7 @@
     "registrationFee": "Free",
     "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLSeoAb10WztZdxezqb1trzveoIUKO2-KlCuw0uzctBc6ofC6yA/viewform?usp=dialog",
     "date": "Jan 24 - 25, 2026",
-    "image": "",
+    "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/Harshtal/beyondroll_logo.png",
     "description": "B-YOND THE ROLL is a 15-hour cinematic B-Roll videography challenge where participants must shoot and edit an original 30-60 second video entirely within IIT Dharwad. Open to individuals and teams of up to 6, the event tests creativity, storytelling, cinematography, and editing skills.",
     "rules": {
       "important": [
@@ -699,7 +699,7 @@
     "team": { "min": 1, "max": 3, "individualAllowed": true },
     "registrationFee": "Free",
     "date": "Jan 24, 2026",
-    "image": "",
+    "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/Harshtal/gyanostav_logo.png",
     "description": "Gyanotsav is an exciting cultural quiz designed to test participants' knowledge of India's vast heritage, traditions, and culture. The event is a one-hour intellectual challenge where knowledge meets enthusiasm.",
     "rules": {
       "important": [
@@ -740,7 +740,7 @@
     "team": { "min": 1, "max": 3, "individualAllowed": true },
     "registrationFee": "Free",
     "date": "Jan 24, 2026",
-    "image": "",
+    "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/Harshtal/hogwartsknowledge_logo.png",
     "description": "Hogwarts Knowledge Quest is a magical quiz adventure designed for true Harry Potter enthusiasts. From spells to secrets, from Hogwarts houses to magical creatures, this one-hour quiz will test your wizarding wisdom to the fullest!",
     "rules": {
       "important": [
@@ -781,7 +781,7 @@
     "team": { "min": 1, "max": 1, "individualAllowed": true },
     "registrationFee": "Free",
     "date": "Jan 24, 2026",
-    "image": "",
+    "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/Harshtal/chronicles_logo.png",
     "description": "An on-the-spot literary event designed to encourage and showcase the creative expression of students in both English and Hindi. Participants can explore their imagination through Poetry, Prose, or Drama/Story Writing, crafting original works under timed conditions.",
     "rules": {
       "important": [

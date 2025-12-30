@@ -21,8 +21,8 @@ function Team() {
     "Core Team - PARSEC",
     "Core Team - Harshtal",
     "Mentors",
-    "Events Team",
     "Web Team",
+    "Events Team",
     "Marketing Team",
   ];
 

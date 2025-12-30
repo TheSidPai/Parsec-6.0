@@ -1,7 +1,5 @@
 .footer {
-  /* background: var(--gradient); */
   backdrop-filter: blur(2px);
-  /* border-top: 2px solid var(--fontAccent); */
   padding: 3rem 0 1.5rem;
   margin-top: auto;
   width: 100%;
@@ -30,6 +28,7 @@
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  align-items: center;
 }
 
 .footer-logo-parsec {
@@ -70,6 +69,7 @@
   transition: color 0.3s ease;
   position: relative;
   z-index: 10;
+  word-break: break-word;
 }
 
 .footer-email a:hover {
@@ -121,12 +121,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 1rem;
 }
 
 .footer-social-links {
   display: flex;
   gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .footer-social-links a {
@@ -148,6 +149,17 @@
   width: 28px;
   height: 28px;
   pointer-events: none;
+}
+
+.footer-logo-iit {
+  text-align: left;
+  margin-top: auto;
+}
+
+.footer-logo-iit-image {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
 }
 
 .footer-copyright {
@@ -172,8 +184,13 @@
   }
 
   .footer-container {
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
     padding: 0 1.5rem;
+  }
+
+  .footer-section {
+    width: 100%;
   }
 
   .footer-heading {
@@ -184,13 +201,31 @@
     font-size: 0.9rem;
   }
 
+  .footer-logos {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .footer-logo-parsec,
+  .footer-logo-tech {
+    height: 50px;
+  }
+
   .footer-social {
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
   }
 
   .footer-social-links {
-    justify-content: center;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .footer-logo-iit {
+    text-align: left;
+  }
+
+  .footer-logo-iit-image {
+    height: 70px;
   }
 }
 
@@ -200,29 +235,68 @@
   }
 
   .footer-container {
-    grid-template-columns: 1fr;
-    padding: 0 1rem;
-    gap: 1.5rem;
+    padding: 0 1.25rem;
+    gap: 2rem;
   }
 
-  .footer-logo-parsec {
-    height: 40px;
+  .footer-logos {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
   }
 
+  .footer-logo-parsec,
   .footer-logo-tech {
-    height: 35px;
+    height: 45px;
   }
 
   .footer-heading {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
   }
 
   .footer-text {
     font-size: 0.85rem;
   }
 
+  .footer-nav {
+    gap: 0.6rem;
+  }
+
   .footer-nav li a {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+  }
+
+  .footer-social-links {
+    gap: 1.25rem;
+  }
+
+  .footer-social-links svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .footer-logo-iit-image {
+    height: 60px;
+  }
+
+  .footer-copyright {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .footer-container {
+    padding: 0 1rem;
+  }
+
+  .footer-logo-parsec,
+  .footer-logo-tech {
+    height: 40px;
+  }
+
+  .footer-social-links {
+    gap: 1rem;
   }
 
   .footer-social-links svg {
@@ -230,7 +304,7 @@
     height: 24px;
   }
 
-  .footer-copyright {
-    font-size: 0.85rem;
+  .footer-logo-iit-image {
+    height: 55px;
   }
 }

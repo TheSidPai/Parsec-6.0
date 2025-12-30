@@ -4,27 +4,28 @@ import "./FeaturedEvents.css";
 
 const FeaturedEvents = () => {
   const events = [
-    // {
-    //   id: "aurora-2",
-    //   title: "Aurora 2.0: Beyond the Horizon",
-    //   category: "Hackathon",
-    //   description:
-    //     "A multidisciplinary hackathon partnered with SAC-ISRO, focusing on mining activity monitoring using multispectral satellite imagery and Geospatial AI.",
-    //   image: "",
-    //   link: "/events/aurora-2",
-    //   registrationLink: "https://parsec.iitdh.ac.in/events/aurora-2",
-    // },
     {
-      id: "protocraft",
-      title: "Protocraft",
+      id: "aurora-2",
+      title: "Aurora 2.0: Beyond the Horizon",
       category: "Hackathon",
       description:
-        "Theme-based mechanical design challenge. Think like an engineer and build like a creator: sketch, model, and refine your ideas using solid mechanical principles.",
+        "A multidisciplinary hackathon partnered with SAC-ISRO, focusing on mining activity monitoring using multispectral satellite imagery and Geospatial AI.",
       image:
-        "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/protocraft_logo.jpeg",
-      link: "/events/protocraft",
-      registrationLink: "https://parsec.iitdh.ac.in/events/protocraft",
+        "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/aurora_logo.jpg",
+      link: "/events/aurora-2",
+      registrationLink: "https://parsec.iitdh.ac.in/events/aurora-2",
     },
+    // {
+    //   id: "protocraft",
+    //   title: "Protocraft",
+    //   category: "Hackathon",
+    //   description:
+    //     "Theme-based mechanical design challenge. Think like an engineer and build like a creator: sketch, model, and refine your ideas using solid mechanical principles.",
+    //   image:
+    //     "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/protocraft_logo.jpeg",
+    //   link: "/events/protocraft",
+    //   registrationLink: "https://parsec.iitdh.ac.in/events/protocraft",
+    // },
     {
       id: "singularity",
       title: "Singularity: Build. Evolve. Converge.",
@@ -42,7 +43,8 @@ const FeaturedEvents = () => {
     //   category: "Hackathon",
     //   description:
     //     "Flagship robotics challenge. Two tracks: Junior (newcomers) and Senior (experienced). Teams design and build functional robots.",
-    //   image: "",
+    //   image:
+    //     "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/bab_logo.png",
     //   link: "/events/build-a-bot-3",
     //   registrationLink: "https://parsec.iitdh.ac.in/events/build-a-bot-3",
     // },

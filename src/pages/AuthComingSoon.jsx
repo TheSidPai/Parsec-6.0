@@ -42,14 +42,20 @@ function AuthComingSoon() {
       </div>
 
       <Navbar />
-      <div className="comingsoon-container" style={{ background: 'transparent' }}>
+      <div
+        className="comingsoon-container"
+        style={{ background: "transparent" }}
+      >
         <div className="comingsoon-card">
           <h2 className="comingsoon-title">Login & Registration</h2>
           <p className="comingsoon-desc">
             Our magical portal is being enchanted! ✨<br />
             Login and registration will open soon.
           </p>
-          <p className="comingsoon-desc" style={{ fontSize: "0.9rem", opacity: 0.8, marginTop: "0.5rem" }}>
+          <p
+            className="comingsoon-desc"
+            style={{ fontSize: "0.9rem", opacity: 0.8, marginTop: "0.5rem" }}
+          >
             Follow our socials for launch announcements!
           </p>
           <Link to="/landing">

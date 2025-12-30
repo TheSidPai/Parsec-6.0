@@ -10,6 +10,7 @@ import { AnimatePresence } from "framer-motion";
 import "./App.css";
 import { ThemeProvider } from "./context/ThemeContext";
 import MagicalLoader from "./components/MagicalLoader";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 // Import page components
 import Home from "./pages/Home";
@@ -24,7 +25,6 @@ import DashboardHome from "./pages/dashboard/DashboardHome";
 import DashboardEvents from "./pages/dashboard/DashboardEvents";
 import DashboardEventDetail from "./pages/dashboard/DashboardEventDetail";
 import DashboardSchedule from "./pages/dashboard/DashboardSchedule";
-// import Tickets from "./pages/dashboard/Tickets";
 import Profile from "./pages/dashboard/Profile";
 import Leaderboard from "./pages/dashboard/Leaderboard";
 import DashboardTeam from "./pages/dashboard/Team";
@@ -45,30 +45,15 @@ function AnimatedRoutes() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        {/* Root redirects to home */}
         <Route path="/" element={<Navigate to="/home" replace />} />
-
-        {/* Public Routes */}
         <Route path="/home" element={<Home />} />
-
         <Route path="/landing" element={<Navigate to="/home" replace />} />
 
-        {/* TEMPORARY: Auth Coming Soon - Remove when ready to launch */}
+        {/* Auth (Coming Soon) */}
         <Route path="/login" element={<AuthComingSoon />} />
         <Route path="/signup/*" element={<AuthComingSoon />} />
 
-        {/* ORIGINAL AUTH ROUTES - Uncomment when ready to launch:
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignupLayout />}>
-          <Route path="onboarding" element={<Onboarding />} />
-          <Route path="sorting" element={<SortingHat />} />
-          <Route path="auth" element={<Auth />} />
-          <Route path="manual" element={<ManualAuth />} />
-          <Route path="terms" element={<Terms />} />
-        </Route>
-        */}
-
-        {/* Public Events, Schedule & Team */}
+        {/* Public Pages */}
         <Route path="/events" element={<Events />} />
         <Route path="/harshtal" element={<Harshtal />} />
         <Route path="/tesseract" element={<Tesseract />} />
@@ -77,10 +62,10 @@ function AnimatedRoutes() {
         <Route path="/team" element={<Team />} />
         <Route path="/accommodation" element={<AccommodationComingSoon />} />
 
-        {/* House-Specific Pages (Protected) */}
+        {/* House Pages */}
         <Route path="/house/:houseName" element={<HousePage />} />
 
-        {/* Admin Routes */}
+        {/* Admin */}
         <Route path="/admin/login" element={<AdminAuth />} />
         <Route
           path="/admin/dashboard"
@@ -91,7 +76,7 @@ function AnimatedRoutes() {
           }
         />
 
-        {/* Protected Dashboard Routes */}
+        {/* Dashboard */}
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<DashboardHome />} />
           <Route path="events" element={<DashboardEvents />} />
@@ -105,7 +90,7 @@ function AnimatedRoutes() {
           <Route path="contact" element={<Contact />} />
         </Route>
 
-        {/* 404 Page */}
+        {/* 404 */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
@@ -119,19 +104,18 @@ function App() {
   const handleLoadComplete = () => {
     setIsLoading(false);
     setHasLoadedOnce(true);
-    // Store in session storage so loader doesn't show again during this session
     sessionStorage.setItem("hasLoadedOnce", "true");
   };
 
   return (
     <Router>
       <ThemeProvider>
-        {/* Show loader only on first load */}
+        {/* Initial magical loader */}
         {isLoading && !hasLoadedOnce && (
           <MagicalLoader onLoadComplete={handleLoadComplete} />
         )}
 
-        {/* Main app content */}
+        {/* Main app */}
         <div
           style={{
             opacity: isLoading ? 0 : 1,
@@ -140,6 +124,9 @@ function App() {
         >
           <AnimatedRoutes />
         </div>
+
+        {/* GLOBAL SCROLL TO TOP BUTTON */}
+        <ScrollToTopButton />
       </ThemeProvider>
     </Router>
   );
