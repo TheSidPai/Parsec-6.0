@@ -308,20 +308,20 @@
         "instagram": "https://www.instagram.com/itsxayush.raj/"
     },
     {
-        "name": "Yogya Ahuja",
-        "team": "Web Team",
-        "role": "",
-        "photo": "https://parsec-iitdh.github.io/assets/teams/YogyaAhuja.webp",
-        "linkedin": "",
-        "instagram": "https://www.instagram.com/yogyaa._16"
-    },
-    {
         "name": "Siddhant Pai",
         "team": "Web Team",
         "role": "",
         "photo": "https://parsec-iitdh.github.io/assets/teams/SiddhantPai.webp",
         "linkedin": "www.linkedin.com/in/siddhant-pai-9a53b6371",
         "instagram": "https://www.instagram.com/the_sid_pai?igsh=MXRkOTY2N21rb2o5Zw=="
+    },
+    {
+        "name": "Yogya Ahuja",
+        "team": "Web Team",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/YogyaAhuja.webp",
+        "linkedin": "",
+        "instagram": "https://www.instagram.com/yogyaa._16"
     },
     {
         "name": "Prajwal Prasad",

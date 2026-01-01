@@ -37,7 +37,7 @@
 
 /* ========== TITLE STYLING ========== */
 .about-title {
-  font-family: "Cinzel", "Playfair Display", serif;
+  font-family: "Playfair Display", serif;
   font-size: 3.5rem;
   font-weight: 600;
   color: var(--fontMain);
@@ -74,7 +74,7 @@
 
 .about-intro,
 .about-description {
-  font-family: "Poppins", "Cinzel", sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   font-size: 1.25rem;
   line-height: 1.8;
   color: var(--fontMain);

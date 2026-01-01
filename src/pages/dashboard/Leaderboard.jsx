@@ -65,31 +65,17 @@ function Leaderboard() {
 
   return (
     <div className="leaderboard-page">
-      {/* Magical Background Effects */}
-      <div className="leaderboard-orb leaderboard-orb-1"></div>
-      <div className="leaderboard-orb leaderboard-orb-2"></div>
-      <div className="leaderboard-stars">
-        {[...Array(50)].map((_, i) => (
-          <div
-            key={i}
-            className="leaderboard-star"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`
-            }}
-          />
-        ))}
-      </div>
-
       <div className="leaderboard-container">
         {/* Header */}
         <div className="leaderboard-header">
-          <h1 className="leaderboard-title">House Championship</h1>
+          <div className="leaderboard-title-wrapper">
+            <div className="wand-divider left"></div>
+            <h1 className="leaderboard-title">House Championship</h1>
+            <div className="wand-divider right"></div>
+          </div>
           <p className="leaderboard-subtitle">
             The battle for glory begins • Points will be updated as events unfold
           </p>
-          <div className="leaderboard-cup">🏆</div>
         </div>
 
         {/* House Cards */}
@@ -137,7 +123,6 @@ function Leaderboard() {
               <div className="house-points">
                 <div className="points-label">House Points</div>
                 <div className="points-value">{house.points}</div>
-                <div className="points-sparkles">✨</div>
               </div>
 
               {/* Progress Bar */}

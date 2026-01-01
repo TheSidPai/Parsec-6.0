@@ -6,6 +6,21 @@ import Lightning from "../../components/Lightning";
 // import FuzzyText from '../../components/FuzzyText';
 import { gsap } from "gsap";
 import "./DashboardHome.css";
+import { 
+  FaTrophy, 
+  FaShoppingBag, 
+  FaCalendarAlt,
+  FaCrown,
+  FaMagic
+} from "react-icons/fa";
+import { 
+  GiCastle, 
+  GiLion, 
+  GiSnakeTongue, 
+  GiEagleHead, 
+  GiHoneypot,
+  GiCrystalBall 
+} from "react-icons/gi";
 
 function DashboardHome() {
   const navigate = useNavigate();
@@ -26,17 +41,17 @@ function DashboardHome() {
   const [loading, setLoading] = useState(true);
   const [greeting, setGreeting] = useState("");
 
-  const houseEmojis = {
-    gryffindor: "🦁",
-    slytherin: "🐍",
-    ravenclaw: "🦅",
-    hufflepuff: "🦡",
-    hogwarts: "🏰",
+  const houseIcons = {
+    gryffindor: <GiLion />,
+    slytherin: <GiSnakeTongue />,
+    ravenclaw: <GiEagleHead />,
+    hufflepuff: <GiHoneypot />,
+    hogwarts: <GiCastle />,
   };
 
-  const getHouseEmoji = (houseName) => {
-    if (!houseName) return "🏰";
-    return houseEmojis[houseName.toLowerCase()] || "🏰";
+  const getHouseIcon = (houseName) => {
+    if (!houseName) return <GiCastle />;
+    return houseIcons[houseName.toLowerCase()] || <GiCastle />;
   };
 
   useEffect(() => {
@@ -183,7 +198,7 @@ function DashboardHome() {
           {/* House Rank */}
           <div className="quick-info-bar">
             <div className="info-item">
-              <span className="info-icon">🏆</span>
+              <span className="info-icon"><FaCrown /></span>
               <span className="info-text">House Rank: {userData.rank} / 4</span>
             </div>
           </div>
@@ -191,7 +206,7 @@ function DashboardHome() {
           {/* Welcome Section */}
           <div className="welcome-section">
             <h1 className="welcome-greeting">
-              {greeting}, {userData.name}! ✨
+              {greeting}, {userData.name}! <FaMagic className="greeting-icon" />
             </h1>
             <p className="welcome-subtext">
               Your magical journey continues at Parsec 2026
@@ -200,7 +215,7 @@ function DashboardHome() {
             {userData.house && (
               <div className="house-badge">
                 <span className="house-badge-icon">
-                  {getHouseEmoji(userData.house)}
+                  {getHouseIcon(userData.house)}
                 </span>
                 <span>
                   House{" "}
@@ -213,40 +228,49 @@ function DashboardHome() {
 
           {/* Stats Grid */}
           <div className="stats-grid">
-            <div
-              className="stat-card"
-              onClick={() => navigate("/dashboard/events")}
-            >
-              <span className="stat-icon">🎯</span>
-              <div className="stat-value" data-target={eventsData.length}>
-                {eventsData.length}
+            <div className="stat-card">
+              <div className="stat-card-header">
+                <div className="stat-divider left"></div>
+                <h3 className="stat-title">Total Events</h3>
+                <div className="stat-divider right"></div>
               </div>
-              <div className="stat-label">Total Events</div>
-              <div className="stat-trend positive">↑ Ready to explore</div>
+              <div className="stat-value">{eventsData.length}</div>
+              <button 
+                className="stat-btn"
+                onClick={() => navigate("/dashboard/events")}
+              >
+                Explore Events
+              </button>
             </div>
 
-            <div
-              className="stat-card"
-              onClick={() => navigate("/dashboard/leaderboard")}
-            >
-              <span className="stat-icon">⭐</span>
-              <div className="stat-value" data-target={userData.housePoints}>
-                0
+            <div className="stat-card">
+              <div className="stat-card-header">
+                <div className="stat-divider left"></div>
+                <h3 className="stat-title">House Points</h3>
+                <div className="stat-divider right"></div>
               </div>
-              <div className="stat-label">House Points</div>
-              <div className="stat-trend positive">↑ Coming soon</div>
+              <div className="stat-value">0</div>
+              <button 
+                className="stat-btn"
+                onClick={() => navigate("/dashboard/leaderboard")}
+              >
+                View Leaderboard
+              </button>
             </div>
 
-            <div
-              className="stat-card"
-              onClick={() => navigate("/dashboard/orders")}
-            >
-              <span className="stat-icon">🛍️</span>
-              <div className="stat-value" data-target={0}>
-                0
+            <div className="stat-card">
+              <div className="stat-card-header">
+                <div className="stat-divider left"></div>
+                <h3 className="stat-title">My Orders</h3>
+                <div className="stat-divider right"></div>
               </div>
-              <div className="stat-label">My Orders</div>
-              <div className="stat-trend neutral">→ Track purchases</div>
+              <div className="stat-value">0</div>
+              <button 
+                className="stat-btn"
+                onClick={() => navigate("/dashboard/orders")}
+              >
+                Track Purchases
+              </button>
             </div>
           </div>
 
@@ -260,7 +284,7 @@ function DashboardHome() {
                   className="action-btn"
                   onClick={() => navigate("/dashboard/events")}
                 >
-                  <span className="action-icon">🎪</span>
+                  <span className="action-icon"><GiCastle /></span>
                   <span>Browse Events</span>
                 </button>
 
@@ -268,7 +292,7 @@ function DashboardHome() {
                   className="action-btn"
                   onClick={() => navigate("/dashboard/orders")}
                 >
-                  <span className="action-icon">🛍️</span>
+                  <span className="action-icon"><FaShoppingBag /></span>
                   <span>My Orders</span>
                 </button>
 
@@ -276,7 +300,7 @@ function DashboardHome() {
                   className="action-btn"
                   onClick={() => navigate("/dashboard/leaderboard")}
                 >
-                  <span className="action-icon">🏆</span>
+                  <span className="action-icon"><FaTrophy /></span>
                   <span>Leaderboard</span>
                 </button>
 
@@ -284,7 +308,7 @@ function DashboardHome() {
                   className="action-btn"
                   onClick={() => navigate("/dashboard/schedule")}
                 >
-                  <span className="action-icon">📅</span>
+                  <span className="action-icon"><FaCalendarAlt /></span>
                   <span>Schedule</span>
                 </button>
               </div>
@@ -321,7 +345,7 @@ function DashboardHome() {
                       <div className="event-info">
                         <h3>{event.title}</h3>
                         <p>
-                          📅 {event.date} • {event.category}
+                          <FaCalendarAlt className="event-date-icon" /> {event.date} • {event.category}
                         </p>
                       </div>
                       <div className="event-badge">VIEW</div>
@@ -330,7 +354,7 @@ function DashboardHome() {
 
                 {eventsData.length === 0 && (
                   <div className="no-events">
-                    <p>🔮 More events will appear here as they're announced</p>
+                    <p><GiCrystalBall /> More events will appear here as they're announced</p>
                   </div>
                 )}
               </div>

@@ -142,7 +142,7 @@ const themes = [
   {
     house: "Hufflepuff",
     primary: "#EEE117",
-    secondary: "#000000",
+    secondary: "#ffc400ff",
     background: "#141414",
     surface: "#1C1C1C",
     border: "#2D2D2D",
