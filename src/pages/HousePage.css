@@ -1,5 +1,5 @@
 /* ========== HOUSE PAGE STYLING ========== */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
 
 .house-page {
   min-height: 100vh;
@@ -22,20 +22,20 @@
 }
 
 .loading-spinner {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 1.2rem;
   color: #FFD700;
 }
 
 .house-page-error h2 {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 2rem;
   margin-bottom: 20px;
   color: #ff6b6b;
 }
 
 .house-page-error p {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   margin-bottom: 30px;
 }
 
@@ -45,7 +45,7 @@
   border: none;
   border-radius: 8px;
   color: #1a1a1a;
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -74,7 +74,7 @@
 }
 
 .house-title {
-  font-family: 'Cinzel', Georgia, serif;
+  font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--house-secondary);
@@ -143,7 +143,7 @@
 }
 
 .house-traits {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 1.2rem;
   color: #E8D4A0;
   margin-bottom: 10px;
@@ -151,7 +151,7 @@
 }
 
 .house-founder {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
 }
@@ -186,7 +186,7 @@
   border: 1px solid var(--house-secondary);
   border-radius: 20px;
   color: var(--house-secondary);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;

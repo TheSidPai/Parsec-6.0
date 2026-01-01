@@ -50,15 +50,15 @@
   }
   
   .sidebar-link:hover {
-    background: rgba(59, 130, 246, 0.1);
+    background: rgba(255, 215, 0, 0.1);
     color: white;
-    border-left-color: #3b82f6;
+    border-left-color: #DAA520;
   }
   
   .sidebar-link.active {
-    background: rgba(59, 130, 246, 0.2);
-    color: white;
-    border-left-color: #3b82f6;
+    background: rgba(255, 215, 0, 0.15);
+    color: #FFD700;
+    border-left-color: #FFD700;
     font-weight: 600;
   }
   
