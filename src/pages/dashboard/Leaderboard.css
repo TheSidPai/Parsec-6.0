@@ -1,81 +1,26 @@
 /* ========== IMPORTS ========== */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
 
 /* ========== LEADERBOARD PAGE ========== */
 .leaderboard-page {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%);
-  padding: 40px 20px;
+  padding: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: fadeIn 0.6s ease-out;
+  background-image: url('../../assets/images/event-images/FinalImages/db.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   position: relative;
-  overflow: hidden;
-}
-
-/* Magical Background Orbs */
-.leaderboard-orb {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 1;
-  filter: blur(100px);
-  opacity: 0.25;
-  animation: floatOrb 25s ease-in-out infinite;
-}
-
-.leaderboard-orb-1 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(138, 43, 226, 0.6), transparent);
-  top: 10%;
-  left: 5%;
-}
-
-.leaderboard-orb-2 {
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(255, 215, 0, 0.4), transparent);
-  bottom: 10%;
-  right: 5%;
-  animation-delay: 10s;
-}
-
-@keyframes floatOrb {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(40px, -40px) scale(1.1); }
-  66% { transform: translate(-30px, 30px) scale(0.95); }
-}
-
-/* Twinkling Stars */
-.leaderboard-stars {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.leaderboard-star {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: white;
-  border-radius: 50%;
-  box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
-  animation: twinkleStar 4s ease-in-out infinite;
-}
-
-@keyframes twinkleStar {
-  0%, 100% { opacity: 0.2; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.5); }
+  min-height: 100vh;
 }
 
 /* ========== CONTAINER ========== */
 .leaderboard-container {
   position: relative;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  z-index: 10;
 }
 
 /* ========== HEADER ========== */
@@ -96,54 +41,76 @@
   }
 }
 
-.leaderboard-title {
-  font-family: 'Cinzel', serif;
-  font-size: 3.5rem;
-  font-weight: 900;
-  background: linear-gradient(135deg, #FFD700, #FFA500, #FF8C00);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  margin-bottom: 15px;
-  text-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
-  animation: titleGlow 3s ease-in-out infinite;
+.leaderboard-title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
 }
 
-@keyframes titleGlow {
+.leaderboard-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+}
+
+.wand-divider {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      #d4af37 50%,
+      transparent 100%);
+  position: relative;
+}
+
+.wand-divider::after {
+  content: '✦';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d4af37;
+  font-size: 1.2rem;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.wand-divider.left::after {
+  right: -10px;
+}
+
+.wand-divider.right::after {
+  left: -10px;
+}
+
+@keyframes sparkle {
   0%, 100% {
-    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+    opacity: 0.5;
+    transform: translateY(-50%) scale(1);
   }
   50% {
-    filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.9)) drop-shadow(0 0 60px rgba(255, 165, 0, 0.6));
+    opacity: 1;
+    transform: translateY(-50%) scale(1.3);
   }
 }
 
 .leaderboard-subtitle {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 1.1rem;
   color: #C8B6FF;
   font-weight: 300;
   margin-bottom: 25px;
 }
 
-.leaderboard-cup {
-  font-size: 4rem;
-  display: inline-block;
-  filter: drop-shadow(0 10px 30px rgba(255, 215, 0, 0.6));
-  animation: floatCup 3s ease-in-out infinite;
-}
-
-@keyframes floatCup {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
-}
-
 /* ========== HOUSE CARDS GRID ========== */
 .leaderboard-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 30px;
   margin-bottom: 60px;
 }
@@ -151,15 +118,16 @@
 /* ========== HOUSE CARD ========== */
 .house-leaderboard-card {
   position: relative;
-  background: linear-gradient(135deg, rgba(15, 15, 30, 0.85), rgba(25, 25, 40, 0.75));
-  backdrop-filter: blur(20px);
-  border: 2px solid color-mix(in srgb, var(--house-secondary) 40%, transparent);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(218, 165, 32, 0.03));
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 215, 0, 0.2);
   border-radius: 24px;
   padding: 35px 25px;
   text-align: center;
   transition: all 0.4s ease;
   overflow: hidden;
   animation: cardEntrance 0.8s ease-out backwards;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 @keyframes cardEntrance {
@@ -209,12 +177,6 @@
   100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
 }
 
-/* Rank-specific styles */
-.house-leaderboard-card.rank-1 {
-  border-width: 3px;
-  border-color: #FFD700;
-}
-
 /* ========== RANK BADGE ========== */
 .house-rank-badge {
   position: absolute;
@@ -228,7 +190,7 @@
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  font-weight: 900;
+  font-weight: 600;
   border: 3px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   z-index: 2;
@@ -316,7 +278,7 @@
 }
 
 .house-name {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 2rem;
   font-weight: 700;
   color: var(--house-secondary);
@@ -329,7 +291,7 @@
 }
 
 .house-traits {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 0.9rem;
   color: #C8B6FF;
   font-weight: 400;
@@ -343,7 +305,7 @@
 }
 
 .points-label {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 0.85rem;
   color: #aaa;
   text-transform: uppercase;
@@ -352,9 +314,9 @@
 }
 
 .points-value {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 3.5rem;
-  font-weight: 900;
+  font-weight: 600;
   color: var(--house-secondary);
   text-shadow: 
     0 0 30px var(--house-glow),
@@ -365,26 +327,14 @@
 @keyframes pointsGlow {
   0%, 100% { 
     text-shadow: 
-      0 0 30px var(--house-glow),
-      0 0 50px var(--house-glow);
+      0 0 20px var(--house-glow),
+      0 0 30px var(--house-glow);
   }
   50% { 
     text-shadow: 
-      0 0 40px var(--house-glow),
-      0 0 70px var(--house-glow),
-      0 0 90px var(--house-secondary);
+      0 0 25px var(--house-glow),
+      0 0 40px var(--house-glow);
   }
-}
-
-.points-sparkles {
-  font-size: 1.2rem;
-  margin-top: 5px;
-  animation: sparkle 2s ease-in-out infinite;
-}
-
-@keyframes sparkle {
-  0%, 100% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.2); }
 }
 
 /* ========== PROGRESS BAR ========== */
@@ -431,14 +381,15 @@
 .leaderboard-footer {
   text-align: center;
   padding: 40px 20px;
-  background: rgba(15, 15, 30, 0.6);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(218, 165, 32, 0.03));
+  backdrop-filter: blur(4px);
   border-radius: 20px;
-  border: 1px solid rgba(138, 43, 226, 0.2);
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .leaderboard-note {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 1rem;
   color: #E8D4A0;
   margin-bottom: 15px;
@@ -459,7 +410,7 @@
 }
 
 .leaderboard-coming-soon {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 0.95rem;
   color: #C8B6FF;
   font-weight: 600;
@@ -468,14 +419,16 @@
 }
 
 /* ========== RESPONSIVE - TABLET ========== */
-@media screen and (max-width: 768px) {
-  .leaderboard-title {
-    font-size: 2.5rem;
-  }
-
+@media screen and (max-width: 900px) {
   .leaderboard-grid {
     grid-template-columns: 1fr;
     gap: 25px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .leaderboard-title {
+    font-size: 2.5rem;
   }
 
   .house-leaderboard-card {

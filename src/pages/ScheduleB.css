@@ -79,7 +79,7 @@
 }
 
 .hero-title {
-  font-family: 'Cinzel', 'Playfair Display', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 3.5rem;
   color: var(--fontAccent);
   margin-bottom: 1rem;
@@ -124,7 +124,7 @@
 }
 
 .countdown-number {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
   color: var(--linkHover);
   font-weight: bold;
@@ -133,7 +133,7 @@
 }
 
 .countdown-separator {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
   color: var(--fontAccent);
   font-weight: bold;
@@ -201,7 +201,7 @@
 }
 
 .scroll-text {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 0.85rem;
   color: var(--fontAccent);
   letter-spacing: 0.05em;
@@ -292,7 +292,7 @@
 }
 
 .scroll-text-horizontal {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 0.85rem;
   color: var(--fontAccent);
   letter-spacing: 0.05em;
@@ -486,7 +486,7 @@
 }
 
 .event-name {
-  font-family: 'Cinzel', 'Playfair Display', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 1.4rem;
   color: #3d2817;
   margin-bottom: 1rem;
@@ -582,7 +582,7 @@
 }
 
 .destination-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
   color: var(--linkHover);
   text-shadow: 0 0 20px var(--glow);
@@ -618,7 +618,7 @@
 }
 
 .day-number {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 1.2rem;
   color: var(--linkHover);
   margin-bottom: 0.5rem;

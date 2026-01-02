@@ -64,9 +64,9 @@
 }
 
 .dashboard-events-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 3rem;
-  font-weight: 900;
+  font-weight: 600;
   background: linear-gradient(135deg, 
     var(--secondary), 
     var(--fontAccent));
@@ -265,7 +265,7 @@
 
 /* ========== CARD TITLE ========== */
 .event-card-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 1.35rem;
   font-weight: 700;
   color: var(--fontMain);
@@ -297,7 +297,7 @@
   display: flex;
   align-items: center;
   gap: 0.875rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   letter-spacing: 0.01em;
@@ -317,7 +317,7 @@
 
 /* ========== CARD DESCRIPTION ========== */
 .event-card-description {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 0.975rem;
   line-height: 1.7;
   color: var(--fontSub);
@@ -462,7 +462,7 @@
   text-align: center;
   padding: 4rem 2rem;
   color: var(--fontSub);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 .no-events-message p {
