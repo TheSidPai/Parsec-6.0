@@ -6,6 +6,7 @@ import Footer from "../components/Footer.jsx";
 import Particles from "../components/Particles.jsx";
 import GalleryCarousel from "../components/GalleryCarousel.jsx";
 import AboutSection from "../components/landing/AboutSection.jsx";
+import AccommodationSection from "../components/landing/AccommodationSection.jsx";
 import ScreenSizeAlert from "../components/ScreenSizeAlert.jsx";
 import CountdownTimer from "../components/CountdownTimer.jsx";
 import EventHighlights from "../components/EventHighlights.jsx";
@@ -117,6 +118,9 @@ function Landing() {
 
       {/* Gallery */}
       <GalleryCarousel />
+
+      {/* Accommodation Section */}
+      <AccommodationSection />
 
       {/* FAQ */}
       <FAQ />

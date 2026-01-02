@@ -10,7 +10,6 @@ import { AnimatePresence } from "framer-motion";
 import "./App.css";
 import { ThemeProvider } from "./context/ThemeContext";
 import MagicalLoader from "./components/MagicalLoader";
-import ScrollToTopButton from "./components/ScrollToTopButton";
 
 // Import page components
 import Home from "./pages/Home";
@@ -31,13 +30,21 @@ import DashboardTeam from "./pages/dashboard/Team";
 import Contact from "./pages/dashboard/Contact";
 import Orders from "./pages/dashboard/Orders";
 import Accommodation from "./pages/dashboard/Accommodation";
+import PublicAccommodation from "./pages/Accommodation";
 import NotFound from "./pages/NotFound";
 import HousePage from "./pages/HousePage";
 import AdminAuth from "./components/admin/AdminAuth";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import AdminProtectedRoute from "./components/admin/AdminProtectedRoute";
-import AuthComingSoon from "./pages/AuthComingSoon";
 import AccommodationComingSoon from "./pages/AccommodationComingSoon";
+// Auth components
+import Login from "./pages/Login";
+import SignupLayout from "./pages/signup/SignupLayout";
+import Onboarding from "./pages/signup/Onboarding";
+import SortingHat from "./pages/signup/SortingHat";
+import Auth from "./pages/signup/Auth";
+import ManualAuth from "./pages/signup/ManualAuth";
+import Terms from "./pages/signup/Terms";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -45,27 +52,37 @@ function AnimatedRoutes() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
+        {/* Root redirects to home */}
         <Route path="/" element={<Navigate to="/home" replace />} />
+
+        {/* Public Routes */}
         <Route path="/home" element={<Home />} />
+
         <Route path="/landing" element={<Navigate to="/home" replace />} />
 
-        {/* Auth (Coming Soon) */}
-        <Route path="/login" element={<AuthComingSoon />} />
-        <Route path="/signup/*" element={<AuthComingSoon />} />
+        {/* Auth Routes - ENABLED FOR DEV TESTING */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignupLayout />}>
+          <Route path="onboarding" element={<Onboarding />} />
+          <Route path="sorting" element={<SortingHat />} />
+          <Route path="auth" element={<Auth />} />
+          <Route path="manual" element={<ManualAuth />} />
+          <Route path="terms" element={<Terms />} />
+        </Route>
 
-        {/* Public Pages */}
+        {/* Public Events, Schedule & Team */}
         <Route path="/events" element={<Events />} />
         <Route path="/harshtal" element={<Harshtal />} />
         <Route path="/tesseract" element={<Tesseract />} />
         <Route path="/events/:id" element={<EventDetail />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/team" element={<Team />} />
-        <Route path="/accommodation" element={<AccommodationComingSoon />} />
+        <Route path="/accommodation" element={<PublicAccommodation />} />
 
-        {/* House Pages */}
+        {/* House-Specific Pages (Protected) */}
         <Route path="/house/:houseName" element={<HousePage />} />
 
-        {/* Admin */}
+        {/* Admin Routes */}
         <Route path="/admin/login" element={<AdminAuth />} />
         <Route
           path="/admin/dashboard"
@@ -76,7 +93,7 @@ function AnimatedRoutes() {
           }
         />
 
-        {/* Dashboard */}
+        {/* Protected Dashboard Routes */}
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<DashboardHome />} />
           <Route path="events" element={<DashboardEvents />} />
@@ -90,7 +107,7 @@ function AnimatedRoutes() {
           <Route path="contact" element={<Contact />} />
         </Route>
 
-        {/* 404 */}
+        {/* 404 Page */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
@@ -104,18 +121,19 @@ function App() {
   const handleLoadComplete = () => {
     setIsLoading(false);
     setHasLoadedOnce(true);
+    // Store in session storage so loader doesn't show again during this session
     sessionStorage.setItem("hasLoadedOnce", "true");
   };
 
   return (
     <Router>
       <ThemeProvider>
-        {/* Initial magical loader */}
+        {/* Show loader only on first load */}
         {isLoading && !hasLoadedOnce && (
           <MagicalLoader onLoadComplete={handleLoadComplete} />
         )}
 
-        {/* Main app */}
+        {/* Main app content */}
         <div
           style={{
             opacity: isLoading ? 0 : 1,
@@ -124,9 +142,6 @@ function App() {
         >
           <AnimatedRoutes />
         </div>
-
-        {/* GLOBAL SCROLL TO TOP BUTTON */}
-        <ScrollToTopButton />
       </ThemeProvider>
     </Router>
   );

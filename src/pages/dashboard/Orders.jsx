@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { API_ENDPOINTS, authenticatedFetch } from "../../config/api";
 import "./Orders.css";
 
@@ -6,18 +6,21 @@ function Orders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   const token = localStorage.getItem("jwt_token");
 
-  const fetchOrders = useCallback(async () => {
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
+  const fetchOrders = async () => {
     try {
       setLoading(true);
-      setError(null);
 
       // DEV MODE: Allow orders page to work without token
       if (!token) {
         console.warn("⚠️ DEV MODE: No token - showing empty orders");
         setOrders([]);
+        setLoading(false);
         return;
       }
 
@@ -38,11 +41,7 @@ function Orders() {
     } finally {
       setLoading(false);
     }
-  }, [token]);
-
-  useEffect(() => {
-    fetchOrders();
-  }, [fetchOrders]);
+  };
 
   const getStatusBadge = (status) => {
     const statusStyles = {

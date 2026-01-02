@@ -1,0 +1,483 @@
+/* Accommodation Section Styles */
+.accommodation-section {
+  min-height: 100vh;
+  padding: 120px 20px 100px;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.accommodation-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header Styles */
+.accommodation-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.accommodation-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #c9a332 0%, #e6c200 50%, #c9a332 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  position: relative;
+  display: inline-block;
+  filter: drop-shadow(0 0 20px rgba(201, 163, 50, 0.4));
+}
+
+.accommodation-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c9a332, transparent);
+  box-shadow: 0 0 10px #c9a332;
+}
+
+.accommodation-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 40px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.accommodation-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 30px;
+  margin: 15px auto;
+  max-width: 800px;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.note-icon {
+  font-size: 1.5rem;
+}
+
+.accommodation-note p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  margin: 0;
+  text-align: center;
+}
+
+.accommodation-note strong {
+  color: #d4af37;
+  font-weight: 600;
+}
+
+/* Passes Grid */
+.passes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+/* Pass Card */
+.pass-card {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(10, 10, 20, 0.95) 100%);
+  border: 2px solid rgba(212, 175, 55, 0.3);
+  border-radius: 20px;
+  padding: 35px 25px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(212, 175, 55, 0.1);
+}
+
+.pass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #c9a332, transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.pass-card::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.pass-card:hover::before {
+  opacity: 1;
+}
+
+.pass-card:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
+.pass-card:hover {
+  border-color: rgba(212, 175, 55, 0.7);
+  box-shadow: 
+    0 8px 30px rgba(212, 175, 55, 0.25),
+    0 0 60px rgba(212, 175, 55, 0.15),
+    inset 0 1px 0 rgba(212, 175, 55, 0.2);
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* Badge Styles */
+.badge {
+  position: absolute;
+  top: 15px;
+  right: -35px;
+  padding: 5px 40px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transform: rotate(45deg);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.popular-badge {
+  background: linear-gradient(135deg, #d4af37, #f4e5b0);
+  color: #0a0e27;
+}
+
+.recommended-badge {
+  background: linear-gradient(135deg, #4CAF50, #8BC34A);
+  color: white;
+}
+
+.pass-card.popular,
+.pass-card.recommended {
+  border: 2px solid rgba(212, 175, 55, 0.6);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(10, 10, 20, 0.95) 100%);
+  box-shadow: 
+    0 8px 25px rgba(212, 175, 55, 0.2),
+    0 0 40px rgba(212, 175, 55, 0.1),
+    inset 0 1px 0 rgba(212, 175, 55, 0.15);
+}
+
+.pass-card.popular:hover,
+.pass-card.recommended:hover {
+  box-shadow: 
+    0 12px 40px rgba(212, 175, 55, 0.35),
+    0 0 80px rgba(212, 175, 55, 0.2),
+    inset 0 1px 0 rgba(212, 175, 55, 0.25);
+}
+
+/* Pass Header */
+.pass-header {
+  text-align: center;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+  position: relative;
+}
+
+.pass-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c9a332, transparent);
+  box-shadow: 0 0 8px #c9a332;
+}
+
+.pass-name {
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #c9a332 0%, #e6c200 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  filter: drop-shadow(0 0 8px rgba(201, 163, 50, 0.25));
+}
+
+.pass-dates {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+/* Pass Price */
+.pass-price {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.currency {
+  font-size: 1.5rem;
+  color: #d4af37;
+  vertical-align: super;
+  margin-right: 5px;
+}
+
+.amount {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+}
+
+/* Benefits List */
+.pass-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.benefit-item:hover {
+  background: rgba(212, 175, 55, 0.05);
+}
+
+.benefit-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.benefit-icon.included {
+  background: linear-gradient(135deg, #4CAF50, #8BC34A);
+  color: white;
+}
+
+.benefit-icon.excluded {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.benefit-text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+}
+
+.excluded-text {
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: line-through;
+}
+
+/* CTA Section */
+.accommodation-cta {
+  text-align: center;
+  padding: 50px 20px;
+  background: rgba(212, 175, 55, 0.05);
+  border-radius: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.cta-text {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 25px;
+  font-weight: 300;
+}
+
+.book-btn {
+  background: linear-gradient(135deg, #d4af37, #f4e5b0);
+  color: #0a0e27;
+  border: none;
+  padding: 18px 45px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.book-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.book-btn:hover::before {
+  left: 100%;
+}
+
+.book-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+}
+
+.book-btn:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+.btn-icon {
+  font-size: 1.3rem;
+}
+
+.btn-arrow {
+  transition: transform 0.3s;
+}
+
+.book-btn:hover .btn-arrow {
+  transform: translateX(5px);
+}
+
+.cta-note {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .passes-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+  }
+
+  .accommodation-title {
+    font-size: 2.5rem;
+  }
+
+  .pass-name {
+    font-size: 1.4rem;
+  }
+
+  .amount {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .accommodation-section {
+    padding: 60px 15px;
+  }
+
+  .accommodation-title {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+
+  .accommodation-subtitle {
+    font-size: 1rem;
+  }
+
+  .passes-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .pass-card {
+    padding: 30px 20px;
+  }
+
+  .accommodation-note {
+    flex-direction: column;
+    padding: 15px 20px;
+  }
+
+  .accommodation-note p {
+    font-size: 0.85rem;
+  }
+
+  .book-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 16px 30px;
+    font-size: 1rem;
+  }
+
+  .cta-text {
+    font-size: 1.2rem;
+  }
+
+  .badge {
+    font-size: 0.65rem;
+    padding: 4px 35px;
+    right: -40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .accommodation-title {
+    font-size: 1.8rem;
+  }
+
+  .pass-name {
+    font-size: 1.2rem;
+  }
+
+  .amount {
+    font-size: 2rem;
+  }
+
+  .benefit-text {
+    font-size: 0.85rem;
+  }
+
+  .book-btn {
+    flex-direction: column;
+    gap: 8px;
+    padding: 15px 25px;
+  }
+}
