@@ -80,6 +80,49 @@
   filter: drop-shadow(0 0 15px var(--glow));
 }
 
+/* ========== LOGO GROUP ========== */
+.navbar-logo-group {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* IIT Dharwad Logo */
+.navbar-college-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.navbar-college-logo:hover {
+  transform: scale(1.05);
+}
+
+.navbar-college-logo-img {
+  height: 46px;
+  width: auto;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.35));
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.navbar-college-logo:hover .navbar-college-logo-img {
+  opacity: 1;
+  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.6));
+}
+
+/* ========== LOGO SEPARATOR ========== */
+.navbar-logo-separator {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1;
+  user-select: none;
+  margin: 0 6px;
+  text-shadow: 0 0 6px var(--glow);
+}
+
 /* ========== HAMBURGER (Hidden on Desktop) ========== */
 .navbar-hamburger {
   display: none;
@@ -280,7 +323,7 @@
   background: none;
   border: none;
   color: var(--fontAccent);
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cinzel', serif;
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -446,7 +489,7 @@
 }
 
 .dropdown-text strong {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cinzel', serif;
   font-size: 16px;
   font-weight: 700;
   text-transform: uppercase;
@@ -651,5 +694,12 @@
   .navbar-signup button {
     padding: 12px;
     font-size: 0.95rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-logo-separator {
+    font-size: 22px;
+    margin: 0 4px;
   }
 }
