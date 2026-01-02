@@ -64,40 +64,77 @@ function DashboardHome() {
     const sidebar = document.querySelector(".dashboard-sidebar");
     if (sidebar) sidebar.style.display = "none";
 
-    // Text appears at 1.5s, smoothly fades in and slides left
-    setTimeout(() => {
-      console.log("✨ Text appearing now!");
+    // Track timeouts for cleanup
+    const timeouts = [];
+    let glowAnimation = null;
+    let exitAnimation = null;
+    let crystallizeAnimation = null;
+
+    // Text appears at 1.4s with 3D crystallization effect
+    timeouts.push(setTimeout(() => {
+      console.log("✨ Text crystallizing now!");
       setShowGlitchText(true);
 
-      // Smooth fade in
-      if (textRef.current) {
-        console.log("🎬 GSAP animation starting");
-        gsap.fromTo(
+      // Wait for next frame to ensure DOM is ready
+      requestAnimationFrame(() => {
+        if (!textRef.current) {
+          console.warn("⚠️ textRef not ready, skipping animation");
+          return;
+        }
+
+        console.log("🎬 GSAP 3D crystallization starting");
+        
+        // 1.4s → 1.95s: Crystallize from depth (550ms)
+        crystallizeAnimation = gsap.fromTo(
           textRef.current,
-          { opacity: 0, scale: 0.8 },
+          { 
+            opacity: 0, 
+            scale: 0.92,
+            rotateY: -8,
+            y: 20  // Starts 20px below - materializing from lightning
+          },
           {
             opacity: 1,
             scale: 1,
-            duration: 0.4,
+            rotateY: 0,
+            y: 0,  // Drifts to center position
+            duration: 0.55,
             ease: "power2.out",
           }
         );
 
-        // Then slide to left after 0.5s
-        setTimeout(() => {
-          console.log("➡️ Text sliding left");
-          gsap.to(textRef.current, {
-            x: -window.innerWidth - 200,
+        // 1.6s: Glow pulse (200ms flash) - "spell locks in"
+        timeouts.push(setTimeout(() => {
+          if (!textRef.current) return;
+          console.log("⚡ Glow pulse!");
+          glowAnimation = gsap.to(textRef.current, {
+            textShadow: `
+              0 0 24px rgba(255, 255, 255, 0.5),
+              0 0 48px rgba(255, 215, 100, 0.4),
+              0 0 80px rgba(255, 215, 100, 0.2)
+            `,
+            duration: 0.2,
+            yoyo: true,
+            repeat: 1
+          });
+        }, 200));
+
+        // 1.95s → 2.5s: Clean exit (500ms)
+        timeouts.push(setTimeout(() => {
+          if (!textRef.current) return;
+          console.log("➡️ Text exiting elegantly");
+          exitAnimation = gsap.to(textRef.current, {
+            x: -50,
             opacity: 0,
-            duration: 0.8,
+            duration: 0.5,
             ease: "power2.in",
           });
-        }, 500);
-      }
-    }, 1500);
+        }, 550));
+      });
+    }, 1400));
 
-    // Everything ends at 2.8s, dashboard appears smoothly
-    setTimeout(() => {
+    // Everything ends at 2.5s, dashboard appears smoothly
+    timeouts.push(setTimeout(() => {
       setShowLightning(false);
       setShowGlitchText(false);
       setShowDashboard(true);
@@ -106,7 +143,16 @@ function DashboardHome() {
         // Smooth fade in for sidebar
         gsap.fromTo(sidebar, { opacity: 0 }, { opacity: 1, duration: 0.6 });
       }
-    }, 2800);
+    }, 2500));
+
+    // Cleanup function
+    return () => {
+      timeouts.forEach(timeout => clearTimeout(timeout));
+      if (crystallizeAnimation) crystallizeAnimation.kill();
+      if (glowAnimation) glowAnimation.kill();
+      if (exitAnimation) exitAnimation.kill();
+      if (sidebar) sidebar.style.display = "block";
+    };
   }, []);
 
   // Fetch user data
