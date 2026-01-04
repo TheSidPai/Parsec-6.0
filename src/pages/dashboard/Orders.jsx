@@ -1,23 +1,27 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import { API_ENDPOINTS, authenticatedFetch } from "../../config/api";
+import Particles from "../../components/Particles";
 import "./Orders.css";
 
 function Orders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   const token = localStorage.getItem("jwt_token");
 
-  const fetchOrders = useCallback(async () => {
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
+  const fetchOrders = async () => {
     try {
       setLoading(true);
-      setError(null);
 
       // DEV MODE: Allow orders page to work without token
       if (!token) {
         console.warn("⚠️ DEV MODE: No token - showing empty orders");
         setOrders([]);
+        setLoading(false);
         return;
       }
 
@@ -38,11 +42,7 @@ function Orders() {
     } finally {
       setLoading(false);
     }
-  }, [token]);
-
-  useEffect(() => {
-    fetchOrders();
-  }, [fetchOrders]);
+  };
 
   const getStatusBadge = (status) => {
     const statusStyles = {
@@ -99,6 +99,20 @@ function Orders() {
 
   return (
     <div className="orders-container">
+      {/* Particles Background */}
+      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, pointerEvents: 'none' }}>
+        <Particles
+          particleColors={["#ffffff", "#ffffff"]}
+          particleCount={600}
+          particleSpread={15}
+          speed={0.1}
+          particleBaseSize={80}
+          moveParticlesOnHover={false}
+          alphaParticles={false}
+          disableRotation={false}
+        />
+      </div>
+
       <div className="orders-header">
         <h1>🛍️ My Orders</h1>
         <p>Track your merchandise and accommodation orders</p>

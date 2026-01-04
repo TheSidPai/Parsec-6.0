@@ -11,7 +11,9 @@ import {
   FaBed, 
   FaTrophy, 
   FaPhoneAlt,
-  FaSignOutAlt 
+  FaSignOutAlt,
+  FaStore,
+  FaShoppingCart
 } from "react-icons/fa";
 import { GiCastle } from "react-icons/gi";
 
@@ -106,8 +108,8 @@ function DashboardLayout() {
             </Link>
           </li>
           <li>
-            <Link className="dashboard-link" to="/dashboard/schedule">
-              <FaCalendarAlt /> Schedule
+            <Link className="dashboard-link" to="/dashboard/shop">
+              <FaStore /> Shop
             </Link>
           </li>
           <li>
