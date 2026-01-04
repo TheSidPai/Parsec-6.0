@@ -30,6 +30,10 @@ import DashboardTeam from "./pages/dashboard/Team";
 import Contact from "./pages/dashboard/Contact";
 import Orders from "./pages/dashboard/Orders";
 import Accommodation from "./pages/dashboard/Accommodation";
+import Shop from "./pages/dashboard/Shop";
+import Cart from "./pages/dashboard/Cart";
+import Checkout from "./pages/dashboard/Checkout";
+import PaymentHistory from "./pages/dashboard/PaymentHistory";
 import PublicAccommodation from "./pages/Accommodation";
 import NotFound from "./pages/NotFound";
 import HousePage from "./pages/HousePage";
@@ -99,7 +103,11 @@ function AnimatedRoutes() {
           <Route path="events" element={<DashboardEvents />} />
           <Route path="events/:id" element={<DashboardEventDetail />} />
           <Route path="schedule" element={<DashboardSchedule />} />
+          <Route path="shop" element={<Shop />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="checkout" element={<Checkout />} />
           <Route path="orders" element={<Orders />} />
+          <Route path="payment-history" element={<PaymentHistory />} />
           <Route path="accommodation" element={<Accommodation />} />
           <Route path="profile" element={<Profile />} />
           <Route path="leaderboard" element={<Leaderboard />} />

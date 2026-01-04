@@ -97,9 +97,20 @@ export const API_ENDPOINTS = {
   POINTS_HOUSE_LEADERBOARD: '/points/house-leaderboard',
   POINTS_INDIVIDUAL_LEADERBOARD: '/points/individual-leaderboard',
 
+  // Merchandise
+  MERCH_GET_ALL: '/merch',
+  MERCH_GET_BY_ID: '/merch/:id', // Replace :id with actual merch ID
+  MERCH_ADD: '/merch', // Admin only
+  MERCH_UPDATE_STOCK: '/merch/:id/stock', // Admin only
+  MERCH_DELETE: '/merch/:id', // Admin only
+
   // Orders (Merchandise)
-  ORDERS: '/orders',
-  ORDERS_MY: '/orders/my',
+  ORDERS_CREATE: '/orders',
+  ORDERS_MY: '/orders/me',
+
+  // Payments
+  PAYMENTS_SUBMIT: '/payments',
+  PAYMENTS_MY: '/payments/me',
 
   // Admin - All admin routes prefixed with /paneermoms
   ADMIN_LOGIN: '/paneermoms/login',
@@ -107,6 +118,7 @@ export const API_ENDPOINTS = {
   ADMIN_PAYMENTS_VERIFY: '/paneermoms/payments/:id/verify', // Replace :id with actual payment ID
   ADMIN_PAYMENTS_REJECT: '/paneermoms/payments/:id/reject', // Replace :id with actual payment ID
   ADMIN_PAYMENTS_STATS: '/paneermoms/payments/stats',
+  ADMIN_QR_VERIFY: '/paneermoms/qr/verify',
   ADMIN_POINTS_ADD: '/paneermoms/points/add',
   ADMIN_POINTS_SUBTRACT: '/paneermoms/points/subtract',
 };

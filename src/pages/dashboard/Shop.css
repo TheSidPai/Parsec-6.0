@@ -1,0 +1,351 @@
+.shop-container {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  min-height: 100vh;
+}
+
+/* Header */
+.shop-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.shop-title-section {
+  flex: 1;
+}
+
+.shop-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: #d4af37;
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
+.shop-subtitle {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.1rem;
+  color: var(--fontSub);
+  margin: 0;
+}
+
+.shop-cart-btn {
+  background: linear-gradient(145deg, #d4af37, #f4e4b6);
+  color: #1a0f0a;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.shop-cart-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
+}
+
+/* Filters */
+.shop-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter-btn {
+  background: rgba(212, 175, 55, 0.1);
+  border: 2px solid #d4af37;
+  color: #d4af37;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background: rgba(212, 175, 55, 0.2);
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  background: linear-gradient(145deg, #d4af37, #f4e4b6);
+  color: #1a0f0a;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Grid */
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Card */
+.shop-card {
+  perspective: 1000px;
+}
+
+.shop-card-inner {
+  background: linear-gradient(145deg, rgba(30, 41, 82, 0.9) 0%, rgba(16, 20, 40, 0.95) 100%);
+  border: 2px solid rgba(212, 175, 55, 0.6);
+  border-radius: 16px;
+  padding: 1.5rem;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(10px);
+}
+
+.shop-card:hover .shop-card-inner {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4), 0 0 40px rgba(212, 175, 55, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-color: #d4af37;
+}
+
+.shop-card-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 2rem;
+  background: rgba(212, 175, 55, 0.2);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #d4af37;
+}
+
+.shop-card-image {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(16, 20, 40, 0.8) 0%, rgba(30, 41, 82, 0.6) 100%);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.shop-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shop-card-placeholder {
+  font-size: 4rem;
+  opacity: 0.3;
+}
+
+.shop-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.shop-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: #d4af37;
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.shop-card-description {
+  font-family: 'Josefin Sans', sans-serif;
+  color: var(--fontSub);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.shop-card-sizes {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.sizes-label {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #d4af37;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.size-badge {
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid #d4af37;
+  color: #f4e4b6;
+  padding: 0.25rem 0.6rem;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.shop-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.shop-card-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #d4af37;
+  font-weight: 700;
+}
+
+.shop-card-stock {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.85rem;
+  color: #28a745;
+  font-weight: 600;
+}
+
+.shop-card-stock.out-of-stock {
+  color: #dc3545;
+}
+
+.shop-add-btn {
+  width: 100%;
+  background: linear-gradient(145deg, #d4af37, #f4e4b6);
+  color: #1a0f0a;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.shop-add-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
+}
+
+.shop-add-btn:disabled {
+  background: #555;
+  color: #999;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Loader */
+.shop-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 1.5rem;
+}
+
+.magical-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(212, 175, 55, 0.2);
+  border-top: 4px solid #d4af37;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.shop-loader p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: #d4af37;
+}
+
+/* Error */
+.shop-error {
+  text-align: center;
+  padding: 3rem;
+}
+
+.shop-error h2 {
+  font-family: 'Playfair Display', serif;
+  color: #dc3545;
+  margin-bottom: 1.5rem;
+}
+
+.shop-retry-btn {
+  background: linear-gradient(145deg, #d4af37, #f4e4b6);
+  color: #1a0f0a;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.shop-retry-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Empty State */
+.shop-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  font-family: 'Josefin Sans', sans-serif;
+  color: var(--fontSub);
+  font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .shop-title {
+    font-size: 2rem;
+  }
+
+  .shop-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .shop-filters {
+    gap: 0.5rem;
+  }
+
+  .filter-btn {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+}

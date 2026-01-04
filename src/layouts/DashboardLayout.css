@@ -3,6 +3,8 @@
   min-height: calc(100vh - 80px);
   background: var(--background);
   color: var(--fontMain);
+  position: relative;
+  overflow: hidden;
 }
 
 .dashboard-sidebar {
@@ -15,6 +17,8 @@
   border-right: 1px solid rgba(255, 215, 0, 0.1);
   box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 10;
 }
 
 .dashboard-sidebar h3 {
@@ -152,6 +156,8 @@
 .dashboard-content {
   flex: 1;
   padding: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 768px) {
