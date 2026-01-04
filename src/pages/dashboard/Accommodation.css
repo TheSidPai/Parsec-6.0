@@ -373,7 +373,7 @@
 }
 
 /* ========== MODAL ========== */
-.modal-overlay {
+.accommodation-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -389,7 +389,7 @@
   padding: 2rem;
 }
 
-.modal-content {
+.accommodation-modal-content {
   background: linear-gradient(135deg, rgba(26, 26, 46, 0.98), rgba(22, 33, 62, 0.95));
   border: 2px solid rgba(255, 215, 0, 0.3);
   border-radius: 24px;
@@ -414,7 +414,7 @@
   }
 }
 
-.modal-close {
+.accommodation-modal-close {
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -432,21 +432,21 @@
   font-size: 1.2rem;
 }
 
-.modal-close:hover {
+.accommodation-modal-close:hover {
   background: rgba(239, 68, 68, 0.8);
   border-color: #ef4444;
   transform: rotate(90deg);
 }
 
 /* ========== MODAL STEPS ========== */
-.modal-steps {
+.accommodation-modal-steps {
   display: flex;
   justify-content: space-between;
   margin-bottom: 2rem;
   gap: 1rem;
 }
 
-.modal-steps .step {
+.accommodation-modal-steps .step {
   flex: 1;
   text-align: center;
   padding: 0.8rem 1rem;
@@ -459,7 +459,7 @@
   transition: all 0.3s ease;
 }
 
-.modal-steps .step.active {
+.accommodation-modal-steps .step.active {
   background: rgba(255, 215, 0, 0.15);
   border-color: rgba(255, 215, 0, 0.4);
   color: #FFD700;
@@ -467,11 +467,11 @@
 }
 
 /* ========== MODAL CONTENT ========== */
-.modal-step {
+.accommodation-modal-step {
   animation: fadeIn 0.4s ease-out;
 }
 
-.modal-step h2 {
+.accommodation-modal-step h2 {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
   color: var(--secondary, #FFD700);
@@ -614,7 +614,7 @@
 }
 
 /* ========== MODAL ACTIONS ========== */
-.modal-actions {
+.accommodation-modal-actions {
   display: flex;
   gap: 1rem;
   justify-content: flex-end;
@@ -702,16 +702,16 @@
     grid-template-columns: 1fr;
   }
 
-  .modal-content {
+  .accommodation-modal-content {
     padding: 1.5rem;
     max-width: 95%;
   }
 
-  .modal-steps {
+  .accommodation-modal-steps {
     flex-direction: column;
   }
 
-  .modal-actions {
+  .accommodation-modal-actions {
     flex-direction: column;
   }
 

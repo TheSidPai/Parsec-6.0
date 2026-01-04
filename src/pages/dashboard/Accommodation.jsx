@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Accommodation.css';
-import { FaBed, FaCalendarAlt, FaCheckCircle, FaClock, FaTimes } from 'react-icons/fa';
+import { FaCalendarAlt, FaCheckCircle, FaClock, FaTimes } from 'react-icons/fa';
 
 // Accommodation pass data - easily replaceable with API
 const PASS_OPTIONS = [
@@ -313,14 +313,14 @@ function Accommodation() {
 
       {/* Booking Modal */}
       {showModal && (
-        <div className="modal-overlay" onClick={closeModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={closeModal}>
+        <div className="accommodation-modal-overlay" onClick={closeModal}>
+          <div className="accommodation-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="accommodation-modal-close" onClick={closeModal}>
               <FaTimes />
             </button>
 
             {/* Step Indicator */}
-            <div className="modal-steps">
+            <div className="accommodation-modal-steps">
               <div className={`step ${modalStep >= 1 ? 'active' : ''}`}>1. Select Pass</div>
               <div className={`step ${modalStep >= 2 ? 'active' : ''}`}>2. Details</div>
               <div className={`step ${modalStep >= 3 ? 'active' : ''}`}>3. Payment</div>
@@ -328,7 +328,7 @@ function Accommodation() {
 
             {/* Step 1: Pass Selection Summary */}
             {modalStep === 1 && selectedPass && (
-              <div className="modal-step">
+              <div className="accommodation-modal-step">
                 <h2>Selected Pass</h2>
                 <div className="pass-summary">
                   <h3>{selectedPass.name}</h3>
@@ -340,7 +340,7 @@ function Accommodation() {
                     {selectedPass.welcomeKit && <li>✓ Welcome Kit and other Swaggets</li>}
                   </ul>
                 </div>
-                <div className="modal-actions">
+                <div className="accommodation-modal-actions">
                   <button className="btn btn-secondary" onClick={closeModal}>Cancel</button>
                   <button className="btn btn-primary" onClick={handleNextStep}>Continue</button>
                 </div>
@@ -349,7 +349,7 @@ function Accommodation() {
 
             {/* Step 2: Booking Details Form */}
             {modalStep === 2 && (
-              <div className="modal-step">
+              <div className="accommodation-modal-step">
                 <h2>Booking Details</h2>
                 <form className="booking-form">
                   <div className="form-group">
@@ -428,7 +428,7 @@ function Accommodation() {
 
             {/* Step 3: Payment QR Code */}
             {modalStep === 3 && paymentData && (
-              <div className="modal-step payment-step">
+              <div className="accommodation-modal-step payment-step">
                 <h2>Complete Payment</h2>
                 <div className="payment-info">
                   <p className="payment-amount">Amount: ₹{selectedPass.price}</p>
