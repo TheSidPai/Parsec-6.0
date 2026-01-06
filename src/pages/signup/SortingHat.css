@@ -435,32 +435,42 @@
 
 .house-name-banner {
   font-family: 'Cinzel', serif;
-  font-size: 3.5rem;
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
   font-weight: 900;
-  color: var(--house-color, #FFD700);
+  color: #FFFFFF;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-align: center;
-  padding: 25px 30px;
+  padding: 25px 35px;
+  margin: 20px auto;
+  width: fit-content;
+  max-width: 95%;
   background: linear-gradient(135deg,
-    rgba(0, 0, 0, 0.6),
-    rgba(0, 0, 0, 0.4)
+    rgba(0, 0, 0, 0.9),
+    rgba(0, 0, 0, 0.8)
   );
-  border: 3px solid var(--house-color, #FFD700);
-  border-radius: 16px;
+  border: 5px solid var(--house-color, #FFD700);
+  border-radius: 20px;
   box-shadow: 
-    0 0 40px var(--house-glow, #FFD700),
-    0 0 80px var(--house-color, #FFD700),
-    inset 0 0 40px rgba(0, 0, 0, 0.5);
+    0 0 80px var(--house-glow, #FFD700),
+    0 0 120px var(--house-color, #FFD700),
+    0 10px 50px rgba(0, 0, 0, 0.9),
+    inset 0 0 80px rgba(0, 0, 0, 0.7);
   text-shadow: 
-    0 0 20px var(--house-glow, #FFD700),
-    0 0 40px var(--house-color, #FFD700),
-    0 4px 20px rgba(0, 0, 0, 0.9);
+    0 0 40px var(--house-glow, #FFD700),
+    0 0 60px var(--house-color, #FFD700),
+    0 3px 15px rgba(0, 0, 0, 1),
+    3px 3px 8px rgba(0, 0, 0, 1);
   animation: bannerReveal 1s ease-out 0.8s both, bannerPulse 3s ease-in-out 1.8s infinite;
   position: relative;
-  overflow: hidden;
-  word-break: break-word;
-  hyphens: auto;
+  overflow: visible;
+  word-break: keep-all;
+  white-space: nowrap;
+  line-height: 1.3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90px;
 }
 
 .house-name-banner::before {
@@ -522,15 +532,18 @@
 
 .info-item {
   background: linear-gradient(135deg,
-    rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.3)
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.6)
   );
-  border: 2px solid color-mix(in srgb, var(--house-color) 50%, transparent);
+  border: 3px solid var(--house-color, #FFD700);
   border-radius: 16px;
-  padding: 25px 20px;
+  padding: 30px 25px;
   text-align: center;
   transition: all 0.4s ease;
   cursor: pointer;
+  box-shadow: 
+    0 0 30px rgba(0, 0, 0, 0.5),
+    inset 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 .info-item:hover {
@@ -549,27 +562,33 @@
 
 .info-value {
   font-family: 'Cinzel', serif;
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   font-weight: 700;
-  color: var(--house-color, #FFD700);
-  margin-bottom: 8px;
-  text-shadow: 0 0 15px var(--house-glow, #FFD700);
+  color: #FFFFFF;
+  margin-bottom: 10px;
+  text-shadow: 
+    0 0 25px var(--house-glow, #FFD700),
+    0 0 40px var(--house-color, #FFD700),
+    0 2px 10px rgba(0, 0, 0, 1);
 }
 
 .info-label {
   font-family: 'Poppins', sans-serif;
-  font-size: 0.9rem;
-  color: #C8B6FF;
-  font-weight: 400;
+  font-size: 1rem;
+  color: #FFFFFF;
+  font-weight: 500;
   text-transform: lowercase;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  opacity: 0.95;
 }
 
 .redirect-message {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.2rem;
-  color: #E8D4FF;
+  font-size: 1.3rem;
+  color: #FFFFFF;
   margin-top: 40px;
-  font-weight: 500;
+  font-weight: 600;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 2px 10px rgba(0, 0, 0, 0.9);
   animation: fadeInUp 1s ease-out 1.5s both, messagePulse 2s ease-in-out 2.5s infinite;
 }
 
@@ -632,6 +651,14 @@
     font-size: 3rem;
   }
 
+  .house-name-banner {
+    font-size: 2.5rem;
+    padding: 20px 30px;
+    letter-spacing: 0.1em;
+    border-width: 3px;
+    max-width: 95%;
+  }
+
   .house-emoji {
     font-size: 5rem;
   }
@@ -682,11 +709,14 @@
   }
 
   .house-name-banner {
-    font-size: 2rem;
-    padding: 15px 20px;
-    letter-spacing: 0.05em;
-    line-height: 1.3;
-    word-wrap: break-word;
+    font-size: 1.8rem;
+    padding: 18px 25px;
+    letter-spacing: 0.1em;
+    border-width: 4px;
+    max-width: 95%;
+    white-space: normal;
+    word-break: break-word;
+    min-height: 70px;
   }
 
   .sorting-orb-1,
