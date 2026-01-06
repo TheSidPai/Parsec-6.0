@@ -92,7 +92,12 @@ function PaymentHistory() {
               <div key={payment._id} className="payment-card">
                 <div className="payment-card-header">
                   <div>
-                    <h3>Order #{payment.orderId.substring(payment.orderId.length - 8)}</h3>
+                    <h3>
+                      {payment.referenceType === 'AccommodationBooking' 
+                        ? 'Accommodation Booking' 
+                        : `Order #${(payment.referenceId || payment._id).substring((payment.referenceId || payment._id).length - 8)}`
+                      }
+                    </h3>
                     <p className="payment-date">
                       {new Date(payment.createdAt).toLocaleDateString('en-IN', {
                         day: 'numeric',

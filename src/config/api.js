@@ -81,7 +81,7 @@ export const API_ENDPOINTS = {
   AUTH_LOGOUT: '/auth/logout',
 
   // Onboarding
-  ONBOARDING: '/onboarding/submit',
+  ONBOARDING: '/onboarding',
 
   // Sorting Hat
   SORTING_HAT_STATS: '/sorting-hat/stats',
@@ -93,9 +93,8 @@ export const API_ENDPOINTS = {
   PAYMENTS_MY: '/payments/me',
 
   // Points
-  POINTS: '/points',
-  POINTS_HOUSE_LEADERBOARD: '/points/house-leaderboard',
-  POINTS_INDIVIDUAL_LEADERBOARD: '/points/individual-leaderboard',
+  POINTS_ME: '/points/me',
+  POINTS_LEADERBOARD: '/points/leaderboard',
 
   // Merchandise
   MERCH_GET_ALL: '/merch',

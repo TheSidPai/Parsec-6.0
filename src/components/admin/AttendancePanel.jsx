@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { RiRefreshLine, RiCameraLine, RiStopLine, RiCheckLine, RiCloseLine } from '@remixicon/react';
+import { RiRefreshLine, RiCameraLine, RiStopLine, RiCheckLine, RiCloseLine, RiQrScanLine } from '@remixicon/react';
 import { BrowserMultiFormatReader } from '@zxing/library';
 import axios from 'axios';
 import './AdminComponents.css';
@@ -126,114 +126,127 @@ function AttendancePanel() {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="max-w-4xl mx-auto p-6 bg-[#232323] rounded-lg shadow-lg space-y-6">
-        <h2 className="text-2xl font-bold text-white mb-2">Attendance Panel</h2>
-        <p className="text-gray-400 mb-4">Scan attendee QR codes to verify and mark their attendance.</p>
+    <div className="admin-section-container">
+      <div className="admin-section-title-wrapper">
+        <div className="admin-section-icon">
+          <RiQrScanLine size={32} />
+        </div>
+        <h2 className="admin-section-main-title">Attendance Panel</h2>
+        <p className="admin-section-subtitle">Scan attendee QR codes to verify and mark their attendance</p>
+      </div>
 
+      <div className="admin-content-card admin-attendance-container">
         {/* QR Scanner */}
         {status === 'idle' && (
-          <div className="space-y-4">
-            <div className="flex items-center justify-center">
-              <button
-                onClick={startScanning}
-                className="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 text-black font-bold rounded-lg transition-colors flex items-center gap-2"
-              >
-                <RiCameraLine size={20} />
-                Start QR Scanner
-              </button>
+          <div className="admin-scanner-box">
+            <div style={{ marginBottom: '1.5rem' }}>
+              <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>📱</div>
+              <h3 style={{ color: '#FFD700', fontSize: '1.5rem', marginBottom: '0.5rem' }}>Ready to Scan</h3>
+              <p style={{ color: '#aaa' }}>Click the button below to start scanning QR codes</p>
             </div>
+            <button
+              onClick={startScanning}
+              className="admin-btn admin-btn-primary"
+              style={{ fontSize: '1.1rem', padding: '1rem 2rem' }}
+            >
+              <RiCameraLine size={24} />
+              Start QR Scanner
+            </button>
           </div>
         )}
 
         {/* Camera View */}
         {status === 'scanning' && (
-          <div className="space-y-4">
-            <div className="bg-gray-800 rounded-lg p-4">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-bold text-yellow-400">QR Scanner Active</h3>
-                <button
-                  onClick={stopScanning}
-                  className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg flex items-center gap-2"
-                >
-                  <RiStopLine size={16} />
-                  Stop Scanner
-                </button>
-              </div>
-              <div className="relative">
-                <video
-                  ref={videoRef}
-                  className="w-full max-w-md mx-auto rounded-lg border-2 border-yellow-400"
-                  autoPlay
-                  playsInline
-                />
-                <div className="absolute inset-0 border-4 border-yellow-400 rounded-lg pointer-events-none">
-                  <div className="absolute top-4 left-4 w-8 h-8 border-t-4 border-l-4 border-yellow-400"></div>
-                  <div className="absolute top-4 right-4 w-8 h-8 border-t-4 border-r-4 border-yellow-400"></div>
-                  <div className="absolute bottom-4 left-4 w-8 h-8 border-b-4 border-l-4 border-yellow-400"></div>
-                  <div className="absolute bottom-4 right-4 w-8 h-8 border-b-4 border-r-4 border-yellow-400"></div>
-                </div>
-              </div>
-              <p className="text-center text-gray-300 mt-4">
-                Position the QR code within the frame to scan
-              </p>
+          <div className="admin-scanner-box">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-bold text-yellow-400">🔍 Scanner Active</h3>
+              <button
+                onClick={stopScanning}
+                className="admin-btn admin-btn-danger"
+              >
+                <RiStopLine size={16} />
+                Stop Scanner
+              </button>
             </div>
+            <div className="admin-scanner-video-wrapper">
+              <video
+                ref={videoRef}
+                className="admin-scanner-video"
+                autoPlay
+                playsInline
+              />
+              <div className="admin-scanner-overlay">
+                <div className="admin-scanner-corner top-left"></div>
+                <div className="admin-scanner-corner top-right"></div>
+                <div className="admin-scanner-corner bottom-left"></div>
+                <div className="admin-scanner-corner bottom-right"></div>
+              </div>
+            </div>
+            <p style={{ textAlign: 'center', color: '#ccc', marginTop: '1.5rem', fontSize: '1rem' }}>
+              📷 Position the QR code within the frame to scan
+            </p>
           </div>
         )}
 
         {/* Loading Spinner */}
         {status === 'loading' && (
-          <div className="flex items-center justify-center py-8">
-            <div className="animate-spin rounded-full h-10 w-10 border-t-4 border-yellow-400 border-opacity-50"></div>
-            <span className="ml-4 text-yellow-400 font-semibold">Verifying QR Code...</span>
+          <div className="admin-scanner-box">
+            <div className="flex items-center justify-center py-8">
+              <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-yellow-400 border-opacity-50"></div>
+            </div>
+            <p style={{ textAlign: 'center', color: '#FFD700', fontWeight: '600', fontSize: '1.1rem', marginTop: '1rem' }}>
+              ⏳ Verifying QR Code...
+            </p>
           </div>
         )}
 
         {/* Attendance Modal */}
         {showModal && attendeeData && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-[#232323] rounded-lg p-6 max-w-md w-full mx-4 border border-gray-600">
-              <h3 className="text-xl font-bold text-yellow-400 mb-4">Attendee Details</h3>
+          <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
+            <div className="admin-attendee-modal max-w-lg w-full">
+              <h3 className="text-2xl font-bold text-yellow-400 mb-4 flex items-center gap-2">
+                <span>👤</span> Attendee Details
+              </h3>
               
-              <div className="space-y-3 mb-6">
-                <div className="text-white">
-                  <span className="text-gray-400">Name: </span>
-                  <span className="font-semibold">{attendeeData.attendee_name}</span>
+              <div className="admin-attendee-details">
+                <div className="admin-attendee-row">
+                  <span className="admin-attendee-label">Name:</span>
+                  <span className="admin-attendee-value">{attendeeData.attendee_name}</span>
                 </div>
-                <div className="text-white">
-                  <span className="text-gray-400">Email: </span>
-                  <span className="font-semibold">{attendeeData.attendee_email}</span>
+                <div className="admin-attendee-row">
+                  <span className="admin-attendee-label">Email:</span>
+                  <span className="admin-attendee-value">{attendeeData.attendee_email}</span>
                 </div>
-                <div className="text-white">
-                  <span className="text-gray-400">College: </span>
-                  <span className="font-semibold">{attendeeData.college_name}</span>
+                <div className="admin-attendee-row">
+                  <span className="admin-attendee-label">College:</span>
+                  <span className="admin-attendee-value">{attendeeData.college_name}</span>
                 </div>
-                <div className="text-white">
-                  <span className="text-gray-400">Pass Type: </span>
-                  <span className="font-semibold">{attendeeData.pass_type}</span>
+                <div className="admin-attendee-row">
+                  <span className="admin-attendee-label">Pass Type:</span>
+                  <span className="admin-attendee-value">{attendeeData.pass_type}</span>
                 </div>
-                <div className="text-white">
-                  <span className="text-gray-400">Price: </span>
-                  <span className="font-semibold">₹{attendeeData.pass_price}</span>
+                <div className="admin-attendee-row">
+                  <span className="admin-attendee-label">Price:</span>
+                  <span className="admin-attendee-value" style={{ fontSize: '1.2rem', color: '#FFD700' }}>₹{attendeeData.pass_price}</span>
                 </div>
-                <div className="text-white">
-                  <span className="text-gray-400">Already Present: </span>
-                  <span className={`font-semibold ${attendeeData.is_present ? 'text-green-400' : 'text-red-400'}`}>
-                    {attendeeData.is_present ? 'Yes' : 'No'}
+                <div className="admin-attendee-row">
+                  <span className="admin-attendee-label">Status:</span>
+                  <span className={`admin-attendee-value ${attendeeData.is_present ? 'text-green-400' : 'text-red-400'}`}>
+                    {attendeeData.is_present ? '✅ Already Present' : '❌ Not Marked'}
                   </span>
                 </div>
               </div>
 
-              <div className="flex gap-3">
+              <div className="flex gap-3 mt-6">
                 <button
                   onClick={handleMarkAttendance}
                   disabled={markingAttendance || attendeeData.is_present}
-                  className={`flex-1 px-4 py-2 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors ${
+                  className={`flex-1 px-4 py-3 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors ${
                     attendeeData.is_present 
                       ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
                       : markingAttendance
                       ? 'bg-yellow-600 text-black cursor-not-allowed'
-                      : 'bg-yellow-500 hover:bg-yellow-600 text-black'
+                      : 'admin-btn admin-btn-success'
                   }`}
                 >
                   {markingAttendance ? (
@@ -243,12 +256,12 @@ function AttendancePanel() {
                     </>
                   ) : attendeeData.is_present ? (
                     <>
-                      <RiCheckLine size={16} />
+                      <RiCheckLine size={20} />
                       Already Present
                     </>
                   ) : (
                     <>
-                      <RiCheckLine size={16} />
+                      <RiCheckLine size={20} />
                       Mark Present
                     </>
                   )}
@@ -256,9 +269,9 @@ function AttendancePanel() {
                 <button
                   onClick={handleCloseModal}
                   disabled={markingAttendance}
-                  className="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg flex items-center gap-2 transition-colors disabled:cursor-not-allowed"
+                  className="admin-btn admin-btn-secondary px-4 py-3"
                 >
-                  <RiCloseLine size={16} />
+                  <RiCloseLine size={20} />
                   Close
                 </button>
               </div>
@@ -267,14 +280,16 @@ function AttendancePanel() {
         )}
 
         {/* Reset Panel Button */}
-        <div className="pt-6 flex justify-end">
-          <button
-            onClick={handleReset}
-            className="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg flex items-center gap-2"
-          >
-            <RiRefreshLine size={16} /> Reset Panel
-          </button>
-        </div>
+        {status !== 'idle' && !showModal && (
+          <div className="pt-6 flex justify-center">
+            <button
+              onClick={handleReset}
+              className="admin-btn admin-btn-secondary"
+            >
+              <RiRefreshLine size={18} /> Reset Panel
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

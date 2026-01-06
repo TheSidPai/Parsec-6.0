@@ -61,14 +61,13 @@ function Checkout() {
         {
           method: 'POST',
           body: JSON.stringify({
-            items,
-            shippingAddress: shippingAddress || 'Venue Pickup'
+            items
           })
         },
         token
       );
 
-      if (response.ok && data?.data?.order) {
+      if (response.ok && data?.status === 'success' && data?.data?.order) {
         setOrderId(data.data.order._id);
         setStep(3);
         // Clear cart
@@ -105,9 +104,9 @@ function Checkout() {
         token
       );
 
-      if (response.ok) {
+      if (response.ok && data?.status === 'success') {
         alert('✅ Payment submitted! You will receive email confirmation once verified.');
-        navigate('/dashboard/payment-history');
+        navigate('/dashboard/orders');
       } else {
         alert(data?.message || 'Failed to submit payment');
       }

@@ -31,8 +31,8 @@ function Orders() {
         token
       );
 
-      if (response.ok && data) {
-        setOrders(data.orders || []);
+      if (response.ok && data?.status === 'success' && data?.data?.orders) {
+        setOrders(data.data.orders);
       } else {
         setError("Failed to fetch orders");
       }
@@ -68,6 +68,32 @@ function Orders() {
         }}
       >
         {status}
+      </span>
+    );
+  };
+
+  const getPaymentStatusBadge = (paymentStatus) => {
+    const statusStyles = {
+      unpaid: { bg: "#dc3545", text: "#fff" },
+      paid: { bg: "#28a745", text: "#fff" },
+      pending: { bg: "#ffc107", text: "#000" },
+    };
+
+    const style = statusStyles[paymentStatus] || statusStyles.pending;
+
+    return (
+      <span
+        style={{
+          background: style.bg,
+          color: style.text,
+          padding: "4px 12px",
+          borderRadius: "12px",
+          fontSize: "0.85rem",
+          fontWeight: "600",
+          textTransform: "capitalize",
+        }}
+      >
+        {paymentStatus}
       </span>
     );
   };
@@ -141,7 +167,10 @@ function Orders() {
                     })}
                   </span>
                 </div>
-                {getStatusBadge(order.status)}
+                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                  {getStatusBadge(order.orderStatus || order.status)}
+                  {order.paymentStatus && getPaymentStatusBadge(order.paymentStatus)}
+                </div>
               </div>
 
               <div className="order-items">
@@ -158,7 +187,7 @@ function Orders() {
                         </span>
                       )}
                     </div>
-                    <span className="item-price">₹{item.price}</span>
+                    <span className="item-price">₹{item.pricePerItem || item.price}</span>
                   </div>
                 ))}
               </div>

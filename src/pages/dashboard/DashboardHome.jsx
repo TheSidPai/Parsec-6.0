@@ -27,9 +27,16 @@ function DashboardHome() {
   const token = localStorage.getItem("jwt_token");
   const textRef = useRef(null);
 
-  const [showLightning, setShowLightning] = useState(true);
+  // Check if animations have been shown before (allow 2 times)
+  const [showLightning, setShowLightning] = useState(() => {
+    const viewCount = parseInt(localStorage.getItem('revelio_count') || '0');
+    return viewCount < 2; // Show for first 2 visits
+  });
   const [showGlitchText, setShowGlitchText] = useState(false);
-  const [showDashboard, setShowDashboard] = useState(false);
+  const [showDashboard, setShowDashboard] = useState(() => {
+    const viewCount = parseInt(localStorage.getItem('revelio_count') || '0');
+    return viewCount >= 2; // Skip animation after 2 views
+  });
 
   const [userData, setUserData] = useState({
     name: "Student",
@@ -59,6 +66,16 @@ function DashboardHome() {
     if (hour < 12) setGreeting("Good Morning");
     else if (hour < 18) setGreeting("Good Afternoon");
     else setGreeting("Good Evening");
+
+    // Check view count
+    const viewCount = parseInt(localStorage.getItem('revelio_count') || '0');
+    
+    // Skip animation if already shown 2 times
+    if (viewCount >= 2) {
+      const sidebar = document.querySelector(".dashboard-sidebar");
+      if (sidebar) sidebar.style.display = "block";
+      return;
+    }
 
     // Hide sidebar during intro
     const sidebar = document.querySelector(".dashboard-sidebar");
@@ -138,6 +155,11 @@ function DashboardHome() {
       setShowLightning(false);
       setShowGlitchText(false);
       setShowDashboard(true);
+      
+      // Increment view count
+      const viewCount = parseInt(localStorage.getItem('revelio_count') || '0');
+      localStorage.setItem('revelio_count', (viewCount + 1).toString());
+      
       if (sidebar) {
         sidebar.style.display = "block";
         // Smooth fade in for sidebar

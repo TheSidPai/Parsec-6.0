@@ -33,63 +33,37 @@ function Shop() {
     try {
       setLoading(true);
       
-      // 🧪 DEV MODE: Define mock data for testing
-      const mockMerch = [
+      // Event passes only (no merchandise)
+      const eventPasses = [
         {
-          _id: 'mock-1',
-          name: 'Parsec T-Shirt',
-          description: 'Official Parsec 6.0 event T-shirt with house colors',
-          price: 299,
-          type: 'wearable',
-          sizesAvailable: ['S', 'M', 'L', 'XL', 'XXL'],
-          stockQuantity: 50,
-          imageUrl: null
-        },
-        {
-          _id: 'mock-2',
-          name: 'Parsec Hoodie',
-          description: 'Premium quality hoodie with Parsec logo',
-          price: 799,
-          type: 'wearable',
-          sizesAvailable: ['M', 'L', 'XL'],
-          stockQuantity: 30,
-          imageUrl: null
-        },
-        {
-          _id: 'mock-3',
-          name: 'Parsec Mug',
-          description: 'Ceramic mug with magical house designs',
-          price: 199,
-          type: 'non-wearable',
-          stockQuantity: 100,
-          imageUrl: null
-        },
-        {
-          _id: 'mock-4',
+          _id: 'pass-1',
           name: 'Event Pass - Day 1',
-          description: 'Access to all Day 1 events (24 Jan 2026)',
-          price: 300,
+          description: 'Access to all Day 1 events (24 Jan 2026). Includes workshops, talks, stalls, and competitions.',
+          price: 299,
           type: 'event-pass1',
           stockQuantity: 200,
-          imageUrl: null
+          imageUrl: null,
+          features: ['All Day 1 Events', 'Workshop Access', 'Networking Sessions', 'Food & Refreshments']
         },
         {
-          _id: 'mock-5',
+          _id: 'pass-2',
           name: 'Event Pass - Day 2',
-          description: 'Access to all Day 2 events (25 Jan 2026)',
-          price: 300,
+          description: 'Access to all Day 2 events (25 Jan 2026). Includes main stage performances and closing ceremony.',
+          price: 349,
           type: 'event-pass2',
           stockQuantity: 200,
-          imageUrl: null
+          imageUrl: null,
+          features: ['All Day 2 Events', 'Main Stage Shows', 'Closing Ceremony', 'Food & Refreshments']
         },
         {
-          _id: 'mock-6',
-          name: 'Parsec Sticker Pack',
-          description: 'Set of 10 exclusive Parsec stickers',
-          price: 99,
-          type: 'non-wearable',
-          stockQuantity: 500,
-          imageUrl: null
+          _id: 'pass-3',
+          name: 'Full Event Pass',
+          description: 'Complete access to both days (24-25 Jan 2026). Best value for complete experience!',
+          price: 549,
+          type: 'event-pass3',
+          stockQuantity: 200,
+          imageUrl: null,
+          features: ['Both Days Access', 'All Events & Workshops', 'Priority Entry', 'Exclusive Merchandise']
         }
       ];
 
@@ -99,19 +73,32 @@ function Shop() {
           { method: 'GET' }
         );
 
-        if (response.ok && data?.data?.merch && data.data.merch.length > 0) {
-          console.log('✅ Using real merchandise from backend');
-          setMerch(data.data.merch);
-          setFilteredMerch(data.data.merch);
+        if (response.ok && data?.status === 'success' && data?.data?.merch && data.data.merch.length > 0) {
+          // Filter only event passes from backend
+          const passesOnly = data.data.merch.filter(item => 
+            item.type === 'event-pass1' || 
+            item.type === 'event-pass2' || 
+            item.type === 'event-pass3'
+          );
+          
+          if (passesOnly.length > 0) {
+            console.log('✅ Using event passes from backend');
+            setMerch(passesOnly);
+            setFilteredMerch(passesOnly);
+          } else {
+            console.warn('⚠️ No event passes in backend - using default passes');
+            setMerch(eventPasses);
+            setFilteredMerch(eventPasses);
+          }
         } else {
-          console.warn('⚠️ No merchandise from backend - using mock data');
-          setMerch(mockMerch);
-          setFilteredMerch(mockMerch);
+          console.warn('⚠️ No data from backend - using default passes');
+          setMerch(eventPasses);
+          setFilteredMerch(eventPasses);
         }
       } catch (apiError) {
-        console.warn('⚠️ API error - falling back to mock data:', apiError.message);
-        setMerch(mockMerch);
-        setFilteredMerch(mockMerch);
+        console.warn('⚠️ API error - showing event passes:', apiError.message);
+        setMerch(eventPasses);
+        setFilteredMerch(eventPasses);
       }
     } catch (err) {
       console.error('Error in fetchMerch:', err);

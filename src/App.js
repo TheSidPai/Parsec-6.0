@@ -34,6 +34,8 @@ import Shop from "./pages/dashboard/Shop";
 import Cart from "./pages/dashboard/Cart";
 import Checkout from "./pages/dashboard/Checkout";
 import PaymentHistory from "./pages/dashboard/PaymentHistory";
+import Passes from "./pages/dashboard/Passes";
+import PassCheckout from "./pages/dashboard/PassCheckout";
 import PublicAccommodation from "./pages/Accommodation";
 import NotFound from "./pages/NotFound";
 import HousePage from "./pages/HousePage";
@@ -104,6 +106,8 @@ function AnimatedRoutes() {
           <Route path="events/:id" element={<DashboardEventDetail />} />
           <Route path="schedule" element={<DashboardSchedule />} />
           <Route path="shop" element={<Shop />} />
+          <Route path="passes" element={<Passes />} />
+          <Route path="pass-checkout" element={<PassCheckout />} />
           <Route path="cart" element={<Cart />} />
           <Route path="checkout" element={<Checkout />} />
           <Route path="orders" element={<Orders />} />
