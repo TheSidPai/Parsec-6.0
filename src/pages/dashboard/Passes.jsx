@@ -1,45 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API_ENDPOINTS, authenticatedFetch } from '../../config/api';
 import Particles from '../../components/Particles';
 import './Passes.css';
 
+// Event pass data from API documentation - moved outside component to avoid re-creation
+const eventPassesInfo = [
+  {
+    type: 'event-pass1',
+    name: 'Event Pass - Day 1',
+    description: 'Access to all Day 1 events (24 Jan 2026). Includes workshops, talks, stalls, and competitions.',
+    price: 299,
+    features: ['All Day 1 Events', 'Workshop Access', 'Networking Sessions', 'Food & Refreshments']
+  },
+  {
+    type: 'event-pass2',
+    name: 'Event Pass - Day 2',
+    description: 'Access to all Day 2 events (25 Jan 2026). Includes main stage performances and closing ceremony.',
+    price: 349,
+    features: ['All Day 2 Events', 'Main Stage Shows', 'Closing Ceremony', 'Food & Refreshments']
+  },
+  {
+    type: 'event-pass3',
+    name: 'Full Event Pass',
+    description: 'Complete access to both days (24-25 Jan 2026). Best value for complete experience!',
+    price: 549,
+    features: ['Both Days Access', 'All Events & Workshops', 'Priority Entry', 'Exclusive Merchandise']
+  }
+];
+
 function Passes() {
   const [passes, setPasses] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Event pass data from API documentation
-  const eventPassesInfo = [
-    {
-      type: 'event-pass1',
-      name: 'Event Pass - Day 1',
-      description: 'Access to all Day 1 events (24 Jan 2026). Includes workshops, talks, stalls, and competitions.',
-      price: 299,
-      features: ['All Day 1 Events', 'Workshop Access', 'Networking Sessions', 'Food & Refreshments']
-    },
-    {
-      type: 'event-pass2',
-      name: 'Event Pass - Day 2',
-      description: 'Access to all Day 2 events (25 Jan 2026). Includes main stage performances and closing ceremony.',
-      price: 349,
-      features: ['All Day 2 Events', 'Main Stage Shows', 'Closing Ceremony', 'Food & Refreshments']
-    },
-    {
-      type: 'event-pass3',
-      name: 'Full Event Pass',
-      description: 'Complete access to both days (24-25 Jan 2026). Best value for complete experience!',
-      price: 549,
-      features: ['Both Days Access', 'All Events & Workshops', 'Priority Entry', 'Exclusive Merchandise']
-    }
-  ];
-
-  useEffect(() => {
-    fetchPasses();
-  }, []);
-
-  const fetchPasses = async () => {
+  const fetchPasses = useCallback(async () => {
     try {
       setLoading(true);
       
@@ -82,8 +77,11 @@ function Passes() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
+  useEffect(() => {
+    fetchPasses();
+  }, [fetchPasses]);
   const handleBuyPass = (pass) => {
     // Navigate to checkout with pass data
     navigate('/dashboard/pass-checkout', { state: { pass } });
@@ -114,12 +112,6 @@ function Passes() {
           Get your pass for Parsec 6.0 - IIT Dharwad's Premier Tech Fest
         </p>
       </div>
-
-      {error && (
-        <div className="passes-error">
-          <p>{error}</p>
-        </div>
-      )}
 
       <div className="passes-grid">
         {passes.map((pass, index) => (

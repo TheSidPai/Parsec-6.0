@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { API_ENDPOINTS, authenticatedFetch } from "../../config/api";
 import Particles from "../../components/Particles";
 import "./Orders.css";
@@ -9,11 +9,7 @@ function Orders() {
   const [error, setError] = useState(null);
   const token = localStorage.getItem("jwt_token");
 
-  useEffect(() => {
-    fetchOrders();
-  }, []);
-
-  const fetchOrders = async () => {
+  const fetchOrders = useCallback(async () => {
     try {
       setLoading(true);
 
@@ -42,7 +38,11 @@ function Orders() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [token]);
+
+  useEffect(() => {
+    fetchOrders();
+  }, [fetchOrders]);
 
   const getStatusBadge = (status) => {
     const statusStyles = {

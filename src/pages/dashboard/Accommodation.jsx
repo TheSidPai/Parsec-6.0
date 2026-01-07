@@ -193,7 +193,7 @@ function Accommodation() {
         return;
       }
 
-      const { nights, price } = calculateBooking();
+      const { nights } = calculateBooking();
       if (nights <= 0) {
         setError('Check-out date must be after check-in date');
         return;

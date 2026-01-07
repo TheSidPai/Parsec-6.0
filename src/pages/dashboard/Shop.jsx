@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API_ENDPOINTS, authenticatedFetch } from '../../config/api';
 import Particles from '../../components/Particles';
@@ -13,6 +13,14 @@ function Shop() {
   const [cart, setCart] = useState([]);
   const navigate = useNavigate();
 
+  const filterMerch = useCallback(() => {
+    if (filter === 'all') {
+      setFilteredMerch(merch);
+    } else {
+      setFilteredMerch(merch.filter(item => item.type === filter));
+    }
+  }, [filter, merch]);
+
   useEffect(() => {
     fetchMerch();
     loadCart();
@@ -20,7 +28,7 @@ function Shop() {
 
   useEffect(() => {
     filterMerch();
-  }, [filter, merch]);
+  }, [filter, merch, filterMerch]);
 
   const loadCart = () => {
     const savedCart = localStorage.getItem('parsec_cart');
@@ -105,14 +113,6 @@ function Shop() {
       setError('Unable to load shop items');
     } finally {
       setLoading(false);
-    }
-  };
-
-  const filterMerch = () => {
-    if (filter === 'all') {
-      setFilteredMerch(merch);
-    } else {
-      setFilteredMerch(merch.filter(item => item.type === filter));
     }
   };
 
