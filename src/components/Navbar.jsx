@@ -66,7 +66,7 @@ function Navbar() {
         <ul className={`navbar-menu ${menuOpen ? "active" : ""}`}>
           <li className="navbar-item navbar-dropdown">
             <button
-              className="navbar-link navbar-dropdown-toggle"
+              className="navbar-dropdown-toggle navbar-link "
               onClick={toggleEventsDropdown}
             >
               Events ▼

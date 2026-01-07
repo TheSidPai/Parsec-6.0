@@ -89,7 +89,7 @@
   "git.enabled": true,
   "git.autorefresh": false,
   "extensions.autoUpdate": false,
-  "files.autoSave": "off",
+  "files.autoSave": "afterDelay",
   "editor.minimap.enabled": false,
   "editor.suggest.preview": false,
   "editor.quickSuggestions": {

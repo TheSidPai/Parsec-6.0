@@ -198,8 +198,7 @@
   margin: 0 15px;
 }
 
-.navbar-
--logo-img{
+.navbar-college-logo-img{
   max-height: 40px;
   width: auto;
   filter: drop-shadow(0 0 8px var(--glow));
@@ -300,7 +299,7 @@
   background: none;
   border: none;
   color: var(--fontAccent);
-  font-family: 'Playfair Display', serif;
+  font-family: 'JosefinSans', sans-serif;
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.05em;
