@@ -32,73 +32,66 @@ function Shop() {
   const fetchMerch = async () => {
     try {
       setLoading(true);
-      
-      // Event passes only (no merchandise)
-      const eventPasses = [
-        {
-          _id: 'pass-1',
-          name: 'Event Pass - Day 1',
-          description: 'Access to all Day 1 events (24 Jan 2026). Includes workshops, talks, stalls, and competitions.',
-          price: 299,
-          type: 'event-pass1',
-          stockQuantity: 200,
-          imageUrl: null,
-          features: ['All Day 1 Events', 'Workshop Access', 'Networking Sessions', 'Food & Refreshments']
-        },
-        {
-          _id: 'pass-2',
-          name: 'Event Pass - Day 2',
-          description: 'Access to all Day 2 events (25 Jan 2026). Includes main stage performances and closing ceremony.',
-          price: 349,
-          type: 'event-pass2',
-          stockQuantity: 200,
-          imageUrl: null,
-          features: ['All Day 2 Events', 'Main Stage Shows', 'Closing Ceremony', 'Food & Refreshments']
-        },
-        {
-          _id: 'pass-3',
-          name: 'Full Event Pass',
-          description: 'Complete access to both days (24-25 Jan 2026). Best value for complete experience!',
-          price: 549,
-          type: 'event-pass3',
-          stockQuantity: 200,
-          imageUrl: null,
-          features: ['Both Days Access', 'All Events & Workshops', 'Priority Entry', 'Exclusive Merchandise']
-        }
-      ];
+      const token = localStorage.getItem('jwt_token');
 
+      // STEP 1: Load admin-added items from localStorage
+      const adminItems = localStorage.getItem('admin_store_items');
+      const localItems = adminItems ? JSON.parse(adminItems) : [];
+      
+      // Convert admin items to backend format (id -> _id, filter available only)
+      const formattedLocalItems = localItems
+        .filter(item => item.available !== false)
+        .map(item => ({
+          _id: `local_${item.id}`,
+          type: item.category,
+          name: item.name,
+          description: item.description,
+          price: item.price,
+          stockQuantity: 999, // Assume unlimited for local items
+          imageUrl: item.imageUrl,
+          sizesAvailable: item.category === 'wearable' ? ['S', 'M', 'L', 'XL'] : []
+        }));
+
+      // STEP 2: Try to fetch from backend
       try {
         const { response, data } = await authenticatedFetch(
           API_ENDPOINTS.MERCH_GET_ALL,
-          { method: 'GET' }
+          { method: 'GET' },
+          token
         );
 
-        if (response.ok && data?.status === 'success' && data?.data?.merch && data.data.merch.length > 0) {
-          // Filter only event passes from backend
-          const passesOnly = data.data.merch.filter(item => 
-            item.type === 'event-pass1' || 
-            item.type === 'event-pass2' || 
-            item.type === 'event-pass3'
-          );
+        console.log('🔍 Shop API Response:', { response, data });
+        console.log('🔍 Response status:', response.status);
+
+        // API returns { status: "success", data: { merch: [...] } }
+        if (response.ok && data?.status === 'success' && data?.data?.merch) {
+          const backendItems = data.data.merch;
           
-          if (passesOnly.length > 0) {
-            console.log('✅ Using event passes from backend');
-            setMerch(passesOnly);
-            setFilteredMerch(passesOnly);
-          } else {
-            console.warn('⚠️ No event passes in backend - using default passes');
-            setMerch(eventPasses);
-            setFilteredMerch(eventPasses);
-          }
+          console.log('✅ Loaded items from backend:', backendItems);
+          console.log('📦 Backend items:', backendItems.length);
+          console.log('📦 Admin items:', formattedLocalItems.length);
+          
+          // Combine backend items + admin items
+          const allItems = [...backendItems, ...formattedLocalItems];
+          
+          console.log('📦 Total items:', allItems.length);
+          allItems.forEach(item => {
+            console.log(`   - ${item.name} (type: ${item.type})`);
+          });
+          
+          setMerch(allItems);
+          setFilteredMerch(allItems);
         } else {
-          console.warn('⚠️ No data from backend - using default passes');
-          setMerch(eventPasses);
-          setFilteredMerch(eventPasses);
+          // No backend items, use only local items
+          console.warn('⚠️ No backend items, using admin items only');
+          setMerch(formattedLocalItems);
+          setFilteredMerch(formattedLocalItems);
         }
       } catch (apiError) {
-        console.warn('⚠️ API error - showing event passes:', apiError.message);
-        setMerch(eventPasses);
-        setFilteredMerch(eventPasses);
+        // API failed, use only local items
+        console.error('⚠️ API error, using admin items only:', apiError);
+        setMerch(formattedLocalItems);
+        setFilteredMerch(formattedLocalItems);
       }
     } catch (err) {
       console.error('Error in fetchMerch:', err);
@@ -111,6 +104,14 @@ function Shop() {
   const filterMerch = () => {
     if (filter === 'all') {
       setFilteredMerch(merch);
+    } else if (filter === 'passes') {
+      // Show all pass types
+      setFilteredMerch(merch.filter(item => 
+        item.type === 'pass' || 
+        item.type === 'event-pass1' || 
+        item.type === 'event-pass2' || 
+        item.type === 'event-pass3'
+      ));
     } else {
       setFilteredMerch(merch.filter(item => item.type === filter));
     }
@@ -144,6 +145,8 @@ function Shop() {
       case 'non-wearable': return '🎁';
       case 'event-pass1': return '🎫';
       case 'event-pass2': return '🎫';
+      case 'event-pass3': return '🎫';
+      case 'pass': return '🎫';
       default: return '🛍️';
     }
   };
@@ -223,16 +226,10 @@ function Shop() {
           Accessories
         </button>
         <button 
-          className={`filter-btn ${filter === 'event-pass1' ? 'active' : ''}`}
-          onClick={() => setFilter('event-pass1')}
+          className={`filter-btn ${filter === 'passes' ? 'active' : ''}`}
+          onClick={() => setFilter('passes')}
         >
-          Event Pass Day 1
-        </button>
-        <button 
-          className={`filter-btn ${filter === 'event-pass2' ? 'active' : ''}`}
-          onClick={() => setFilter('event-pass2')}
-        >
-          Event Pass Day 2
+          Event Passes
         </button>
       </div>
 

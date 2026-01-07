@@ -295,6 +295,30 @@ function PaymentCard({ payment, onView, onStatusUpdate }) {
         </div>
       )}
 
+      {payment.paymentScreenshot && (
+        <div className="admin-payment-info-item" style={{ marginTop: '1rem' }}>
+          <span className="admin-payment-info-label">Payment Screenshot</span>
+          <div style={{ marginTop: '0.5rem' }}>
+            <img 
+              src={payment.paymentScreenshot} 
+              alt="Payment Screenshot" 
+              style={{ 
+                maxWidth: '100%', 
+                maxHeight: '200px', 
+                borderRadius: '8px',
+                border: '2px solid rgba(255, 215, 0, 0.3)',
+                cursor: 'pointer'
+              }}
+              onClick={() => window.open(payment.paymentScreenshot, '_blank')}
+              title="Click to view full size"
+            />
+            <small style={{ display: 'block', marginTop: '0.5rem', color: 'rgba(255, 255, 255, 0.6)' }}>
+              Click to view full size
+            </small>
+          </div>
+        </div>
+      )}
+
       <div className="admin-payment-info-item" style={{ marginTop: '1rem' }}>
         <span className="admin-payment-info-label">Amount</span>
         <span className="admin-payment-amount">₹{payment.amount}</span>
@@ -371,6 +395,26 @@ function PaymentDetailModal({ payment, onClose, onStatusUpdate }) {
               <label className="block text-gray-400 text-sm mb-1">UTR</label>
               <div className="text-white font-mono">{payment.paymentUTR}</div>
             </div>
+            {payment.paymentScreenshot && (
+              <div className="col-span-2">
+                <label className="block text-gray-400 text-sm mb-1">Payment Screenshot</label>
+                <div className="mt-2">
+                  <img 
+                    src={payment.paymentScreenshot} 
+                    alt="Payment Screenshot" 
+                    style={{ 
+                      maxWidth: '100%', 
+                      maxHeight: '400px',
+                      borderRadius: '8px',
+                      border: '2px solid rgba(255, 215, 0, 0.3)',
+                      cursor: 'pointer'
+                    }}
+                    onClick={() => window.open(payment.paymentScreenshot, '_blank')}
+                  />
+                  <small className="block mt-2 text-gray-400">Click to view full size</small>
+                </div>
+              </div>
+            )}
             <div>
               <label className="block text-gray-400 text-sm mb-1">Status</label>
               <div className="text-white capitalize">{payment.status}</div>

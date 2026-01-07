@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { RiShoppingCartLine, RiAddLine, RiSubtractLine, RiDeleteBinLine, RiImageAddLine, RiEditLine, RiSaveLine } from '@remixicon/react';
+import { API_ENDPOINTS, authenticatedFetch } from '../../config/api';
 import './AdminComponents.css';
 
 function AdminPurchase() {
@@ -67,7 +68,7 @@ function AdminPurchase() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (!formData.name || !formData.price) {
@@ -75,36 +76,113 @@ function AdminPurchase() {
       return;
     }
 
-    const newItem = {
-      id: editingItem ? editingItem.id : Date.now(),
-      ...formData,
-      price: parseFloat(formData.price),
-      createdAt: editingItem ? editingItem.createdAt : new Date().toISOString(),
-      updatedAt: new Date().toISOString()
-    };
-
-    if (editingItem) {
-      // Update existing item
-      const updatedItems = items.map(item => 
-        item.id === editingItem.id ? newItem : item
-      );
-      saveItems(updatedItems);
-    } else {
-      // Add new item
-      saveItems([...items, newItem]);
+    const adminToken = localStorage.getItem('admin_token') || sessionStorage.getItem('admin_token');
+    if (!adminToken) {
+      alert('⚠️ Admin authentication required. Please login again.');
+      return;
     }
 
-    // Reset form
-    setFormData({
-      name: '',
-      description: '',
-      price: '',
-      category: 'pass',
-      imageUrl: '',
-      available: true
-    });
-    setShowAddForm(false);
-    setEditingItem(null);
+    try {
+      // Prepare data for backend API
+      const apiData = {
+        name: formData.name,
+        description: formData.description,
+        type: formData.category, // backend uses 'type' instead of 'category'
+        price: parseFloat(formData.price),
+        imageUrl: formData.imageUrl,
+        stockQuantity: 999, // Default high stock
+        sizesAvailable: formData.category === 'wearable' ? ['S', 'M', 'L', 'XL'] : []
+      };
+
+      if (editingItem && editingItem._id && !editingItem._id.startsWith('local_')) {
+        // Update existing backend item (TODO: backend endpoint needed)
+        alert('⚠️ Update functionality requires backend endpoint. Saving to localStorage only.');
+        const newItem = {
+          ...editingItem,
+          ...formData,
+          price: parseFloat(formData.price),
+          updatedAt: new Date().toISOString()
+        };
+        const updatedItems = items.map(item => 
+          item.id === editingItem.id ? newItem : item
+        );
+        saveItems(updatedItems);
+      } else {
+        // Add new item to backend
+        const { response, data } = await authenticatedFetch(
+          API_ENDPOINTS.MERCH_ADD,
+          {
+            method: 'POST',
+            body: JSON.stringify(apiData)
+          },
+          adminToken
+        );
+
+        if (response.ok && data?.status === 'success' && data?.data?.merch) {
+          alert('✅ Item added successfully to store!');
+          
+          // Also save to localStorage as backup (convert to local format)
+          const localItem = {
+            id: data.data.merch._id,
+            _id: data.data.merch._id,
+            name: data.data.merch.name,
+            description: data.data.merch.description,
+            category: data.data.merch.type,
+            price: data.data.merch.price,
+            imageUrl: data.data.merch.imageUrl,
+            available: true,
+            createdAt: new Date().toISOString()
+          };
+          saveItems([...items, localItem]);
+        } else {
+          throw new Error(data?.message || 'Failed to add item');
+        }
+      }
+
+      // Reset form
+      setFormData({
+        name: '',
+        description: '',
+        price: '',
+        category: 'pass',
+        imageUrl: '',
+        available: true
+      });
+      setShowAddForm(false);
+      setEditingItem(null);
+    } catch (error) {
+      console.error('Error adding item:', error);
+      alert(`❌ Failed to add item: ${error.message}. Saving to localStorage only as fallback.`);
+      
+      // Fallback: Save to localStorage only
+      const newItem = {
+        id: editingItem ? editingItem.id : Date.now(),
+        ...formData,
+        price: parseFloat(formData.price),
+        createdAt: editingItem ? editingItem.createdAt : new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      };
+
+      if (editingItem) {
+        const updatedItems = items.map(item => 
+          item.id === editingItem.id ? newItem : item
+        );
+        saveItems(updatedItems);
+      } else {
+        saveItems([...items, newItem]);
+      }
+
+      setFormData({
+        name: '',
+        description: '',
+        price: '',
+        category: 'pass',
+        imageUrl: '',
+        available: true
+      });
+      setShowAddForm(false);
+      setEditingItem(null);
+    }
   };
 
   const handleEdit = (item) => {
