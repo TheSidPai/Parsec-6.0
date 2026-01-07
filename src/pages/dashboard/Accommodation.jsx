@@ -186,9 +186,9 @@ function Accommodation() {
   const handleNextStep = async () => {
     if (modalStep === 1) {
       // Validate Step 1 fields
-      const { checkInDate, checkOutDate, gender } = bookingDetails;
+      const { checkInDate, checkOutDate } = bookingDetails;
       
-      if (!checkInDate || !checkOutDate || !gender) {
+      if (!checkInDate || !checkOutDate) {
         setError('Please fill all required fields');
         return;
       }
@@ -207,7 +207,6 @@ function Accommodation() {
         const booking = await accommodationAPI.createBooking(
           checkInDate,
           checkOutDate,
-          gender
         );
 
         // Store booking data for payment step
