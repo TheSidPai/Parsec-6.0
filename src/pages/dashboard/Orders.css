@@ -5,6 +5,11 @@
   min-height: 100vh;
   animation: fadeIn 0.6s ease;
   position: relative;
+  background-image: url('../../assets/images/event-images/FinalImages/db.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 @keyframes fadeIn {
@@ -132,11 +137,11 @@
   font-family: 'Playfair Display', serif;
   font-size: 1.75rem;
   margin-bottom: 0.75rem;
-  color: #FFD700;
+  color: var(--fontAccent);
 }
 
 .empty-state p {
-  color: #bbb;
+  color: #ccc;
   font-size: 1.05rem;
   line-height: 1.6;
 }
@@ -148,40 +153,25 @@
 }
 
 .order-card {
-  background: linear-gradient(145deg, rgba(30, 30, 40, 0.6), rgba(20, 20, 30, 0.8));
-  border: 1px solid rgba(218, 165, 32, 0.3);
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--primary) 8%, rgba(0, 0, 0, 0.6)),
+    color-mix(in srgb, var(--secondary) 5%, rgba(0, 0, 0, 0.7))
+  );
+  border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
   border-radius: 12px;
   padding: 2rem;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  position: relative;
-  overflow: hidden;
-}
-
-.order-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 215, 0, 0.1),
-    transparent
-  );
-  transition: left 0.6s ease;
-}
-
-.order-card:hover::before {
-  left: 100%;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
 .order-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(218, 165, 32, 0.5);
-  box-shadow: 0 8px 30px rgba(218, 165, 32, 0.2);
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--primary) 12%, rgba(0, 0, 0, 0.6)),
+    color-mix(in srgb, var(--secondary) 8%, rgba(0, 0, 0, 0.7))
+  );
+  box-shadow: 0 6px 24px color-mix(in srgb, var(--primary) 20%, rgba(0, 0, 0, 0.3));
 }
 
 .order-card-header {
@@ -190,7 +180,7 @@
   align-items: flex-start;
   margin-bottom: 1.5rem;
   padding-bottom: 1.25rem;
-  border-bottom: 1px solid rgba(218, 165, 32, 0.2);
+  border-bottom: 2px solid color-mix(in srgb, var(--primary) 20%, transparent);
 }
 
 .order-info {
@@ -199,12 +189,11 @@
 
 .order-info h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  margin-bottom: 0.65rem;
-  color: #FFD700;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+  color: var(--fontAccent);
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .order-date {

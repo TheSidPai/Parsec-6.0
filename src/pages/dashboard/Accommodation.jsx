@@ -290,11 +290,11 @@ function Accommodation() {
         {/* Header */}
         <div className="accommodation-header">
           <div className="title-wrapper">
-            <div className="wand-divider left"></div>
+            {/* <div className="wand-divider left"></div> */}
             <h1 className="page-title">
               Accommodation
             </h1>
-            <div className="wand-divider right"></div>
+            {/* <div className="wand-divider right"></div> */}
           </div>
           <p className="page-subtitle">
             Book your stay at IIT Dharwad for Parsec 2026

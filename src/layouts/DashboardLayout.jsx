@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import "./DashboardLayout.css";
-import HouseSwitcher from "../components/HouseSwitcher";
+// import HouseSwitcher from "../components/HouseSwitcher"; // Commented out - testing feature only
 import { buildApiUrl, API_ENDPOINTS } from "../config/api";
 import { applyTheme } from "../assets/themes";
 import { 
@@ -100,7 +100,7 @@ function DashboardLayout() {
       {/* Sidebar */}
       <nav className="dashboard-sidebar">
         <h3>Dashboard</h3>
-        <HouseSwitcher />
+        {/* <HouseSwitcher /> */} {/* Commented out - testing feature only */}
         <ul className="dashboard-nav">
           <li>
             <Link className="dashboard-link" to="/dashboard">
@@ -132,11 +132,11 @@ function DashboardLayout() {
               <FaTrophy /> Leaderboard
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link className="dashboard-link" to="/dashboard/contact">
               <FaPhoneAlt /> Contact
             </Link>
-          </li>
+          </li> */}
         </ul>
         <button onClick={handleLogout} className="logout-btn">
           <FaSignOutAlt /> Logout
