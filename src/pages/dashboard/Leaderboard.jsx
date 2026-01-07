@@ -69,9 +69,9 @@ function Leaderboard() {
         {/* Header */}
         <div className="leaderboard-header">
           <div className="leaderboard-title-wrapper">
-            <div className="wand-divider left"></div>
+            {/* <div className="wand-divider left"></div> */}
             <h1 className="leaderboard-title">House Championship</h1>
-            <div className="wand-divider right"></div>
+            {/* <div className="wand-divider right"></div> */}
           </div>
           <p className="leaderboard-subtitle">
             The battle for glory begins • Points will be updated as events unfold

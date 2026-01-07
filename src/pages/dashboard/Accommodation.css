@@ -21,6 +21,13 @@
 .accommodation-container {
   position: relative;
   z-index: 1;
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid color-mix(in srgb, var(--primary) 30%, transparent);
+  border-radius: 20px;
+  padding: 2.5rem;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 
+              0 0 60px color-mix(in srgb, var(--primary) 10%, transparent);
 }
 
 /* ========== HEADER ========== */

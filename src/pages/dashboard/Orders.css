@@ -5,6 +5,11 @@
   min-height: 100vh;
   animation: fadeIn 0.6s ease;
   position: relative;
+  background-image: url('../../assets/images/event-images/FinalImages/db.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 @keyframes fadeIn {
@@ -133,11 +138,11 @@
   font-family: 'Playfair Display', serif;
   font-size: 1.75rem;
   margin-bottom: 0.75rem;
-  color: #FFD700;
+  color: var(--fontAccent);
 }
 
 .empty-state p {
-  color: #bbb;
+  color: #ccc;
   font-size: 1.05rem;
   line-height: 1.6;
 }
@@ -149,16 +154,25 @@
 }
 
 .order-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--primary) 8%, rgba(0, 0, 0, 0.6)),
+    color-mix(in srgb, var(--secondary) 5%, rgba(0, 0, 0, 0.7))
+  );
+  border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
   border-radius: 12px;
   padding: 2rem;
   transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
 .order-card:hover {
-  border-color: rgba(255, 215, 0, 0.4);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--primary) 12%, rgba(0, 0, 0, 0.6)),
+    color-mix(in srgb, var(--secondary) 8%, rgba(0, 0, 0, 0.7))
+  );
+  box-shadow: 0 6px 24px color-mix(in srgb, var(--primary) 20%, rgba(0, 0, 0, 0.3));
 }
 
 .order-card-header {
@@ -167,7 +181,7 @@
   align-items: center;
   margin-bottom: 1.5rem;
   padding-bottom: 1.25rem;
-  border-bottom: 2px solid rgba(255, 215, 0, 0.15);
+  border-bottom: 2px solid color-mix(in srgb, var(--primary) 20%, transparent);
 }
 
 .order-info {
@@ -178,7 +192,7 @@
   font-family: 'Playfair Display', serif;
   font-size: 1.35rem;
   margin-bottom: 0.5rem;
-  color: #FFD700;
+  color: var(--fontAccent);
   font-weight: 600;
   letter-spacing: 0.5px;
 }

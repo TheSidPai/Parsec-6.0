@@ -5,6 +5,11 @@
   margin: 0 auto;
   min-height: calc(100vh - 80px);
   position: relative;
+  background-image: url('../../assets/images/event-images/FinalImages/db.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 /* Magical background orbs matching house theme */
