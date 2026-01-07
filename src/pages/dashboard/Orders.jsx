@@ -1,23 +1,23 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { API_ENDPOINTS, authenticatedFetch } from "../../config/api";
+import Particles from "../../components/Particles";
 import "./Orders.css";
 
 function Orders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   const token = localStorage.getItem("jwt_token");
 
   const fetchOrders = useCallback(async () => {
     try {
       setLoading(true);
-      setError(null);
 
       // DEV MODE: Allow orders page to work without token
       if (!token) {
         console.warn("⚠️ DEV MODE: No token - showing empty orders");
         setOrders([]);
+        setLoading(false);
         return;
       }
 
@@ -27,8 +27,8 @@ function Orders() {
         token
       );
 
-      if (response.ok && data) {
-        setOrders(data.orders || []);
+      if (response.ok && data?.status === 'success' && data?.data?.orders) {
+        setOrders(data.data.orders);
       } else {
         setError("Failed to fetch orders");
       }
@@ -72,6 +72,32 @@ function Orders() {
     );
   };
 
+  const getPaymentStatusBadge = (paymentStatus) => {
+    const statusStyles = {
+      unpaid: { bg: "#dc3545", text: "#fff" },
+      paid: { bg: "#28a745", text: "#fff" },
+      pending: { bg: "#ffc107", text: "#000" },
+    };
+
+    const style = statusStyles[paymentStatus] || statusStyles.pending;
+
+    return (
+      <span
+        style={{
+          background: style.bg,
+          color: style.text,
+          padding: "4px 12px",
+          borderRadius: "12px",
+          fontSize: "0.85rem",
+          fontWeight: "600",
+          textTransform: "capitalize",
+        }}
+      >
+        {paymentStatus}
+      </span>
+    );
+  };
+
   if (loading) {
     return (
       <div className="orders-container">
@@ -99,6 +125,20 @@ function Orders() {
 
   return (
     <div className="orders-container">
+      {/* Particles Background */}
+      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, pointerEvents: 'none' }}>
+        <Particles
+          particleColors={["#ffffff", "#ffffff"]}
+          particleCount={600}
+          particleSpread={15}
+          speed={0.1}
+          particleBaseSize={80}
+          moveParticlesOnHover={false}
+          alphaParticles={false}
+          disableRotation={false}
+        />
+      </div>
+
       <div className="orders-header">
         <h1>🛍️ My Orders</h1>
         <p>Track your merchandise and accommodation orders</p>
@@ -127,7 +167,10 @@ function Orders() {
                     })}
                   </span>
                 </div>
-                {getStatusBadge(order.status)}
+                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                  {getStatusBadge(order.orderStatus || order.status)}
+                  {order.paymentStatus && getPaymentStatusBadge(order.paymentStatus)}
+                </div>
               </div>
 
               <div className="order-items">
@@ -144,7 +187,7 @@ function Orders() {
                         </span>
                       )}
                     </div>
-                    <span className="item-price">₹{item.price}</span>
+                    <span className="item-price">₹{item.pricePerItem || item.price}</span>
                   </div>
                 ))}
               </div>

@@ -90,6 +90,7 @@
   height: 30px;
   border: 2px solid #d4af37;
   z-index: 2;
+  pointer-events: none;
 }
 
 .card-corner.top-left {
@@ -163,7 +164,7 @@
   padding: 12px 15px 15px;
   text-align: center;
   position: relative;
-  z-index: 1;
+  z-index: 10;
 }
 
 .team-card-name {
@@ -202,6 +203,9 @@
   display: flex;
   gap: 12px;
   margin-top: 8px;
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
 }
 
 .social-link {
@@ -215,6 +219,10 @@
   text-decoration: none;
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 30;
+  cursor: pointer;
+  pointer-events: auto;
 }
 
 .social-link:hover {
@@ -227,6 +235,7 @@
   width: 16px;
   height: 16px;
   fill: #1a0f0a;
+  pointer-events: none;
 }
 
 /* Magical shimmer effect */
@@ -247,6 +256,7 @@
       transparent);
   animation: shimmer 4s infinite;
   pointer-events: none;
+  z-index: 1;
 }
 
 @keyframes shimmer {
@@ -281,6 +291,7 @@
   font-weight: 600;
   letter-spacing: 0.3px;
   z-index: 1;
+  pointer-events: none;
 }
 
 /* Tablet */

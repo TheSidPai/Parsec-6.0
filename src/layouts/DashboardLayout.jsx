@@ -4,6 +4,16 @@ import "./DashboardLayout.css";
 import HouseSwitcher from "../components/HouseSwitcher";
 import { buildApiUrl, API_ENDPOINTS } from "../config/api";
 import { applyTheme } from "../assets/themes";
+import { 
+  FaHome, 
+  FaShoppingBag, 
+  FaBed, 
+  FaTrophy, 
+  FaPhoneAlt,
+  FaSignOutAlt,
+  FaStore
+} from "react-icons/fa";
+import { GiCastle } from "react-icons/gi";
 
 function DashboardLayout() {
   const navigate = useNavigate();
@@ -87,42 +97,42 @@ function DashboardLayout() {
         <ul className="dashboard-nav">
           <li>
             <Link className="dashboard-link" to="/dashboard">
-              🏠 Home
+              <FaHome /> Home
             </Link>
           </li>
           <li>
             <Link className="dashboard-link" to="/dashboard/events">
-              🎪 Events
+              <GiCastle /> Events
             </Link>
           </li>
           <li>
-            <Link className="dashboard-link" to="/dashboard/schedule">
-              📅 Schedule
+            <Link className="dashboard-link" to="/dashboard/shop">
+              <FaStore /> Shop
             </Link>
           </li>
           <li>
             <Link className="dashboard-link" to="/dashboard/orders">
-              🛍️ Orders
+              <FaShoppingBag /> Orders
             </Link>
           </li>
           <li>
             <Link className="dashboard-link" to="/dashboard/accommodation">
-              🏨 Accommodation
+              <FaBed /> Accommodation
             </Link>
           </li>
           <li>
             <Link className="dashboard-link" to="/dashboard/leaderboard">
-              🏆 Leaderboard
+              <FaTrophy /> Leaderboard
             </Link>
           </li>
           <li>
             <Link className="dashboard-link" to="/dashboard/contact">
-              📞 Contact
+              <FaPhoneAlt /> Contact
             </Link>
           </li>
         </ul>
         <button onClick={handleLogout} className="logout-btn">
-          🚪 Logout
+          <FaSignOutAlt /> Logout
         </button>
       </nav>
 

@@ -123,9 +123,9 @@ const SortingHat = () => {
       // Store house in localStorage for theme application
       localStorage.setItem('user_house', houseName);
       
-      // Redirect to house-specific page after 3 seconds
+      // Redirect to dashboard after 3 seconds
       setTimeout(() => {
-        navigate(`/house/${houseName.toLowerCase()}`);
+        navigate('/dashboard');
       }, 3000);
     }, 2000);
   };

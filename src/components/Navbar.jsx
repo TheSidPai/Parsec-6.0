@@ -34,7 +34,7 @@ function Navbar() {
           </Link>
 
           {/* Pipe Separator */}
-          <span className="navbar-logo-separator">|</span>
+          <span className="navbar-logo-separator"></span>
 
           {/* IIT Dharwad Logo */}
           <a

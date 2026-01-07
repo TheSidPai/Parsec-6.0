@@ -81,7 +81,7 @@ export const API_ENDPOINTS = {
   AUTH_LOGOUT: '/auth/logout',
 
   // Onboarding
-  ONBOARDING: '/onboarding/submit',
+  ONBOARDING: '/onboarding',
 
   // Sorting Hat
   SORTING_HAT_STATS: '/sorting-hat/stats',
@@ -93,13 +93,26 @@ export const API_ENDPOINTS = {
   PAYMENTS_MY: '/payments/me',
 
   // Points
-  POINTS: '/points',
-  POINTS_HOUSE_LEADERBOARD: '/points/house-leaderboard',
-  POINTS_INDIVIDUAL_LEADERBOARD: '/points/individual-leaderboard',
+  POINTS_ME: '/points/me',
+  POINTS_LEADERBOARD: '/points/leaderboard',
+
+  // Merchandise
+  MERCH_GET_ALL: '/merch',
+  MERCH_GET_BY_ID: '/merch/:id', // Replace :id with actual merch ID
+  MERCH_ADD: '/merch', // Admin only
+  MERCH_UPDATE_STOCK: '/merch/:id/stock', // Admin only
+  MERCH_DELETE: '/merch/:id', // Admin only
 
   // Orders (Merchandise)
-  ORDERS: '/orders',
-  ORDERS_MY: '/orders/my',
+  ORDERS_CREATE: '/orders',
+  ORDERS_MY: '/orders/me',
+
+  // Payments
+  PAYMENTS_SUBMIT: '/payments',
+
+  // Accommodation
+  ACCOMMODATION_CREATE: '/accommodation',
+  ACCOMMODATION_MY_BOOKINGS: '/orders/my', // Bookings appear in orders with type filter
 
   // Admin - All admin routes prefixed with /paneermoms
   ADMIN_LOGIN: '/paneermoms/login',
@@ -107,6 +120,7 @@ export const API_ENDPOINTS = {
   ADMIN_PAYMENTS_VERIFY: '/paneermoms/payments/:id/verify', // Replace :id with actual payment ID
   ADMIN_PAYMENTS_REJECT: '/paneermoms/payments/:id/reject', // Replace :id with actual payment ID
   ADMIN_PAYMENTS_STATS: '/paneermoms/payments/stats',
+  ADMIN_QR_VERIFY: '/paneermoms/qr/verify',
   ADMIN_POINTS_ADD: '/paneermoms/points/add',
   ADMIN_POINTS_SUBTRACT: '/paneermoms/points/subtract',
 };
@@ -173,11 +187,20 @@ export const authenticatedFetch = async (endpoint, options = {}, token = null) =
   }
 };
 
+/**
+ * Helper function to get JWT token from localStorage
+ * @returns {string|null} - JWT token or null if not found
+ */
+export const getAuthToken = () => {
+  return localStorage.getItem('jwt_token'); // Matches the key used in Auth.jsx
+};
+
 const apiConfig = {
   API_BASE_URL,
   API_ENDPOINTS,
   buildApiUrl,
   authenticatedFetch,
+  getAuthToken,
 };
 
 export default apiConfig;

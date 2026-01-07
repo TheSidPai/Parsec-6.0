@@ -169,6 +169,40 @@ function UserManagement() {
             <li className="admin-how-to-item">Points changes are reflected in the leaderboard immediately</li>
           </ul>
         </div>
+
+        <div className="admin-mongodb-helper">
+          <h3 className="admin-mongodb-helper-title">
+            🔍 How to Find MongoDB User ID
+          </h3>
+          <div className="admin-mongodb-helper-content">
+            <p><strong>Option 1: From Admin Orders Tab</strong></p>
+            <ol style={{ marginLeft: '1.5rem', marginTop: '0.5rem', lineHeight: '1.8' }}>
+              <li>Go to the "Orders" tab in admin panel</li>
+              <li>Click "View Details" on any payment</li>
+              <li>Look for "User ID" in the user information section</li>
+              <li>Copy the 24-character hex string (e.g., <code className="admin-mongodb-helper-code" style={{ display: 'inline', padding: '0.25rem 0.5rem', margin: '0' }}>673c3e6912abd5e72d56f9cb</code>)</li>
+            </ol>
+
+            <p style={{ marginTop: '1rem' }}><strong>Option 2: From Database Access</strong></p>
+            <ol style={{ marginLeft: '1.5rem', marginTop: '0.5rem', lineHeight: '1.8' }}>
+              <li>Access your MongoDB database directly</li>
+              <li>Navigate to the "users" collection</li>
+              <li>Find the user by email or name</li>
+              <li>Copy their "_id" field value</li>
+            </ol>
+
+            <p style={{ marginTop: '1rem' }}><strong>Option 3: Ask User to Check Profile</strong></p>
+            <ol style={{ marginLeft: '1.5rem', marginTop: '0.5rem', lineHeight: '1.8' }}>
+              <li>User logs into their dashboard</li>
+              <li>Their User ID should be visible in profile settings</li>
+              <li>User can share their ID with admins</li>
+            </ol>
+
+            <div style={{ marginTop: '1rem', padding: '1rem', background: 'rgba(255, 215, 0, 0.1)', borderRadius: '8px', border: '1px solid rgba(255, 215, 0, 0.3)' }}>
+              <strong style={{ color: '#FFD700' }}>💡 Pro Tip:</strong> MongoDB ObjectIds are always 24 characters long and contain only numbers (0-9) and letters (a-f). If it doesn't match this format, it's not a valid ObjectId!
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
