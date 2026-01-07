@@ -186,14 +186,14 @@ function Accommodation() {
   const handleNextStep = async () => {
     if (modalStep === 1) {
       // Validate Step 1 fields
-      const { checkInDate, checkOutDate, gender } = bookingDetails;
+      const { checkInDate, checkOutDate } = bookingDetails;
       
-      if (!checkInDate || !checkOutDate || !gender) {
+      if (!checkInDate || !checkOutDate) {
         setError('Please fill all required fields');
         return;
       }
 
-      const { nights, price } = calculateBooking();
+      const { nights } = calculateBooking();
       if (nights <= 0) {
         setError('Check-out date must be after check-in date');
         return;
@@ -207,7 +207,6 @@ function Accommodation() {
         const booking = await accommodationAPI.createBooking(
           checkInDate,
           checkOutDate,
-          gender
         );
 
         // Store booking data for payment step

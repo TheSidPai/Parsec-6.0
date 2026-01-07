@@ -109,14 +109,10 @@ export const API_ENDPOINTS = {
 
   // Payments
   PAYMENTS_SUBMIT: '/payments',
-  PAYMENTS_MY: '/payments/me',
 
   // Accommodation
   ACCOMMODATION_CREATE: '/accommodation',
   ACCOMMODATION_MY_BOOKINGS: '/orders/my', // Bookings appear in orders with type filter
-
-  // Payments
-  PAYMENTS_SUBMIT: '/payments',
 
   // Admin - All admin routes prefixed with /paneermoms
   ADMIN_LOGIN: '/paneermoms/login',

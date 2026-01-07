@@ -6,14 +6,12 @@ import { buildApiUrl, API_ENDPOINTS } from "../config/api";
 import { applyTheme } from "../assets/themes";
 import { 
   FaHome, 
-  FaCalendarAlt, 
   FaShoppingBag, 
   FaBed, 
   FaTrophy, 
   FaPhoneAlt,
   FaSignOutAlt,
-  FaStore,
-  FaShoppingCart
+  FaStore
 } from "react-icons/fa";
 import { GiCastle } from "react-icons/gi";
 

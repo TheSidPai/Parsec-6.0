@@ -43,12 +43,10 @@ import HousePage from "./pages/HousePage";
 import AdminAuth from "./components/admin/AdminAuth";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import AdminProtectedRoute from "./components/admin/AdminProtectedRoute";
-import AccommodationComingSoon from "./pages/AccommodationComingSoon";
 import Onboarding from "./pages/signup/Onboarding";
 import SortingHat from "./pages/signup/SortingHat";
 import Auth from "./pages/signup/Auth";
 import ManualToken from "./pages/signup/ManualToken";
-import { BiLogIn } from "react-icons/bi";
 
 function AnimatedRoutes() {
   const location = useLocation();
