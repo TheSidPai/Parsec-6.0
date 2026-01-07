@@ -52,65 +52,114 @@ function Auth() {
   const [message, setMessage] = useState("Processing authentication...");
   const [error, setError] = useState(null);
   const [debugInfo, setDebugInfo] = useState(null);
+  const [authSteps, setAuthSteps] = useState([]);
 
   useEffect(() => {
     const run = async () => {
+      const steps = [];
       try {
-        // Debug logging for Vercel troubleshooting
-        console.log('🔍 Auth Debug Info:', {
-          apiBaseUrl: API_BASE_URL,
-          currentUrl: window.location.href,
-          hasToken: !!new URLSearchParams(location.search).get('token'),
-          environment: process.env.NODE_ENV
-        });
+        steps.push('1. Starting auth process');
+        setAuthSteps([...steps]);
         
-        setDebugInfo({
-          apiBaseUrl: API_BASE_URL,
-          currentUrl: window.location.href,
-          environment: process.env.NODE_ENV
-        });
-
         // Check if we have query params with token
         const searchParams = new URLSearchParams(location.search);
         const tokenFromQuery = searchParams.get('token');
+        const redirectOrigin = searchParams.get('origin'); // Optional: origin parameter from URL
         
-        if (tokenFromQuery) {
-          console.log('✅ Token received from query params');
-          localStorage.setItem("jwt_token", tokenFromQuery);
-        }
-
-        setMessage("Verifying authentication...");
-
-        // Get token from localStorage (could be from query param or previously stored)
-        const storedToken = localStorage.getItem("jwt_token") || tokenFromQuery;
+        steps.push(`2. Token in URL: ${tokenFromQuery ? 'YES' : 'NO'}`);
+        setAuthSteps([...steps]);
         
-        if (!storedToken) {
+        if (!tokenFromQuery) {
           throw new Error("No authentication token found. Please sign in again.");
         }
 
-        console.log('🔑 Using token for /auth/me request');
+        console.log('✅ Token received from query params');
+        console.log('🔍 Current hostname:', window.location.hostname);
+        console.log('🔍 URL redirect origin:', redirectOrigin);
+        
+        steps.push(`3. Current hostname: ${window.location.hostname}`);
+        setAuthSteps([...steps]);
+        
+        // Check sessionStorage for stored origin (set before OAuth redirect)
+        const storedOrigin = sessionStorage.getItem('auth_origin');
+        console.log('🔍 Stored origin from sessionStorage:', storedOrigin);
+        
+        steps.push(`4. SessionStorage origin: ${storedOrigin || 'NONE'}`);
+        setAuthSteps([...steps]);
+        
+        // Detect if we're on production or should redirect to localhost
+        const currentHostname = window.location.hostname;
+        const isProduction = currentHostname === 'parsec.iitdh.ac.in';
+        
+        // Determine target origin for redirect (priority order)
+        let targetOrigin;
+        if (redirectOrigin) {
+          // 1. Use explicit origin if provided in URL parameter
+          targetOrigin = redirectOrigin;
+          console.log('✅ Using URL parameter origin');
+          steps.push('5. Using URL parameter origin');
+        } else if (storedOrigin && storedOrigin !== 'null') {
+          // 2. Use stored origin from sessionStorage (where login was initiated)
+          targetOrigin = storedOrigin;
+          console.log('✅ Using stored sessionStorage origin');
+          steps.push('5. Using sessionStorage origin');
+        } else {
+          // 3. Default behavior: if on production, stay on production, otherwise go to localhost
+          if (isProduction) {
+            targetOrigin = window.location.origin;
+            console.log('✅ On production, staying on production');
+            steps.push('5. On production, staying here');
+          } else {
+            targetOrigin = 'http://localhost:5173';
+            console.log('✅ Not on production, defaulting to localhost');
+            steps.push('5. Defaulting to localhost');
+          }
+        }
+        
+        console.log('🎯 Final target origin for redirect:', targetOrigin);
+        steps.push(`6. Target origin: ${targetOrigin}`);
+        setAuthSteps([...steps]);
+        
+        // Clear stored origin after reading it
+        sessionStorage.removeItem('auth_origin');
 
-        // Call /auth/me to get current user information and onboarding status
+        // Store token in localStorage
+        localStorage.setItem("jwt_token", tokenFromQuery);
+        steps.push('7. Token stored in localStorage');
+        setAuthSteps([...steps]);
+        
+        setMessage("Verifying authentication...");
+
+        // Verify token with backend
+        steps.push('8. Calling /auth/me API...');
+        setAuthSteps([...steps]);
+        
         const { response: resp, data } = await authenticatedFetch(
           API_ENDPOINTS.AUTH_ME,
           { method: "GET" },
-          storedToken  // ✅ NOW PASSING THE TOKEN!
+          tokenFromQuery
         );
 
-        console.log('📡 Full response status:', resp.status);
+        console.log('📡 Auth response status:', resp.status);
+        console.log('📡 Auth response data:', data);
+        
+        steps.push(`9. API response: ${resp.status} ${resp.ok ? 'OK' : 'FAILED'}`);
+        setAuthSteps([...steps]);
         console.log('📡 Response ok:', resp.ok);
         console.log('📡 Full response data:', JSON.stringify(data, null, 2));
 
         if (!resp.ok) {
           // If fetch completely fails (network/CORS), provide helpful error
           if (!resp.status) {
-            throw new Error(`Network error: Cannot reach backend at ${API_BASE_URL}. This is likely a CORS issue. Backend needs to allow requests from ${window.location.origin}`);
+            throw new Error(`Network error: Cannot reach backend at ${API_BASE_URL}`);
           }
           const errorMsg = data?.message || data?.error || JSON.stringify(data);
           throw new Error(`Auth verification failed (${resp.status}): ${errorMsg}`);
         }
 
-        console.log('📥 Auth response:', data);
+        console.log('✅ Authentication verified successfully');
+        steps.push('10. Authentication verified ✅');
+        setAuthSteps([...steps]);
         
         // Accept both response formats: { status: 'success' } OR { success: true }
         const successFlag =
@@ -118,57 +167,40 @@ function Auth() {
           data.success === true;
 
         if (!successFlag) {
-          const errorDetail = data?.message || data?.error || `Unexpected response format: ${JSON.stringify(data)}`;
+          const errorDetail = data?.message || data?.error || `Unexpected response format`;
           throw new Error(`Backend returned non-success status: ${errorDetail}`);
         }
 
-        // Extract token if provided (for localStorage backup)
-        const token = data?.token || data?.data?.token || tokenFromQuery;
-        
-        // Store token in localStorage for persistence
-        if (token) {
-          localStorage.setItem("jwt_token", token);
-          console.log('💾 Token stored in localStorage');
-        }
-
-        const isOnboardingComplete =
-          data.data?.isOnboardingComplete ?? 
-          data.data?.user?.isOnboardingComplete ??
-          data.isOnboardingComplete ?? 
-          null;
-
-        console.log('📊 Onboarding complete:', isOnboardingComplete);
-
         setMessage("Authentication successful — redirecting...");
+        steps.push('11. Preparing redirect...');
+        setAuthSteps([...steps]);
 
         // Wait a moment before redirecting
-        await new Promise(resolve => setTimeout(resolve, 500));
+        await new Promise(resolve => setTimeout(resolve, 800));
 
-        if (
-          isOnboardingComplete === false ||
-          isOnboardingComplete === "false" ||
-          isOnboardingComplete === 0
-        ) {
-          console.log('➡️ Redirecting to onboarding');
-          navigate("/signup/onboarding", { replace: true, state: { token: storedToken } });
-        } else if (
-          isOnboardingComplete === true ||
-          isOnboardingComplete === "true" ||
-          isOnboardingComplete === 1
-        ) {
-          console.log('➡️ Redirecting to dashboard');
-          
-          // Check if user was trying to register for an event
+        // Redirect to target origin + /dashboard
+        const dashboardUrl = `${targetOrigin}/dashboard`;
+        console.log('🚀 Redirecting to:', dashboardUrl);
+        steps.push(`12. Redirecting to: ${dashboardUrl}`);
+        setAuthSteps([...steps]);
+        
+        // Check if we need to redirect to different origin
+        if (targetOrigin !== window.location.origin) {
+          // Cross-origin redirect - use window.location
+          steps.push('13. Cross-origin redirect via window.location');
+          setAuthSteps([...steps]);
+          window.location.href = dashboardUrl;
+        } else {
+          // Same origin - use React Router
+          steps.push('13. Same-origin redirect via React Router');
+          setAuthSteps([...steps]);
           const pendingEventId = localStorage.getItem('pendingEventRegistration');
           if (pendingEventId) {
-            console.log('🎟️ Redirecting to event registration page for:', pendingEventId);
+            console.log('🎟️ Redirecting to event registration page');
             navigate("/dashboard/events", { replace: true });
           } else {
             navigate("/dashboard", { replace: true });
           }
-        } else {
-          console.log('❓ Onboarding status unclear, defaulting to onboarding');
-          navigate("/signup/onboarding", { replace: true, state: { token: storedToken } });
         }
       } catch (err) {
         console.error("❌ Auth processing error:", err);
@@ -274,6 +306,26 @@ function Auth() {
             animation: 'spin 1s linear infinite',
             margin: '0 auto'
           }} />
+          
+          {/* Debug Steps */}
+          {authSteps.length > 0 && (
+            <details open style={{ marginTop: '24px', textAlign: 'left', fontSize: '12px' }}>
+              <summary style={{ cursor: 'pointer', fontWeight: 'bold', marginBottom: '8px' }}>
+                🔍 Authentication Steps
+              </summary>
+              <ol style={{ 
+                backgroundColor: '#f5f5f5', 
+                padding: '12px 12px 12px 28px',
+                borderRadius: '4px',
+                fontFamily: 'monospace',
+                lineHeight: '1.8'
+              }}>
+                {authSteps.map((step, index) => (
+                  <li key={index}>{step}</li>
+                ))}
+              </ol>
+            </details>
+          )}
         </div>
       )}
       

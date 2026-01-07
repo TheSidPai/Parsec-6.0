@@ -14,6 +14,11 @@ function Login() {
     console.log('📍 OAuth URL:', oauthUrl);
     console.log('🌐 Base URL:', API_BASE_URL);
     
+    // Store current origin in sessionStorage so we know where to redirect back
+    const currentOrigin = window.location.origin;
+    sessionStorage.setItem('auth_origin', currentOrigin);
+    console.log('💾 Stored origin for redirect:', currentOrigin);
+    
     // Test backend connectivity first
     testBackendConnection();
     

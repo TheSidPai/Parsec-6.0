@@ -111,6 +111,13 @@ export const API_ENDPOINTS = {
   PAYMENTS_SUBMIT: '/payments',
   PAYMENTS_MY: '/payments/me',
 
+  // Accommodation
+  ACCOMMODATION_CREATE: '/accommodation',
+  ACCOMMODATION_MY_BOOKINGS: '/orders/my', // Bookings appear in orders with type filter
+
+  // Payments
+  PAYMENTS_SUBMIT: '/payments',
+
   // Admin - All admin routes prefixed with /paneermoms
   ADMIN_LOGIN: '/paneermoms/login',
   ADMIN_PAYMENTS_GET: '/paneermoms/payments',
@@ -184,11 +191,20 @@ export const authenticatedFetch = async (endpoint, options = {}, token = null) =
   }
 };
 
+/**
+ * Helper function to get JWT token from localStorage
+ * @returns {string|null} - JWT token or null if not found
+ */
+export const getAuthToken = () => {
+  return localStorage.getItem('jwt_token'); // Matches the key used in Auth.jsx
+};
+
 const apiConfig = {
   API_BASE_URL,
   API_ENDPOINTS,
   buildApiUrl,
   authenticatedFetch,
+  getAuthToken,
 };
 
 export default apiConfig;

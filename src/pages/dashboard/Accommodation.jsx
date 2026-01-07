@@ -1,107 +1,118 @@
 import React, { useState, useEffect } from 'react';
 import './Accommodation.css';
 import { FaCalendarAlt, FaCheckCircle, FaClock, FaTimes } from 'react-icons/fa';
+import { API_ENDPOINTS, authenticatedFetch, getAuthToken, API_BASE_URL } from '../../config/api';
 
-// Accommodation pass data - easily replaceable with API
-const PASS_OPTIONS = [
-  {
-    id: 'day-pass-1',
-    name: 'Day Pass 1',
-    dates: '24th, 26th Jan',
-    price: 300,
-    accommodation: false,
-    campusAccess: true,
-    culturalNight: false,
-    welcomeKit: false
+// Accommodation configuration
+const ACCOMMODATION_CONFIG = {
+  pricePerNight: 700,
+  eventDates: {
+    start: '2026-01-24',
+    end: '2026-01-27'
   },
-  {
-    id: 'day-pass-2',
-    name: 'Day Pass 2',
-    dates: '25th Jan',
-    price: 500,
-    accommodation: false,
-    campusAccess: true,
-    culturalNight: true,
-    welcomeKit: false
-  },
-  {
-    id: 'one-day',
-    name: 'One Day Accommodation',
-    dates: 'Select Date',
-    price: 700,
-    accommodation: true,
-    campusAccess: true,
-    culturalNight: true,
-    welcomeKit: true
-  },
-  {
-    id: 'two-day',
-    name: 'Two Day Accommodation',
-    dates: 'Select Dates',
-    price: 1400,
-    accommodation: true,
-    campusAccess: true,
-    culturalNight: true,
-    welcomeKit: true
-  },
-  {
-    id: 'three-day',
-    name: 'Three Day Accommodation',
-    dates: 'Select Dates',
-    price: 2100,
-    accommodation: true,
-    campusAccess: true,
-    culturalNight: true,
-    welcomeKit: true
-  },
-  {
-    id: 'four-day',
-    name: 'Four Day Accommodation',
-    dates: 'Select Dates',
-    price: 2800,
-    accommodation: true,
-    campusAccess: true,
-    culturalNight: true,
-    welcomeKit: true
-  }
-];
+  availableDates: ['2026-01-24', '2026-01-25', '2026-01-26', '2026-01-27'],
+  minDate: '2026-01-24',
+  maxDate: '2026-01-27'
+};
 
-// Dummy API functions - replace with real API calls later
+// API functions for accommodation
 const accommodationAPI = {
+  // Fetch user's bookings
   fetchBookings: async () => {
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 500));
-    return [
-      // Example booking structure
-      // {
-      //   id: 'booking-1',
-      //   passType: 'Two Day Accommodation',
-      //   dates: '24th - 25th Jan',
-      //   amount: 1400,
-      //   status: 'pending', // pending, confirmed, rejected
-      //   bookedAt: new Date().toISOString()
-      // }
-    ];
+    try {
+      const token = getAuthToken();
+      const { response, data } = await authenticatedFetch(
+        API_ENDPOINTS.ACCOMMODATION_MY_BOOKINGS,
+        { method: 'GET' },
+        token
+      );
+
+      if (!response.ok) {
+        throw new Error(data?.message || 'Failed to fetch bookings');
+      }
+
+      // Filter for accommodation bookings and map to expected structure
+      const accommodationBookings = data?.data?.orders?.filter(
+        order => order.referenceType === 'AccommodationBooking'
+      ).map(order => ({
+        _id: order._id,
+        checkInDate: order.referenceId?.checkInDate,
+        checkOutDate: order.referenceId?.checkOutDate,
+        numberOfNights: order.referenceId?.numberOfNights,
+        totalPrice: order.referenceId?.totalPrice,
+        status: order.referenceId?.status,
+        paymentStatus: order.referenceId?.paymentStatus,
+        createdAt: order.createdAt
+      })) || [];
+
+      return accommodationBookings;
+    } catch (error) {
+      console.error('Fetch bookings error:', error);
+      throw error;
+    }
   },
-  
-  submitBooking: async (bookingData) => {
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    return {
-      success: true,
-      bookingId: 'booking-' + Date.now(),
-      message: 'Booking submitted successfully'
-    };
+
+  // Create accommodation booking
+  createBooking: async (checkInDate, checkOutDate, gender) => {
+    try {
+      const token = getAuthToken();
+      const { response, data } = await authenticatedFetch(
+        API_ENDPOINTS.ACCOMMODATION_CREATE,
+        {
+          method: 'POST',
+          body: JSON.stringify({ checkInDate, checkOutDate, gender })
+        },
+        token
+      );
+
+      if (!response.ok) {
+        throw new Error(data?.message || 'Failed to create booking');
+      }
+
+      return data.data.booking;
+    } catch (error) {
+      console.error('Create booking error:', error);
+      throw error;
+    }
   },
-  
-  generatePaymentQR: async (bookingId) => {
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 500));
-    return {
-      qrCodeUrl: 'https://via.placeholder.com/300x300?text=Payment+QR+Code',
-      upiId: 'parsec@iitdh',
-      amount: 1400
-    };
+
+  // Submit payment for booking
+  submitPayment: async (bookingId, amount, paymentUTR, paymentScreenshot) => {
+    try {
+      const token = getAuthToken();
+      
+      // Create FormData to handle file upload
+      const formData = new FormData();
+      formData.append('bookingId', bookingId);
+      formData.append('amount', amount);
+      formData.append('paymentUTR', paymentUTR);
+      if (paymentScreenshot) {
+        formData.append('paymentScreenshot', paymentScreenshot);
+      }
+
+      const response = await fetch(
+        `${API_BASE_URL}${API_ENDPOINTS.PAYMENTS_SUBMIT}`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`
+          },
+          credentials: 'include',
+          body: formData // Don't set Content-Type, browser will set it with boundary
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data?.message || 'Failed to submit payment');
+      }
+
+      return data.data.payment;
+    } catch (error) {
+      console.error('Submit payment error:', error);
+      throw error;
+    }
   }
 };
 
@@ -109,17 +120,30 @@ function Accommodation() {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
-  const [modalStep, setModalStep] = useState(1); // 1: Select Pass, 2: Details, 3: Payment
-  const [selectedPass, setSelectedPass] = useState(null);
+  const [modalStep, setModalStep] = useState(1); // 1: Details, 2: Payment
   const [bookingDetails, setBookingDetails] = useState({
     checkInDate: '',
     checkOutDate: '',
-    name: '',
-    email: '',
-    phone: '',
-    idProof: ''
+    gender: '',
+    utr: '',
+    paymentScreenshot: null
   });
   const [paymentData, setPaymentData] = useState(null);
+  const [error, setError] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  // Calculate nights and price
+  const calculateBooking = () => {
+    const { checkInDate, checkOutDate } = bookingDetails;
+    if (!checkInDate || !checkOutDate) return { nights: 0, price: 0 };
+    
+    const checkIn = new Date(checkInDate);
+    const checkOut = new Date(checkOutDate);
+    const nights = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+    const price = nights * ACCOMMODATION_CONFIG.pricePerNight;
+    
+    return { nights: nights > 0 ? nights : 0, price: price > 0 ? price : 0 };
+  };
 
   useEffect(() => {
     loadBookings();
@@ -130,66 +154,119 @@ function Accommodation() {
       setLoading(true);
       const data = await accommodationAPI.fetchBookings();
       setBookings(data);
+      setError(null);
     } catch (error) {
       console.error('Failed to load bookings:', error);
+      setError('Failed to load bookings. Please refresh the page.');
     } finally {
       setLoading(false);
     }
   };
 
-  const openBookingModal = (pass) => {
-    setSelectedPass(pass);
-    setModalStep(1);
+  const openBookingModal = () => {
     setShowModal(true);
+    setModalStep(1);
+    setError(null);
   };
 
   const closeModal = () => {
     setShowModal(false);
     setModalStep(1);
-    setSelectedPass(null);
     setBookingDetails({
       checkInDate: '',
       checkOutDate: '',
-      name: '',
-      email: '',
-      phone: '',
-      idProof: ''
+      gender: '',
+      utr: '',
+      paymentScreenshot: null
     });
     setPaymentData(null);
+    setError(null);
   };
 
   const handleNextStep = async () => {
     if (modalStep === 1) {
-      setModalStep(2);
-    } else if (modalStep === 2) {
-      // Submit booking and move to payment
-      try {
-        const booking = {
-          passType: selectedPass.name,
-          ...bookingDetails,
-          amount: selectedPass.price
-        };
-        const response = await accommodationAPI.submitBooking(booking);
-        
-        if (response.success) {
-          const payment = await accommodationAPI.generatePaymentQR(response.bookingId);
-          setPaymentData(payment);
-          setModalStep(3);
-        }
-      } catch (error) {
-        console.error('Booking failed:', error);
-        alert('Failed to submit booking. Please try again.');
+      // Validate Step 1 fields
+      const { checkInDate, checkOutDate, gender } = bookingDetails;
+      
+      if (!checkInDate || !checkOutDate || !gender) {
+        setError('Please fill all required fields');
+        return;
       }
-    } else if (modalStep === 3) {
-      // Payment completed, refresh bookings and close
-      await loadBookings();
-      closeModal();
+
+      const { nights, price } = calculateBooking();
+      if (nights <= 0) {
+        setError('Check-out date must be after check-in date');
+        return;
+      }
+
+      // Create booking via API
+      try {
+        setSubmitting(true);
+        setError(null);
+
+        const booking = await accommodationAPI.createBooking(
+          checkInDate,
+          checkOutDate,
+          gender
+        );
+
+        // Store booking data for payment step
+        setPaymentData({
+          bookingId: booking._id,
+          totalPrice: booking.totalPrice,
+          numberOfNights: booking.numberOfNights,
+          qrCodeUrl: 'https://via.placeholder.com/300x300?text=Payment+QR+Code', // Replace with actual QR
+          upiId: 'parsec@iitdh'
+        });
+
+        setModalStep(2);
+      } catch (error) {
+        setError(error.message || 'Failed to create booking. Please try again.');
+      } finally {
+        setSubmitting(false);
+      }
     }
   };
 
   const handlePrevStep = () => {
     if (modalStep > 1) {
       setModalStep(modalStep - 1);
+      setError(null);
+    }
+  };
+
+  const handleSubmitPayment = async () => {
+    const { utr, paymentScreenshot } = bookingDetails;
+    
+    if (!utr || utr.trim().length === 0) {
+      setError('Please enter UTR/Transaction ID');
+      return;
+    }
+
+    if (!paymentScreenshot) {
+      setError('Please upload payment screenshot');
+      return;
+    }
+
+    try {
+      setSubmitting(true);
+      setError(null);
+
+      await accommodationAPI.submitPayment(
+        paymentData.bookingId,
+        paymentData.totalPrice,
+        utr.trim(),
+        paymentScreenshot
+      );
+
+      // Success - show confirmation message
+      alert('Payment submitted successfully!\n\nYour payment is under review by our admin team. You will receive a verification email once the payment is confirmed.\n\nThank you for your patience!');
+      closeModal();
+      loadBookings();
+    } catch (error) {
+      setError(error.message || 'Failed to submit payment. Please try again.');
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -227,53 +304,39 @@ function Accommodation() {
           </p>
         </div>
 
-        {/* Pass Options Table */}
+        {/* Booking Section */}
         <div className="pass-options-section">
-          <h2 className="section-title">Available Passes</h2>
+          <h2 className="section-title">Book Accommodation</h2>
           
-          <div className="passes-table-wrapper">
-            <table className="passes-table">
-              <thead>
-                <tr>
-                  <th>Pass Type</th>
-                  <th>Dates</th>
-                  <th>Cost (INR)</th>
-                  <th>Accommodation</th>
-                  <th>Campus Access</th>
-                  <th>Cultural Night</th>
-                  <th>Welcome Kit</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {PASS_OPTIONS.map(pass => (
-                  <tr key={pass.id}>
-                    <td className="pass-name">{pass.name}</td>
-                    <td>{pass.dates}</td>
-                    <td className="price">₹{pass.price}</td>
-                    <td>{pass.accommodation ? '✓' : '—'}</td>
-                    <td>{pass.campusAccess ? '✓' : '—'}</td>
-                    <td>{pass.culturalNight ? '✓' : '—'}</td>
-                    <td>{pass.welcomeKit ? '✓' : '—'}</td>
-                    <td>
-                      <button 
-                        className="book-btn"
-                        onClick={() => openBookingModal(pass)}
-                      >
-                        Book Now
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="accommodation-info">
+            <div className="info-card">
+              <h3>Accommodation Details</h3>
+              <ul>
+                <li>✓ Accommodation and Food included</li>
+                <li>✓ Access to all events and activities</li>
+                <li>✓ Cultural Night access</li>
+                <li>✓ Welcome Kit and Swaggets</li>
+              </ul>
+              <p className="price-info">
+                <strong>Price:</strong> ₹{ACCOMMODATION_CONFIG.pricePerNight} per night
+              </p>
+            </div>
+
+            <div className="booking-cta">
+              <button 
+                className="book-btn primary-btn"
+                onClick={openBookingModal}
+              >
+                Book Accommodation
+              </button>
+            </div>
           </div>
 
           <div className="accommodation-note">
-            <p><strong>Note:</strong> Accommodation for 23rd January 2026 is an additional charge of Rs. 700</p>
-            <p><strong>Important:</strong> For night passes, booking for date X covers 12:00 PM on date X till 10:00 AM on date X+1</p>
+            <p><strong>Event Dates:</strong> 24th - 27th January 2026</p>
+            <p><strong>Important:</strong> Booking for date X covers 12:00 PM on date X till 10:00 AM on date X+1</p>
             <p className="portal-info">
-              Accommodation portal goes live on 7th January 2026, 9:00 AM on a first-come, first-serve basis. Limited accommodation available.
+              Accommodation is available on a first-come, first-serve basis. Limited slots available.
             </p>
           </div>
         </div>
@@ -282,26 +345,32 @@ function Accommodation() {
         <div className="booking-history-section">
           <h2 className="section-title">Your Bookings</h2>
           
+          {error && !loading && (
+            <div className="error-message">{error}</div>
+          )}
+          
           {loading ? (
             <div className="loading-message">Loading your bookings...</div>
           ) : bookings.length === 0 ? (
             <div className="empty-state">
               <FaCalendarAlt className="empty-icon" />
-              <p>No bookings yet. Book your first accommodation pass above!</p>
+              <p>No bookings yet. Book your accommodation above!</p>
             </div>
           ) : (
             <div className="bookings-grid">
               {bookings.map(booking => (
-                <div key={booking.id} className="booking-card">
+                <div key={booking._id} className="booking-card">
                   <div className="booking-header">
-                    <h3>{booking.passType}</h3>
+                    <h3>Accommodation Booking</h3>
                     {getStatusBadge(booking.status)}
                   </div>
                   <div className="booking-details">
-                    <p><FaCalendarAlt /> {booking.dates}</p>
-                    <p className="booking-amount">₹{booking.amount}</p>
+                    <p><FaCalendarAlt /> {new Date(booking.checkInDate).toLocaleDateString()} - {new Date(booking.checkOutDate).toLocaleDateString()}</p>
+                    <p><strong>Nights:</strong> {booking.numberOfNights}</p>
+                    <p className="booking-amount">₹{booking.totalPrice}</p>
+                    <p className="booking-status">Payment: {booking.paymentStatus}</p>
                     <p className="booking-date">
-                      Booked on: {new Date(booking.bookedAt).toLocaleDateString()}
+                      Booked on: {new Date(booking.createdAt).toLocaleDateString()}
                     </p>
                   </div>
                 </div>
@@ -321,34 +390,19 @@ function Accommodation() {
 
             {/* Step Indicator */}
             <div className="accommodation-modal-steps">
-              <div className={`step ${modalStep >= 1 ? 'active' : ''}`}>1. Select Pass</div>
-              <div className={`step ${modalStep >= 2 ? 'active' : ''}`}>2. Details</div>
-              <div className={`step ${modalStep >= 3 ? 'active' : ''}`}>3. Payment</div>
+              <div className={`step ${modalStep >= 1 ? 'active' : ''}`}>1. Booking Details</div>
+              <div className={`step ${modalStep >= 2 ? 'active' : ''}`}>2. Payment</div>
             </div>
 
-            {/* Step 1: Pass Selection Summary */}
-            {modalStep === 1 && selectedPass && (
-              <div className="accommodation-modal-step">
-                <h2>Selected Pass</h2>
-                <div className="pass-summary">
-                  <h3>{selectedPass.name}</h3>
-                  <p className="pass-price">₹{selectedPass.price}</p>
-                  <ul className="pass-benefits">
-                    {selectedPass.accommodation && <li>✓ Accommodation and Food</li>}
-                    {selectedPass.campusAccess && <li>✓ Access to all events and activities</li>}
-                    {selectedPass.culturalNight && <li>✓ Cultural Night</li>}
-                    {selectedPass.welcomeKit && <li>✓ Welcome Kit and other Swaggets</li>}
-                  </ul>
-                </div>
-                <div className="accommodation-modal-actions">
-                  <button className="btn btn-secondary" onClick={closeModal}>Cancel</button>
-                  <button className="btn btn-primary" onClick={handleNextStep}>Continue</button>
-                </div>
+            {/* Error Message */}
+            {error && (
+              <div className="modal-error-message">
+                {error}
               </div>
             )}
 
-            {/* Step 2: Booking Details Form */}
-            {modalStep === 2 && (
+            {/* Step 1: Booking Details Form */}
+            {modalStep === 1 && (
               <div className="accommodation-modal-step">
                 <h2>Booking Details</h2>
                 <form className="booking-form">
@@ -356,96 +410,138 @@ function Accommodation() {
                     <label>Check-in Date *</label>
                     <input
                       type="date"
+                      min={ACCOMMODATION_CONFIG.minDate}
+                      max={ACCOMMODATION_CONFIG.maxDate}
                       value={bookingDetails.checkInDate}
                       onChange={(e) => setBookingDetails({...bookingDetails, checkInDate: e.target.value})}
                       required
                     />
                   </div>
                   
-                  {selectedPass.accommodation && (
-                    <div className="form-group">
-                      <label>Check-out Date *</label>
-                      <input
-                        type="date"
-                        value={bookingDetails.checkOutDate}
-                        onChange={(e) => setBookingDetails({...bookingDetails, checkOutDate: e.target.value})}
-                        required
-                      />
+                  <div className="form-group">
+                    <label>Check-out Date *</label>
+                    <input
+                      type="date"
+                      min={ACCOMMODATION_CONFIG.minDate}
+                      max={ACCOMMODATION_CONFIG.maxDate}
+                      value={bookingDetails.checkOutDate}
+                      onChange={(e) => setBookingDetails({...bookingDetails, checkOutDate: e.target.value})}
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label>Gender *</label>
+                    <select
+                      value={bookingDetails.gender}
+                      onChange={(e) => setBookingDetails({...bookingDetails, gender: e.target.value})}
+                      required
+                    >
+                      <option value="">Select Gender</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                  </div>
+
+                  {bookingDetails.checkInDate && bookingDetails.checkOutDate && (
+                    <div className="booking-summary">
+                      <p><strong>Number of Nights:</strong> {calculateBooking().nights}</p>
+                      <p><strong>Total Price:</strong> ₹{calculateBooking().price}</p>
                     </div>
                   )}
 
-                  <div className="form-group">
-                    <label>Full Name *</label>
-                    <input
-                      type="text"
-                      value={bookingDetails.name}
-                      onChange={(e) => setBookingDetails({...bookingDetails, name: e.target.value})}
-                      placeholder="Enter your full name"
-                      required
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label>Email *</label>
-                    <input
-                      type="email"
-                      value={bookingDetails.email}
-                      onChange={(e) => setBookingDetails({...bookingDetails, email: e.target.value})}
-                      placeholder="your.email@example.com"
-                      required
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label>Phone Number *</label>
-                    <input
-                      type="tel"
-                      value={bookingDetails.phone}
-                      onChange={(e) => setBookingDetails({...bookingDetails, phone: e.target.value})}
-                      placeholder="+91 XXXXXXXXXX"
-                      required
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label>ID Proof Number *</label>
-                    <input
-                      type="text"
-                      value={bookingDetails.idProof}
-                      onChange={(e) => setBookingDetails({...bookingDetails, idProof: e.target.value})}
-                      placeholder="Aadhaar / PAN / Passport"
-                      required
-                    />
+                  <div className="form-note">
+                    <p>ℹ️ Your contact details are already registered with your account.</p>
                   </div>
                 </form>
 
-                <div className="modal-actions">
-                  <button className="btn btn-secondary" onClick={handlePrevStep}>Back</button>
-                  <button className="btn btn-primary" onClick={handleNextStep}>Proceed to Payment</button>
+                <div className="accommodation-modal-actions">
+                  <button className="btn btn-secondary" onClick={closeModal}>Cancel</button>
+                  <button 
+                    className="btn btn-primary" 
+                    onClick={handleNextStep}
+                    disabled={submitting}
+                  >
+                    {submitting ? 'Creating Booking...' : 'Proceed to Payment'}
+                  </button>
                 </div>
               </div>
             )}
 
-            {/* Step 3: Payment QR Code */}
-            {modalStep === 3 && paymentData && (
+            {/* Step 2: Payment QR Code & UTR */}
+            {modalStep === 2 && paymentData && (
               <div className="accommodation-modal-step payment-step">
                 <h2>Complete Payment</h2>
                 <div className="payment-info">
-                  <p className="payment-amount">Amount: ₹{selectedPass.price}</p>
+                  <p className="payment-amount">Amount: ₹{paymentData.totalPrice}</p>
+                  <p className="payment-nights">{paymentData.numberOfNights} night(s)</p>
                   <div className="qr-code-container">
                     <img src={paymentData.qrCodeUrl} alt="Payment QR Code" />
                   </div>
                   <p className="upi-id">UPI ID: {paymentData.upiId}</p>
                   <div className="payment-instructions">
                     <p>1. Scan the QR code using any UPI app</p>
-                    <p>2. Enter the exact amount shown above</p>
+                    <p>2. Enter the exact amount: ₹{paymentData.totalPrice}</p>
                     <p>3. Complete the payment</p>
-                    <p>4. Your booking will be under verification</p>
+                    <p>4. Enter the UTR/Transaction ID below</p>
                   </div>
                 </div>
-                <div className="modal-actions">
-                  <button className="btn btn-primary" onClick={handleNextStep}>
-                    I've Completed Payment
+
+                <div className="form-group">
+                  <label>UTR / Transaction ID *</label>
+                  <input
+                    type="text"
+                    value={bookingDetails.utr}
+                    onChange={(e) => setBookingDetails({...bookingDetails, utr: e.target.value})}
+                    placeholder="Enter 12-digit UTR number"
+                    required
+                  />
+                  <small>Find this in your payment app after completing the transaction</small>
+                </div>
+
+                <div className="form-group">
+                  <label>Payment Screenshot *</label>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                      const file = e.target.files[0];
+                      if (file) {
+                        // Validate file size (max 5MB)
+                        if (file.size > 5 * 1024 * 1024) {
+                          setError('Image size must be less than 5MB');
+                          e.target.value = '';
+                          return;
+                        }
+                        setBookingDetails({...bookingDetails, paymentScreenshot: file});
+                        setError(null);
+                      }
+                    }}
+                    required
+                  />
+                  <small>Upload a clear screenshot of your payment confirmation (Max 5MB)</small>
+                  {bookingDetails.paymentScreenshot && (
+                    <div style={{ marginTop: '8px', color: '#28a745', fontSize: '13px' }}>
+                      ✓ {bookingDetails.paymentScreenshot.name}
+                    </div>
+                  )}
+                </div>
+
+                <div className="form-note" style={{ backgroundColor: '#fff3cd', border: '1px solid #ffc107', padding: '12px', borderRadius: '4px', marginTop: '16px' }}>
+                  <p style={{ margin: 0, fontSize: '13px', lineHeight: '1.6' }}>
+                    <strong>ℹ️ Note:</strong> Your payment will be manually verified by our admin team. 
+                    You will receive a confirmation email once verified. Please ensure the screenshot is clear and shows the transaction details.
+                  </p>
+                </div>
+
+                <div className="accommodation-modal-actions">
+                  <button className="btn btn-secondary" onClick={handlePrevStep} disabled={submitting}>Back</button>
+                  <button 
+                    className="btn btn-primary" 
+                    onClick={handleSubmitPayment}
+                    disabled={!bookingDetails.utr || !bookingDetails.paymentScreenshot || submitting}
+                  >
+                    {submitting ? 'Submitting...' : 'Submit Payment for Verification'}
                   </button>
                 </div>
               </div>
