@@ -34,25 +34,7 @@ function Shop() {
       setLoading(true);
       const token = localStorage.getItem('jwt_token');
 
-      // STEP 1: Load admin-added items from localStorage
-      const adminItems = localStorage.getItem('admin_store_items');
-      const localItems = adminItems ? JSON.parse(adminItems) : [];
-      
-      // Convert admin items to backend format (id -> _id, filter available only)
-      const formattedLocalItems = localItems
-        .filter(item => item.available !== false)
-        .map(item => ({
-          _id: `local_${item.id}`,
-          type: item.category,
-          name: item.name,
-          description: item.description,
-          price: item.price,
-          stockQuantity: 999, // Assume unlimited for local items
-          imageUrl: item.imageUrl,
-          sizesAvailable: item.category === 'wearable' ? ['S', 'M', 'L', 'XL'] : []
-        }));
-
-      // STEP 2: Try to fetch from backend
+      // Fetch ONLY from backend (no localStorage)
       try {
         const { response, data } = await authenticatedFetch(
           API_ENDPOINTS.MERCH_GET_ALL,
@@ -63,35 +45,40 @@ function Shop() {
         console.log('🔍 Shop API Response:', { response, data });
         console.log('🔍 Response status:', response.status);
 
-        // API returns { status: "success", data: { merch: [...] } }
-        if (response.ok && data?.status === 'success' && data?.data?.merch) {
-          const backendItems = data.data.merch;
+        // Handle both response formats:
+        // Format 1: { status: "success", data: { merch: [...] } }
+        // Format 2: { success: true, data: [...] }
+        let backendItems = [];
+        
+        if (response.ok && (data?.status === 'success' || data?.success === true)) {
+          // Try different data structures
+          if (data?.data?.merch) {
+            backendItems = data.data.merch;
+          } else if (Array.isArray(data?.data)) {
+            backendItems = data.data;
+          } else if (data?.data?.body) {
+            backendItems = data.data.body;
+          }
           
           console.log('✅ Loaded items from backend:', backendItems);
           console.log('📦 Backend items:', backendItems.length);
-          console.log('📦 Admin items:', formattedLocalItems.length);
           
-          // Combine backend items + admin items
-          const allItems = [...backendItems, ...formattedLocalItems];
-          
-          console.log('📦 Total items:', allItems.length);
-          allItems.forEach(item => {
-            console.log(`   - ${item.name} (type: ${item.type})`);
+          backendItems.forEach(item => {
+            console.log(`   - ${item.name} (ID: ${item._id}, Stock: ${item.stockQuantity || item.stock})`);
           });
           
-          setMerch(allItems);
-          setFilteredMerch(allItems);
+          setMerch(backendItems);
+          setFilteredMerch(backendItems);
         } else {
-          // No backend items, use only local items
-          console.warn('⚠️ No backend items, using admin items only');
-          setMerch(formattedLocalItems);
-          setFilteredMerch(formattedLocalItems);
+          console.warn('⚠️ No items found from backend');
+          setMerch([]);
+          setFilteredMerch([]);
         }
       } catch (apiError) {
-        // API failed, use only local items
-        console.error('⚠️ API error, using admin items only:', apiError);
-        setMerch(formattedLocalItems);
-        setFilteredMerch(formattedLocalItems);
+        console.error('⚠️ API error:', apiError);
+        setError('Unable to load items from server');
+        setMerch([]);
+        setFilteredMerch([]);
       }
     } catch (err) {
       console.error('Error in fetchMerch:', err);
@@ -192,17 +179,17 @@ function Shop() {
       {/* Header */}
       <div className="shop-header" style={{ position: 'relative', zIndex: 1 }}>
         <div className="shop-title-section">
-          <h1 className="shop-title">🛍️ Parsec Merchandise Shop</h1>
+          <h1 className="shop-title">MERCHANDISE SHOP</h1>
           <p className="shop-subtitle">
             Official Parsec merch & event passes
           </p>
+          <button 
+            className="shop-cart-btn"
+            onClick={() => navigate('/dashboard/cart')}
+          >
+            🛒 CART ({getCartItemCount()})
+          </button>
         </div>
-        <button 
-          className="shop-cart-btn"
-          onClick={() => navigate('/dashboard/cart')}
-        >
-          🛒 Cart ({getCartItemCount()})
-        </button>
       </div>
 
       {/* Filters */}
@@ -279,9 +266,9 @@ function Shop() {
                     <div className="shop-card-price">
                       ₹{item.price}
                     </div>
-                    <div className={`shop-card-stock ${item.stockQuantity === 0 ? 'out-of-stock' : ''}`}>
-                      {item.stockQuantity > 0 ? (
-                        <span>✅ {item.stockQuantity} in stock</span>
+                    <div className={`shop-card-stock ${(item.stockQuantity === 0 || item.stock === 0) ? 'out-of-stock' : ''}`}>
+                      {(item.stockQuantity > 0 || item.stock > 0) ? (
+                        <span>✅ {item.stockQuantity || item.stock} in stock</span>
                       ) : (
                         <span>❌ Out of stock</span>
                       )}
@@ -292,9 +279,9 @@ function Shop() {
                   <button
                     className="shop-add-btn"
                     onClick={() => addToCart(item)}
-                    disabled={item.stockQuantity === 0}
+                    disabled={item.stockQuantity === 0 || item.stock === 0}
                   >
-                    {item.stockQuantity === 0 ? 'Out of Stock' : 'Add to Cart'}
+                    {(item.stockQuantity === 0 || item.stock === 0) ? 'Out of Stock' : 'Add to Cart'}
                   </button>
                 </div>
               </div>

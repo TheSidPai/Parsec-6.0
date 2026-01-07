@@ -11,7 +11,7 @@ function UserManagement() {
 
   const handleAddPoints = async () => {
     if (!userEmail || !points || parseInt(points) <= 0) {
-      setMessage('Please enter valid user email and positive points');
+      setMessage('❌ Please enter valid user email and positive points');
       return;
     }
 
@@ -34,7 +34,7 @@ function UserManagement() {
 
       const data = await response.json();
 
-      if (response.ok && data.status === 'success') {
+      if (response.ok && (data.status === 'success' || data.success === true)) {
         setMessage(`✅ ${data.message || 'Points added successfully'}`);
         setUserEmail('');
         setPoints('');
@@ -51,7 +51,7 @@ function UserManagement() {
 
   const handleSubtractPoints = async () => {
     if (!userEmail || !points || parseInt(points) <= 0) {
-      setMessage('Please enter valid user email and positive points');
+      setMessage('❌ Please enter valid user email and positive points');
       return;
     }
 
@@ -74,7 +74,7 @@ function UserManagement() {
 
       const data = await response.json();
 
-      if (response.ok && data.status === 'success') {
+      if (response.ok && (data.status === 'success' || data.success === true)) {
         setMessage(`✅ ${data.message || 'Points subtracted successfully'}`);
         setUserEmail('');
         setPoints('');

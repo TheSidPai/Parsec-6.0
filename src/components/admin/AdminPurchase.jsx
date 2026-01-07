@@ -7,31 +7,59 @@ function AdminPurchase() {
   const [items, setItems] = useState([]);
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
     name: '',
     description: '',
     price: '',
-    category: 'pass',
+    category: 'event-pass1',
+    stockQuantity: '100',
+    sizesAvailable: [],
     imageUrl: '',
     available: true
   });
 
-  // Load items from localStorage
+  // Fetch items from backend
   useEffect(() => {
-    const savedItems = localStorage.getItem('admin_store_items');
-    if (savedItems) {
-      try {
-        setItems(JSON.parse(savedItems));
-      } catch (error) {
-        console.error('Error loading items:', error);
-      }
-    }
+    fetchItemsFromBackend();
   }, []);
 
-  // Save items to localStorage
-  const saveItems = (newItems) => {
-    setItems(newItems);
-    localStorage.setItem('admin_store_items', JSON.stringify(newItems));
+  const fetchItemsFromBackend = async () => {
+    try {
+      setLoading(true);
+      const token = sessionStorage.getItem('admin_token');
+      
+      const { response, data } = await authenticatedFetch(
+        API_ENDPOINTS.MERCH_GET_ALL,
+        { method: 'GET' },
+        token
+      );
+
+      console.log('🔍 Admin fetching items:', { response, data });
+
+      if (response.ok && (data?.status === 'success' || data?.success === true)) {
+        let backendItems = [];
+        
+        if (data?.data?.merch) {
+          backendItems = data.data.merch;
+        } else if (Array.isArray(data?.data)) {
+          backendItems = data.data;
+        } else if (data?.data?.body) {
+          backendItems = data.data.body;
+        }
+
+        console.log('✅ Admin loaded items:', backendItems);
+        setItems(backendItems);
+      } else {
+        console.warn('⚠️ No items from backend');
+        setItems([]);
+      }
+    } catch (error) {
+      console.error('❌ Error fetching items:', error);
+      setItems([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleInputChange = (e) => {
@@ -83,30 +111,36 @@ function AdminPurchase() {
     }
 
     try {
-      // Prepare data for backend API
+      // Prepare data for backend API based on item type
+      const isPass = formData.category === 'event-pass1' || formData.category === 'event-pass2';
+      const isWearable = formData.category === 'wearable' || formData.category === 'non-wearable';
+      
       const apiData = {
+        type: formData.category,
         name: formData.name,
-        description: formData.description,
-        type: formData.category, // backend uses 'type' instead of 'category'
-        price: parseFloat(formData.price),
-        imageUrl: formData.imageUrl,
-        stockQuantity: 999, // Default high stock
-        sizesAvailable: formData.category === 'wearable' ? ['S', 'M', 'L', 'XL'] : []
+        description: formData.description || 'No description provided',
+        price: parseFloat(formData.price)
       };
+      
+      // For passes: use 'stock' field, no sizesAvailable
+      if (isPass) {
+        apiData.stock = parseInt(formData.stockQuantity) || 100;
+      }
+      
+      // For wearables/merchandise: use 'stockQuantity' and 'sizesAvailable'
+      if (isWearable) {
+        apiData.stockQuantity = parseInt(formData.stockQuantity) || 100;
+        apiData.sizesAvailable = formData.sizesAvailable || [];
+      }
+      
+      // Only add imageUrl if provided (it's optional)
+      if (formData.imageUrl) {
+        apiData.imageUrl = formData.imageUrl;
+      }
 
       if (editingItem && editingItem._id && !editingItem._id.startsWith('local_')) {
         // Update existing backend item (TODO: backend endpoint needed)
-        alert('⚠️ Update functionality requires backend endpoint. Saving to localStorage only.');
-        const newItem = {
-          ...editingItem,
-          ...formData,
-          price: parseFloat(formData.price),
-          updatedAt: new Date().toISOString()
-        };
-        const updatedItems = items.map(item => 
-          item.id === editingItem.id ? newItem : item
-        );
-        saveItems(updatedItems);
+        alert('⚠️ Update functionality requires backend endpoint. Please delete and re-add the item.');
       } else {
         // Add new item to backend
         const { response, data } = await authenticatedFetch(
@@ -118,22 +152,25 @@ function AdminPurchase() {
           adminToken
         );
 
-        if (response.ok && data?.status === 'success' && data?.data?.merch) {
+        if (response.ok && (data?.status === 'success' || data?.success === true)) {
           alert('✅ Item added successfully to store!');
           
-          // Also save to localStorage as backup (convert to local format)
-          const localItem = {
-            id: data.data.merch._id,
-            _id: data.data.merch._id,
-            name: data.data.merch.name,
-            description: data.data.merch.description,
-            category: data.data.merch.type,
-            price: data.data.merch.price,
-            imageUrl: data.data.merch.imageUrl,
-            available: true,
-            createdAt: new Date().toISOString()
-          };
-          saveItems([...items, localItem]);
+          // Refresh the items list from backend
+          await fetchItemsFromBackend();
+          
+          // Reset form
+          setFormData({
+            name: '',
+            description: '',
+            price: '',
+            category: 'event-pass1',
+            stockQuantity: '100',
+            sizesAvailable: [],
+            imageUrl: '',
+            available: true
+          });
+          setShowAddForm(false);
+          setEditingItem(null);
         } else {
           throw new Error(data?.message || 'Failed to add item');
         }
@@ -144,7 +181,9 @@ function AdminPurchase() {
         name: '',
         description: '',
         price: '',
-        category: 'pass',
+        category: 'event-pass1',
+        stockQuantity: '100',
+        sizesAvailable: [],
         imageUrl: '',
         available: true
       });
@@ -152,36 +191,7 @@ function AdminPurchase() {
       setEditingItem(null);
     } catch (error) {
       console.error('Error adding item:', error);
-      alert(`❌ Failed to add item: ${error.message}. Saving to localStorage only as fallback.`);
-      
-      // Fallback: Save to localStorage only
-      const newItem = {
-        id: editingItem ? editingItem.id : Date.now(),
-        ...formData,
-        price: parseFloat(formData.price),
-        createdAt: editingItem ? editingItem.createdAt : new Date().toISOString(),
-        updatedAt: new Date().toISOString()
-      };
-
-      if (editingItem) {
-        const updatedItems = items.map(item => 
-          item.id === editingItem.id ? newItem : item
-        );
-        saveItems(updatedItems);
-      } else {
-        saveItems([...items, newItem]);
-      }
-
-      setFormData({
-        name: '',
-        description: '',
-        price: '',
-        category: 'pass',
-        imageUrl: '',
-        available: true
-      });
-      setShowAddForm(false);
-      setEditingItem(null);
+      alert(`❌ Failed to add item: ${error.message}`);
     }
   };
 
@@ -192,24 +202,50 @@ function AdminPurchase() {
       description: item.description,
       price: item.price.toString(),
       category: item.category,
+      stockQuantity: item.stockQuantity?.toString() || '100',
+      sizesAvailable: item.sizesAvailable || [],
       imageUrl: item.imageUrl,
       available: item.available
     });
     setShowAddForm(true);
   };
 
-  const handleDelete = (id) => {
-    if (window.confirm('Are you sure you want to delete this item?')) {
-      const updatedItems = items.filter(item => item.id !== id);
-      saveItems(updatedItems);
+  const handleDelete = async (itemId) => {
+    if (!window.confirm('Are you sure you want to delete this item?')) {
+      return;
+    }
+
+    const adminToken = localStorage.getItem('admin_token') || sessionStorage.getItem('admin_token');
+    if (!adminToken) {
+      alert('⚠️ Admin authentication required. Please login again.');
+      return;
+    }
+
+    try {
+      const { response, data } = await authenticatedFetch(
+        `${API_ENDPOINTS.MERCH_ADD}/${itemId}`,
+        {
+          method: 'DELETE'
+        },
+        adminToken
+      );
+
+      if (response.ok && (data?.status === 'success' || data?.success === true)) {
+        alert('✅ Item deleted successfully!');
+        // Refresh the list
+        fetchItemsFromBackend();
+      } else {
+        throw new Error(data?.message || 'Failed to delete item');
+      }
+    } catch (error) {
+      console.error('❌ Error deleting item:', error);
+      alert('❌ Failed to delete item: ' + (error.message || 'Unknown error'));
     }
   };
 
-  const toggleAvailability = (id) => {
-    const updatedItems = items.map(item =>
-      item.id === id ? { ...item, available: !item.available } : item
-    );
-    saveItems(updatedItems);
+  const toggleAvailability = async (itemId) => {
+    alert('⚠️ Update availability requires backend endpoint implementation.');
+    // TODO: Implement when backend PATCH endpoint is ready
   };
 
   const cancelForm = () => {
@@ -219,7 +255,9 @@ function AdminPurchase() {
       name: '',
       description: '',
       price: '',
-      category: 'pass',
+      category: 'event-pass1',
+      stockQuantity: '100',
+      sizesAvailable: [],
       imageUrl: '',
       available: true
     });
@@ -298,13 +336,57 @@ function AdminPurchase() {
                   onChange={handleInputChange}
                   className="admin-form-select"
                 >
-                  <option value="pass">Event Pass</option>
-                  <option value="merchandise">Merchandise</option>
-                  <option value="accommodation">Accommodation</option>
-                  <option value="food">Food</option>
-                  <option value="other">Other</option>
+                  <option value="event-pass1">Event Pass - Day 1</option>
+                  <option value="event-pass2">Event Pass - Day 2</option>
+                  <option value="wearable">Wearable (T-shirts, Hoodies, etc.)</option>
+                  <option value="non-wearable">Non-Wearable (Stickers, Bottles, etc.)</option>
                 </select>
               </div>
+
+              <div className="admin-form-group">
+                <label className="admin-form-label">Stock Quantity <span className="text-red-400">*</span></label>
+                <input
+                  type="number"
+                  name="stockQuantity"
+                  value={formData.stockQuantity}
+                  onChange={handleInputChange}
+                  placeholder="e.g., 100"
+                  min="0"
+                  className="admin-form-input"
+                  required
+                />
+              </div>
+
+              {formData.category === 'wearable' && (
+                <div className="admin-form-group">
+                  <label className="admin-form-label">Sizes Available</label>
+                  <div className="flex gap-2 flex-wrap">
+                    {['XS', 'S', 'M', 'L', 'XL', 'XXL'].map(size => (
+                      <label key={size} className="flex items-center gap-2 text-gray-300">
+                        <input
+                          type="checkbox"
+                          checked={formData.sizesAvailable.includes(size)}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setFormData(prev => ({
+                                ...prev,
+                                sizesAvailable: [...prev.sizesAvailable, size]
+                              }));
+                            } else {
+                              setFormData(prev => ({
+                                ...prev,
+                                sizesAvailable: prev.sizesAvailable.filter(s => s !== size)
+                              }));
+                            }
+                          }}
+                          className="rounded"
+                        />
+                        {size}
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               <div className="admin-form-group">
                 <label className="admin-form-label">Description</label>
@@ -406,7 +488,7 @@ function AdminPurchase() {
 
                   <div className="admin-store-item-actions">
                     <button
-                      onClick={() => toggleAvailability(item.id)}
+                      onClick={() => toggleAvailability(item._id)}
                       className={`admin-btn-sm ${item.available ? 'admin-btn-warning' : 'admin-btn-success'}`}
                     >
                       {item.available ? 'Mark Unavailable' : 'Mark Available'}
@@ -419,7 +501,7 @@ function AdminPurchase() {
                       <RiEditLine size={18} />
                     </button>
                     <button
-                      onClick={() => handleDelete(item.id)}
+                      onClick={() => handleDelete(item._id)}
                       className="admin-btn-icon admin-btn-danger"
                       title="Delete"
                     >
