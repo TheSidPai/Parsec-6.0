@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API_ENDPOINTS, authenticatedFetch } from '../../config/api';
 import './Checkout.css';
@@ -13,11 +13,7 @@ function Checkout() {
   const navigate = useNavigate();
   const token = localStorage.getItem('jwt_token');
 
-  useEffect(() => {
-    loadCart();
-  }, []);
-
-  const loadCart = () => {
+  const loadCart = useCallback(() => {
     const savedCart = localStorage.getItem('parsec_cart');
     if (savedCart) {
       const parsed = JSON.parse(savedCart);
@@ -28,7 +24,11 @@ function Checkout() {
     } else {
       navigate('/dashboard/cart');
     }
-  };
+  }, [navigate]);
+
+  useEffect(() => {
+    loadCart();
+  }, [loadCart]);
 
   const getTotalPrice = () => {
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0);

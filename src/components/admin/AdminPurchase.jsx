@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { RiShoppingCartLine, RiAddLine, RiSubtractLine, RiDeleteBinLine, RiImageAddLine, RiEditLine, RiSaveLine } from '@remixicon/react';
+import { RiShoppingCartLine, RiAddLine, RiDeleteBinLine, RiEditLine, RiSaveLine } from '@remixicon/react';
 import './AdminComponents.css';
 
 function AdminPurchase() {

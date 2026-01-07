@@ -1,6 +1,5 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import Button from "./Button";
 import Navbar from "./Navbar";
 import "./ComingSoon.css";
 

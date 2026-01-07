@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { API_ENDPOINTS, authenticatedFetch } from '../../config/api';
 import './PaymentHistory.css';
 
@@ -8,11 +8,7 @@ function PaymentHistory() {
   const [error, setError] = useState(null);
   const token = localStorage.getItem('jwt_token');
 
-  useEffect(() => {
-    fetchPayments();
-  }, []);
-
-  const fetchPayments = async () => {
+  const fetchPayments = useCallback(async () => {
     if (!token) {
       setError('Please log in to view payment history');
       setLoading(false);
@@ -38,7 +34,11 @@ function PaymentHistory() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [token]);
+
+  useEffect(() => {
+    fetchPayments();
+  }, [fetchPayments]);
 
   const getStatusBadge = (status) => {
     const statusConfig = {
