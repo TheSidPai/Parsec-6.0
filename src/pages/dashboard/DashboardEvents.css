@@ -86,7 +86,7 @@
   right: -40px;
   top: -5px;
   font-size: 1.5rem;
-  animation: sparkle 2s ease-in-out infinite;
+  /* animation: sparkle 2s ease-in-out infinite; */
 }
 
 @keyframes sparkle {

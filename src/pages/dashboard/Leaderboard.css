@@ -77,7 +77,7 @@
   transform: translateY(-50%);
   color: #d4af37;
   font-size: 1.2rem;
-  animation: sparkle 2s ease-in-out infinite;
+  /* animation: sparkle 2s ease-in-out infinite; */
 }
 
 .wand-divider.left::after {

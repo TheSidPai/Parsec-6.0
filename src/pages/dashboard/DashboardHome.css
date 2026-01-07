@@ -327,7 +327,7 @@
   transform: translateY(-50%);
   color: #d4af37;
   font-size: 0.8rem;
-  animation: sparkle 2s ease-in-out infinite;
+  /* animation: sparkle 2s ease-in-out infinite; */
 }
 
 .stat-divider.left::after {
