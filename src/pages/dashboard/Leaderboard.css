@@ -53,6 +53,7 @@
   font-family: 'Playfair Display', serif;
   font-size: 3.5rem;
   font-weight: 600;
+  font-style: normal;
   color: #FFFFFF;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -127,7 +128,7 @@
   transition: all 0.4s ease;
   overflow: hidden;
   animation: cardEntrance 0.8s ease-out backwards;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25), 0 0 10px rgba(255, 215, 0, 0.08);
 }
 
 @keyframes cardEntrance {
@@ -170,6 +171,21 @@
 .house-leaderboard-card:hover::before {
   opacity: 1;
   animation: shimmer 2s infinite;
+}
+
+/* ========== RANK #1 EMPHASIS ========== */
+.house-leaderboard-card:first-child {
+  transform: scale(1.04);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 40px rgba(255, 215, 0, 0.3);
+  border-width: 2px;
+  border-color: rgba(255, 215, 0, 0.5);
+}
+
+.house-leaderboard-card:first-child:hover {
+  transform: translateY(-10px) scale(1.04);
+  box-shadow: 
+    0 24px 70px color-mix(in srgb, var(--house-glow) 45%, transparent),
+    0 0 50px rgba(255, 215, 0, 0.5);
 }
 
 @keyframes shimmer {

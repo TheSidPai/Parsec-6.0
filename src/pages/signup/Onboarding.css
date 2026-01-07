@@ -1,5 +1,5 @@
 ﻿/* ========== IMPORT FONTS ========== */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Josefin+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
 
 /* ========== BASIC RESET ========== */
 * {
@@ -204,7 +204,7 @@
 
 /* ========== TITLE ========== */
 .onboarding-title {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cinzel', Georgia, serif;
   font-size: 2rem;
   font-weight: 600;
   color: #FFD700;
@@ -252,7 +252,7 @@
   font-size: 0.9rem;
   color: #E8D4A0;
   letter-spacing: 0.03em;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
@@ -266,7 +266,7 @@
   border-radius: 12px;
   color: white;
   font-size: 0.95rem;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 400;
   transition: all 0.3s ease;
   outline: none;
@@ -325,7 +325,7 @@
 }
 
 .terms-text {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.9rem;
   color: #e0e0e0;
   line-height: 1.5;
@@ -352,7 +352,7 @@
   background: linear-gradient(135deg, #FFD700, #B8860B);
   color: #1a1a1a;
   font-size: 1rem;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cinzel', serif;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -404,7 +404,7 @@
   font-size: 0.9rem;
   font-weight: 500;
   text-align: center;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
   box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
 }
 
@@ -419,7 +419,7 @@
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 16px;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cinzel', Georgia, serif;
   text-shadow: 
     0 0 25px rgba(255, 215, 0, 0.8),
     0 0 50px rgba(255, 215, 0, 0.5);
@@ -431,7 +431,7 @@
   font-size: 1.05rem;
   line-height: 1.6;
   font-weight: 400;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* ========== RESPONSIVE - TABLET ========== */

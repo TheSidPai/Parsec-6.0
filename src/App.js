@@ -10,7 +10,6 @@ import { AnimatePresence } from "framer-motion";
 import "./App.css";
 import { ThemeProvider } from "./context/ThemeContext";
 import MagicalLoader from "./components/MagicalLoader";
-import ScrollToTopButton from "./components/ScrollToTopButton";
 
 // Import page components
 import Home from "./pages/Home";
@@ -32,6 +31,13 @@ import DashboardTeam from "./pages/dashboard/Team";
 import Contact from "./pages/dashboard/Contact";
 import Orders from "./pages/dashboard/Orders";
 import Accommodation from "./pages/dashboard/Accommodation";
+import Shop from "./pages/dashboard/Shop";
+import Cart from "./pages/dashboard/Cart";
+import Checkout from "./pages/dashboard/Checkout";
+import PaymentHistory from "./pages/dashboard/PaymentHistory";
+import Passes from "./pages/dashboard/Passes";
+import PassCheckout from "./pages/dashboard/PassCheckout";
+import PublicAccommodation from "./pages/Accommodation";
 import NotFound from "./pages/NotFound";
 import HousePage from "./pages/HousePage";
 import AdminAuth from "./components/admin/AdminAuth";
@@ -50,8 +56,12 @@ function AnimatedRoutes() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
+        {/* Root redirects to home */}
         <Route path="/" element={<Navigate to="/home" replace />} />
+
+        {/* Public Routes */}
         <Route path="/home" element={<Home />} />
+
         <Route path="/landing" element={<Navigate to="/home" replace />} />
 
         {/* Auth (Coming Soon) */}
@@ -62,19 +72,19 @@ function AnimatedRoutes() {
         <Route path="/signup/sorting" element={<SortingHat />} />
         <Route path="/signup/*" element={<Login />} />
 
-        {/* Public Pages */}
+        {/* Public Events, Schedule & Team */}
         <Route path="/events" element={<Events />} />
         <Route path="/harshtal" element={<Harshtal />} />
         <Route path="/tesseract" element={<Tesseract />} />
         <Route path="/events/:id" element={<EventDetail />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/team" element={<Team />} />
-        <Route path="/accommodation" element={<AccommodationComingSoon />} />
+        <Route path="/accommodation" element={<PublicAccommodation />} />
 
-        {/* House Pages */}
+        {/* House-Specific Pages (Protected) */}
         <Route path="/house/:houseName" element={<HousePage />} />
 
-        {/* Admin */}
+        {/* Admin Routes */}
         <Route path="/admin/login" element={<AdminAuth />} />
         <Route
           path="/admin/dashboard"
@@ -85,13 +95,19 @@ function AnimatedRoutes() {
           }
         />
 
-        {/* Dashboard */}
+        {/* Protected Dashboard Routes */}
         <Route path="/dashboard" element={<DashboardLayout />}>
           <Route index element={<DashboardHome />} />
           <Route path="events" element={<DashboardEvents />} />
           <Route path="events/:id" element={<DashboardEventDetail />} />
           <Route path="schedule" element={<DashboardSchedule />} />
+          <Route path="shop" element={<Shop />} />
+          <Route path="passes" element={<Passes />} />
+          <Route path="pass-checkout" element={<PassCheckout />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="checkout" element={<Checkout />} />
           <Route path="orders" element={<Orders />} />
+          <Route path="payment-history" element={<PaymentHistory />} />
           <Route path="accommodation" element={<Accommodation />} />
           <Route path="profile" element={<Profile />} />
           <Route path="leaderboard" element={<Leaderboard />} />
@@ -99,7 +115,7 @@ function AnimatedRoutes() {
           <Route path="contact" element={<Contact />} />
         </Route>
 
-        {/* 404 */}
+        {/* 404 Page */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
@@ -113,18 +129,19 @@ function App() {
   const handleLoadComplete = () => {
     setIsLoading(false);
     setHasLoadedOnce(true);
+    // Store in session storage so loader doesn't show again during this session
     sessionStorage.setItem("hasLoadedOnce", "true");
   };
 
   return (
     <Router>
       <ThemeProvider>
-        {/* Initial magical loader */}
+        {/* Show loader only on first load */}
         {isLoading && !hasLoadedOnce && (
           <MagicalLoader onLoadComplete={handleLoadComplete} />
         )}
 
-        {/* Main app */}
+        {/* Main app content */}
         <div
           style={{
             opacity: isLoading ? 0 : 1,
@@ -133,9 +150,6 @@ function App() {
         >
           <AnimatedRoutes />
         </div>
-
-        {/* GLOBAL SCROLL TO TOP BUTTON */}
-        <ScrollToTopButton />
       </ThemeProvider>
     </Router>
   );

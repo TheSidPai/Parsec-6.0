@@ -256,81 +256,78 @@ function PaymentCard({ payment, onView, onStatusUpdate }) {
   };
 
   return (
-    <div className="bg-gray-700 rounded-lg p-6 hover:bg-gray-600/50 transition-colors">
-      <div className="flex flex-col lg:flex-row justify-between gap-4">
-        {/* Left side - Payment info */}
-        <div className="flex-1 space-y-3">
-          <div className="flex items-center gap-4">
-            <span className="font-mono text-yellow-400 text-lg font-bold">#{payment._id?.slice(-8)}</span>
-            <div className="flex items-center gap-2">
-              {getStatusIcon(payment.status)}
-              <span className={`px-3 py-1 rounded-full text-sm border ${getStatusColor(payment.status)}`}>
-                {payment.status?.toUpperCase() || 'UNKNOWN'}
-              </span>
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <div>
-              <span className="text-gray-400 text-sm">Name:</span>
-              <p className="text-white">{payment.name}</p>
-            </div>
-            <div>
-              <span className="text-gray-400 text-sm">Email:</span>
-              <p className="text-white">{payment.email}</p>
-            </div>
-            <div>
-              <span className="text-gray-400 text-sm">Phone:</span>
-              <p className="text-white">{payment.contactNumber || 'N/A'}</p>
-            </div>
-            <div>
-              <span className="text-gray-400 text-sm">Created:</span>
-              <p className="text-white">{new Date(payment.createdAt).toLocaleDateString()}</p>
-            </div>
-          </div>
-
-          {payment.paymentUTR && (
-            <div>
-              <span className="text-gray-400 text-sm">Payment UTR:</span>
-              <p className="text-white font-mono">{payment.paymentUTR}</p>
-            </div>
-          )}
-
-          <div>
-            <span className="text-gray-400 text-sm">Amount:</span>
-            <p className="text-white font-bold">₹{payment.amount}</p>
-          </div>
+    <div className="bg-gray-700 rounded-lg p-6 hover:bg-gray-600/50 transition-colors admin-payment-card">
+      {/* Payment Header */}
+      <div className="admin-payment-header">
+        <span className="admin-payment-id">#{payment._id?.slice(-8)}</span>
+        <div className="flex items-center gap-2">
+          {getStatusIcon(payment.status)}
+          <span className={`admin-payment-status-badge ${getStatusColor(payment.status)}`}>
+            {payment.status?.toUpperCase() || 'UNKNOWN'}
+          </span>
         </div>
+      </div>
 
-        {/* Right side - Actions */}
-        <div className="flex flex-col gap-2 lg:min-w-[200px]">
-          <button
-            onClick={onView}
-            className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors"
-          >
-            <RiEyeLine size={16} />
-            View Details
-          </button>
-          
-          {payment.status?.toLowerCase() === 'pending' && (
-            <div className="flex gap-2">
-              <button
-                onClick={() => onStatusUpdate(payment._id, 'verified')}
-                className="flex-1 flex items-center justify-center gap-1 px-3 py-2 bg-green-600 hover:bg-green-700 text-white rounded text-sm transition-colors"
-              >
-                <RiCheckLine size={14} />
-                Verify
-              </button>
-              <button
-                onClick={() => onStatusUpdate(payment._id, 'rejected')}
-                className="flex-1 flex items-center justify-center gap-1 px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded text-sm transition-colors"
-              >
-                <RiCloseLine size={14} />
-                Reject
-              </button>
-            </div>
-          )}
+      {/* Payment Info Grid */}
+      <div className="admin-payment-info-grid">
+        <div className="admin-payment-info-item">
+          <span className="admin-payment-info-label">Name</span>
+          <span className="admin-payment-info-value">{payment.name}</span>
         </div>
+        <div className="admin-payment-info-item">
+          <span className="admin-payment-info-label">Email</span>
+          <span className="admin-payment-info-value">{payment.email}</span>
+        </div>
+        <div className="admin-payment-info-item">
+          <span className="admin-payment-info-label">Phone</span>
+          <span className="admin-payment-info-value">{payment.contactNumber || 'N/A'}</span>
+        </div>
+        <div className="admin-payment-info-item">
+          <span className="admin-payment-info-label">Created</span>
+          <span className="admin-payment-info-value">{new Date(payment.createdAt).toLocaleDateString()}</span>
+        </div>
+      </div>
+
+      {payment.paymentUTR && (
+        <div className="admin-payment-info-item" style={{ marginTop: '1rem' }}>
+          <span className="admin-payment-info-label">Payment UTR</span>
+          <span className="admin-payment-info-value" style={{ fontFamily: 'monospace' }}>{payment.paymentUTR}</span>
+        </div>
+      )}
+
+      <div className="admin-payment-info-item" style={{ marginTop: '1rem' }}>
+        <span className="admin-payment-info-label">Amount</span>
+        <span className="admin-payment-amount">₹{payment.amount}</span>
+      </div>
+
+      {/* Actions */}
+      <div className="flex flex-col gap-2 lg:min-w-[200px]" style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>
+        <button
+          onClick={onView}
+          className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors"
+        >
+          <RiEyeLine size={16} />
+          View Details
+        </button>
+        
+        {payment.status?.toLowerCase() === 'pending' && (
+          <div className="flex gap-2">
+            <button
+              onClick={() => onStatusUpdate(payment._id, 'verified')}
+              className="flex-1 flex items-center justify-center gap-1 px-3 py-2 bg-green-600 hover:bg-green-700 text-white rounded text-sm transition-colors"
+            >
+              <RiCheckLine size={14} />
+              Verify
+            </button>
+            <button
+              onClick={() => onStatusUpdate(payment._id, 'rejected')}
+              className="flex-1 flex items-center justify-center gap-1 px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded text-sm transition-colors"
+            >
+              <RiCloseLine size={14} />
+              Reject
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
