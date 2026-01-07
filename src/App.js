@@ -19,6 +19,7 @@ import Tesseract from "./pages/Tesseract";
 import EventDetail from "./pages/EventDetail";
 import Schedule from "./pages/Schedule";
 import Team from "./pages/Team";
+import Login from "./pages/Login";
 import DashboardLayout from "./layouts/DashboardLayout";
 import DashboardHome from "./pages/dashboard/DashboardHome";
 import DashboardEvents from "./pages/dashboard/DashboardEvents";
@@ -43,14 +44,11 @@ import AdminAuth from "./components/admin/AdminAuth";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import AdminProtectedRoute from "./components/admin/AdminProtectedRoute";
 import AccommodationComingSoon from "./pages/AccommodationComingSoon";
-// Auth components
-import Login from "./pages/Login";
-import SignupLayout from "./pages/signup/SignupLayout";
 import Onboarding from "./pages/signup/Onboarding";
 import SortingHat from "./pages/signup/SortingHat";
 import Auth from "./pages/signup/Auth";
-import ManualAuth from "./pages/signup/ManualAuth";
-import Terms from "./pages/signup/Terms";
+import ManualToken from "./pages/signup/ManualToken";
+import { BiLogIn } from "react-icons/bi";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -66,15 +64,13 @@ function AnimatedRoutes() {
 
         <Route path="/landing" element={<Navigate to="/home" replace />} />
 
-        {/* Auth Routes - ENABLED FOR DEV TESTING */}
+        {/* Auth (Coming Soon) */}
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignupLayout />}>
-          <Route path="onboarding" element={<Onboarding />} />
-          <Route path="sorting" element={<SortingHat />} />
-          <Route path="auth" element={<Auth />} />
-          <Route path="manual" element={<ManualAuth />} />
-          <Route path="terms" element={<Terms />} />
-        </Route>
+        <Route path="/signup/auth" element={<Auth />} />
+        <Route path="/signup/manual-token" element={<ManualToken />} />
+        <Route path="/signup/onboarding" element={<Onboarding />} />
+        <Route path="/signup/sorting" element={<SortingHat />} />
+        <Route path="/signup/*" element={<Login />} />
 
         {/* Public Events, Schedule & Team */}
         <Route path="/events" element={<Events />} />

@@ -64,9 +64,9 @@
 }
 
 .dashboard-events-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 3rem;
-  font-weight: 900;
+  font-weight: 600;
   background: linear-gradient(135deg, 
     var(--secondary), 
     var(--fontAccent));
@@ -76,7 +76,22 @@
   margin-bottom: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
+  text-shadow: 0 0 40px var(--fontAccent);
   position: relative;
+}
+
+.dashboard-events-title::after {
+  content: '✨';
+  position: absolute;
+  right: -40px;
+  top: -5px;
+  font-size: 1.5rem;
+  /* animation: sparkle 2s ease-in-out infinite; */
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.5; transform: scale(1) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
 }
 
 .dashboard-events-subtitle {
@@ -130,36 +145,62 @@
   }
 }
 
-/* Elegant diagonal sweep effect */
+/* Magical corner accents */
 .dashboard-event-card::before {
   content: '';
   position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(135deg, 
-    transparent 30%,
-    color-mix(in srgb, var(--fontAccent) 15%, transparent) 50%,
-    transparent 70%);
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    var(--primary), 
+    var(--secondary), 
+    var(--fontAccent));
   opacity: 0;
-  transform: translateX(100%) translateY(-100%);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+/* Animated border glow */
+.dashboard-event-card::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, 
+    var(--primary), 
+    var(--secondary), 
+    var(--fontAccent),
+    var(--secondary), 
+    var(--primary));
+  background-size: 400% 400%;
+  border-radius: 20px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: borderGlow 8s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .dashboard-event-card:hover {
   background-position: 100% 100%;
-  transform: translateY(-8px) scale(1.01);
+  transform: translateY(-12px) scale(1.02);
   border-color: var(--secondary);
   box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.3),
-    0 0 20px color-mix(in srgb, var(--fontAccent) 15%, transparent);
+    0 25px 50px rgba(0, 0, 0, 0.4),
+    0 0 40px color-mix(in srgb, var(--fontAccent) 40%, transparent),
+    0 0 60px color-mix(in srgb, var(--secondary) 20%, transparent);
 }
 
 .dashboard-event-card:hover::before {
   opacity: 1;
-  transform: translateX(-100%) translateY(100%);
+}
+
+.dashboard-event-card:hover::after {
+  opacity: 0.6;
 }
 
 /* Highlighted card animation (for redirected users) */
@@ -224,7 +265,7 @@
 
 /* ========== CARD TITLE ========== */
 .event-card-title {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 1.35rem;
   font-weight: 700;
   color: var(--fontMain);
@@ -256,7 +297,7 @@
   display: flex;
   align-items: center;
   gap: 0.875rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   letter-spacing: 0.01em;
@@ -276,7 +317,7 @@
 
 /* ========== CARD DESCRIPTION ========== */
 .event-card-description {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 0.975rem;
   line-height: 1.7;
   color: var(--fontSub);
@@ -421,7 +462,7 @@
   text-align: center;
   padding: 4rem 2rem;
   color: var(--fontSub);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 .no-events-message p {
