@@ -84,8 +84,15 @@ function DashboardLayout() {
   }, []);
 
   const handleLogout = () => {
+    // Clear all authentication and user data
     localStorage.removeItem("jwt_token");
-    navigate("/login");
+    localStorage.removeItem("parsec_cart");
+    localStorage.removeItem("user_house");
+    localStorage.removeItem("revelio_count");
+    sessionStorage.clear(); // Clear session storage too (for admin tokens)
+    
+    // Force page reload to clear any cached state
+    window.location.href = "/home";
   };
 
   return (
