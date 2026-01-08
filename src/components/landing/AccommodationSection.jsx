@@ -157,7 +157,6 @@ const AccommodationSection = () => {
         >
           <p className="cta-text">Ready to secure your spot?</p>
           <button className="book-btn" onClick={handleBookNow}>
-            <span className="btn-icon">🏠</span>
             Book Accommodation - Login Required
             <span className="btn-arrow">→</span>
           </button>

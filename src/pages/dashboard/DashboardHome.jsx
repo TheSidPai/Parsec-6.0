@@ -27,15 +27,15 @@ function DashboardHome() {
   const token = localStorage.getItem("jwt_token");
   const textRef = useRef(null);
 
-  // Check if animations have been shown before (allow 2 times)
+  // Check if animations have been shown before (allow 3 times for better UX)
   const [showLightning, setShowLightning] = useState(() => {
     const viewCount = parseInt(localStorage.getItem('revelio_count') || '0');
-    return viewCount < 2; // Show for first 2 visits
+    return viewCount < 3; // Show for first 3 visits
   });
   const [showGlitchText, setShowGlitchText] = useState(false);
   const [showDashboard, setShowDashboard] = useState(() => {
     const viewCount = parseInt(localStorage.getItem('revelio_count') || '0');
-    return viewCount >= 2; // Skip animation after 2 views
+    return viewCount >= 3; // Skip animation after 3 views
   });
 
   const [userData, setUserData] = useState({
@@ -70,8 +70,8 @@ function DashboardHome() {
     // Check view count
     const viewCount = parseInt(localStorage.getItem('revelio_count') || '0');
     
-    // Skip animation if already shown 2 times
-    if (viewCount >= 2) {
+    // Skip animation if already shown 3 times
+    if (viewCount >= 3) {
       const sidebar = document.querySelector(".dashboard-sidebar");
       if (sidebar) sidebar.style.display = "block";
       return;

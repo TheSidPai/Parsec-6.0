@@ -82,8 +82,10 @@
   gap: 3rem;
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(218, 165, 32, 0.03));
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--primary) 8%, transparent), 
+    color-mix(in srgb, var(--secondary) 3%, transparent));
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
   border-radius: 20px;
   backdrop-filter: blur(4px);
   animation: slideDown 0.5s ease-out;
@@ -95,8 +97,8 @@
   align-items: center;
   gap: 1rem;
   padding: 0.75rem 1.5rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 215, 0, 0.15);
+  /* background: rgba(255, 255, 255, 0.03); */
+  border: 1px solid color-mix(in srgb, var(--primary) 15%, transparent);
   border-radius: 16px;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -104,13 +106,13 @@
 
 .info-item:hover {
   transform: translateY(-3px);
-  background: rgba(255, 215, 0, 0.08);
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
   border-color: var(--fontAccent);
   box-shadow: 0 8px 25px var(--shadow), 0 0 8px var(--glow);
 }
 
 .info-item.streak:hover {
-  border-color: #f59e0b;
+  border-color: var(--primary);
   box-shadow: 0 8px 25px var(--shadow), 0 0 8px rgba(245, 158, 11, 0.4);
 }
 
@@ -156,8 +158,8 @@
 
 /* ========== WELCOME SECTION ========== */
 .welcome-section {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(218, 165, 32, 0.03));
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 8%, transparent), color-mix(in srgb, var(--secondary) 3%, transparent));
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
   border-radius: 24px;
   padding: 3.5rem 3rem;
   margin-bottom: 2.5rem;
@@ -226,8 +228,10 @@
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(218, 165, 32, 0.06));
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--primary) 12%, transparent), 
+    color-mix(in srgb, var(--secondary) 6%, transparent));
+  border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
   border-radius: 50px;
   padding: 0.9rem 1.75rem;
   font-family: 'Playfair Display', serif;
@@ -244,8 +248,10 @@
 
 .house-badge:hover {
   transform: scale(1.05);
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.18), rgba(218, 165, 32, 0.1));
-  border-color: rgba(255, 215, 0, 0.5);
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--primary) 18%, transparent), 
+    color-mix(in srgb, var(--secondary) 10%, transparent));
+  border-color: color-mix(in srgb, var(--primary) 50%, transparent);
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
 }
 
@@ -263,8 +269,10 @@
 }
 
 .stat-card {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(218, 165, 32, 0.03));
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  background: linear-gradient(135deg, 
+    color-mix(in srgb, var(--primary) 8%, transparent), 
+    color-mix(in srgb, var(--secondary) 3%, transparent));
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
   border-radius: 16px;
   padding: 2rem 1.5rem;
   transition: all 0.6s ease;
@@ -282,11 +290,11 @@
 
 .stat-card:hover {
   transform: rotateY(5deg) rotateX(5deg) translateY(-8px);
-  border-color: rgba(255, 215, 0, 0.4);
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
   box-shadow: 
     0 15px 40px rgba(0, 0, 0, 0.3),
-    0 0 30px rgba(255, 215, 0, 0.15),
-    inset 0 0 20px rgba(255, 215, 0, 0.05);
+    0 0 30px color-mix(in srgb, var(--primary) 15%, transparent),
+    inset 0 0 20px color-mix(in srgb, var(--primary) 5%, transparent);
 }
 
 /* Stat Card Header with Dividers */
@@ -315,7 +323,7 @@
   height: 2px;
   background: linear-gradient(90deg,
       transparent 0%,
-      #d4af37 50%,
+      var(--fontAccent) 50%,
       transparent 100%);
   position: relative;
 }
@@ -325,7 +333,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  color: #d4af37;
+  color: var(--fontAccent);
   font-size: 0.8rem;
   /* animation: sparkle 2s ease-in-out infinite; */
 }
@@ -345,7 +353,7 @@
   font-weight: 600;
   color: var(--fontAccent);
   margin-bottom: 1.5rem;
-  text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+  text-shadow: 0 0 20px var(--glow);
   line-height: 1;
 }
 
@@ -369,7 +377,7 @@
     color-mix(in srgb, var(--primary) 30%, #1a0f0a) 100%
   );
   
-  color: var(--fontAccent, #d4af37);
+  color: var(--fontAccent, var(--fontAccent));
   border: 1px solid color-mix(in srgb, var(--primary) 30%, #1a0f0a);
   
   box-shadow: 
@@ -443,8 +451,8 @@
 
 /* ========== DAILY CHALLENGE CARD ========== */
 .daily-challenge-card {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(218, 165, 32, 0.03));
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 8%, transparent), color-mix(in srgb, var(--secondary) 3%, transparent));
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
   border-radius: 16px;
   padding: 1.75rem;
   position: relative;
@@ -543,8 +551,8 @@
 /* ========== QUICK ACTIONS ========== */
 .quick-actions {
   margin-bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(218, 165, 32, 0.03));
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 8%, transparent), color-mix(in srgb, var(--secondary) 3%, transparent));
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
   border-radius: 16px;
   padding: 2.5rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -557,7 +565,7 @@
   font-weight: 700;
   color: var(--secondary);
   margin-bottom: 1.5rem;
-  text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+  text-shadow: 0 0 8px color-mix(in srgb, var(--primary) 30%, transparent);
   position: relative;
   padding-left: 1.5rem;
 }
@@ -570,9 +578,9 @@
   transform: translateY(-50%);
   width: 5px;
   height: 80%;
-  background: linear-gradient(180deg, #FFD700, #DAA520);
+  background: linear-gradient(180deg, var(--fontAccent), var(--secondary));
   border-radius: 3px;
-  box-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+  box-shadow: 0 0 6px var(--glow);
 }
 
 .actions-grid {
@@ -583,7 +591,7 @@
 
 .action-btn {
   background: rgba(255, 255, 255, 0.05);
-  border: 2px solid rgba(255, 215, 0, 0.3);
+  border: 2px solid color-mix(in srgb, var(--primary) 30%, transparent);
   border-radius: 14px;
   padding: 2rem 1.5rem;
   font-family: 'Josefin Sans', sans-serif;
@@ -601,20 +609,20 @@
 
 .action-btn:hover {
   transform: translateY(-6px);
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(218, 165, 32, 0.1));
-  border-color: rgba(255, 215, 0, 0.7);
-  box-shadow: 0 12px 32px rgba(255, 215, 0, 0.15);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 15%, transparent), color-mix(in srgb, var(--secondary) 10%, transparent));
+  border-color: color-mix(in srgb, var(--primary) 70%, transparent);
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--primary) 15%, transparent);
 }
 
 .action-icon {
   font-size: 3rem;
-  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.3));
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--primary) 30%, transparent));
 }
 
 /* ========== UPCOMING EVENTS ========== */
 .upcoming-events {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(218, 165, 32, 0.03));
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 8%, transparent), color-mix(in srgb, var(--secondary) 3%, transparent));
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
   border-radius: 16px;
   padding: 2.5rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -629,7 +637,7 @@
 
 .event-item {
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 215, 0, 0.25);
+  border: 1px solid color-mix(in srgb, var(--primary) 25%, transparent);
   border-radius: 14px;
   padding: 1.75rem;
   transition: all 0.3s ease;
@@ -640,18 +648,33 @@
 }
 
 .event-item:hover {
-  border-color: rgba(255, 215, 0, 0.6);
+  border-color: color-mix(in srgb, var(--primary) 60%, transparent);
   transform: translateX(8px);
-  box-shadow: 0 8px 24px rgba(255, 215, 0, 0.1);
-  background: rgba(255, 215, 0, 0.08);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--primary) 15%, transparent);
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
+}
+
+.event-item:hover .event-badge {
+  background: linear-gradient(
+    135deg, 
+    color-mix(in srgb, var(--primary) 80%, #5a3722) 0%, 
+    color-mix(in srgb, var(--primary) 60%, #3d2515) 50%, 
+    color-mix(in srgb, var(--primary) 40%, #2d1b0e) 100%
+  );
+  transform: translateY(-2px);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+    0 5px 12px rgba(0, 0, 0, 0.5);
+  color: var(--linkHover, #fff);
 }
 
 .event-info h3 {
   font-family: 'Playfair Display', serif;
   font-size: 1.35rem;
-  color: #FFD700;
+  color: var(--fontAccent);
   margin-bottom: 0.5rem;
-  text-shadow: 0 0 5px rgba(255, 215, 0, 0.2);
+  text-shadow: 0 0 5px color-mix(in srgb, var(--primary) 30%, transparent);
 }
 
 .event-info p {
@@ -661,15 +684,52 @@
 }
 
 .event-badge {
-  background: linear-gradient(135deg, #FFD700, #DAA520);
-  color: #000;
-  padding: 0.65rem 1.25rem;
-  border-radius: 24px;
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 700;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.25);
-  letter-spacing: 0.5px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0.65rem 1.25rem;
+  border-radius: 16px;
+  cursor: pointer;
+  position: relative;
+  
+  /* Leather gradient */
+  background: linear-gradient(
+    135deg, 
+    color-mix(in srgb, var(--primary) 70%, #4a2f1a) 0%, 
+    color-mix(in srgb, var(--primary) 50%, #2d1b0e) 50%, 
+    color-mix(in srgb, var(--primary) 30%, #1a0f0a) 100%
+  );
+  
+  color: var(--fontAccent, var(--fontAccent));
+  border: 1px solid color-mix(in srgb, var(--primary) 30%, #1a0f0a);
+  
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+    0 3px 8px rgba(0, 0, 0, 0.4);
+  
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+}
+
+.event-badge::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 6px,
+    rgba(0, 0, 0, 0.02) 6px,
+    rgba(0, 0, 0, 0.02) 7px
+  );
+  pointer-events: none;
+  border-radius: 16px;
 }
 
 .no-events {
@@ -978,8 +1038,8 @@
 .quick-stats-summary {
   margin-top: 2rem;
   padding: 2rem;
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(218, 165, 32, 0.02));
-  border: 1px solid rgba(255, 215, 0, 0.2);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 5%, transparent), color-mix(in srgb, var(--secondary) 2%, transparent));
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
   border-radius: 16px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
@@ -1004,15 +1064,15 @@
 }
 
 .progress-card:hover {
-  background: rgba(255, 215, 0, 0.08);
-  border-color: rgba(255, 215, 0, 0.3);
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
+  border-color: color-mix(in srgb, var(--primary) 30%, transparent);
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(255, 215, 0, 0.1);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--primary) 10%, transparent);
 }
 
 .progress-icon {
   font-size: 2.5rem;
-  filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.2));
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--primary) 20%, transparent));
 }
 
 .progress-info h3 {
@@ -1053,15 +1113,6 @@
   font-size: clamp(3.5rem, 12vw, 6rem);
   letter-spacing: 0.3em;
   color: #f0f4ff;
-  text-shadow:
-    0 0 10px rgba(255, 255, 255, 1),
-    0 0 20px rgba(199, 210, 254, 1),
-    0 0 40px rgba(147, 197, 253, 0.9),
-    0 0 60px rgba(99, 102, 241, 0.7),
-    0 0 90px rgba(79, 70, 229, 0.5),
-    0 0 120px rgba(67, 56, 202, 0.4),
-    0 5px 15px rgba(0, 0, 0, 0.8),
-    0 10px 30px rgba(0, 0, 0, 0.6);
   text-transform: uppercase;
   font-style: normal;
   font-weight: 400;
@@ -1070,28 +1121,65 @@
   z-index: 10002;
 }
 
+/* House-specific Revelio colors */
+[data-house="gryffindor"] .spell-text.classic {
+  color: #ffebcc;
+  text-shadow:
+    0 0 10px rgba(255, 50, 50, 1),
+    0 0 20px rgba(255, 80, 50, 1),
+    0 0 40px rgba(220, 20, 0, 0.9),
+    0 0 60px rgba(180, 0, 0, 0.7),
+    0 0 90px rgba(140, 0, 0, 0.5),
+    0 0 120px rgba(100, 0, 0, 0.4),
+    0 5px 15px rgba(0, 0, 0, 0.8),
+    0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+[data-house="slytherin"] .spell-text.classic {
+  color: #e8f5e8;
+  text-shadow:
+    0 0 10px rgba(50, 255, 50, 1),
+    0 0 20px rgba(46, 204, 113, 1),
+    0 0 40px rgba(39, 174, 96, 0.9),
+    0 0 60px rgba(34, 153, 84, 0.7),
+    0 0 90px rgba(30, 130, 76, 0.5),
+    0 0 120px rgba(26, 111, 66, 0.4),
+    0 5px 15px rgba(0, 0, 0, 0.8),
+    0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+[data-house="ravenclaw"] .spell-text.classic {
+  color: #f0f4ff;
+  text-shadow:
+    0 0 10px rgba(100, 150, 255, 1),
+    0 0 20px rgba(74, 144, 226, 1),
+    0 0 40px rgba(52, 152, 219, 0.9),
+    0 0 60px rgba(41, 128, 185, 0.7),
+    0 0 90px rgba(33, 97, 140, 0.5),
+    0 0 120px rgba(25, 70, 100, 0.4),
+    0 5px 15px rgba(0, 0, 0, 0.8),
+    0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+[data-house="hufflepuff"] .spell-text.classic {
+  color: #fffae6;
+  text-shadow:
+    0 0 10px rgba(255, 220, 50, 1),
+    0 0 20px rgba(255, 215, 0, 1),
+    0 0 40px rgba(241, 196, 15, 0.9),
+    0 0 60px rgba(212, 172, 13, 0.7),
+    0 0 90px rgba(183, 149, 11, 0.5),
+    0 0 120px rgba(154, 125, 10, 0.4),
+    0 5px 15px rgba(0, 0, 0, 0.8),
+    0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
 @keyframes spellGlow {
   0%, 100% {
-    text-shadow:
-      0 0 10px rgba(255, 255, 255, 1),
-      0 0 20px rgba(199, 210, 254, 1),
-      0 0 40px rgba(147, 197, 253, 0.9),
-      0 0 60px rgba(99, 102, 241, 0.7),
-      0 0 90px rgba(79, 70, 229, 0.5),
-      0 0 120px rgba(67, 56, 202, 0.4),
-      0 5px 15px rgba(0, 0, 0, 0.8),
-      0 10px 30px rgba(0, 0, 0, 0.6);
+    filter: brightness(1);
   }
   50% {
-    text-shadow:
-      0 0 20px rgba(255, 255, 255, 1),
-      0 0 40px rgba(199, 210, 254, 1),
-      0 0 60px rgba(147, 197, 253, 1),
-      0 0 90px rgba(99, 102, 241, 0.9),
-      0 0 120px rgba(79, 70, 229, 0.7),
-      0 0 150px rgba(67, 56, 202, 0.6),
-      0 5px 15px rgba(0, 0, 0, 0.8),
-      0 10px 30px rgba(0, 0, 0, 0.6);
+    filter: brightness(1.3);
   }
 }
 

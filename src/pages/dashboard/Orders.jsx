@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { API_ENDPOINTS, authenticatedFetch } from "../../config/api";
-import Particles from "../../components/Particles";
 import "./Orders.css";
 
 function Orders() {
@@ -44,6 +43,7 @@ function Orders() {
     fetchOrders();
   }, [fetchOrders]);
 
+  // eslint-disable-next-line no-unused-vars
   const getStatusBadge = (status) => {
     const statusStyles = {
       pending: { bg: "#ffc107", text: "#000" },
@@ -73,27 +73,43 @@ function Orders() {
   };
 
   const getPaymentStatusBadge = (paymentStatus) => {
-    const statusStyles = {
-      unpaid: { bg: "#dc3545", text: "#fff" },
-      paid: { bg: "#28a745", text: "#fff" },
-      pending: { bg: "#ffc107", text: "#000" },
+    const statusConfig = {
+      unpaid: { 
+        bg: "rgba(239, 68, 68, 0.1)",
+        border: "rgba(239, 68, 68, 0.3)",
+        text: "#ef4444",
+        label: "Payment Pending"
+      },
+      paid: { 
+        bg: "rgba(34, 197, 94, 0.1)",
+        border: "rgba(34, 197, 94, 0.3)",
+        text: "#22c55e",
+        label: "Paid"
+      },
+      pending: { 
+        bg: "rgba(251, 191, 36, 0.1)",
+        border: "rgba(251, 191, 36, 0.3)",
+        text: "#fbbf24",
+        label: "Processing Payment"
+      },
     };
 
-    const style = statusStyles[paymentStatus] || statusStyles.pending;
+    const config = statusConfig[paymentStatus] || statusConfig.pending;
 
     return (
       <span
+        className="status-badge"
         style={{
-          background: style.bg,
-          color: style.text,
-          padding: "4px 12px",
-          borderRadius: "12px",
+          background: config.bg,
+          border: `1px solid ${config.border}`,
+          color: config.text,
+          padding: "6px 14px",
+          borderRadius: "8px",
           fontSize: "0.85rem",
           fontWeight: "600",
-          textTransform: "capitalize",
         }}
       >
-        {paymentStatus}
+        {config.label}
       </span>
     );
   };
@@ -125,23 +141,9 @@ function Orders() {
 
   return (
     <div className="orders-container">
-      {/* Particles Background */}
-      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, pointerEvents: 'none' }}>
-        <Particles
-          particleColors={["#ffffff", "#ffffff"]}
-          particleCount={600}
-          particleSpread={15}
-          speed={0.1}
-          particleBaseSize={80}
-          moveParticlesOnHover={false}
-          alphaParticles={false}
-          disableRotation={false}
-        />
-      </div>
-
       <div className="orders-header">
-        <h1>🛍️ My Orders</h1>
-        <p>Track your merchandise and accommodation orders</p>
+        <h1>My Orders</h1>
+        <p>Track and manage your orders</p>
       </div>
 
       {orders.length === 0 ? (
@@ -164,14 +166,23 @@ function Orders() {
                       day: "numeric",
                       month: "short",
                       year: "numeric",
+                      hour: '2-digit',
+                      minute: '2-digit'
                     })}
                   </span>
                 </div>
-                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-                  {getStatusBadge(order.orderStatus || order.status)}
-                  {order.paymentStatus && getPaymentStatusBadge(order.paymentStatus)}
+                <div className="order-status-badges">
+                  {getPaymentStatusBadge(order.paymentStatus || 'pending')}
                 </div>
               </div>
+
+              {/* Payment Details */}
+              {order.paymentMethod && (
+                <div className="order-payment-info">
+                  <span className="payment-label">Payment Method:</span>
+                  <span className="payment-value">{order.paymentMethod}</span>
+                </div>
+              )}
 
               <div className="order-items">
                 {order.items?.map((item, idx) => (

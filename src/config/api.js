@@ -81,7 +81,7 @@ export const API_ENDPOINTS = {
   AUTH_LOGOUT: '/auth/logout',
 
   // Onboarding
-  ONBOARDING: '/onboarding',
+  ONBOARDING: '/onboarding/submit',
 
   // Sorting Hat
   SORTING_HAT_STATS: '/sorting-hat/stats',
@@ -99,9 +99,9 @@ export const API_ENDPOINTS = {
   // Merchandise
   MERCH_GET_ALL: '/merch',
   MERCH_GET_BY_ID: '/merch/:id', // Replace :id with actual merch ID
-  MERCH_ADD: '/merch', // Admin only
-  MERCH_UPDATE_STOCK: '/merch/:id/stock', // Admin only
-  MERCH_DELETE: '/merch/:id', // Admin only
+  MERCH_ADD: '/paneermoms/merch', // Admin only
+  MERCH_UPDATE_STOCK: '/paneermoms/merch/:id/stock', // Admin only
+  MERCH_DELETE: '/paneermoms/merch/:id', // Admin only
 
   // Orders (Merchandise)
   ORDERS_CREATE: '/orders',

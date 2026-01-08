@@ -1,334 +1,128 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { API_ENDPOINTS, authenticatedFetch, API_BASE_URL } from '../../config/api';
+import { API_BASE_URL } from '../../config/api';
 
 /**
  * Auth handler page
  * 
  * This page handles the OAuth callback from the backend.
- * The backend should redirect here after successful Google authentication.
+ * The backend redirects here after successful Google authentication.
+ * 
+ * Flow:
+ * 1. Extract token from URL query params
+ * 2. Store token in localStorage
+ * 3. Call GET /auth/me to fetch user profile
+ * 4. Check isOnboardingComplete flag and redirect accordingly:
+ *    - false → /signup/onboarding
+ *    - true but no house → /signup/sorting
+ *    - true with house → /dashboard
  */
-
-// Emergency error boundary to catch render crashes
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, error: null, errorInfo: null };
-  }
-
-  static getDerivedStateFromError(error) {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, errorInfo) {
-    console.error('🚨 React Error Boundary caught:', error, errorInfo);
-    this.setState({ error, errorInfo });
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div style={{ padding: '40px 20px', maxWidth: '600px', margin: '0 auto', backgroundColor: 'white', minHeight: '100vh' }}>
-          <h1 style={{ color: '#dc3545' }}>⚠️ Something Crashed</h1>
-          <p>The page encountered an error. Details:</p>
-          <pre style={{ backgroundColor: '#f5f5f5', padding: '12px', borderRadius: '4px', fontSize: '12px', overflow: 'auto' }}>
-            {this.state.error && this.state.error.toString()}
-            {this.state.errorInfo && this.state.errorInfo.componentStack}
-          </pre>
-          <button onClick={() => window.location.href = '/login'} style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
-            Go to Login
-          </button>
-        </div>
-      );
-    }
-
-    return this.props.children;
-  }
-}
 
 function Auth() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [message, setMessage] = useState("Processing authentication...");
-  const [error, setError] = useState(null);
-  const [debugInfo, setDebugInfo] = useState(null);
-  const [authSteps, setAuthSteps] = useState([]);
+  const [status, setStatus] = useState('Processing authentication...');
 
   useEffect(() => {
-    const run = async () => {
-      const steps = [];
+    const handleAuth = async () => {
       try {
-        steps.push('1. Starting auth process');
-        setAuthSteps([...steps]);
-        
-        // Check if we have query params with token
+        // Step 1: Extract token from URL query params
         const searchParams = new URLSearchParams(location.search);
-        const tokenFromQuery = searchParams.get('token');
-        const redirectOrigin = searchParams.get('origin'); // Optional: origin parameter from URL
+        const token = searchParams.get('token');
         
-        steps.push(`2. Token in URL: ${tokenFromQuery ? 'YES' : 'NO'}`);
-        setAuthSteps([...steps]);
-        
-        if (!tokenFromQuery) {
-          throw new Error("No authentication token found. Please sign in again.");
+        if (!token) {
+          setStatus('No token found. Redirecting to login...');
+          setTimeout(() => navigate('/login'), 2000);
+          return;
         }
 
-        console.log('✅ Token received from query params');
-        console.log('🔍 Current hostname:', window.location.hostname);
-        console.log('🔍 URL redirect origin:', redirectOrigin);
-        
-        steps.push(`3. Current hostname: ${window.location.hostname}`);
-        setAuthSteps([...steps]);
-        
-        // Check sessionStorage for stored origin (set before OAuth redirect)
-        const storedOrigin = sessionStorage.getItem('auth_origin');
-        console.log('🔍 Stored origin from sessionStorage:', storedOrigin);
-        
-        steps.push(`4. SessionStorage origin: ${storedOrigin || 'NONE'}`);
-        setAuthSteps([...steps]);
-        
-        // Detect if we're on production or should redirect to localhost
-        const currentHostname = window.location.hostname;
-        const isProduction = currentHostname === 'parsec.iitdh.ac.in';
-        
-        // Determine target origin for redirect (priority order)
-        let targetOrigin;
-        if (redirectOrigin) {
-          // 1. Use explicit origin if provided in URL parameter
-          targetOrigin = redirectOrigin;
-          console.log('✅ Using URL parameter origin');
-          steps.push('5. Using URL parameter origin');
-        } else if (storedOrigin && storedOrigin !== 'null') {
-          // 2. Use stored origin from sessionStorage (where login was initiated)
-          targetOrigin = storedOrigin;
-          console.log('✅ Using stored sessionStorage origin');
-          steps.push('5. Using sessionStorage origin');
-        } else {
-          // 3. Default behavior: if on production, stay on production, otherwise go to localhost
-          if (isProduction) {
-            targetOrigin = window.location.origin;
-            console.log('✅ On production, staying on production');
-            steps.push('5. On production, staying here');
-          } else {
-            targetOrigin = 'http://localhost:5173';
-            console.log('✅ Not on production, defaulting to localhost');
-            steps.push('5. Defaulting to localhost');
-          }
-        }
-        
-        console.log('🎯 Final target origin for redirect:', targetOrigin);
-        steps.push(`6. Target origin: ${targetOrigin}`);
-        setAuthSteps([...steps]);
-        
-        // Clear stored origin after reading it
-        sessionStorage.removeItem('auth_origin');
+        console.log('✅ Token received from URL');
 
-        // Store token in localStorage
-        localStorage.setItem("jwt_token", tokenFromQuery);
-        steps.push('7. Token stored in localStorage');
-        setAuthSteps([...steps]);
+        // Step 2: Store token in localStorage
+        localStorage.setItem('jwt_token', token);
+        console.log('✅ Token stored in localStorage');
+
+        // Step 3: Fetch user profile from /auth/me
+        setStatus('Fetching your profile...');
+        console.log('📡 Calling GET /auth/me');
         
-        setMessage("Verifying authentication...");
-
-        // Verify token with backend
-        steps.push('8. Calling /auth/me API...');
-        setAuthSteps([...steps]);
-        
-        const { response: resp, data } = await authenticatedFetch(
-          API_ENDPOINTS.AUTH_ME,
-          { method: "GET" },
-          tokenFromQuery
-        );
-
-        console.log('📡 Auth response status:', resp.status);
-        console.log('📡 Auth response data:', data);
-        
-        steps.push(`9. API response: ${resp.status} ${resp.ok ? 'OK' : 'FAILED'}`);
-        setAuthSteps([...steps]);
-        console.log('📡 Response ok:', resp.ok);
-        console.log('📡 Full response data:', JSON.stringify(data, null, 2));
-
-        if (!resp.ok) {
-          // If fetch completely fails (network/CORS), provide helpful error
-          if (!resp.status) {
-            throw new Error(`Network error: Cannot reach backend at ${API_BASE_URL}`);
-          }
-          const errorMsg = data?.message || data?.error || JSON.stringify(data);
-          throw new Error(`Auth verification failed (${resp.status}): ${errorMsg}`);
-        }
-
-        console.log('✅ Authentication verified successfully');
-        steps.push('10. Authentication verified ✅');
-        setAuthSteps([...steps]);
-        
-        // Accept both response formats: { status: 'success' } OR { success: true }
-        const successFlag =
-          data.status === "success" ||
-          data.success === true;
-
-        if (!successFlag) {
-          const errorDetail = data?.message || data?.error || `Unexpected response format`;
-          throw new Error(`Backend returned non-success status: ${errorDetail}`);
-        }
-
-        setMessage("Authentication successful — redirecting...");
-        steps.push('11. Preparing redirect...');
-        setAuthSteps([...steps]);
-
-        // Wait a moment before redirecting
-        await new Promise(resolve => setTimeout(resolve, 800));
-
-        // Redirect to target origin + /dashboard
-        const dashboardUrl = `${targetOrigin}/dashboard`;
-        console.log('🚀 Redirecting to:', dashboardUrl);
-        steps.push(`12. Redirecting to: ${dashboardUrl}`);
-        setAuthSteps([...steps]);
-        
-        // Check if we need to redirect to different origin
-        if (targetOrigin !== window.location.origin) {
-          // Cross-origin redirect - use window.location
-          steps.push('13. Cross-origin redirect via window.location');
-          setAuthSteps([...steps]);
-          window.location.href = dashboardUrl;
-        } else {
-          // Same origin - use React Router
-          steps.push('13. Same-origin redirect via React Router');
-          setAuthSteps([...steps]);
-          const pendingEventId = localStorage.getItem('pendingEventRegistration');
-          if (pendingEventId) {
-            console.log('🎟️ Redirecting to event registration page');
-            navigate("/dashboard/events", { replace: true });
-          } else {
-            navigate("/dashboard", { replace: true });
-          }
-        }
-      } catch (err) {
-        console.error("❌ Auth processing error:", err);
-        console.error("❌ Error stack:", err.stack);
-        console.error("❌ API Base URL:", API_BASE_URL);
-        setError(err.message);
-        setMessage(`Authentication failed: ${err.message}`);
-        setDebugInfo({
-          apiBaseUrl: API_BASE_URL,
-          errorMessage: err.message,
-          errorStack: err.stack,
-          environment: process.env.NODE_ENV
+        const response = await fetch(`${API_BASE_URL}/auth/me`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          },
+          credentials: 'include'
         });
+
+        if (!response.ok) {
+          throw new Error(`Auth verification failed: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('📡 /auth/me response:', data);
+
+        if (data.status !== 'success') {
+          throw new Error('Backend returned non-success status');
+        }
+
+        const user = data.data?.user || data.user;
+        console.log('👤 User data:', user);
+        console.log('📋 isOnboardingComplete:', user.isOnboardingComplete);
+        console.log('🏰 house:', user.house);
+
+        // Step 4: Check onboarding status and redirect accordingly
+        if (user.isOnboardingComplete === false || !user.isOnboardingComplete) {
+          // User hasn't completed onboarding
+          console.log('⚠️ Onboarding incomplete - redirecting to /signup/onboarding');
+          setStatus('Redirecting to onboarding...');
+          setTimeout(() => navigate('/signup/onboarding'), 800);
+        } else if (!user.house) {
+          // User completed onboarding but hasn't been sorted
+          console.log('⚠️ No house assigned - redirecting to /signup/sorting');
+          setStatus('Redirecting to sorting...');
+          setTimeout(() => navigate('/signup/sorting'), 800);
+        } else {
+          // User is fully set up
+          console.log('✅ Profile complete - redirecting to /dashboard');
+          setStatus('Welcome back! Redirecting to dashboard...');
+          setTimeout(() => navigate('/dashboard'), 800);
+        }
+
+      } catch (error) {
+        console.error('❌ Auth error:', error);
+        setStatus('Authentication failed. Please try again.');
+        localStorage.removeItem('jwt_token');
+        setTimeout(() => navigate('/login'), 2000);
       }
     };
 
-    run();
-  }, [navigate, location.search]);
+    handleAuth();
+  }, [location.search, navigate]);
 
   return (
-    <div style={{ 
-      padding: '40px 20px', 
-      maxWidth: '600px', 
-      margin: '0 auto',
-      textAlign: 'center',
-      backgroundColor: 'white',
-      minHeight: '100vh'
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: '100vh',
+      backgroundColor: '#0a0a0a',
+      color: '#ffffff',
+      fontFamily: 'Arial, sans-serif'
     }}>
-      <h2 style={{ marginBottom: '16px' }}>
-        {error ? '❌ Authentication Error' : '🔐 Processing Sign-in'}
-      </h2>
-      <p style={{ 
-        fontSize: '16px', 
-        color: error ? '#dc3545' : '#666',
-        marginBottom: '24px'
-      }}>
-        {message}
+      <div style={{
+        width: '50px',
+        height: '50px',
+        border: '4px solid #333',
+        borderTop: '4px solid #ffd700',
+        borderRadius: '50%',
+        animation: 'spin 1s linear infinite',
+        marginBottom: '20px'
+      }} />
+      <p style={{ fontSize: '18px', textAlign: 'center', padding: '0 20px' }}>
+        {status}
       </p>
-      
-      {error && (
-        <div style={{
-          padding: '16px',
-          backgroundColor: '#fee',
-          border: '1px solid #dc3545',
-          borderRadius: '8px',
-          marginTop: '20px',
-          textAlign: 'left'
-        }}>
-          <strong>Error Details:</strong>
-          <pre style={{ 
-            fontSize: '12px', 
-            whiteSpace: 'pre-wrap',
-            marginTop: '8px'
-          }}>
-            {error}
-          </pre>
-          
-          {debugInfo && (
-            <details style={{ marginTop: '12px' }}>
-              <summary style={{ cursor: 'pointer', fontSize: '12px', opacity: 0.8 }}>
-                🔧 Debug Info (click to expand)
-              </summary>
-              <pre style={{ 
-                fontSize: '11px', 
-                whiteSpace: 'pre-wrap',
-                marginTop: '8px',
-                backgroundColor: '#f5f5f5',
-                padding: '8px',
-                borderRadius: '4px',
-                maxHeight: '200px',
-                overflow: 'auto'
-              }}>
-                {JSON.stringify(debugInfo, null, 2)}
-              </pre>
-            </details>
-          )}
-          
-          <button
-            onClick={() => navigate('/login')}
-            style={{
-              marginTop: '16px',
-              padding: '8px 16px',
-              backgroundColor: '#007bff',
-              color: 'white',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}
-          >
-            Try Again
-          </button>
-        </div>
-      )}
-      
-      {!error && (
-        <div style={{ marginTop: '20px' }}>
-          <div className="spinner" style={{
-            border: '4px solid #f3f3f3',
-            borderTop: '4px solid #007bff',
-            borderRadius: '50%',
-            width: '40px',
-            height: '40px',
-            animation: 'spin 1s linear infinite',
-            margin: '0 auto'
-          }} />
-          
-          {/* Debug Steps */}
-          {authSteps.length > 0 && (
-            <details open style={{ marginTop: '24px', textAlign: 'left', fontSize: '12px' }}>
-              <summary style={{ cursor: 'pointer', fontWeight: 'bold', marginBottom: '8px' }}>
-                🔍 Authentication Steps
-              </summary>
-              <ol style={{ 
-                backgroundColor: '#f5f5f5', 
-                padding: '12px 12px 12px 28px',
-                borderRadius: '4px',
-                fontFamily: 'monospace',
-                lineHeight: '1.8'
-              }}>
-                {authSteps.map((step, index) => (
-                  <li key={index}>{step}</li>
-                ))}
-              </ol>
-            </details>
-          )}
-        </div>
-      )}
-      
       <style>{`
         @keyframes spin {
           0% { transform: rotate(0deg); }
@@ -339,10 +133,4 @@ function Auth() {
   );
 }
 
-export default function AuthWithErrorBoundary() {
-  return (
-    <ErrorBoundary>
-      <Auth />
-    </ErrorBoundary>
-  );
-}
+export default Auth;

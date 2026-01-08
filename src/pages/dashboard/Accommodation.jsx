@@ -7,11 +7,11 @@ import { API_ENDPOINTS, authenticatedFetch, getAuthToken, API_BASE_URL } from '.
 const ACCOMMODATION_CONFIG = {
   pricePerNight: 700,
   eventDates: {
-    start: '2026-01-24',
+    start: '2026-01-23',
     end: '2026-01-27'
   },
-  availableDates: ['2026-01-24', '2026-01-25', '2026-01-26', '2026-01-27'],
-  minDate: '2026-01-24',
+  availableDates: ['2026-01-23', '2026-01-24', '2026-01-25', '2026-01-26', '2026-01-27'],
+  minDate: '2026-01-23',
   maxDate: '2026-01-27'
 };
 
@@ -53,14 +53,14 @@ const accommodationAPI = {
   },
 
   // Create accommodation booking
-  createBooking: async (checkInDate, checkOutDate, gender) => {
+  createBooking: async (checkInDate, checkOutDate) => {
     try {
       const token = getAuthToken();
       const { response, data } = await authenticatedFetch(
         API_ENDPOINTS.ACCOMMODATION_CREATE,
         {
           method: 'POST',
-          body: JSON.stringify({ checkInDate, checkOutDate, gender })
+          body: JSON.stringify({ checkInDate, checkOutDate })
         },
         token
       );
@@ -124,7 +124,6 @@ function Accommodation() {
   const [bookingDetails, setBookingDetails] = useState({
     checkInDate: '',
     checkOutDate: '',
-    gender: '',
     utr: '',
     paymentScreenshot: null
   });
@@ -175,7 +174,6 @@ function Accommodation() {
     setBookingDetails({
       checkInDate: '',
       checkOutDate: '',
-      gender: '',
       utr: '',
       paymentScreenshot: null
     });
@@ -186,10 +184,10 @@ function Accommodation() {
   const handleNextStep = async () => {
     if (modalStep === 1) {
       // Validate Step 1 fields
-      const { checkInDate, checkOutDate, gender } = bookingDetails;
+      const { checkInDate, checkOutDate } = bookingDetails;
       
-      if (!checkInDate || !checkOutDate || !gender) {
-        setError('Please fill all required fields');
+      if (!checkInDate || !checkOutDate) {
+        setError('Please select check-in and check-out dates');
         return;
       }
 
@@ -206,8 +204,7 @@ function Accommodation() {
 
         const booking = await accommodationAPI.createBooking(
           checkInDate,
-          checkOutDate,
-          gender
+          checkOutDate
         );
 
         // Store booking data for payment step
@@ -215,8 +212,8 @@ function Accommodation() {
           bookingId: booking._id,
           totalPrice: booking.totalPrice,
           numberOfNights: booking.numberOfNights,
-          qrCodeUrl: 'https://via.placeholder.com/300x300?text=Payment+QR+Code', // Replace with actual QR
-          upiId: 'parsec@iitdh'
+          qrCodeUrl: '/ViditQRCode.jpeg',
+          upiId: 'viditparikh@sbi'
         });
 
         setModalStep(2);
@@ -293,11 +290,11 @@ function Accommodation() {
         {/* Header */}
         <div className="accommodation-header">
           <div className="title-wrapper">
-            <div className="wand-divider left"></div>
+            {/* <div className="wand-divider left"></div> */}
             <h1 className="page-title">
               Accommodation
             </h1>
-            <div className="wand-divider right"></div>
+            {/* <div className="wand-divider right"></div> */}
           </div>
           <p className="page-subtitle">
             Book your stay at IIT Dharwad for Parsec 2026
@@ -324,7 +321,7 @@ function Accommodation() {
 
             <div className="booking-cta">
               <button 
-                className="book-btn primary-btn"
+                className="leather-span book-btn primary-btn"
                 onClick={openBookingModal}
               >
                 Book Accommodation
@@ -333,7 +330,7 @@ function Accommodation() {
           </div>
 
           <div className="accommodation-note">
-            <p><strong>Event Dates:</strong> 24th - 27th January 2026</p>
+            <p><strong>Event Dates:</strong> 23rd - 27th January 2026</p>
             <p><strong>Important:</strong> Booking for date X covers 12:00 PM on date X till 10:00 AM on date X+1</p>
             <p className="portal-info">
               Accommodation is available on a first-come, first-serve basis. Limited slots available.
@@ -430,19 +427,6 @@ function Accommodation() {
                     />
                   </div>
 
-                  <div className="form-group">
-                    <label>Gender *</label>
-                    <select
-                      value={bookingDetails.gender}
-                      onChange={(e) => setBookingDetails({...bookingDetails, gender: e.target.value})}
-                      required
-                    >
-                      <option value="">Select Gender</option>
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
-                    </select>
-                  </div>
-
                   {bookingDetails.checkInDate && bookingDetails.checkOutDate && (
                     <div className="booking-summary">
                       <p><strong>Number of Nights:</strong> {calculateBooking().nights}</p>
@@ -456,9 +440,9 @@ function Accommodation() {
                 </form>
 
                 <div className="accommodation-modal-actions">
-                  <button className="btn btn-secondary" onClick={closeModal}>Cancel</button>
+                  <button className="leather-span btn btn-secondary" onClick={closeModal}>Cancel</button>
                   <button 
-                    className="btn btn-primary" 
+                    className="leather-span btn btn-primary" 
                     onClick={handleNextStep}
                     disabled={submitting}
                   >
@@ -527,17 +511,17 @@ function Accommodation() {
                   )}
                 </div>
 
-                <div className="form-note" style={{ backgroundColor: '#fff3cd', border: '1px solid #ffc107', padding: '12px', borderRadius: '4px', marginTop: '16px' }}>
-                  <p style={{ margin: 0, fontSize: '13px', lineHeight: '1.6' }}>
+                <div className="form-note payment-note">
+                  <p>
                     <strong>ℹ️ Note:</strong> Your payment will be manually verified by our admin team. 
                     You will receive a confirmation email once verified. Please ensure the screenshot is clear and shows the transaction details.
                   </p>
                 </div>
 
                 <div className="accommodation-modal-actions">
-                  <button className="btn btn-secondary" onClick={handlePrevStep} disabled={submitting}>Back</button>
+                  <button className="leather-span btn btn-secondary" onClick={handlePrevStep} disabled={submitting}>Back</button>
                   <button 
-                    className="btn btn-primary" 
+                    className="leather-span btn btn-primary" 
                     onClick={handleSubmitPayment}
                     disabled={!bookingDetails.utr || !bookingDetails.paymentScreenshot || submitting}
                   >
