@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { API_ENDPOINTS, authenticatedFetch } from "../../config/api";
-import Particles from "../../components/Particles";
 import "./Orders.css";
 
 function Orders() {
@@ -44,6 +43,7 @@ function Orders() {
     fetchOrders();
   }, [fetchOrders]);
 
+  // eslint-disable-next-line no-unused-vars
   const getStatusBadge = (status) => {
     const statusStyles = {
       pending: { bg: "#ffc107", text: "#000" },

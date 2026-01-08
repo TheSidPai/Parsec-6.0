@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Outlet, Link, useNavigate } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import "./DashboardLayout.css";
 // import HouseSwitcher from "../components/HouseSwitcher"; // Commented out - testing feature only
 import { buildApiUrl, API_ENDPOINTS } from "../config/api";
@@ -15,7 +15,6 @@ import {
 import { GiCastle } from "react-icons/gi";
 
 function DashboardLayout() {
-  const navigate = useNavigate();
 
   // State setters only — values are not needed in this layout
   const [, setUserHouse] = useState(null);

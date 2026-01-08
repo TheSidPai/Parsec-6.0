@@ -7,7 +7,7 @@ function AdminPurchase() {
   const [items, setItems] = useState([]);
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingItem, setEditingItem] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
   const [formData, setFormData] = useState({
     name: '',
     description: '',
