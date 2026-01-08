@@ -227,15 +227,15 @@ const SortingHat = () => {
             </div>
             {houseData && (
               <div className="house-info-grid">
-                <div className="info-item">
-                  <div className="info-icon">👥</div>
-                  <div className="info-value">{houseData.count}</div>
-                  <div className="info-label">students in your house</div>
+                <div className="sorting-info-item">
+                  <div className="sorting-info-icon">👥</div>
+                  <div className="sorting-info-value">{houseData.count}</div>
+                  <div className="sorting-info-label">students in your house</div>
                 </div>
-                <div className="info-item">
-                  <div className="info-icon">⭐</div>
-                  <div className="info-value">{houseData.points}</div>
-                  <div className="info-label">house points</div>
+                <div className="sorting-info-item">
+                  <div className="sorting-info-icon">⭐</div>
+                  <div className="sorting-info-value">{houseData.points}</div>
+                  <div className="sorting-info-label">house points</div>
                 </div>
               </div>
             )}

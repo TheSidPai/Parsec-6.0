@@ -9,7 +9,6 @@ import {
   FaShoppingBag, 
   FaBed, 
   FaTrophy, 
-  FaPhoneAlt,
   FaSignOutAlt,
   FaStore
 } from "react-icons/fa";
@@ -51,7 +50,10 @@ function DashboardLayout() {
         const data = await response.json();
         console.log("📦 API Response Data:", data);
 
-        if (data.status === "success" && data.data?.house) {
+        // Handle both {success: true} and {status: "success"} response formats
+        const isSuccess = data.success === true || data.status === "success";
+        
+        if (isSuccess && data.data?.house) {
           const house =
             typeof data.data.house === "string"
               ? data.data.house.toLowerCase()
@@ -70,6 +72,7 @@ function DashboardLayout() {
           console.log("🎨 Applied", house, "theme colors");
         } else {
           console.warn("⚠️ No house found in response:", data);
+          console.log("Available keys in data.data:", data.data ? Object.keys(data.data) : "No data.data");
           applyTheme("hogwarts");
         }
       } catch (error) {
