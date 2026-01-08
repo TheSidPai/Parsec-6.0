@@ -439,5 +439,29 @@
         "photo": "https://parsec-iitdh.github.io/assets/teams/ApratimDas.webp",
         "linkedin": "https://www.linkedin.com/in/apratim-das-82a043316?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
         "instagram": "https://www.instagram.com/apratimdasofficial"
+    },
+    {
+        "name": "Tangirala Dhanunjaya Ra",
+        "team": "Marketing Team",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/TangiralaDhanunjayaRa.webp",
+        "linkedin": "http://www.linkedin.com/in/dhanunjaya-rao-tangirala-571a56322",
+        "instagram": "https://www.instagram.com/@dj_002247"
+    },
+    {
+        "name": "Aditya Prabhakar",
+        "team": "Marketing Team",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/AdityaPrabhakar.webp",
+        "linkedin": "https://www.linkedin.com/in/aditya-prabhakar-13aa81304",
+        "instagram": "https://www.instagram.com/"
+    },
+    {
+        "name": "L Shreya",
+        "team": "Events Team",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/LShreya.webp",
+        "linkedin": "https://www.linkedin.com/in/shreya-l-251823326",
+        "instagram": "https://www.instagram.com/real_h00man"
     }
 ]

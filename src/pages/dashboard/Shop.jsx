@@ -241,7 +241,10 @@ function Shop() {
                 {/* Content */}
                 <div className="shop-card-content">
                   <h3 className="shop-card-title">{item.name}</h3>
-                  <p className="shop-card-description">{item.description}</p>
+                  <div 
+                    className="shop-card-description" 
+                    dangerouslySetInnerHTML={{ __html: item.description }}
+                  />
 
                   {/* Sizes */}
                   {item.sizesAvailable && item.sizesAvailable.length > 0 && (

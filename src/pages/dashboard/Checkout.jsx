@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API_ENDPOINTS, authenticatedFetch } from '../../config/api';
-import paymentScanner from '../../assets/images/payment_scanner.jpeg';
+// Try direct path with require or use public folder
+// import paymentScanner from '../../assets/images/payment_scanner.jpeg';
 import './Checkout.css';
 
 function Checkout() {
@@ -299,9 +300,14 @@ function Checkout() {
             <h3>Scan to Pay:</h3>
             <div className="payment-qr-wrapper">
               <img 
-                src={paymentScanner} 
+                src={require('../../assets/images/payment_scanner.jpeg')}
                 alt="Payment QR Code" 
                 className="payment-qr-code"
+                onError={(e) => {
+                  console.error("Failed to load QR code image");
+                  e.target.style.display = 'none';
+                }}
+                onLoad={() => console.log("QR code loaded successfully")}
               />
             </div>
             <p className="payment-upi-id">

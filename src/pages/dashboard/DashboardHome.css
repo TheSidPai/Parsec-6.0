@@ -1113,15 +1113,6 @@
   font-size: clamp(3.5rem, 12vw, 6rem);
   letter-spacing: 0.3em;
   color: #f0f4ff;
-  text-shadow:
-    0 0 10px rgba(255, 255, 255, 1),
-    0 0 20px rgba(199, 210, 254, 1),
-    0 0 40px rgba(147, 197, 253, 0.9),
-    0 0 60px rgba(99, 102, 241, 0.7),
-    0 0 90px rgba(79, 70, 229, 0.5),
-    0 0 120px rgba(67, 56, 202, 0.4),
-    0 5px 15px rgba(0, 0, 0, 0.8),
-    0 10px 30px rgba(0, 0, 0, 0.6);
   text-transform: uppercase;
   font-style: normal;
   font-weight: 400;
@@ -1130,28 +1121,65 @@
   z-index: 10002;
 }
 
+/* House-specific Revelio colors */
+[data-house="gryffindor"] .spell-text.classic {
+  color: #ffebcc;
+  text-shadow:
+    0 0 10px rgba(255, 50, 50, 1),
+    0 0 20px rgba(255, 80, 50, 1),
+    0 0 40px rgba(220, 20, 0, 0.9),
+    0 0 60px rgba(180, 0, 0, 0.7),
+    0 0 90px rgba(140, 0, 0, 0.5),
+    0 0 120px rgba(100, 0, 0, 0.4),
+    0 5px 15px rgba(0, 0, 0, 0.8),
+    0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+[data-house="slytherin"] .spell-text.classic {
+  color: #e8f5e8;
+  text-shadow:
+    0 0 10px rgba(50, 255, 50, 1),
+    0 0 20px rgba(46, 204, 113, 1),
+    0 0 40px rgba(39, 174, 96, 0.9),
+    0 0 60px rgba(34, 153, 84, 0.7),
+    0 0 90px rgba(30, 130, 76, 0.5),
+    0 0 120px rgba(26, 111, 66, 0.4),
+    0 5px 15px rgba(0, 0, 0, 0.8),
+    0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+[data-house="ravenclaw"] .spell-text.classic {
+  color: #f0f4ff;
+  text-shadow:
+    0 0 10px rgba(100, 150, 255, 1),
+    0 0 20px rgba(74, 144, 226, 1),
+    0 0 40px rgba(52, 152, 219, 0.9),
+    0 0 60px rgba(41, 128, 185, 0.7),
+    0 0 90px rgba(33, 97, 140, 0.5),
+    0 0 120px rgba(25, 70, 100, 0.4),
+    0 5px 15px rgba(0, 0, 0, 0.8),
+    0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+[data-house="hufflepuff"] .spell-text.classic {
+  color: #fffae6;
+  text-shadow:
+    0 0 10px rgba(255, 220, 50, 1),
+    0 0 20px rgba(255, 215, 0, 1),
+    0 0 40px rgba(241, 196, 15, 0.9),
+    0 0 60px rgba(212, 172, 13, 0.7),
+    0 0 90px rgba(183, 149, 11, 0.5),
+    0 0 120px rgba(154, 125, 10, 0.4),
+    0 5px 15px rgba(0, 0, 0, 0.8),
+    0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
 @keyframes spellGlow {
   0%, 100% {
-    text-shadow:
-      0 0 10px rgba(255, 255, 255, 1),
-      0 0 20px rgba(199, 210, 254, 1),
-      0 0 40px rgba(147, 197, 253, 0.9),
-      0 0 60px rgba(99, 102, 241, 0.7),
-      0 0 90px rgba(79, 70, 229, 0.5),
-      0 0 120px rgba(67, 56, 202, 0.4),
-      0 5px 15px rgba(0, 0, 0, 0.8),
-      0 10px 30px rgba(0, 0, 0, 0.6);
+    filter: brightness(1);
   }
   50% {
-    text-shadow:
-      0 0 20px rgba(255, 255, 255, 1),
-      0 0 40px rgba(199, 210, 254, 1),
-      0 0 60px rgba(147, 197, 253, 1),
-      0 0 90px rgba(99, 102, 241, 0.9),
-      0 0 120px rgba(79, 70, 229, 0.7),
-      0 0 150px rgba(67, 56, 202, 0.6),
-      0 5px 15px rgba(0, 0, 0, 0.8),
-      0 10px 30px rgba(0, 0, 0, 0.6);
+    filter: brightness(1.3);
   }
 }
 
