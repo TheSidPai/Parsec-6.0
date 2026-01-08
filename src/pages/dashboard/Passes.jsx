@@ -8,16 +8,29 @@ import './Passes.css';
 const eventPassesInfo = [
   {
     type: 'event-pass1',
-    name: 'Event Pass - Day 1',
-    description: 'Access to all Day 1 events (24 Jan 2026). Includes workshops, talks, stalls, and competitions.',
-    price: 299,
+    name: 'DAY PASS-1',
+    description: `
+      <ul style="list-style: none; padding-left: 0; margin: 0;">
+        <li>• Unrestricted access to all daytime events</li>
+        <li>• Entry to fun, recreational activities, and games</li>
+        <li>• Access to on-campus events and experiences</li>
+      </ul>
+    `,
+    price: 300,
     features: ['All Day 1 Events', 'Workshop Access', 'Networking Sessions', 'Food & Refreshments']
   },
   {
     type: 'event-pass2',
-    name: 'Event Pass - Day 2',
-    description: 'Access to all Day 2 events (25 Jan 2026). Includes main stage performances and closing ceremony.',
-    price: 349,
+    name: 'Day Pass-2',
+    description: `
+      <ul style="list-style: none; padding-left: 0; margin: 0;">
+        <li>• Unrestricted access to all daytime events</li>
+        <li>• Entry to fun, recreational activities, and games</li>
+        <li>• Access to on-campus events and experiences</li>
+        <li style="font-weight: bold; margin-top: 8px;">• Exclusive access to Cultural Night & Pronites, including live musical performances and guest artists</li>
+      </ul>
+    `,
+    price: 500,
     features: ['All Day 2 Events', 'Main Stage Shows', 'Closing Ceremony', 'Food & Refreshments']
   },
   {
@@ -123,7 +136,10 @@ function Passes() {
             
             <div className="pass-header">
               <h3 className="pass-name">{pass.name}</h3>
-              <p className="pass-description">{pass.description}</p>
+              <div 
+                className="pass-description" 
+                dangerouslySetInnerHTML={{ __html: pass.description }}
+              />
             </div>
 
             <div className="pass-price">

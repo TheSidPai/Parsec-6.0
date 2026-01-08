@@ -317,7 +317,7 @@
     "venue": "IIT Dharwad",
     "team": { "min": 1, "max": 1, "individualAllowed": true },
     "registrationFee": "Rs. 599 (tentative)",
-    "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLScWQtAvl8GCDY_2SiORe6Z4F8SHtnPb-LUwE324hot0EBKWcw/viewform?usp=dialog",
+    "registrationLink": "https://unstop.com/p/gringotts-parsec-60-indian-institute-of-technology-iit-dharwad-1612292?lb=qkhVYy9&utm_medium=Share&utm_source=outrepar7281&utm_campaign=Workshops",
     "date": "Jan 24-25, 2026",
     "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/gringotts_logo.png",
     "description": "Finance workshop exploring quantitative finance and algo trading.",
@@ -331,34 +331,8 @@
     "rules": {
       "others": [
         "Full attendance required for certificate.",
-        "Registrations limited to 125 participants."
-      ]
-    }
-  },
-  {
-    "id": "design-playground",
-    "title": "Design Playground",
-    "category": "Workshop",
-    "mode": "offline",
-    "venue": "IIT Dharwad",
-    "team": { "min": 1, "max": 1, "individualAllowed": true },
-    "registrationFee": "Free",
-    "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLSeOlGd-MfLyrQttudYFfS97Pn9mByCDBRsUCpOD5_jEc1a2MQ/viewform?usp=dialog",
-    "date": "Jan 24-25, 2026",
-    "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/design_logo.png",
-    "description": "Gamified design thinking workshop with interactive activities, quick challenges, and team tasks.",
-    "timeline": [
-      { "title": "Day 1", "date": "2026-01-24", "time": "9:00 AM - 12:00 PM" },
-      { "title": "Day 2", "date": "2026-01-25", "time": "9:00 AM - 12:00 PM" }
-    ],
-    "organizers": [
-      { "name": "Rajat Gupta", "email": "outreach.parsec@iitdh.ac.in" }
-    ],
-    "rules": {
-      "others": [
-        "Full attendance required for certificate.",
-        "Materials provided on-site.",
-        "Team formation (if applicable) during the workshop."
+        "Registrations limited to 125 participants.",
+        "The workshop being conducted would be of advanced level. Hence basic knowledge of quantitative finance is a prerequisite."
       ]
     }
   },

@@ -1,7 +1,7 @@
 /* Accommodation Page Styles */
 .accommodation-page {
   min-height: 100vh;
-  /* background: #000000; */ /* Removed - conflicts with dashboard accommodation */
+  background: var(--background);
   position: relative;
 }
 
@@ -12,6 +12,6 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 0;
+  z-index: 1;
   pointer-events: none;
 }

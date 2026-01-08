@@ -51,25 +51,43 @@ function DashboardLayout() {
         const data = await response.json();
         console.log("📦 API Response Data:", data);
 
-        if (data.status === "success" && data.data?.house) {
-          const house =
-            typeof data.data.house === "string"
-              ? data.data.house.toLowerCase()
-              : data.data.house.name?.toLowerCase();
+        // Extract house from various possible response structures
+        let house = null;
+        let name = null;
 
-          const name =
-            typeof data.data.house === "string"
-              ? data.data.house
-              : data.data.house.name;
+        // Check for both 'success' and 'status' fields
+        if ((data.success === true || data.status === "success") && data.data) {
+          // Case 1: house is in data.data.house (object with name property)
+          if (data.data.house && typeof data.data.house === "object" && data.data.house.name) {
+            house = data.data.house.name.toLowerCase();
+            name = data.data.house.name;
+          }
+          // Case 2: house is a string directly in data.data.house
+          else if (data.data.house && typeof data.data.house === "string") {
+            house = data.data.house.toLowerCase();
+            name = data.data.house;
+          }
+          // Case 3: house name is in data.data.houseName
+          else if (data.data.houseName && typeof data.data.houseName === "string") {
+            house = data.data.houseName.toLowerCase();
+            name = data.data.houseName;
+          }
+          // Case 4: house is directly in data.data as a string
+          else if (typeof data.data === "string") {
+            house = data.data.toLowerCase();
+            name = data.data;
+          }
+        }
 
+        if (house) {
           console.log("✅ User house:", house, name);
           setUserHouse(house);
           setHouseName(name);
-
           applyTheme(house);
           console.log("🎨 Applied", house, "theme colors");
         } else {
           console.warn("⚠️ No house found in response:", data);
+          console.log("📋 Available keys in data.data:", data.data ? Object.keys(data.data) : "N/A");
           applyTheme("hogwarts");
         }
       } catch (error) {

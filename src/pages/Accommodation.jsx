@@ -24,12 +24,12 @@ function Accommodation() {
             theme.fontMain || "#ffffff",
             theme.fontMain || "#ffffff",
           ]}
-          particleCount={600}
+          particleCount={800}
           particleSpread={15}
-          speed={0.1}
-          particleBaseSize={80}
+          speed={0.15}
+          particleBaseSize={100}
           moveParticlesOnHover={false}
-          alphaParticles={false}
+          alphaParticles={true}
           disableRotation={false}
         />
       </div>
