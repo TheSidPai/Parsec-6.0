@@ -4,13 +4,41 @@
 /* ========== SORTING CEREMONY CONTAINER ========== */
 .sorting-container {
   min-height: 100vh;
-  background: #060814;
+  background: linear-gradient(rgba(10, 10, 15, 0.2), rgba(26, 26, 46, 0.3));
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 40px 20px;
   position: relative;
   overflow: hidden;
+}
+
+/* Blurred background image layer */
+.sorting-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../../../public/sorting_img/sorting-background.jpg') center/cover no-repeat;
+  background-attachment: fixed;
+  filter: blur(8px) brightness(0.7);
+  z-index: -1;
+}
+
+/* Subtle golden mystical overlay */
+.sorting-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 50% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+  animation: backgroundPulse 6s ease-in-out infinite;
 }
 
 /* Subtle golden glow orbs */
@@ -129,6 +157,15 @@
   }
 }
 
+@keyframes backgroundPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
 /* ========== SORTING CARD ========== */
 .sorting-card {
   position: relative;
@@ -167,6 +204,15 @@
   margin-bottom: 20px;
   letter-spacing: 0.05em;
   text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.sorting-title svg {
+  font-size: 2.2rem;
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
 }
 
 .sorting-subtitle {
@@ -186,7 +232,8 @@
 .sorting-hat-icon {
   font-size: 6rem;
   display: inline-block;
-  filter: drop-shadow(0 10px 25px rgba(212, 175, 55, 0.3));
+  color: #D4AF37;
+  filter: drop-shadow(0 10px 25px rgba(212, 175, 55, 0.4));
 }
 
 .hat-container.pulsing .sorting-hat-icon {
@@ -195,6 +242,11 @@
 
 .sorting-hat-icon.spinning {
   animation: spin-hat 4s linear infinite, pulse-hat 2.5s ease-in-out infinite;
+}
+
+@keyframes spin-hat {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* ========== SORTING MESSAGES ========== */
