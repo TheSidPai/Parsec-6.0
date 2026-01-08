@@ -50,14 +50,8 @@ function DashboardLayout() {
         const data = await response.json();
         console.log("📦 API Response Data:", data);
 
-        // Handle both {success: true} and {status: "success"} response formats
-        const isSuccess = data.success === true || data.status === "success";
-        
-        if (isSuccess && data.data?.house) {
-          const house =
-            typeof data.data.house === "string"
-              ? data.data.house.toLowerCase()
-              : data.data.house.name?.toLowerCase();
+        let house = null;
+        let name = "";
 
         // Check for both 'success' and 'status' fields
         if ((data.success === true || data.status === "success") && data.data) {

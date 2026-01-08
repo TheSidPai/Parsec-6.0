@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_ENDPOINTS, authenticatedFetch } from "../../config/api";
+import { FaHatWizard } from "react-icons/fa";
 import "./SortingHat.css";
 
 /**
@@ -168,13 +169,13 @@ const SortingHat = () => {
         {stage === 'initial' && (
           <div className="sorting-stage initial-stage">
             <h1 className="sorting-title">
-              🎩 The Sorting Hat Awaits...
+              <FaHatWizard /> The Sorting Hat Awaits...
             </h1>
             <p className="sorting-subtitle">
               Prepare to discover your Hogwarts house
             </p>
             <div className="hat-container">
-              <div className="sorting-hat-icon">🎩</div>
+              <FaHatWizard className="sorting-hat-icon" />
             </div>
           </div>
         )}
@@ -183,13 +184,13 @@ const SortingHat = () => {
         {stage === 'sorting' && (
           <div className="sorting-stage sorting-active">
             <h1 className="sorting-title">
-              🎩 Hmm... Interesting...
+              <FaHatWizard /> Hmm... Interesting...
             </h1>
             <p className="sorting-subtitle">
               The Sorting Hat is reading your qualities...
             </p>
             <div className="hat-container pulsing">
-              <div className="sorting-hat-icon spinning">🎩</div>
+              <FaHatWizard className="sorting-hat-icon spinning" />
             </div>
             <div className="sorting-messages">
               <p className="sorting-thought">Brave? Ambitious? Wise? Loyal?</p>
