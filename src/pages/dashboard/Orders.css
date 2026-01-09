@@ -323,6 +323,8 @@
 
 @media (max-width: 768px) {
   .orders-container {
+    background-image: none;
+    background: transparent;
     padding: 1.5rem 1rem;
   }
 

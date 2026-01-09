@@ -1051,6 +1051,10 @@
 }
 
 @media (max-width: 768px) {
+  .accommodation-container {
+    background-image: none;
+    background: transparent;
+  }
   .accommodation-page {
     padding: 1.5rem;
   }

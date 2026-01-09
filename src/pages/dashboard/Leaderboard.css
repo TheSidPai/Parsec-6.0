@@ -443,6 +443,11 @@
 }
 
 @media screen and (max-width: 768px) {
+  .leaderboard-container {
+    background-image: none;
+    background: transparent;
+  }
+
   .leaderboard-title {
     font-size: 2.5rem;
   }

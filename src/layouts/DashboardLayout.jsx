@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
 import "./DashboardLayout.css";
+import Particles from "../components/Particles";
+import { useTheme } from "../context/ThemeContext";
 // import HouseSwitcher from "../components/HouseSwitcher"; // Commented out - testing feature only
 import { buildApiUrl, API_ENDPOINTS } from "../config/api";
 import { applyTheme } from "../assets/themes";
@@ -15,6 +17,7 @@ import {
 import { GiCastle } from "react-icons/gi";
 
 function DashboardLayout() {
+  const { theme } = useTheme();
 
   // State setters only — values are not needed in this layout
   const [, setUserHouse] = useState(null);
@@ -112,9 +115,28 @@ function DashboardLayout() {
 
   return (
     <div className="dashboard-root">
+      {/* Particles Background - Only visible on mobile */}
+      <div className="dashboard-particles-bg">
+        <Particles
+          particleColors={[
+            theme.fontMain || "#ffffff",
+            theme.fontMain || "#ffffff",
+          ]}
+          particleCount={400}
+          particleSpread={15}
+          speed={0.1}
+          particleBaseSize={70}
+          moveParticlesOnHover={false}
+          alphaParticles={true}
+          disableRotation={false}
+        />
+      </div>
+
       {/* Sidebar */}
       <nav className="dashboard-sidebar">
-        <h3>Dashboard</h3>
+        <Link to="/home" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <h3>PARSEC</h3>
+        </Link>
         {/* <HouseSwitcher /> */} {/* Commented out - testing feature only */}
         <ul className="dashboard-nav">
           <li>

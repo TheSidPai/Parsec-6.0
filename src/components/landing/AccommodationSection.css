@@ -418,13 +418,20 @@
     padding: 60px 15px;
   }
 
+  .accommodation-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
   .accommodation-title {
-    font-size: 2rem;
-    letter-spacing: 2px;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    word-wrap: break-word;
+    line-height: 1.2;
   }
 
   .accommodation-subtitle {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .passes-grid {

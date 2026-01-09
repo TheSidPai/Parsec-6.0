@@ -8,6 +8,18 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
 }
 
+/* Particles background - only visible on mobile */
+.dashboard-particles-bg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
 .dashboard-sidebar {
   width: 280px;
   background: linear-gradient(180deg, 
@@ -172,6 +184,12 @@
 @media (max-width: 768px) {
   .dashboard-root {
     flex-direction: column;
+    background: linear-gradient(135deg, var(--background) 0%, color-mix(in srgb, var(--background) 80%, var(--primary) 20%) 100%);
+  }
+
+  /* Show particles on mobile, hide desktop background */
+  .dashboard-particles-bg {
+    display: block;
   }
   .dashboard-sidebar {
     width: 100%;

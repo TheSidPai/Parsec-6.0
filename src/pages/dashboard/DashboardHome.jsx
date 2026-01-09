@@ -193,14 +193,21 @@ function DashboardHome() {
           token
         );
 
+        console.log("📋 User data from API:", data);
+
         if (response.ok && data.data?.house) {
           const houseName = data.data.house.name;
+          const fullName = data.data.name || "Student";
+          const firstName = fullName.trim().split(' ')[0]; // Extract first name
+          console.log("✅ Setting user name to:", firstName);
           setUserData((prev) => ({
             ...prev,
-            name: data.data.name || "Student",
+            name: firstName,
             house: houseName.toLowerCase(),
             rank: "Coming Soon",
           }));
+        } else {
+          console.warn("⚠️ No house data in response:", data);
         }
       } catch (e) {
         console.error("User fetch error:", e);
