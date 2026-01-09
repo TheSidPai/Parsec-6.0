@@ -13,6 +13,14 @@
   min-height: 100vh;
 }
 
+/* Remove castle background on mobile */
+@media (max-width: 768px) {
+  .dashboard-home {
+    background-image: none;
+    background: transparent;
+  }
+}
+
 /* ========== REACT ICONS STYLING ========== */
 .greeting-icon {
   color: var(--fontAccent);

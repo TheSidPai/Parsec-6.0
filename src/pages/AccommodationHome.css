@@ -1,7 +1,7 @@
 /* Accommodation Page Styles */
-.accommodation-page {
+.home-accommodation-page {
   min-height: 100vh;
-  background: var(--background);
+  /* background: var(--background); */
   position: relative;
 }
 

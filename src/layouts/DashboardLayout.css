@@ -8,11 +8,27 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
 }
 
+/* Particles background - only visible on mobile */
+.dashboard-particles-bg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
 .dashboard-sidebar {
   width: 280px;
-  background: linear-gradient(180deg, 
-    rgba(26, 26, 46, 0.98) 0%, 
-    rgba(22, 33, 62, 0.95) 100%);
+  background: 
+    repeating-linear-gradient(45deg, transparent, transparent 8px, rgba(4, 8, 16, 0.4) 8px, rgba(4, 8, 16, 0.4) 10px),
+    radial-gradient(circle at 20% 30%, rgba(251, 191, 36, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(251, 191, 36, 0.02) 0%, transparent 50%),
+    linear-gradient(180deg, 
+      rgba(10, 16, 32, 0.98) 0%, 
+      rgba(8, 12, 24, 0.98) 100%);
   color: var(--fontMain);
   padding: 32px 20px;
   border-right: 1px solid rgba(255, 215, 0, 0.2);
@@ -21,6 +37,19 @@
   backdrop-filter: blur(20px);
   position: relative;
   z-index: 10;
+}
+
+.dashboard-logo {
+  width: 180px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.4));
+  transition: filter 0.3s ease;
+}
+
+.dashboard-logo:hover {
+  filter: drop-shadow(0 0 30px rgba(251, 191, 36, 0.6));
 }
 
 .dashboard-sidebar h3 {
@@ -70,7 +99,7 @@
   top: 0;
   height: 100%;
   width: 3px;
-  background: var(--linkHover);
+  /* background: var(--linkHover); */
   transform: scaleY(0);
   transition: transform 0.3s ease;
 }
@@ -80,10 +109,22 @@
 }
 
 .dashboard-link:hover {
-  background: linear-gradient(90deg, rgba(255, 215, 0, 0.15), transparent);
+  /* background: linear-gradient(90deg, rgba(255, 215, 0, 0.15), transparent); */
   color: var(--linkHover);
   transform: translateX(8px);
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.25);
+  border-left: 3px solid #FFD700;
+}
+
+.dashboard-link.active {
+  /* background: linear-gradient(90deg, rgba(255, 215, 0, 0.2), transparent); */
+  color: #FFD700;
+  border-left: 3px solid var(--secondary);
+  font-weight: 600;
+}
+
+.dashboard-link.active::before {
+  transform: scaleY(1);
 }
 
 /* House Link Special Styling */
@@ -169,9 +210,43 @@
   z-index: 1;
 }
 
+/* Standardized Page Title Styling */
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  font-style: normal;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Standardized Page Title Styling */
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  font-style: normal;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
 @media (max-width: 768px) {
   .dashboard-root {
     flex-direction: column;
+    background: linear-gradient(135deg, var(--background) 0%, color-mix(in srgb, var(--background) 80%, var(--primary) 20%) 100%);
+  }
+
+  /* Show particles on mobile, hide desktop background */
+  .dashboard-particles-bg {
+    display: block;
   }
   .dashboard-sidebar {
     width: 100%;

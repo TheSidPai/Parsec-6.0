@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import Button from "./Button";
@@ -6,6 +6,13 @@ import Button from "./Button";
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [eventsDropdownOpen, setEventsDropdownOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Check if user is logged in on component mount
+  useEffect(() => {
+    const token = localStorage.getItem('jwt_token');
+    setIsLoggedIn(!!token);
+  }, []);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -137,9 +144,15 @@ function Navbar() {
             </Link>
           </li>
           <li className="navbar-item">
-            <Link to="/login" className="navbar-signup" onClick={closeMenu}>
-              <Button variant="primary">Login/signup</Button>
-            </Link>
+            {isLoggedIn ? (
+              <Link to="/dashboard" className="navbar-signup" onClick={closeMenu}>
+                <Button variant="primary">Dashboard</Button>
+              </Link>
+            ) : (
+              <Link to="/login" className="navbar-signup" onClick={closeMenu}>
+                <Button variant="primary">Login/signup</Button>
+              </Link>
+            )}
           </li>
         </ul>
       </div>

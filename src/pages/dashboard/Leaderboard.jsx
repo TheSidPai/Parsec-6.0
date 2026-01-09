@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Leaderboard.css';
+import Particles from '../../components/Particles.jsx';
 
 function Leaderboard() {
   const [houses] = useState([
@@ -66,6 +67,19 @@ function Leaderboard() {
   return (
     <div className="leaderboard-page">
       <div className="leaderboard-container">
+        {/* Particles Background */}
+      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, pointerEvents: 'none' }}>
+        <Particles
+          particleColors={["#ffffff", "#ffffff"]}
+          particleCount={600}
+          particleSpread={15}
+          speed={0.1}
+          particleBaseSize={80}
+          moveParticlesOnHover={false}
+          alphaParticles={false}
+          disableRotation={false}
+        />
+      </div>
         {/* Header */}
         <div className="leaderboard-header">
           <div className="leaderboard-title-wrapper">

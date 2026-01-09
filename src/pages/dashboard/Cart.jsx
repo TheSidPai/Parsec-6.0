@@ -115,7 +115,10 @@ function Cart() {
 
               <div className="cart-item-details">
                 <h3 className="cart-item-name">{item.name}</h3>
-                <p className="cart-item-description">{item.description}</p>
+                <div 
+                  className="cart-item-description"
+                  dangerouslySetInnerHTML={{ __html: item.description }}
+                />
 
                 {/* Size Selection */}
                 {item.sizesAvailable && item.sizesAvailable.length > 0 && (

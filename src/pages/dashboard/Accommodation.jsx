@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Accommodation.css';
 import { FaCalendarAlt, FaCheckCircle, FaClock, FaTimes } from 'react-icons/fa';
 import { API_ENDPOINTS, authenticatedFetch, getAuthToken, API_BASE_URL } from '../../config/api';
+import Particles from '../../components/Particles';
 
 // Accommodation configuration
 const ACCOMMODATION_CONFIG = {
@@ -27,28 +28,45 @@ const accommodationAPI = {
         token
       );
 
+      console.log('📦 Accommodation API Response:', { response, data });
+
+      // If response is not ok, return empty array instead of throwing
       if (!response.ok) {
-        throw new Error(data?.message || 'Failed to fetch bookings');
+        console.warn('⚠️ API returned non-ok status, returning empty bookings');
+        return [];
       }
 
-      // Filter for accommodation bookings and map to expected structure
-      const accommodationBookings = data?.data?.orders?.filter(
-        order => order.referenceType === 'AccommodationBooking'
-      ).map(order => ({
-        _id: order._id,
-        checkInDate: order.referenceId?.checkInDate,
-        checkOutDate: order.referenceId?.checkOutDate,
-        numberOfNights: order.referenceId?.numberOfNights,
-        totalPrice: order.referenceId?.totalPrice,
-        status: order.referenceId?.status,
-        paymentStatus: order.referenceId?.paymentStatus,
-        createdAt: order.createdAt
-      })) || [];
+      // Handle multiple response structures
+      let accommodationBookings = [];
 
-      return accommodationBookings;
+      // Try different data structures
+      if (data?.data?.orders && Array.isArray(data.data.orders)) {
+        accommodationBookings = data.data.orders
+          .filter(order => order.referenceType === 'AccommodationBooking')
+          .map(order => ({
+            _id: order._id,
+            checkInDate: order.referenceId?.checkInDate,
+            checkOutDate: order.referenceId?.checkOutDate,
+            numberOfNights: order.referenceId?.numberOfNights,
+            totalPrice: order.referenceId?.totalPrice,
+            status: order.referenceId?.status,
+            paymentStatus: order.referenceId?.paymentStatus,
+            createdAt: order.createdAt
+          }));
+      } else if (Array.isArray(data?.data)) {
+        accommodationBookings = data.data;
+      } else if (data?.success && Array.isArray(data?.data?.bookings)) {
+        accommodationBookings = data.data.bookings;
+      } else if (data?.data?.bookings && Array.isArray(data.data.bookings)) {
+        accommodationBookings = data.data.bookings;
+      }
+
+      console.log('✅ Processed bookings:', accommodationBookings);
+      return accommodationBookings || [];
     } catch (error) {
-      console.error('Fetch bookings error:', error);
-      throw error;
+      console.error('❌ Fetch bookings error:', error);
+      // Return empty array instead of throwing
+      return [];
     }
   },
 
@@ -151,12 +169,13 @@ function Accommodation() {
   const loadBookings = async () => {
     try {
       setLoading(true);
-      const data = await accommodationAPI.fetchBookings();
-      setBookings(data);
       setError(null);
+      const data = await accommodationAPI.fetchBookings();
+      setBookings(data || []);
     } catch (error) {
       console.error('Failed to load bookings:', error);
-      setError('Failed to load bookings. Please refresh the page.');
+      // Don't show error if it's just an empty response
+      setBookings([]);
     } finally {
       setLoading(false);
     }
@@ -285,8 +304,21 @@ function Accommodation() {
   };
 
   return (
-    <div className="accommodation-page">
+    // <div className="accommodation-page">
       <div className="accommodation-container">
+        {/* Particles Background */}
+            <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, pointerEvents: 'none' }}>
+              <Particles
+                particleColors={["#ffffff", "#ffffff"]}
+                particleCount={600}
+                particleSpread={15}
+                speed={0.1}
+                particleBaseSize={80}
+                moveParticlesOnHover={false}
+                alphaParticles={false}
+                disableRotation={false}
+              />
+            </div>
         {/* Header */}
         <div className="accommodation-header">
           <div className="title-wrapper">
@@ -342,10 +374,6 @@ function Accommodation() {
         <div className="booking-history-section">
           <h2 className="section-title">Your Bookings</h2>
           
-          {error && !loading && (
-            <div className="error-message">{error}</div>
-          )}
-          
           {loading ? (
             <div className="loading-message">Loading your bookings...</div>
           ) : bookings.length === 0 ? (
@@ -375,7 +403,7 @@ function Accommodation() {
             </div>
           )}
         </div>
-      </div>
+      {/* </div> */}
 
       {/* Booking Modal */}
       {showModal && (

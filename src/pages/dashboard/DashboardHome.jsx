@@ -21,6 +21,7 @@ import {
   GiHoneypot,
   GiCrystalBall 
 } from "react-icons/gi";
+import Particles from "../../components/Particles";
 
 function DashboardHome() {
   const navigate = useNavigate();
@@ -193,14 +194,21 @@ function DashboardHome() {
           token
         );
 
+        console.log("📋 User data from API:", data);
+
         if (response.ok && data.data?.house) {
           const houseName = data.data.house.name;
+          const fullName = data.data.name || "Student";
+          const firstName = fullName.trim().split(' ')[0]; // Extract first name
+          console.log("✅ Setting user name to:", firstName);
           setUserData((prev) => ({
             ...prev,
-            name: data.data.name || "Student",
+            name: firstName,
             house: houseName.toLowerCase(),
             rank: "Coming Soon",
           }));
+        } else {
+          console.warn("⚠️ No house data in response:", data);
         }
       } catch (e) {
         console.error("User fetch error:", e);
@@ -263,6 +271,19 @@ function DashboardHome() {
       {/* Dashboard Content */}
       {showDashboard && (
         <div className="dashboard-content-wrapper">
+          {/* Particles Background */}
+      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, pointerEvents: 'none' }}>
+        <Particles
+          particleColors={["#ffffff", "#ffffff"]}
+          particleCount={600}
+          particleSpread={15}
+          speed={0.1}
+          particleBaseSize={80}
+          moveParticlesOnHover={false}
+          alphaParticles={false}
+          disableRotation={false}
+        />
+      </div>
           {/* House Rank */}
           <div className="quick-info-bar">
             <div className="info-item">

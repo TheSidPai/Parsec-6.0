@@ -100,6 +100,7 @@ export const API_ENDPOINTS = {
   MERCH_GET_ALL: '/merch',
   MERCH_GET_BY_ID: '/merch/:id', // Replace :id with actual merch ID
   MERCH_ADD: '/paneermoms/merch', // Admin only
+  MERCH_UPDATE: '/paneermoms/merch/:id', // Admin only - Full item update
   MERCH_UPDATE_STOCK: '/paneermoms/merch/:id/stock', // Admin only
   MERCH_DELETE: '/paneermoms/merch/:id', // Admin only
 

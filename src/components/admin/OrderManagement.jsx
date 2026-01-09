@@ -360,121 +360,115 @@ function PaymentCard({ payment, onView, onStatusUpdate }) {
 // Payment Detail Modal Component
 function PaymentDetailModal({ payment, onClose, onStatusUpdate }) {
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-[#2e2e2e] rounded-lg w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between p-6 border-b border-gray-600">
-          <h3 className="text-xl font-bold text-white">Payment #{payment._id?.slice(-8)}</h3>
+    <div className="admin-modal-overlay">
+      <div className="admin-modal" style={{ maxWidth: '800px' }}>
+        <div className="admin-modal-header">
+          <h3 className="admin-modal-title">Payment #{payment._id?.slice(-8)}</h3>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-white transition-colors"
+            className="admin-modal-close"
           >
             <RiCloseLine size={24} />
           </button>
         </div>
 
-        <div className="p-6 space-y-6">
+        <div className="admin-modal-body">
           {/* Payment Info */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-gray-400 text-sm mb-1">Name</label>
-              <div className="text-white">{payment.name}</div>
+          <div className="admin-payment-detail-grid">
+            <div className="admin-detail-item">
+              <label className="admin-detail-label">Name</label>
+              <div className="admin-detail-value">{payment.name}</div>
             </div>
-            <div>
-              <label className="block text-gray-400 text-sm mb-1">Email</label>
-              <div className="text-white">{payment.email}</div>
+            <div className="admin-detail-item">
+              <label className="admin-detail-label">Email</label>
+              <div className="admin-detail-value">{payment.email}</div>
             </div>
-            <div>
-              <label className="block text-gray-400 text-sm mb-1">Phone</label>
-              <div className="text-white">{payment.contactNumber}</div>
+            <div className="admin-detail-item">
+              <label className="admin-detail-label">Phone</label>
+              <div className="admin-detail-value">{payment.contactNumber}</div>
             </div>
-            <div>
-              <label className="block text-gray-400 text-sm mb-1">Amount</label>
-              <div className="text-white font-bold">₹{payment.amount}</div>
+            <div className="admin-detail-item">
+              <label className="admin-detail-label">Amount</label>
+              <div className="admin-detail-value" style={{ fontWeight: 'bold', color: '#FFD700' }}>₹{payment.amount}</div>
             </div>
-            <div>
-              <label className="block text-gray-400 text-sm mb-1">UTR</label>
-              <div className="text-white font-mono">{payment.paymentUTR}</div>
+            <div className="admin-detail-item">
+              <label className="admin-detail-label">UTR</label>
+              <div className="admin-detail-value" style={{ fontFamily: 'monospace' }}>{payment.paymentUTR}</div>
             </div>
+            <div className="admin-detail-item">
+              <label className="admin-detail-label">Status</label>
+              <div className="admin-detail-value" style={{ textTransform: 'capitalize' }}>{payment.status}</div>
+            </div>
+            <div className="admin-detail-item">
+              <label className="admin-detail-label">Created At</label>
+              <div className="admin-detail-value">{new Date(payment.createdAt).toLocaleString()}</div>
+            </div>
+            <div className="admin-detail-item">
+              <label className="admin-detail-label">Updated At</label>
+              <div className="admin-detail-value">{new Date(payment.updatedAt).toLocaleString()}</div>
+            </div>
+            
             {payment.paymentScreenshot && (
-              <div className="col-span-2">
-                <label className="block text-gray-400 text-sm mb-1">Payment Screenshot</label>
-                <div className="mt-2">
+              <div className="admin-detail-item" style={{ gridColumn: '1 / -1' }}>
+                <label className="admin-detail-label">Payment Screenshot</label>
+                <div style={{ marginTop: '0.75rem' }}>
                   <img 
                     src={payment.paymentScreenshot} 
                     alt="Payment Screenshot" 
-                    style={{ 
-                      maxWidth: '100%', 
-                      maxHeight: '400px',
-                      borderRadius: '8px',
-                      border: '2px solid rgba(255, 215, 0, 0.3)',
-                      cursor: 'pointer'
-                    }}
+                    className="admin-payment-screenshot"
                     onClick={() => window.open(payment.paymentScreenshot, '_blank')}
                   />
-                  <small className="block mt-2 text-gray-400">Click to view full size</small>
+                  <small style={{ display: 'block', marginTop: '0.5rem', color: '#999', fontSize: '0.875rem' }}>Click to view full size</small>
                 </div>
               </div>
             )}
-            <div>
-              <label className="block text-gray-400 text-sm mb-1">Status</label>
-              <div className="text-white capitalize">{payment.status}</div>
-            </div>
-            <div>
-              <label className="block text-gray-400 text-sm mb-1">Created At</label>
-              <div className="text-white">{new Date(payment.createdAt).toLocaleString()}</div>
-            </div>
-            <div>
-              <label className="block text-gray-400 text-sm mb-1">Updated At</label>
-              <div className="text-white">{new Date(payment.updatedAt).toLocaleString()}</div>
-            </div>
           </div>
 
           {/* User Info */}
           {payment.userId && (
-            <div>
-              <label className="block text-gray-400 text-sm mb-2">User Information</label>
-              <div className="bg-gray-700 p-4 rounded space-y-2">
-                <div>
-                  <span className="text-gray-400 text-sm">User ID:</span>
-                  <span className="text-white ml-2 font-mono">{payment.userId._id || payment.userId}</span>
+            <div style={{ marginTop: '1.5rem' }}>
+              <label className="admin-detail-label">User Information</label>
+              <div className="admin-user-info-box">
+                <div className="admin-user-info-row">
+                  <span className="admin-user-info-label">User ID:</span>
+                  <span className="admin-user-info-value">{payment.userId._id || payment.userId}</span>
                 </div>
                 {payment.userId.name && (
-                  <div>
-                    <span className="text-gray-400 text-sm">Name:</span>
-                    <span className="text-white ml-2">{payment.userId.name}</span>
+                  <div className="admin-user-info-row">
+                    <span className="admin-user-info-label">Name:</span>
+                    <span className="admin-user-info-value">{payment.userId.name}</span>
                   </div>
                 )}
                 {payment.userId.email && (
-                  <div>
-                    <span className="text-gray-400 text-sm">Email:</span>
-                    <span className="text-white ml-2">{payment.userId.email}</span>
+                  <div className="admin-user-info-row">
+                    <span className="admin-user-info-label">Email:</span>
+                    <span className="admin-user-info-value">{payment.userId.email}</span>
                   </div>
                 )}
-              </div>
-            </div>
-          )}
-
-          {/* Status Update Actions */}
-          {payment.status?.toLowerCase() === 'pending' && (
-            <div>
-              <label className="block text-gray-400 text-sm mb-2">Update Status</label>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => onStatusUpdate(payment._id, 'verified')}
-                  className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded transition-colors"
-                >
-                  Verify Payment
-                </button>
-                <button
-                  onClick={() => onStatusUpdate(payment._id, 'rejected')}
-                  className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded transition-colors"
-                >
-                  Reject Payment
-                </button>
               </div>
             </div>
           )}
         </div>
+
+        {/* Status Update Actions */}
+        {payment.status?.toLowerCase() === 'pending' && (
+          <div className="admin-modal-footer">
+            <button
+              onClick={() => onStatusUpdate(payment._id, 'rejected')}
+              className="admin-btn admin-btn-danger"
+            >
+              <RiCloseLine size={16} />
+              Reject Payment
+            </button>
+            <button
+              onClick={() => onStatusUpdate(payment._id, 'verified')}
+              className="admin-btn admin-btn-success"
+            >
+              <RiCheckLine size={16} />
+              Verify Payment
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -69,12 +69,7 @@ function EventCard2({
                 Login to Register
               </Button>
 
-              <span className="disabled-tooltip">
-                Login & registration will be live with the accommodation portal
-                at
-                <br />
-                <strong>9:00 AM · 7 January 2026</strong>
-              </span>
+              
             </div>
           )}
         </div>

@@ -16,8 +16,26 @@ function Shop() {
   const filterMerch = useCallback(() => {
     if (filter === 'all') {
       setFilteredMerch(merch);
+    } else if (filter === 'passes') {
+      // Event passes have category 'passes' or type 'pass'/'event-pass'
+      setFilteredMerch(merch.filter(item => 
+        item.category === 'passes' || item.category === 'pass' || item.category === 'event-pass' ||
+        item.type === 'pass' || item.type === 'event-pass' || item.type === 'passes'
+      ));
+    } else if (filter === 'non-wearable') {
+      // Accessories/non-wearables
+      setFilteredMerch(merch.filter(item => 
+        item.category === 'non-wearable' || item.category === 'accessory' ||
+        item.type === 'accessory' || item.type === 'non-wearable'
+      ));
+    } else if (filter === 'wearable') {
+      setFilteredMerch(merch.filter(item => 
+        item.category === 'wearable' || item.type === 'wearable'
+      ));
     } else {
-      setFilteredMerch(merch.filter(item => item.type === filter));
+      setFilteredMerch(merch.filter(item => 
+        item.type === filter || item.category === filter
+      ));
     }
   }, [filter, merch]);
 
@@ -112,6 +130,26 @@ function Shop() {
 
     setCart(newCart);
     localStorage.setItem('parsec_cart', JSON.stringify(newCart));
+    
+    // Show success notification
+    const notification = document.createElement('div');
+    notification.className = 'cart-notification';
+    notification.innerHTML = `
+      <div class="cart-notification-content">
+        <span class="cart-notification-icon">✓</span>
+        <span class="cart-notification-text">Added to cart!</span>
+      </div>
+    `;
+    document.body.appendChild(notification);
+    
+    // Trigger animation
+    setTimeout(() => notification.classList.add('show'), 10);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+      notification.classList.remove('show');
+      setTimeout(() => notification.remove(), 300);
+    }, 3000);
   };
 
   const getCartItemCount = () => {
@@ -171,7 +209,7 @@ function Shop() {
       {/* Header */}
       <div className="shop-header" style={{ position: 'relative', zIndex: 1 }}>
         <div className="shop-title-section">
-          <h1 className="shop-title">MERCHANDISE SHOP</h1>
+          <h1 className="page-title">Merchandise Shop</h1>
           <p className="shop-subtitle">
             Official Parsec merch & event passes
           </p>

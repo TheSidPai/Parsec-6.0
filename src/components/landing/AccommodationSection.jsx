@@ -82,62 +82,57 @@ const AccommodationSection = () => {
   };
 
   return (
-    <section className="accommodation-section">
-      <div className="accommodation-container">
+    <section className="landing-accommodation-section">
+      <div className="landing-accommodation-container">
         {/* Section Header */}
         <motion.div 
-          className="accommodation-header"
+          className="landing-accommodation-header"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="accommodation-title">Accommodation & Event Passes</h2>
-          <p className="accommodation-subtitle">
+          <h2 className="landing-accommodation-title">Accommodation & Event Passes</h2>
+          <p className="landing-accommodation-subtitle">
             Choose the perfect pass for your Parsec 6.0 experience
           </p>
-          <div className="accommodation-note">
-            <span className="note-icon">📅</span>
-            <p>Accommodation portal opens on <strong>7th January 2026, 9:00 AM</strong> on a first-come, first-serve basis.</p>
-          </div>
-          <div className="accommodation-note">
-            <span className="note-icon">ℹ️</span>
+          <div className="landing-accommodation-note">
             <p>Accommodation for <strong>23rd January 2026</strong> is an additional charge of <strong>₹700</strong></p>
           </div>
         </motion.div>
 
         {/* Passes Grid */}
-        <div className="passes-grid">
+        <div className="landing-passes-grid">
           {passes.map((pass, index) => (
             <motion.div
               key={index}
-              className={`pass-card ${pass.popular ? 'popular' : ''} ${pass.recommended ? 'recommended' : ''}`}
+              className={`landing-pass-card ${pass.popular ? 'popular' : ''} ${pass.recommended ? 'recommended' : ''}`}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
             >
-              {pass.popular && <div className="badge popular-badge">Most Popular</div>}
-              {pass.recommended && <div className="badge recommended-badge">Best Value</div>}
+              {/* {pass.popular && <div className="badge popular-badge">Most Popular</div>}
+              {pass.recommended && <div className="badge recommended-badge">Best Value</div>} */}
               
-              <div className="pass-header">
-                <h3 className="pass-name">{pass.name}</h3>
-                <p className="pass-dates">{pass.dates}</p>
+              <div className="landing-pass-header">
+                <h3 className="landing-pass-name">{pass.name}</h3>
+                <p className="landing-pass-dates">{pass.dates}</p>
               </div>
 
-              <div className="pass-price">
-                <span className="currency">₹</span>
-                <span className="amount">{pass.price.toLocaleString('en-IN')}</span>
+              <div className="landing-pass-price">
+                <span className="landing-currency">₹</span>
+                <span className="landing-amount">{pass.price.toLocaleString('en-IN')}</span>
               </div>
 
-              <div className="pass-benefits">
+              <div className="landing-pass-benefits">
                 {pass.benefits.map((benefit, i) => (
-                  <div key={i} className="benefit-item">
-                    <span className={`benefit-icon ${benefit.included ? 'included' : 'excluded'}`}>
+                  <div key={i} className="landing-benefit-item">
+                    <span className={`landing-benefit-icon ${benefit.included ? 'included' : 'excluded'}`}>
                       {benefit.included ? '✓' : '✕'}
                     </span>
-                    <span className={`benefit-text ${benefit.included ? '' : 'excluded-text'}`}>
+                    <span className={`landing-benefit-text ${benefit.included ? '' : 'excluded-text'}`}>
                       {benefit.feature}
                     </span>
                   </div>
@@ -149,18 +144,18 @@ const AccommodationSection = () => {
 
         {/* Book Now CTA */}
         <motion.div 
-          className="accommodation-cta"
+          className="landing-accommodation-cta"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <p className="cta-text">Ready to secure your spot?</p>
-          <button className="book-btn" onClick={handleBookNow}>
+          <p className="landing-cta-text">Ready to secure your spot?</p>
+          <button className="landing-book-btn" onClick={handleBookNow}>
             Book Accommodation - Login Required
-            <span className="btn-arrow">→</span>
+            <span className="landing-btn-arrow">→</span>
           </button>
-          <p className="cta-note">You'll be redirected to your dashboard to complete the booking</p>
+          <p className="landing-cta-note">You'll be redirected to your dashboard to complete the booking</p>
         </motion.div>
       </div>
     </section>

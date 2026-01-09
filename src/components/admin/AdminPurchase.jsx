@@ -112,24 +112,23 @@ function AdminPurchase() {
 
     try {
       // Prepare data for backend API based on item type
-      const isPass = formData.category === 'event-pass1' || formData.category === 'event-pass2';
       const isWearable = formData.category === 'wearable' || formData.category === 'non-wearable';
       
       const apiData = {
         type: formData.category,
         name: formData.name,
         description: formData.description || 'No description provided',
-        price: parseFloat(formData.price)
+        price: parseFloat(formData.price),
+        available: formData.available !== false // Default to true
       };
       
-      // For passes: use 'stock' field, no sizesAvailable
-      if (isPass) {
-        apiData.stock = parseInt(formData.stockQuantity) || 100;
-      }
+      // Always send both stock and stockQuantity to be safe
+      const quantity = parseInt(formData.stockQuantity) || 100;
+      apiData.stock = quantity;
+      apiData.stockQuantity = quantity;
       
-      // For wearables/merchandise: use 'stockQuantity' and 'sizesAvailable'
+      // For wearables/merchandise: also add sizesAvailable
       if (isWearable) {
-        apiData.stockQuantity = parseInt(formData.stockQuantity) || 100;
         apiData.sizesAvailable = formData.sizesAvailable || [];
       }
       
@@ -138,9 +137,48 @@ function AdminPurchase() {
         apiData.imageUrl = formData.imageUrl;
       }
 
+      console.log('📦 Sending API data:', apiData);
+
       if (editingItem && editingItem._id && !editingItem._id.startsWith('local_')) {
-        // Update existing backend item (TODO: backend endpoint needed)
-        alert('⚠️ Update functionality requires backend endpoint. Please delete and re-add the item.');
+        // Update existing backend item - use stock endpoint (supports all fields)
+        const endpoint = API_ENDPOINTS.MERCH_UPDATE_STOCK.replace(':id', editingItem._id);
+        
+        console.log('🔄 Updating item with endpoint:', endpoint);
+        console.log('📦 Update data:', apiData);
+        
+        const { response, data } = await authenticatedFetch(
+          endpoint,
+          {
+            method: 'PATCH',
+            body: JSON.stringify(apiData)
+          },
+          adminToken
+        );
+
+        console.log('📥 Update response:', { response, data });
+
+        if (response.ok && (data?.status === 'success' || data?.success === true)) {
+          alert('✅ Item updated successfully!');
+          
+          // Refresh the items list from backend
+          await fetchItemsFromBackend();
+          
+          // Reset form
+          setFormData({
+            name: '',
+            description: '',
+            price: '',
+            category: 'event-pass1',
+            stockQuantity: '100',
+            sizesAvailable: [],
+            imageUrl: '',
+            available: true
+          });
+          setShowAddForm(false);
+          setEditingItem(null);
+        } else {
+          throw new Error(data?.message || 'Failed to update item');
+        }
       } else {
         // Add new item to backend
         const { response, data } = await authenticatedFetch(

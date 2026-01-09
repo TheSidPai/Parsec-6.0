@@ -10,7 +10,7 @@ import { useTheme } from "../context/ThemeContext";
 function Harshtal() {
   const { theme } = useTheme();
   // Filter only cultural events
-  const culturalEvents = events.filter(ev => ev.category === "Cultural");
+  const culturalEvents = events.filter((ev) => ev.category === "Cultural");
 
   return (
     <div className="harshtal-page">
@@ -30,12 +30,10 @@ function Harshtal() {
       />
       <main className="harshtal-container">
         <div className="harshtal-header-section">
-          <h1 className="harshtal-header">
-            <span className="harshtal-title-main">Harshtal</span>
-            <span className="harshtl-title-sub">Cultural Extravaganza</span>
-          </h1>
+          <h1 className="harshtal-header">Harshtal</h1>
           <p className="harshtal-description">
-            Experience the magic of culture and creativity 
+            Cultural Extravaganza - Experience the magic of culture and
+            creativity
           </p>
         </div>
 

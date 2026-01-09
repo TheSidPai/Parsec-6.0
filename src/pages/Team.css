@@ -67,6 +67,7 @@
   position: relative;
   transition: transform 0.6s ease;
   transform-style: preserve-3d;
+  pointer-events: none;
 }
 
 .chocolate-frog-wrapper:hover .team-card {
@@ -81,6 +82,7 @@
   border: 2px solid #8b6914;
   position: relative;
   overflow: hidden;
+  pointer-events: none;
 }
 
 /* Decorative corners */
@@ -165,6 +167,7 @@
   text-align: center;
   position: relative;
   z-index: 10;
+  pointer-events: auto;
 }
 
 .team-card-name {
