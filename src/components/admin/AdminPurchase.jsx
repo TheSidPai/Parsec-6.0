@@ -112,7 +112,6 @@ function AdminPurchase() {
 
     try {
       // Prepare data for backend API based on item type
-      const isPass = formData.category === 'event-pass1' || formData.category === 'event-pass2';
       const isWearable = formData.category === 'wearable' || formData.category === 'non-wearable';
       
       const apiData = {
