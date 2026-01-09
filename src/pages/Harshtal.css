@@ -34,11 +34,12 @@
 }
 
 .harshtal-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: var(--linkHover);
+  text-align: center;
+  text-shadow: 0 0 15px var(--glow);
 }
 
 .harshtal-title-main {
@@ -66,14 +67,15 @@
 }
 
 .harshtal-description {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
+  margin-bottom: 3rem;
   color: var(--fontSub);
-  font-weight: 400;
-  font-style: italic;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: center;
   max-width: 700px;
-  margin: 0 auto;
-  opacity: 0.9;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ========== NO EVENTS MESSAGE ========== */

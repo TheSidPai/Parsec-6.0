@@ -37,7 +37,7 @@ import Checkout from "./pages/dashboard/Checkout";
 import PaymentHistory from "./pages/dashboard/PaymentHistory";
 import Passes from "./pages/dashboard/Passes";
 import PassCheckout from "./pages/dashboard/PassCheckout";
-import PublicAccommodation from "./pages/Accommodation";
+import PublicAccommodation from "./pages/AccommodationHome";
 import NotFound from "./pages/NotFound";
 import HousePage from "./pages/HousePage";
 import AdminAuth from "./components/admin/AdminAuth";

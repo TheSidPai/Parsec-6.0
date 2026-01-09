@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Accommodation.css';
 import { FaCalendarAlt, FaCheckCircle, FaClock, FaTimes } from 'react-icons/fa';
 import { API_ENDPOINTS, authenticatedFetch, getAuthToken, API_BASE_URL } from '../../config/api';
+import Particles from '../../components/Particles';
 
 // Accommodation configuration
 const ACCOMMODATION_CONFIG = {
@@ -303,8 +304,21 @@ function Accommodation() {
   };
 
   return (
-    <div className="accommodation-page">
+    // <div className="accommodation-page">
       <div className="accommodation-container">
+        {/* Particles Background */}
+            <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, pointerEvents: 'none' }}>
+              <Particles
+                particleColors={["#ffffff", "#ffffff"]}
+                particleCount={600}
+                particleSpread={15}
+                speed={0.1}
+                particleBaseSize={80}
+                moveParticlesOnHover={false}
+                alphaParticles={false}
+                disableRotation={false}
+              />
+            </div>
         {/* Header */}
         <div className="accommodation-header">
           <div className="title-wrapper">
@@ -389,7 +403,7 @@ function Accommodation() {
             </div>
           )}
         </div>
-      </div>
+      {/* </div> */}
 
       {/* Booking Modal */}
       {showModal && (

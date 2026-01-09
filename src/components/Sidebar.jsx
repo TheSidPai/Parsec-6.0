@@ -20,7 +20,11 @@ function Sidebar({ house = 'gryffindor' }) {
   return (
     <aside className={`sidebar sidebar-${house}`}>
       <div className="sidebar-header">
-        <h2>PARSEC 6.0</h2>
+        <img 
+          src={require("../assets/images/parsec-logo-white.webp")}
+          alt="PARSEC 6.0"
+          className="sidebar-logo"
+        />
         <p className="house-name">{house.toUpperCase()}</p>
       </div>
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useLocation } from "react-router-dom";
 import "./DashboardLayout.css";
 import Particles from "../components/Particles";
 import { useTheme } from "../context/ThemeContext";
@@ -18,6 +18,7 @@ import { GiCastle } from "react-icons/gi";
 
 function DashboardLayout() {
   const { theme } = useTheme();
+  const location = useLocation();
 
   // State setters only — values are not needed in this layout
   const [, setUserHouse] = useState(null);
@@ -134,38 +135,42 @@ function DashboardLayout() {
 
       {/* Sidebar */}
       <nav className="dashboard-sidebar">
-        <Link to="/home" style={{ textDecoration: 'none', color: 'inherit' }}>
-          <h3>PARSEC</h3>
+        <Link to="/home" style={{ textDecoration: 'none', color: 'inherit', display: 'block', textAlign: 'center', marginBottom: '28px' }}>
+          <img 
+            src={require("../assets/images/parsec-logo-white.webp")}
+            alt="PARSEC 6.0"
+            className="dashboard-logo"
+          />
         </Link>
         {/* <HouseSwitcher /> */} {/* Commented out - testing feature only */}
         <ul className="dashboard-nav">
           <li>
-            <Link className="dashboard-link" to="/dashboard">
+            <Link className={`dashboard-link ${location.pathname === '/dashboard' ? 'active' : ''}`} to="/dashboard">
               <FaHome /> Home
             </Link>
           </li>
           <li>
-            <Link className="dashboard-link" to="/dashboard/events">
+            <Link className={`dashboard-link ${location.pathname === '/dashboard/events' ? 'active' : ''}`} to="/dashboard/events">
               <GiCastle /> Events
             </Link>
           </li>
           <li>
-            <Link className="dashboard-link" to="/dashboard/shop">
+            <Link className={`dashboard-link ${location.pathname === '/dashboard/shop' ? 'active' : ''}`} to="/dashboard/shop">
               <FaStore /> Shop
             </Link>
           </li>
           <li>
-            <Link className="dashboard-link" to="/dashboard/orders">
+            <Link className={`dashboard-link ${location.pathname === '/dashboard/orders' ? 'active' : ''}`} to="/dashboard/orders">
               <FaShoppingBag /> Orders
             </Link>
           </li>
           <li>
-            <Link className="dashboard-link" to="/dashboard/accommodation">
+            <Link className={`dashboard-link ${location.pathname === '/dashboard/accommodation' ? 'active' : ''}`} to="/dashboard/accommodation">
               <FaBed /> Accommodation
             </Link>
           </li>
           <li>
-            <Link className="dashboard-link" to="/dashboard/leaderboard">
+            <Link className={`dashboard-link ${location.pathname === '/dashboard/leaderboard' ? 'active' : ''}`} to="/dashboard/leaderboard">
               <FaTrophy /> Leaderboard
             </Link>
           </li>

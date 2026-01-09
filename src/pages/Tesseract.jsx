@@ -33,13 +33,12 @@ function Tesseract() {
         <div className="tesseract-header-section">
           <h1 className="tesseract-header">
             {/* <span className="tesseract-icon">🧊</span> */}
-            <span className="tesseract-title-main">Tesseract</span>
-            <span className="tesseract-title-sub">
-              Innovation Beyond Dimensions
-            </span>
+Tesseract
+              
+
           </h1>
           <p className="tesseract-description">
-            Step into the fourth dimension of innovation and creativity.
+            Innovation Beyond Dimensions - Step into the fourth dimension of innovation and creativity.
             Tesseract is more than an event—it's a gateway to boundless
             possibilities.
           </p>

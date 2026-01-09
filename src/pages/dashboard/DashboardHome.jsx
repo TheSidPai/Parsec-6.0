@@ -21,6 +21,7 @@ import {
   GiHoneypot,
   GiCrystalBall 
 } from "react-icons/gi";
+import Particles from "../../components/Particles";
 
 function DashboardHome() {
   const navigate = useNavigate();
@@ -270,6 +271,19 @@ function DashboardHome() {
       {/* Dashboard Content */}
       {showDashboard && (
         <div className="dashboard-content-wrapper">
+          {/* Particles Background */}
+      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, pointerEvents: 'none' }}>
+        <Particles
+          particleColors={["#ffffff", "#ffffff"]}
+          particleCount={600}
+          particleSpread={15}
+          speed={0.1}
+          particleBaseSize={80}
+          moveParticlesOnHover={false}
+          alphaParticles={false}
+          disableRotation={false}
+        />
+      </div>
           {/* House Rank */}
           <div className="quick-info-bar">
             <div className="info-item">

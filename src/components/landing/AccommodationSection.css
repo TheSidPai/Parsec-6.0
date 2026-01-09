@@ -1,5 +1,5 @@
 /* Accommodation Section Styles */
-.accommodation-section {
+.landing-accommodation-section {
   min-height: 100vh;
   padding: 120px 20px 100px;
   background: transparent;
@@ -10,7 +10,7 @@
 
 /* No gradient overlay needed - let particles show through */
 
-.accommodation-container {
+.landing-accommodation-container {
   max-width: 1400px;
   margin: 0 auto;
   position: relative;
@@ -18,28 +18,21 @@
 }
 
 /* Header Styles */
-.accommodation-header {
+.landing-accommodation-header {
   text-align: center;
   margin-bottom: 60px;
 }
 
-.accommodation-title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
-  background: linear-gradient(135deg, #c9a332 0%, #e6c200 50%, #c9a332 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 15px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  position: relative;
-  display: inline-block;
-  filter: drop-shadow(0 0 20px rgba(201, 163, 50, 0.4));
-  text-shadow: 0 0 12px rgba(245, 197, 66, 0.25);
+.landing-accommodation-title {
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: var(--linkHover);
+  text-align: center;
+  text-shadow: 0 0 15px var(--glow);
 }
 
-.accommodation-title::after {
+.landing-accommodation-title::after {
   content: '';
   position: absolute;
   bottom: -10px;
@@ -51,15 +44,19 @@
   box-shadow: 0 0 10px #c9a332;
 }
 
-.accommodation-subtitle {
+.landing-accommodation-subtitle {
+  margin-bottom: 3rem;
+  color: var(--fontSub);
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 40px;
-  font-weight: 300;
-  letter-spacing: 1px;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.accommodation-note {
+.landing-accommodation-note {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -78,20 +75,20 @@
   font-size: 1.5rem;
 }
 
-.accommodation-note p {
+.landing-accommodation-note p {
   color: rgba(255, 255, 255, 0.9);
   font-size: 0.95rem;
   margin: 0;
   text-align: center;
 }
 
-.accommodation-note strong {
+.landing-accommodation-note strong {
   color: #d4af37;
   font-weight: 600;
 }
 
 /* Passes Grid */
-.passes-grid {
+.landing-passes-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
@@ -99,7 +96,7 @@
 }
 
 /* Pass Card */
-.pass-card {
+.landing-pass-card {
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(10, 10, 20, 0.95) 100%);
   border: 2px solid rgba(212, 175, 55, 0.3);
   border-radius: 20px;
@@ -114,7 +111,7 @@
     inset 0 1px 0 rgba(212, 175, 55, 0.1);
 }
 
-.pass-card::before {
+.landing-pass-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -126,7 +123,7 @@
   transition: opacity 0.3s;
 }
 
-.pass-card::after {
+.landing-pass-card::after {
   content: '';
   position: absolute;
   top: 50%;
@@ -139,16 +136,16 @@
   transition: width 0.6s, height 0.6s;
 }
 
-.pass-card:hover::before {
+.landing-pass-card:hover::before {
   opacity: 1;
 }
 
-.pass-card:hover::after {
+.landing-pass-card:hover::after {
   width: 300px;
   height: 300px;
 }
 
-.pass-card:hover {
+.landing-pass-card:hover {
   border-color: rgba(212, 175, 55, 0.7);
   box-shadow: 
     0 20px 50px rgba(245, 197, 66, 0.25),
@@ -181,8 +178,8 @@
   color: white;
 }
 
-.pass-card.popular,
-.pass-card.recommended {
+.landing-pass-card.popular,
+.landing-pass-card.recommended {
   border: 2px solid rgba(212, 175, 55, 0.6);
   background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(10, 10, 20, 0.95) 100%);
   box-shadow: 
@@ -191,8 +188,8 @@
     inset 0 1px 0 rgba(212, 175, 55, 0.15);
 }
 
-.pass-card.popular:hover,
-.pass-card.recommended:hover {
+.landing-pass-card.popular:hover,
+.landing-pass-card.recommended:hover {
   box-shadow: 
     0 12px 40px rgba(212, 175, 55, 0.35),
     0 0 80px rgba(212, 175, 55, 0.2),
@@ -200,7 +197,7 @@
 }
 
 /* Pass Header */
-.pass-header {
+.landing-pass-header {
   text-align: center;
   margin-bottom: 25px;
   padding-bottom: 20px;
@@ -208,7 +205,7 @@
   position: relative;
 }
 
-.pass-header::after {
+.landing-pass-header::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -220,7 +217,7 @@
   box-shadow: 0 0 8px #c9a332;
 }
 
-.pass-name {
+.landing-pass-name {
   font-size: 1.6rem;
   font-weight: 700;
   background: linear-gradient(135deg, #c9a332 0%, #e6c200 100%);
@@ -233,7 +230,7 @@
   filter: drop-shadow(0 0 8px rgba(201, 163, 50, 0.25));
 }
 
-.pass-dates {
+.landing-pass-dates {
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.7);
   font-weight: 400;
@@ -241,19 +238,19 @@
 }
 
 /* Pass Price */
-.pass-price {
+.landing-pass-price {
   text-align: center;
   margin-bottom: 30px;
 }
 
-.currency {
+.landing-currency {
   font-size: 1.5rem;
   color: #d4af37;
   vertical-align: super;
   margin-right: 5px;
 }
 
-.amount {
+.landing-amount {
   font-size: 3rem;
   font-weight: 700;
   color: #ffffff;
@@ -261,13 +258,13 @@
 }
 
 /* Benefits List */
-.pass-benefits {
+.landing-pass-benefits {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.benefit-item {
+.landing-benefit-item {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -277,11 +274,11 @@
   transition: background 0.3s;
 }
 
-.benefit-item:hover {
+.landing-benefit-item:hover {
   background: rgba(212, 175, 55, 0.05);
 }
 
-.benefit-icon {
+.landing-benefit-icon {
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -293,17 +290,17 @@
   flex-shrink: 0;
 }
 
-.benefit-icon.included {
+.landing-benefit-icon.included {
   background: linear-gradient(135deg, #6fcf97, #8BC34A);
   color: white;
 }
 
-.benefit-icon.excluded {
+.landing-benefit-icon.excluded {
   background: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.3);
 }
 
-.benefit-text {
+.landing-benefit-text {
   color: rgba(255, 255, 255, 0.9);
   font-size: 0.95rem;
 }
@@ -315,7 +312,7 @@
 }
 
 /* CTA Section */
-.accommodation-cta {
+.landing-accommodation-cta {
   text-align: center;
   padding: 50px 20px;
   background: rgba(212, 175, 55, 0.05);
@@ -323,14 +320,14 @@
   border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
-.cta-text {
+.landing-cta-text {
   font-size: 1.5rem;
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 25px;
   font-weight: 300;
 }
 
-.book-btn {
+.landing-book-btn {
   background: linear-gradient(135deg, #d4af37, #f4e5b0);
   color: #0a0e27;
   border: none;
@@ -350,7 +347,7 @@
   overflow: hidden;
 }
 
-.book-btn::before {
+.landing-book-btn::before {
   content: '';
   position: absolute;
   top: 0;
@@ -361,16 +358,16 @@
   transition: left 0.5s;
 }
 
-.book-btn:hover::before {
+.landing-book-btn:hover::before {
   left: 100%;
 }
 
-.book-btn:hover {
+.landing-book-btn:hover {
   transform: translateY(-3px) scale(1.02);
   box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
 }
 
-.book-btn:active {
+.landing-book-btn:active {
   transform: translateY(-1px) scale(0.98);
 }
 
@@ -378,15 +375,15 @@
   font-size: 1.3rem;
 }
 
-.btn-arrow {
+.landing-btn-arrow {
   transition: transform 0.3s;
 }
 
-.book-btn:hover .btn-arrow {
+.landing-book-btn:hover .landing-btn-arrow {
   transform: translateX(5px);
 }
 
-.cta-note {
+.landing-cta-note {
   margin-top: 15px;
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.5);
@@ -395,71 +392,71 @@
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .passes-grid {
+  .landing-passes-grid {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
   }
 
-  .accommodation-title {
+  .landing-accommodation-title {
     font-size: 2.5rem;
   }
 
-  .pass-name {
+  .landing-pass-name {
     font-size: 1.4rem;
   }
 
-  .amount {
+  .landing-amount {
     font-size: 2.5rem;
   }
 }
 
 @media (max-width: 768px) {
-  .accommodation-section {
+  .landing-accommodation-section {
     padding: 60px 15px;
   }
 
-  .accommodation-header {
+  .landing-accommodation-header {
     text-align: center;
     margin-bottom: 40px;
   }
 
-  .accommodation-title {
+  .landing-accommodation-title {
     font-size: 1.8rem;
     letter-spacing: 1px;
     word-wrap: break-word;
     line-height: 1.2;
   }
 
-  .accommodation-subtitle {
+  .landing-accommodation-subtitle {
     font-size: 0.95rem;
   }
 
-  .passes-grid {
+  .landing-passes-grid {
     grid-template-columns: 1fr;
     gap: 20px;
   }
 
-  .pass-card {
+  .landing-pass-card {
     padding: 30px 20px;
   }
 
-  .accommodation-note {
+  .landing-accommodation-note {
     flex-direction: column;
     padding: 15px 20px;
   }
 
-  .accommodation-note p {
+  .landing-accommodation-note p {
     font-size: 0.85rem;
   }
 
-  .book-btn {
+  .landing-book-btn {
     width: 100%;
     justify-content: center;
     padding: 16px 30px;
     font-size: 1rem;
   }
 
-  .cta-text {
+  .landing-cta-text {
     font-size: 1.2rem;
   }
 
@@ -471,23 +468,23 @@
 }
 
 @media (max-width: 480px) {
-  .accommodation-title {
+  .landing-accommodation-title {
     font-size: 1.8rem;
   }
 
-  .pass-name {
+  .landing-pass-name {
     font-size: 1.2rem;
   }
 
-  .amount {
+  .landing-amount {
     font-size: 2rem;
   }
 
-  .benefit-text {
+  .landing-benefit-text {
     font-size: 0.85rem;
   }
 
-  .book-btn {
+  .landing-book-btn {
     flex-direction: column;
     gap: 8px;
     padding: 15px 25px;

@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import Particles from '../components/Particles';
 import AccommodationSection from '../components/landing/AccommodationSection';
 import { useTheme } from '../context/ThemeContext';
-import './Accommodation.css';
+import './AccommodationHome.css';
 
 /**
  * Public Accommodation Page
@@ -14,7 +14,7 @@ function Accommodation() {
   const { theme } = useTheme();
 
   return (
-    <div className="accommodation-page">
+    <div className="home-accommodation-page">
       <Navbar />
       
       {/* Magical Particles Background */}

@@ -209,7 +209,7 @@ function Shop() {
       {/* Header */}
       <div className="shop-header" style={{ position: 'relative', zIndex: 1 }}>
         <div className="shop-title-section">
-          <h1 className="shop-title">MERCHANDISE SHOP</h1>
+          <h1 className="page-title">Merchandise Shop</h1>
           <p className="shop-subtitle">
             Official Parsec merch & event passes
           </p>
