@@ -260,10 +260,7 @@ function Shop() {
           filteredMerch.map((item) => (
             <div key={item._id} className="shop-card">
               <div className="shop-card-inner">
-                {/* Badge */}
-                <div className="shop-card-badge">
-                  {getMerchIcon(item.type)}
-                </div>
+                
 
                 {/* Image */}
                 <div className="shop-card-image">
@@ -310,7 +307,7 @@ function Shop() {
 
                   {/* Add to Cart Button */}
                   <button
-                    className="shop-add-btn"
+                    className="shop-add-btn leather-span"
                     onClick={() => addToCart(item)}
                     disabled={item.stockQuantity === 0 || item.stock === 0}
                   >

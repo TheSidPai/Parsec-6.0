@@ -203,7 +203,8 @@
   width: auto;
   filter: drop-shadow(0 0 8px var(--glow));
   transition: filter 0.3s ease;
-  display: none;
+  /* display: none; */
+  margin-right: 20px;
 }
 
 /* ========== RESPONSIVE - TABLET ========== */

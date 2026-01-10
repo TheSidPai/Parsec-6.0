@@ -78,14 +78,18 @@
   to { transform: rotate(360deg); }
 }
 
-.error-message {
+.orders-error-message {
   text-align: center;
   padding: 3rem;
-  background: rgba(220, 53, 69, 0.1);
-  border: 1px solid rgba(220, 53, 69, 0.3);
-  border-radius: 12px;
+  border: 2px solid rgba(211, 211, 211, 0.3);
+  border-radius: 6px;
   margin: 2rem auto;
   max-width: 500px;
+  background-color: rgba(0, 0, 0, 0.1); 
+  /* Apply the blur effect to the background area */
+  backdrop-filter: blur(5px);
+  /* Fallback for Safari */
+  -webkit-backdrop-filter: blur(5px)
 }
 
 .error-icon {
@@ -101,7 +105,7 @@
   color: #000;
   border: none;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: transform 0.2s;
 }

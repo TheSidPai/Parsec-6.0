@@ -335,7 +335,7 @@ function Accommodation() {
 
         {/* Booking Section */}
         <div className="pass-options-section">
-          <h2 className="section-title">Book Accommodation</h2>
+          <h2 className="accommodation-section-title">Book Accommodation</h2>
           
           <div className="accommodation-info">
             <div className="info-card">
@@ -372,13 +372,12 @@ function Accommodation() {
 
         {/* Booking History */}
         <div className="booking-history-section">
-          <h2 className="section-title">Your Bookings</h2>
+          <h2 className="accommodation-section-title">Your Bookings</h2>
           
           {loading ? (
             <div className="loading-message">Loading your bookings...</div>
           ) : bookings.length === 0 ? (
             <div className="empty-state">
-              <FaCalendarAlt className="empty-icon" />
               <p>No bookings yet. Book your accommodation above!</p>
             </div>
           ) : (
@@ -463,7 +462,7 @@ function Accommodation() {
                   )}
 
                   <div className="form-note">
-                    <p>ℹ️ Your contact details are already registered with your account.</p>
+                    <p>Your contact details are already registered with your account.</p>
                   </div>
                 </form>
 

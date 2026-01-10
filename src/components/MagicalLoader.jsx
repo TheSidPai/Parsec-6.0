@@ -14,7 +14,7 @@ const MagicalLoader = ({ onLoadComplete }) => {
           setTimeout(() => {
             setIsLoading(false);
             if (onLoadComplete) onLoadComplete();
-          }, 800);
+          }, 800000);
           return 100;
         }
         return prev + 1.5;
@@ -142,7 +142,7 @@ const MagicalLoader = ({ onLoadComplete }) => {
             {/* Circle */}
             <circle
               cx="50"
-              cy="50"
+              cy="60"
               r="20"
               fill="none"
               stroke="#d4af37"
@@ -169,11 +169,12 @@ const MagicalLoader = ({ onLoadComplete }) => {
         <div className="loading-text">
           <h2 className="magical-title">PARSEC 6.0</h2>
           <div className="title-underline"></div>
-          <p className="loading-subtitle">Initializing Experience</p>
         </div>
 
         {/* Elegant Progress Bar */}
         <div className="progress-container">
+        <p className="loading-subtitle">Initializing Experience</p>
+
           <div className="progress-track">
             <div className="progress-fill" style={{ width: `${progress}%` }}>
               <div className="progress-shimmer"></div>

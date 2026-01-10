@@ -51,15 +51,12 @@
 }
 
 .leaderboard-title {
+  margin-bottom: 1rem;
   font-family: 'Playfair Display', serif;
-  font-size: 3.5rem;
-  font-weight: 600;
-  font-style: normal;
-  color: #FFFFFF;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.5);
-  white-space: nowrap;
+  font-size: 4rem;
+  color: var(--linkHover);
+  text-align: center;
+  text-shadow: 0 0 15px var(--glow);
 }
 
 .wand-divider {
@@ -102,11 +99,15 @@
 }
 
 .leaderboard-subtitle {
+  margin-bottom: 2rem;
+  color: var(--fontSub);
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1.1rem;
-  color: #C8B6FF;
-  font-weight: 300;
-  margin-bottom: 25px;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ========== HOUSE CARDS GRID ========== */

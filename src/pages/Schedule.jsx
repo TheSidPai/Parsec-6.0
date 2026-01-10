@@ -349,7 +349,7 @@ function Schedule() {
             </div>
 
             <div className="hero-text">
-              <h1 className="hero-title">Board the Hogwarts Express</h1>
+              <h1 className="hero-title">Board the <span>Hogwarts Express</span></h1>
               <p className="hero-description">
                 Embark on a mystical journey through time as we trace the path
                 to Parsec 6.0. From preliminary challenges to the grand
