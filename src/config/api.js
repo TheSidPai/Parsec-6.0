@@ -113,7 +113,7 @@ export const API_ENDPOINTS = {
 
   // Accommodation
   ACCOMMODATION_CREATE: '/accommodation',
-  ACCOMMODATION_MY_BOOKINGS: '/orders/my', // Bookings appear in orders with type filter
+  ACCOMMODATION_MY_BOOKINGS: '/accommodation', // GET user's accommodation bookings
 
   // Admin - All admin routes prefixed with /paneermoms
   ADMIN_LOGIN: '/paneermoms/login',

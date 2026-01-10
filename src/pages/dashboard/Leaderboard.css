@@ -430,7 +430,7 @@
 .leaderboard-coming-soon {
   font-family: 'Playfair Display', serif;
   font-size: 0.95rem;
-  color: #C8B6FF;
+  color: var(--secondary);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
