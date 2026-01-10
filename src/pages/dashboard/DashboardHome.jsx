@@ -188,27 +188,65 @@ function DashboardHome() {
       }
 
       try {
+        // Get user ID from JWT token
+        let userName = "Student";
+        try {
+          const payload = JSON.parse(atob(token.split('.')[1]));
+          console.log("🔑 JWT Payload:", payload);
+        } catch (e) {
+          console.log("⚠️ Could not decode JWT:", e.message);
+        }
+
+        // Try to get user info from /auth/me endpoint
+        try {
+          const authResponse = await authenticatedFetch(
+            API_ENDPOINTS.AUTH_ME,
+            { method: "GET" },
+            token
+          );
+          
+          console.log("👤 /auth/me response:", authResponse.data);
+          
+          if (authResponse.response.ok && authResponse.data.data?.user?.name) {
+            userName = authResponse.data.data.user.name;
+            console.log("✅ Got name from /auth/me:", userName);
+          }
+        } catch (e) {
+          console.log("⚠️ /auth/me failed:", e.message);
+        }
+
+        // Get house info from sorting-hat endpoint
         const { response, data } = await authenticatedFetch(
           API_ENDPOINTS.SORTING_HAT_MY_HOUSE,
           { method: "GET" },
           token
         );
 
-        console.log("📋 User data from API:", data);
+        console.log("📋 House data from API:", data);
 
         if (response.ok && data.data?.house) {
           const houseName = data.data.house.name;
-          const fullName = data.data.name || "Student";
-          const firstName = fullName.trim().split(' ')[0]; // Extract first name
-          console.log("✅ Setting user name to:", firstName);
+          const firstName = userName.trim().split(' ')[0]; // Extract first name
+          
+          console.log("✅ Full name:", userName);
+          console.log("✅ First name:", firstName);
+          console.log("✅ House:", houseName);
+          
+          // Update user data with name and house
           setUserData((prev) => ({
             ...prev,
             name: firstName,
-            house: houseName.toLowerCase(),
+            house: houseName?.toLowerCase(),
             rank: "Coming Soon",
           }));
         } else {
           console.warn("⚠️ No house data in response:", data);
+          // Still set the name even if house fetch fails
+          const firstName = userName.trim().split(' ')[0];
+          setUserData((prev) => ({
+            ...prev,
+            name: firstName,
+          }));
         }
       } catch (e) {
         console.error("User fetch error:", e);
