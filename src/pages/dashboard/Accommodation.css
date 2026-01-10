@@ -312,6 +312,7 @@
 .empty-state {
   text-align: center;
   padding: 4rem 2rem;
+  margin: 0 auto;
 }
 
 .empty-icon {
@@ -409,24 +410,34 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10000;
+  z-index: 100000;
   animation: fadeIn 0.3s ease-out;
-  padding: 2rem;
+  padding: 1rem;
+  overflow-y: auto;
 }
 
 .accommodation-modal-content {
-  /* background: linear-gradient(135deg, rgba(26, 26, 46, 0.98), rgba(22, 33, 62, 0.95)); */
   border: 2px solid color-mix(in srgb, var(--primary) 30%, transparent);
   background: linear-gradient(135deg, #11121a 0%, rgba(13, 20, 41, 0.98) 50%, #0f0f1a 100%);
   border-radius: 24px;
   padding: 2.5rem;
   max-width: 600px;
-  width: 100%;
+  width: 95%;
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+              0 0 40px rgba(var(--primary-rgb, 255, 215, 0), 0.15);
   animation: slideUp 0.4s ease-out;
+  margin: auto;
+  
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.accommodation-modal-content::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 @keyframes slideUp {
@@ -442,8 +453,8 @@
 
 .accommodation-modal-close {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 1.5rem;
+  right: 1.5rem;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #fff;
@@ -456,11 +467,9 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 1.2rem;
-  /* Apply the blur effect to the background area */
   backdrop-filter: blur(10px);
-  /* Fallback for Safari */
   -webkit-backdrop-filter: blur(10px);
-  margin-bottom: 20px;
+  z-index: 10;
 }
 
 .accommodation-modal-close:hover {
@@ -500,6 +509,7 @@
 /* ========== MODAL CONTENT ========== */
 .accommodation-modal-step {
   animation: fadeIn 0.4s ease-out;
+  padding-top: 1rem;
 }
 
 .accommodation-modal-step h2 {
@@ -736,10 +746,12 @@
 }
 
 .payment-amount {
-  font-size: 2rem;
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
   font-weight: 700;
-  color: #10b981;
+  color: var(--secondary, var(--fontAccent));
   margin-bottom: 1.5rem;
+  text-shadow: 0 0 20px rgba(var(--secondary-rgb, 255, 215, 0), 0.3);
 }
 
 .qr-code-container {
@@ -756,26 +768,28 @@
   height: auto;
 }
 
-.upi-id {
+.accommodation-upi-id {
   font-family: "Josefin Sans", sans-serif;
-  color: var(--fontAccent, var(--fontAccent));
+  color: var(--secondary, var(--fontAccent));
   font-weight: 600;
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
 }
 
-.payment-instructions {
+.accommodation-payment-instructions {
   text-align: left;
-  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(var(--primary-rgb, 255, 215, 0), 0.2);
   border-radius: 12px;
   padding: 1.5rem;
 }
 
-.payment-instructions p {
+.accommodation-payment-instructions p {
   font-family: "Josefin Sans", sans-serif;
-  color: #c8b6ff;
+  color: var(--fontAccent, #e8d4a0);
   margin: 0.7rem 0;
   padding-left: 1rem;
+  line-height: 1.6;
 }
 
 /* ========== MODAL ACTIONS ========== */
@@ -1051,7 +1065,8 @@
 
 /* ========== PAYMENT STEP UPDATES ========== */
 .payment-nights {
-  color: #c8b6ff;
+  font-family: "Josefin Sans", sans-serif;
+  color: var(--fontAccent, #e8d4a0);
   font-size: 0.9rem;
   margin-bottom: 1rem;
 }
@@ -1059,13 +1074,15 @@
 .form-group small {
   display: block;
   margin-top: 0.5rem;
-  color: #c8b6ff;
+  font-family: "Josefin Sans", sans-serif;
+  color: rgba(var(--fontAccent-rgb, 232, 212, 160), 0.7);
   font-size: 0.85rem;
 }
 
 /* ========== BOOKING CARD UPDATES ========== */
 .booking-status {
-  color: #c8b6ff;
+  font-family: "Josefin Sans", sans-serif;
+  color: var(--fontAccent, #e8d4a0);
   font-size: 0.9rem;
   text-transform: capitalize;
 }
@@ -1099,13 +1116,31 @@
     grid-template-columns: 1fr;
   }
 
+  .accommodation-modal-overlay {
+    padding: 0.5rem;
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
+
   .accommodation-modal-content {
     padding: 1.5rem;
-    max-width: 95%;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 16px;
+  }
+
+  .accommodation-modal-step h2 {
+    font-size: 1.5rem;
+  }
+
+  .payment-amount {
+    font-size: 2rem;
   }
 
   .accommodation-modal-steps {
     flex-direction: column;
+    gap: 0.5rem;
   }
 
   .accommodation-modal-actions {
@@ -1114,5 +1149,62 @@
 
   .btn {
     width: 100%;
+  }
+
+  .qr-code-container {
+    max-width: 280px;
+    margin: 0 auto 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .accommodation-modal-content {
+    padding: 1rem;
+  }
+
+  .accommodation-modal-step h2 {
+    font-size: 1.1rem;
+  }
+
+  .payment-amount {
+    font-size: 1.8rem;
+  }
+
+  .accommodation-payment-instructions {
+    padding: 1rem;
+  }
+
+  .accommodation-payment-instructions p {
+    font-size: 0.85rem;
+  }
+
+  .accommodation-upi-id {
+    font-size: 1rem;
+  }
+
+  .qr-code-container {
+    max-width: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .accommodation-modal-content {
+    padding: 1rem;
+  }
+
+  .accommodation-modal-step h2 {
+    font-size: 1.3rem;
+  }
+
+  .payment-amount {
+    font-size: 1.8rem;
+  }
+
+  .accommodation-payment-instructions {
+    padding: 1rem;
+  }
+
+  .accommodation-upi-id {
+    font-size: 1rem;
   }
 }

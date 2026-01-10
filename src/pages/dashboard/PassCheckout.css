@@ -376,7 +376,7 @@
 
 @media (max-width: 768px) {
   .checkout-page {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
   }
 
   .checkout-title {
@@ -400,5 +400,75 @@
 
   .checkout-success {
     padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .checkout-page {
+    padding: 1rem 0.75rem;
+  }
+  
+  .checkout-title {
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+  }
+  
+  .checkout-grid {
+    gap: 1.5rem;
+  }
+  
+  .checkout-summary,
+  .checkout-payment {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+  
+  .checkout-summary h2,
+  .checkout-payment h2 {
+    font-size: 1.2rem;
+  }
+  
+  .pass-summary-card {
+    padding: 1rem;
+  }
+  
+  .pass-summary-name {
+    font-size: 1.1rem;
+  }
+  
+  .pass-summary-price {
+    font-size: 1.3rem;
+  }
+  
+  .summary-row {
+    font-size: 0.9rem;
+  }
+  
+  .summary-total {
+    font-size: 1.1rem;
+  }
+  
+  .success-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+  
+  .checkout-success h2 {
+    font-size: 1.3rem;
+  }
+  
+  .checkout-success p {
+    font-size: 0.9rem;
+  }
+  
+  .checkout-success {
+    padding: 1.5rem;
+  }
+  
+  .primary-button,
+  .secondary-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
   }
 }

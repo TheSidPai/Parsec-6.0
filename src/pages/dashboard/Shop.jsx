@@ -207,7 +207,7 @@ function Shop() {
       </div>
 
       {/* Header */}
-      <div className="shop-header" style={{ position: 'relative', zIndex: 1 }}>
+      {/* <div className="shop-header" style={{ position: 'relative', zIndex: 1 }}> */}
         <div className="shop-title-section">
           <h1 className="page-title">Merchandise Shop</h1>
           <p className="shop-subtitle">
@@ -220,7 +220,7 @@ function Shop() {
             🛒 CART ({getCartItemCount()})
           </button>
         </div>
-      </div>
+      {/* </div> */}
 
       {/* Filters */}
       <div className="shop-filters" style={{ position: 'relative', zIndex: 1 }}>
@@ -307,7 +307,7 @@ function Shop() {
 
                   {/* Add to Cart Button */}
                   <button
-                    className="shop-add-btn leather-span"
+                    className=" shop-leather-span"
                     onClick={() => addToCart(item)}
                     disabled={item.stockQuantity === 0 || item.stock === 0}
                   >

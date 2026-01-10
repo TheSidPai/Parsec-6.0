@@ -355,9 +355,20 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .passes-page {
+    padding: 2rem 1.5rem;
+  }
+  
+  .passes-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .passes-page {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
   }
 
   .passes-title {
@@ -385,5 +396,63 @@
 
   .pass-amount {
     font-size: 2.5rem;
+  }
+  
+  .pass-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .passes-page {
+    padding: 1rem 0.75rem;
+  }
+  
+  .passes-title {
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+  }
+  
+  .passes-icon {
+    font-size: 2rem;
+  }
+  
+  .passes-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .pass-card {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+  
+  .pass-name {
+    font-size: 1.3rem;
+  }
+  
+  .pass-amount {
+    font-size: 2rem;
+  }
+  
+  .pass-amount span {
+    font-size: 1rem;
+  }
+  
+  .pass-description {
+    font-size: 0.85rem;
+  }
+  
+  .pass-features {
+    gap: 0.5rem;
+  }
+  
+  .pass-feature {
+    font-size: 0.8rem;
+    padding: 0.4rem 0;
+  }
+  
+  .pass-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
   }
 }

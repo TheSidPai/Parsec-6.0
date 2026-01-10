@@ -489,8 +489,8 @@ function Accommodation() {
                   <div className="qr-code-container">
                     <img src={paymentData.qrCodeUrl} alt="Payment QR Code" />
                   </div>
-                  <p className="upi-id">UPI ID: {paymentData.upiId}</p>
-                  <div className="payment-instructions">
+                  <p className="accommodation-upi-id">UPI ID: {paymentData.upiId}</p>
+                  <div className="accommodation-payment-instructions">
                     <p>1. Scan the QR code using any UPI app</p>
                     <p>2. Enter the exact amount: ₹{paymentData.totalPrice}</p>
                     <p>3. Complete the payment</p>

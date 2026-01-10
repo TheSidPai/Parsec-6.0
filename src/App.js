@@ -48,6 +48,7 @@ import SortingHat from "./pages/signup/SortingHat";
 import Auth from "./pages/signup/Auth";
 import ManualToken from "./pages/signup/ManualToken";
 import LoaderPreview from "./pages/LoaderPreview";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -98,7 +99,11 @@ function AnimatedRoutes() {
         />
 
         {/* Protected Dashboard Routes */}
-        <Route path="/dashboard" element={<DashboardLayout />}>
+        <Route path="/dashboard" element={
+          <ProtectedRoute>
+            <DashboardLayout />
+          </ProtectedRoute>
+        }>
           <Route index element={<DashboardHome />} />
           <Route path="events" element={<DashboardEvents />} />
           <Route path="events/:id" element={<DashboardEventDetail />} />

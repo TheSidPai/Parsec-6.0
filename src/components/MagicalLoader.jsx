@@ -14,7 +14,7 @@ const MagicalLoader = ({ onLoadComplete }) => {
           setTimeout(() => {
             setIsLoading(false);
             if (onLoadComplete) onLoadComplete();
-          }, 800000);
+          }, 800);
           return 100;
         }
         return prev + 1.5;

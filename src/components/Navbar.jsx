@@ -89,7 +89,6 @@ function Navbar() {
                   className="navbar-dropdown-link"
                   onClick={closeMenu}
                 >
-                  <span className="dropdown-icon">⚡</span>
                   <span className="dropdown-text">
                     <strong>PARSEC</strong>
                     <small>Technical Events</small>
@@ -102,7 +101,6 @@ function Navbar() {
                   className="navbar-dropdown-link"
                   onClick={closeMenu}
                 >
-                  <span className="dropdown-icon">🎭</span>
                   <span className="dropdown-text">
                     <strong>Harshtal</strong>
                     <small>Cultural Events</small>
@@ -115,7 +113,6 @@ function Navbar() {
                   className="navbar-dropdown-link"
                   onClick={closeMenu}
                 >
-                  <span className="dropdown-icon">🧊</span>
                   <span className="dropdown-text">
                     <strong>Tesseract</strong>
                     <small>Innovation Challenge</small>
