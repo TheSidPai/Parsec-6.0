@@ -14,14 +14,26 @@ function Shop() {
   const navigate = useNavigate();
 
   const filterMerch = useCallback(() => {
+    console.log('🔍 Filtering with filter:', filter);
+    console.log('🔍 Total merch items:', merch.length);
+    
     if (filter === 'all') {
       setFilteredMerch(merch);
     } else if (filter === 'passes') {
-      // Event passes have category 'passes' or type 'pass'/'event-pass'
-      setFilteredMerch(merch.filter(item => 
-        item.category === 'passes' || item.category === 'pass' || item.category === 'event-pass' ||
-        item.type === 'pass' || item.type === 'event-pass' || item.type === 'passes'
-      ));
+      // Event passes - check for event-pass1 and event-pass2 types
+      const filtered = merch.filter(item => {
+        const isPass = item.type === 'event-pass1' || 
+                      item.type === 'event-pass2' || 
+                      item.type === 'pass' || 
+                      item.type === 'event-pass' ||
+                      item.category === 'passes' || 
+                      item.category === 'pass' || 
+                      item.category === 'event-pass';
+        console.log(`   ${item.name}: type="${item.type}", category="${item.category}", isPass=${isPass}`);
+        return isPass;
+      });
+      console.log('✅ Filtered passes:', filtered.length);
+      setFilteredMerch(filtered);
     } else if (filter === 'non-wearable') {
       // Accessories/non-wearables
       setFilteredMerch(merch.filter(item => 
@@ -90,7 +102,7 @@ function Shop() {
           console.log('📦 Backend items:', backendItems.length);
           
           backendItems.forEach(item => {
-            console.log(`   - ${item.name} (ID: ${item._id}, Stock: ${item.stockQuantity || item.stock})`);
+            console.log(`   - ${item.name} (Type: ${item.type}, Category: ${item.category}, Stock: ${item.stockQuantity || item.stock})`);
           });
           
           setMerch(backendItems);
@@ -112,6 +124,25 @@ function Shop() {
     } finally {
       setLoading(false);
     }
+  };
+
+  // Format item names for better display (especially Day Passes)
+  const formatItemName = (name, type) => {
+    // Handle Day Pass variations
+    if (type === 'event-pass1' || type === 'event-pass2') {
+      // Extract day number if present
+      const dayMatch = name.match(/(\d+)/);
+      if (dayMatch) {
+        return `Day ${dayMatch[1]} Pass`;
+      }
+      // If type is event-pass1, it's Day 1
+      if (type === 'event-pass1') return 'Day 1 Pass';
+      // If type is event-pass2, it's Day 2
+      if (type === 'event-pass2') return 'Day 2 Pass';
+    }
+    
+    // Return original name for other items
+    return name;
   };
 
   const addToCart = (item) => {
@@ -275,7 +306,9 @@ function Shop() {
 
                 {/* Content */}
                 <div className="shop-card-content">
-                  <h3 className="shop-card-title">{item.name}</h3>
+                  <h3 className="shop-card-title">
+                    {formatItemName(item.name, item.type)}
+                  </h3>
                   <div 
                     className="shop-card-description" 
                     dangerouslySetInnerHTML={{ __html: item.description }}

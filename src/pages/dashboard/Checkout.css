@@ -276,55 +276,70 @@
 .payment-input label {
   display: block;
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--fontAccent);
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .payment-input input {
   width: 100%;
-  background: rgba(255, 255, 255, 0.03);
-  border: 2px solid var(--fontAccent);
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.15);
   color: var(--fontMain);
-  padding: 0.8rem;
-  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
 }
 
 .payment-input input:focus {
   outline: none;
-  border-color: var(--fontMain);
-  box-shadow: 0 0 10px var(--glow);
+  border-color: var(--fontAccent);
+  box-shadow: 0 0 15px var(--glow);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.payment-input input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+  font-style: italic;
 }
 
 .payment-input small {
   display: block;
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--fontSub);
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
+  line-height: 1.5;
 }
 
 /* Buttons */
 .checkout-btn {
   width: 100%;
-  background: linear-gradient(145deg, var(--fontAccent), var(--fontMain));
+  background: linear-gradient(135deg, var(--fontAccent), var(--fontMain));
   color: var(--background);
   border: none;
-  padding: 1rem;
-  border-radius: 8px;
+  padding: 1.25rem;
+  border-radius: 10px;
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-top: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .checkout-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px var(--glow);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px var(--glow);
+}
+
+.checkout-btn:active:not(:disabled) {
+  transform: translateY(-1px);
 }
 
 .checkout-btn:disabled {
@@ -360,14 +375,32 @@
   font-family: 'Josefin Sans', sans-serif;
   color: var(--fontSub);
   font-size: 0.95rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .checkout-note ul {
   text-align: left;
-  margin: 0.5rem 0 0 1.5rem;
-  padding: 0;
-  list-style-type: disc;
+  margin: 1rem 0 0 0;
+  padding: 0 1.5rem;
+  list-style-type: none;
+}
+
+.checkout-note li {
+  margin: 0.75rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+  line-height: 1.6;
+}
+
+.checkout-note li:before {
+  content: "ℹ️";
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .checkout-note li {
@@ -425,88 +458,128 @@
 
 /* Payment Info Box Enhancement */
 .payment-status-info {
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border-top: 2px solid var(--fontAccent);
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+}
+
+.payment-info-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid var(--fontAccent);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.payment-info-box p {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.15rem;
+  color: var(--fontSub);
+  margin: 0.75rem 0;
+  line-height: 1.6;
+}
+
+.payment-info-box strong {
+  color: var(--fontAccent);
+  font-size: 1.2rem;
 }
 
 .status-badge {
-  display: inline-block;
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-size: 1rem;
   font-weight: 600;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 .status-pending {
-  background: rgba(255, 193, 7, 0.2);
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 152, 0, 0.15));
   color: #ffc107;
-  border: 1px solid #ffc107;
+  border: 2px solid rgba(255, 193, 7, 0.4);
 }
 
 .payment-status-info small {
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.85rem;
+  color: var(--fontSub);
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 /* Screenshot Upload Styles */
 .payment-screenshot-section {
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px dashed rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  border: 2px dashed rgba(255, 215, 0, 0.3);
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 2rem;
   margin: 2rem 0;
+  transition: all 0.3s ease;
+}
+
+.payment-screenshot-section:hover {
+  border-color: rgba(255, 215, 0, 0.5);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .screenshot-label {
   display: block;
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: #ffd700;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--fontAccent);
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 .screenshot-input {
   display: block;
   width: 100%;
-  padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  color: #fff;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  color: var(--fontMain);
   cursor: pointer;
   transition: all 0.3s ease;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1rem;
 }
 
 .screenshot-input:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: #ffd700;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--fontAccent);
 }
 
 .screenshot-input::file-selector-button {
-  padding: 0.5rem 1rem;
-  margin-right: 1rem;
-  background: #ffd700;
-  color: #000;
+  padding: 0.75rem 1.5rem;
+  margin-right: 1.5rem;
+  background: linear-gradient(135deg, var(--fontAccent), var(--fontMain));
+  color: var(--background);
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
+  font-family: 'Josefin Sans', sans-serif;
   transition: all 0.3s ease;
 }
 
 .screenshot-input::file-selector-button:hover {
-  background: #ffed4e;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--glow);
 }
 
 .screenshot-help {
   display: block;
-  margin-top: 0.5rem;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.85rem;
+  margin-top: 0.75rem;
+  color: var(--fontSub);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 .screenshot-preview {
