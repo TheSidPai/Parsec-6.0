@@ -47,6 +47,8 @@ import Onboarding from "./pages/signup/Onboarding";
 import SortingHat from "./pages/signup/SortingHat";
 import Auth from "./pages/signup/Auth";
 import ManualToken from "./pages/signup/ManualToken";
+import LoaderPreview from "./pages/LoaderPreview";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -56,6 +58,9 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         {/* Root redirects to home */}
         <Route path="/" element={<Navigate to="/home" replace />} />
+
+        {/* Loader Preview - Temporary for CSS work */}
+        <Route path="/loader-preview" element={<LoaderPreview />} />
 
         {/* Public Routes */}
         <Route path="/home" element={<Home />} />
@@ -94,7 +99,11 @@ function AnimatedRoutes() {
         />
 
         {/* Protected Dashboard Routes */}
-        <Route path="/dashboard" element={<DashboardLayout />}>
+        <Route path="/dashboard" element={
+          <ProtectedRoute>
+            <DashboardLayout />
+          </ProtectedRoute>
+        }>
           <Route index element={<DashboardHome />} />
           <Route path="events" element={<DashboardEvents />} />
           <Route path="events/:id" element={<DashboardEventDetail />} />

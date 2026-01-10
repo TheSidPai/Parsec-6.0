@@ -412,7 +412,7 @@
 
 @media (max-width: 768px) {
   .landing-accommodation-section {
-    padding: 60px 15px;
+    padding: 100px 15px 60px;
   }
 
   .landing-accommodation-header {
@@ -468,8 +468,12 @@
 }
 
 @media (max-width: 480px) {
+  .landing-accommodation-section {
+    padding: 90px 12px 50px;
+  }
+
   .landing-accommodation-title {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .landing-pass-name {

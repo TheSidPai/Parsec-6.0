@@ -79,22 +79,28 @@
 }
 
 .hero-title {
+  margin-bottom: 1rem;
   font-family: 'Playfair Display', serif;
   font-size: 3.5rem;
+  color: var(--linkHover);
+  text-align: left;
+  text-shadow: 0 0 15px var(--glow);
+}
+
+.hero-title span {
   color: var(--fontAccent);
-  margin-bottom: 1rem;
-  text-shadow: 0 0 20px var(--glow);
-  line-height: 1.2;
 }
 
 .hero-description {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
-  line-height: 1.8;
-  color: var(--fontMain);
-  margin-bottom: 2rem;
-  opacity: 0.9;
-  font-style: italic;
+  margin-bottom: 3rem;
+  color: var(--fontSub);
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: left;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Countdown Box */

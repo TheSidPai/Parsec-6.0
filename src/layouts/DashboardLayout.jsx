@@ -180,7 +180,7 @@ function DashboardLayout() {
             </Link>
           </li> */}
         </ul>
-        <button onClick={handleLogout} className="logout-btn">
+        <button onClick={handleLogout} className="logout-btn layout-leather-span">
           <FaSignOutAlt /> Logout
         </button>
       </nav>

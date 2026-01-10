@@ -36,33 +36,14 @@ const accommodationAPI = {
         return [];
       }
 
-      // Handle multiple response structures
-      let accommodationBookings = [];
-
-      // Try different data structures
-      if (data?.data?.orders && Array.isArray(data.data.orders)) {
-        accommodationBookings = data.data.orders
-          .filter(order => order.referenceType === 'AccommodationBooking')
-          .map(order => ({
-            _id: order._id,
-            checkInDate: order.referenceId?.checkInDate,
-            checkOutDate: order.referenceId?.checkOutDate,
-            numberOfNights: order.referenceId?.numberOfNights,
-            totalPrice: order.referenceId?.totalPrice,
-            status: order.referenceId?.status,
-            paymentStatus: order.referenceId?.paymentStatus,
-            createdAt: order.createdAt
-          }));
-      } else if (Array.isArray(data?.data)) {
-        accommodationBookings = data.data;
-      } else if (data?.success && Array.isArray(data?.data?.bookings)) {
-        accommodationBookings = data.data.bookings;
-      } else if (data?.data?.bookings && Array.isArray(data.data.bookings)) {
-        accommodationBookings = data.data.bookings;
+      // Handle the response structure: { status, results, data: { bookings: [] } }
+      if (data?.data?.bookings && Array.isArray(data.data.bookings)) {
+        console.log('✅ Processed bookings:', data.data.bookings);
+        return data.data.bookings;
       }
 
-      console.log('✅ Processed bookings:', accommodationBookings);
-      return accommodationBookings || [];
+      console.warn('⚠️ Unexpected response structure, returning empty array');
+      return [];
     } catch (error) {
       console.error('❌ Fetch bookings error:', error);
       // Return empty array instead of throwing
@@ -335,7 +316,7 @@ function Accommodation() {
 
         {/* Booking Section */}
         <div className="pass-options-section">
-          <h2 className="section-title">Book Accommodation</h2>
+          <h2 className="accommodation-section-title">Book Accommodation</h2>
           
           <div className="accommodation-info">
             <div className="info-card">
@@ -372,34 +353,64 @@ function Accommodation() {
 
         {/* Booking History */}
         <div className="booking-history-section">
-          <h2 className="section-title">Your Bookings</h2>
+          <h2 className="accommodation-section-title">Your Bookings</h2>
           
           {loading ? (
             <div className="loading-message">Loading your bookings...</div>
           ) : bookings.length === 0 ? (
             <div className="empty-state">
-              <FaCalendarAlt className="empty-icon" />
               <p>No bookings yet. Book your accommodation above!</p>
             </div>
           ) : (
             <div className="bookings-grid">
-              {bookings.map(booking => (
-                <div key={booking._id} className="booking-card">
-                  <div className="booking-header">
-                    <h3>Accommodation Booking</h3>
-                    {getStatusBadge(booking.status)}
+              {bookings.map(booking => {
+                const checkIn = new Date(booking.checkInDate);
+                const checkOut = new Date(booking.checkOutDate);
+                const formatDate = (date) => {
+                  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                };
+                
+                return (
+                  <div key={booking._id} className="booking-card">
+                    <div className="booking-header">
+                      <div className="booking-title-section">
+                        <FaCalendarAlt className="booking-icon" />
+                        <h3>Accommodation</h3>
+                      </div>
+                      {getStatusBadge(booking.status)}
+                    </div>
+                    <div className="booking-details">
+                      <div className="booking-dates">
+                        <span className="date-label">Check-in:</span>
+                        <span className="date-value">{formatDate(checkIn)}</span>
+                      </div>
+                      <div className="booking-dates">
+                        <span className="date-label">Check-out:</span>
+                        <span className="date-value">{formatDate(checkOut)}</span>
+                      </div>
+                      <div className="booking-info-row">
+                        <span className="info-label">Duration:</span>
+                        <span className="info-value">{booking.numberOfNights} {booking.numberOfNights === 1 ? 'night' : 'nights'}</span>
+                      </div>
+                      <div className="booking-divider"></div>
+                      <div className="booking-price-row">
+                        <span className="price-label">Total Amount</span>
+                        <span className="price-value">₹{booking.totalPrice.toLocaleString()}</span>
+                      </div>
+                      <div className="booking-payment-status">
+                        <span className={`payment-badge payment-${booking.paymentStatus.toLowerCase()}`}>
+                          {booking.paymentStatus === 'paid' ? '✓ Paid' : 
+                           booking.paymentStatus === 'unpaid' ? '⏳ Payment Pending' : 
+                           booking.paymentStatus}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="booking-footer">
+                      <span className="booking-date-text">Booked on {formatDate(new Date(booking.createdAt))}</span>
+                    </div>
                   </div>
-                  <div className="booking-details">
-                    <p><FaCalendarAlt /> {new Date(booking.checkInDate).toLocaleDateString()} - {new Date(booking.checkOutDate).toLocaleDateString()}</p>
-                    <p><strong>Nights:</strong> {booking.numberOfNights}</p>
-                    <p className="booking-amount">₹{booking.totalPrice}</p>
-                    <p className="booking-status">Payment: {booking.paymentStatus}</p>
-                    <p className="booking-date">
-                      Booked on: {new Date(booking.createdAt).toLocaleDateString()}
-                    </p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>
@@ -463,7 +474,7 @@ function Accommodation() {
                   )}
 
                   <div className="form-note">
-                    <p>ℹ️ Your contact details are already registered with your account.</p>
+                    <p>Your contact details are already registered with your account.</p>
                   </div>
                 </form>
 
@@ -490,8 +501,8 @@ function Accommodation() {
                   <div className="qr-code-container">
                     <img src={paymentData.qrCodeUrl} alt="Payment QR Code" />
                   </div>
-                  <p className="upi-id">UPI ID: {paymentData.upiId}</p>
-                  <div className="payment-instructions">
+                  <p className="accommodation-upi-id">UPI ID: {paymentData.upiId}</p>
+                  <div className="accommodation-payment-instructions">
                     <p>1. Scan the QR code using any UPI app</p>
                     <p>2. Enter the exact amount: ₹{paymentData.totalPrice}</p>
                     <p>3. Complete the payment</p>

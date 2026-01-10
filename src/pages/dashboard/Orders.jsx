@@ -129,8 +129,7 @@ function Orders() {
   if (error) {
     return (
       <div className="orders-container">
-        <div className="error-message">
-          <span className="error-icon">⚠️</span>
+        <div className="orders-error-message">
           <h3>{error}</h3>
           <button onClick={fetchOrders} className="retry-btn">
             Try Again
@@ -163,7 +162,6 @@ function Orders() {
       {orders.length === 0 ? (
         <div className="no-orders">
           <div className="empty-state">
-            <span className="empty-icon">📦</span>
             <h3>No orders yet</h3>
             <p>Your orders will appear here once you make a purchase</p>
           </div>

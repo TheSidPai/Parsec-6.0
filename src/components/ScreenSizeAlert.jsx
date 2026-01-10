@@ -26,47 +26,15 @@ function ScreenSizeAlert() {
     <>
       <div className="screen-alert-overlay" onClick={handleDismiss}></div>
       <div className="screen-alert-container">
-        <div className="screen-alert-icon">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="laptop-icon"
-          >
-            <rect
-              x="2"
-              y="4"
-              width="20"
-              height="12"
-              rx="1"
-              stroke="currentColor"
-              strokeWidth="2"
-              fill="none"
-            />
-            <path
-              d="M1 18h22"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-            <circle cx="12" cy="10" r="1.5" fill="currentColor" />
-          </svg>
-        </div>
-        
-        <h2 className="screen-alert-title">Best Experience Ahead!</h2>
+        <h2 className="screen-alert-title">MAGIC, JUST AHEAD</h2>
         
         <p className="screen-alert-message">
-          For the most magical experience, we recommend viewing PARSEC 6.0 
-          on a laptop or larger display. ✨
+          For the most magical experience, we recommend viewing <span>PARSEC 6.0 </span>  
+          on a laptop or larger display. Immerse yourself in the full wizarding experience with all animations and effects!
         </p>
-        
-        <p className="screen-alert-submessage">
-          Immerse yourself in the full wizarding experience with all animations and effects!
-        </p>
-        
         <button className="screen-alert-button" onClick={handleDismiss}>
           <span>Got it!</span>
-          <svg
+          {/* <svg
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -79,12 +47,12 @@ function ScreenSizeAlert() {
               strokeLinecap="round"
               strokeLinejoin="round"
             />
-          </svg>
+          </svg> */}
         </button>
         
-        <button className="screen-alert-close" onClick={handleDismiss} aria-label="Close">
+        {/* <button className="screen-alert-close" onClick={handleDismiss} aria-label="Close">
           ×
-        </button>
+        </button> */}
       </div>
     </>
   );
