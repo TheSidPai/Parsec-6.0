@@ -10,7 +10,6 @@ function Checkout() {
   const [shippingAddress, setShippingAddress] = useState('');
   const [paymentUTR, setPaymentUTR] = useState('');
   const [paymentScreenshot, setPaymentScreenshot] = useState(null);
-  const [screenshotPreview, setScreenshotPreview] = useState(null);
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(1); // 1: Review, 2: Create Order, 3: Payment
   const [orderId, setOrderId] = useState(null);
@@ -58,13 +57,6 @@ function Checkout() {
       }
 
       setPaymentScreenshot(file);
-      
-      // Create preview
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setScreenshotPreview(reader.result);
-      };
-      reader.readAsDataURL(file);
     }
   };
 
@@ -131,29 +123,24 @@ function Checkout() {
     }
 
     if (!paymentScreenshot) {
-      const confirm = window.confirm('No screenshot uploaded. Are you sure you want to continue? This may delay verification.');
-      if (!confirm) return;
+      alert('Payment screenshot is required. Please upload a valid image.');
+      return;
     }
 
     setLoading(true);
     try {
-      // Prepare payment data
-      const paymentData = {
-        orderId,
-        amount: getTotalPrice(),
-        paymentUTR: paymentUTR.trim()
-      };
-
-      // If screenshot exists, add it as base64
-      if (screenshotPreview) {
-        paymentData.paymentScreenshot = screenshotPreview;
-      }
+      // Prepare FormData for file upload
+      const formData = new FormData();
+      formData.append('orderId', orderId);
+      formData.append('amount', getTotalPrice());
+      formData.append('paymentUTR', paymentUTR.trim());
+      formData.append('paymentScreenshot', paymentScreenshot);
 
       const { response, data } = await authenticatedFetch(
         API_ENDPOINTS.PAYMENTS_SUBMIT,
         {
           method: 'POST',
-          body: JSON.stringify(paymentData)
+          body: formData
         },
         token
       );
@@ -324,40 +311,6 @@ function Checkout() {
             </p>
           </div>
 
-          {/* Screenshot Upload */}
-          <div className="payment-screenshot-section">
-            <label htmlFor="screenshot" className="screenshot-label">
-              Payment Screenshot (Recommended) *
-            </label>
-            <input
-              id="screenshot"
-              type="file"
-              accept="image/*"
-              onChange={handleScreenshotChange}
-              className="screenshot-input"
-            />
-            <small className="screenshot-help">
-              Upload a screenshot of your payment confirmation. This helps speed up verification.
-            </small>
-            
-            {screenshotPreview && (
-              <div className="screenshot-preview">
-                <h4>Screenshot Preview:</h4>
-                <img src={screenshotPreview} alt="Payment Screenshot" />
-                <button
-                  type="button"
-                  className="remove-screenshot-btn"
-                  onClick={() => {
-                    setPaymentScreenshot(null);
-                    setScreenshotPreview(null);
-                  }}
-                >
-                  ✕ Remove Screenshot
-                </button>
-              </div>
-            )}
-          </div>
-
           <div className="payment-input">
             <label htmlFor="utr">Payment UTR / Transaction ID *</label>
             <input
@@ -371,10 +324,26 @@ function Checkout() {
             <small>You'll receive this after completing payment. Usually 12 digits.</small>
           </div>
 
+          <div className="payment-input">
+            <label htmlFor="screenshot">Payment Screenshot *</label>
+            <input
+              id="screenshot"
+              type="file"
+              accept="image/*"
+              onChange={handleScreenshotChange}
+            />
+            <small>Upload a clear screenshot of your payment confirmation (Max 5MB)</small>
+            {paymentScreenshot && (
+              <div style={{ marginTop: '8px', color: '#28a745', fontSize: '13px' }}>
+                ✓ {paymentScreenshot.name}
+              </div>
+            )}
+          </div>
+
           <button
             className="checkout-btn"
             onClick={handleSubmitPayment}
-            disabled={loading || !paymentUTR.trim()}
+            disabled={loading || !paymentUTR.trim() || !paymentScreenshot}
           >
             {loading ? 'Submitting...' : 'Submit Payment Proof ✓'}
           </button>
