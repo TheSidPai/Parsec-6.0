@@ -16,9 +16,9 @@
  * @param {Error} error - Error if request failed
  */
 const logApiCall = (endpoint, options, startTime, response = null, data = null, error = null) => {
-  const duration = Date.now() - startTime;
+  // const duration = Date.now() - startTime;
   const method = options.method || 'GET';
-  const timestamp = new Date().toLocaleTimeString();
+  // const timestamp = new Date().toLocaleTimeString();
   
   // Styling for console
   const styles = {
@@ -31,9 +31,9 @@ const logApiCall = (endpoint, options, startTime, response = null, data = null, 
   if (error) {
     // Error case
     console.group(`%c❌ API ERROR %c${method} ${endpoint}`, styles.error, '');
-    console.log(`⏰ Time: ${timestamp}`);
-    console.log(`⏱️ Duration: ${duration}ms`);
-    console.log(`📝 Request:`, options.body ? JSON.parse(options.body) : 'No body');
+    // console.log(`⏰ Time: ${timestamp}`);
+    // console.log(`⏱️ Duration: ${duration}ms`);
+    // console.log(`📝 Request:`, options.body ? JSON.parse(options.body) : 'No body');
     console.error(`💥 Error:`, error.message);
     console.groupEnd();
   } else if (response) {
@@ -42,16 +42,16 @@ const logApiCall = (endpoint, options, startTime, response = null, data = null, 
     const emoji = response.ok ? '✅' : '❌';
     
     console.group(`%c${emoji} API ${response.status} %c${method} ${endpoint}`, statusStyle, '');
-    console.log(`⏰ Time: ${timestamp}`);
-    console.log(`⏱️ Duration: ${duration}ms`);
-    console.log(`📤 Request URL: ${response.url}`);
-    console.log(`📝 Request Body:`, options.body ? JSON.parse(options.body) : 'No body');
-    console.log(`📥 Response:`, data);
-    console.log(`🔑 Token Used:`, options.headers?.Authorization ? 'Yes (Bearer)' : 'No');
+    // console.log(`⏰ Time: ${timestamp}`);
+    // console.log(`⏱️ Duration: ${duration}ms`);
+    // console.log(`📤 Request URL: ${response.url}`);
+    // console.log(`📝 Request Body:`, options.body ? JSON.parse(options.body) : 'No body');
+    // console.log(`📥 Response:`, data);
+    // console.log(`🔑 Token Used:`, options.headers?.Authorization ? 'Yes (Bearer)' : 'No');
     console.groupEnd();
   } else {
     // Starting request
-    console.log(`%c🚀 API REQUEST %c${method} ${endpoint}`, styles.info, '', `(${timestamp})`);
+    // console.log(`%c🚀 API REQUEST %c${method} ${endpoint}`, styles.info, '', `(${timestamp})`);
   }
 };
 
