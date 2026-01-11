@@ -127,6 +127,46 @@
   transform: translateY(-2px);
 }
 
+/* Important Notice */
+.shop-important-notice {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 152, 0, 0.10));
+  border: 2px solid rgba(255, 193, 7, 0.4);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 900px;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  backdrop-filter: blur(8px);
+}
+
+.notice-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.notice-content h3 {
+  font-family: 'Playfair Display', serif;
+  color: #ffc107;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.notice-content p {
+  font-family: 'Josefin Sans', sans-serif;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.notice-content p strong {
+  color: #ffc107;
+  font-weight: 700;
+}
+
 /* Grid */
 .shop-grid {
   display: grid;
@@ -216,6 +256,22 @@
   color: var(--fontAccent);
   margin: 0 0 0.5rem 0;
   font-weight: 600;
+}
+
+.shop-card-dates {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 193, 7, 0.10));
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.75rem;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.shop-card-dates strong {
+  color: #ffd700;
+  font-weight: 700;
 }
 
 .shop-card-description {
