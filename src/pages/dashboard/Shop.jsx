@@ -145,6 +145,13 @@ function Shop() {
     return name;
   };
 
+  // Get dates for event passes
+  const getPassDates = (type) => {
+    if (type === 'event-pass1') return '24th, 26th Jan';
+    if (type === 'event-pass2') return '25th, 27th Jan';
+    return null;
+  };
+
   const addToCart = (item) => {
     const existingItem = cart.find(cartItem => cartItem._id === item._id);
     let newCart;
@@ -281,6 +288,20 @@ function Shop() {
         </button>
       </div>
 
+      {/* Important Notice for Passes */}
+      {filter === 'passes' && (
+        <div className="shop-important-notice" style={{ position: 'relative', zIndex: 1 }}>
+          <div className="notice-icon">⚠️</div>
+          <div className="notice-content">
+            <h3>Important Notice</h3>
+            <p>
+              <strong>You CANNOT purchase passes for someone else.</strong> Each person must register their own account and purchase their own pass. 
+              This applies to all participants, whether they are part of a team or not. Passes are non-transferable and linked to your registered account.
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Merch Grid */}
       <div className="shop-grid" style={{ position: 'relative', zIndex: 1 }}>
         {filteredMerch.length === 0 ? (
@@ -309,6 +330,14 @@ function Shop() {
                   <h3 className="shop-card-title">
                     {formatItemName(item.name, item.type)}
                   </h3>
+                  
+                  {/* Pass Dates */}
+                  {getPassDates(item.type) && (
+                    <div className="shop-card-dates">
+                      📅 Valid on: <strong>{getPassDates(item.type)}</strong>
+                    </div>
+                  )}
+                  
                   <div 
                     className="shop-card-description" 
                     dangerouslySetInnerHTML={{ __html: item.description }}

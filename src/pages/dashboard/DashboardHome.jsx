@@ -433,7 +433,7 @@ function DashboardHome() {
 
                 <button
                   className="action-btn"
-                  onClick={() => navigate("/dashboard/schedule")}
+                  onClick={() => navigate("/schedule")}
                 >
                   <span className="action-icon"><FaCalendarAlt /></span>
                   <span>Schedule</span>
