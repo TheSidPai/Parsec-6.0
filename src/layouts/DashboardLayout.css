@@ -35,8 +35,32 @@
   box-shadow: 4px 0 28px rgba(0, 0, 0, 0.5),
               inset 0 0 0 1px rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(20px);
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  overflow-y: auto;
   z-index: 10;
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 215, 0, 0.3) transparent;
+}
+
+.dashboard-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dashboard-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dashboard-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.3);
+  border-radius: 3px;
+}
+
+.dashboard-sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 215, 0, 0.5);
 }
 
 .dashboard-logo {
@@ -203,6 +227,7 @@
   padding: 20px;
   position: relative;
   z-index: 1;
+  margin-left: 280px;
 }
 
 /* Standardized Page Title Styling */
@@ -271,6 +296,13 @@
     padding: 20px 15px;
     border-right: none;
     border-bottom: 1px solid var(--border);
+    position: relative;
+    height: auto;
+    overflow-y: visible;
+  }
+  
+  .dashboard-content {
+    margin-left: 0;
   }
   
   .dashboard-logo {
