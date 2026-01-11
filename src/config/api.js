@@ -28,16 +28,16 @@ const logApiCall = (endpoint, options, startTime, response = null, data = null, 
     warning: 'background: #ffc107; color: black; padding: 2px 6px; border-radius: 3px; font-weight: bold;',
   };
 
-  // Helper to safely log request body
-  const getRequestBodyLog = (body) => {
-    if (!body) return 'No body';
-    if (body instanceof FormData) return 'FormData (multipart/form-data)';
-    try {
-      return JSON.parse(body);
-    } catch {
-      return body;
-    }
-  };
+  // // Helper to safely log request body
+  // const getRequestBodyLog = (body) => {
+  //   if (!body) return 'No body';
+  //   if (body instanceof FormData) return 'FormData (multipart/form-data)';
+  //   try {
+  //     return JSON.parse(body);
+  //   } catch {
+  //     return body;
+  //   }
+  // };
 
   if (error) {
     // Error case
