@@ -1070,3 +1070,9 @@
   max-width: 50%;
   margin: 0 auto;
 }
+
+.days{
+  width:80%;
+  margin: 0 auto; 
+  text-align: center;
+}
