@@ -178,6 +178,16 @@
   animation: fadeIn 0.8s ease-out;
 }
 
+.dashboard-email {
+  font-family: 'Josefin Sans', sans-serif;
+  color: var(--fontAccent, #e8d4a0);
+  font-size: 1.08rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+}
+
 .welcome-section::before {
   content: '';
   position: absolute;

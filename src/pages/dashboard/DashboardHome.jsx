@@ -6,20 +6,20 @@ import Lightning from "../../components/Lightning";
 // import FuzzyText from '../../components/FuzzyText';
 import { gsap } from "gsap";
 import "./DashboardHome.css";
-import { 
-  FaTrophy, 
-  FaShoppingBag, 
+import {
+  FaTrophy,
+  FaShoppingBag,
   FaCalendarAlt,
   FaCrown,
-  FaMagic
+  FaMagic,
 } from "react-icons/fa";
-import { 
-  GiCastle, 
-  GiLion, 
-  GiSnakeTongue, 
-  GiEagleHead, 
+import {
+  GiCastle,
+  GiLion,
+  GiSnakeTongue,
+  GiEagleHead,
   GiHoneypot,
-  GiCrystalBall 
+  GiCrystalBall,
 } from "react-icons/gi";
 import Particles from "../../components/Particles";
 
@@ -30,17 +30,18 @@ function DashboardHome() {
 
   // Check if animations have been shown before (allow 3 times for better UX)
   const [showLightning, setShowLightning] = useState(() => {
-    const viewCount = parseInt(localStorage.getItem('revelio_count') || '0');
+    const viewCount = parseInt(localStorage.getItem("revelio_count") || "0");
     return viewCount < 3; // Show for first 3 visits
   });
   const [showGlitchText, setShowGlitchText] = useState(false);
   const [showDashboard, setShowDashboard] = useState(() => {
-    const viewCount = parseInt(localStorage.getItem('revelio_count') || '0');
+    const viewCount = parseInt(localStorage.getItem("revelio_count") || "0");
     return viewCount >= 3; // Skip animation after 3 views
   });
 
   const [userData, setUserData] = useState({
     name: "Student",
+    email: "",
     house: null,
     housePoints: 0,
     rank: "Coming Soon",
@@ -64,13 +65,13 @@ function DashboardHome() {
 
   useEffect(() => {
     const hour = new Date().getHours();
-    if (hour < 12) setGreeting("Good Morning");
+    if (hour < 12 && hour > 5) setGreeting("Good Morning");
     else if (hour < 18) setGreeting("Good Afternoon");
     else setGreeting("Good Evening");
 
     // Check view count
-    const viewCount = parseInt(localStorage.getItem('revelio_count') || '0');
-    
+    const viewCount = parseInt(localStorage.getItem("revelio_count") || "0");
+
     // Skip animation if already shown 3 times
     if (viewCount >= 3) {
       const sidebar = document.querySelector(".dashboard-sidebar");
@@ -89,88 +90,98 @@ function DashboardHome() {
     let crystallizeAnimation = null;
 
     // Text appears at 1.4s with 3D crystallization effect
-    timeouts.push(setTimeout(() => {
-      console.log("✨ Text crystallizing now!");
-      setShowGlitchText(true);
+    timeouts.push(
+      setTimeout(() => {
+        console.log("✨ Text crystallizing now!");
+        setShowGlitchText(true);
 
-      // Wait for next frame to ensure DOM is ready
-      requestAnimationFrame(() => {
-        if (!textRef.current) {
-          console.warn("⚠️ textRef not ready, skipping animation");
-          return;
-        }
-
-        console.log("🎬 GSAP 3D crystallization starting");
-        
-        // 1.4s → 1.95s: Crystallize from depth (550ms)
-        crystallizeAnimation = gsap.fromTo(
-          textRef.current,
-          { 
-            opacity: 0, 
-            scale: 0.92,
-            rotateY: -8,
-            y: 20  // Starts 20px below - materializing from lightning
-          },
-          {
-            opacity: 1,
-            scale: 1,
-            rotateY: 0,
-            y: 0,  // Drifts to center position
-            duration: 0.55,
-            ease: "power2.out",
+        // Wait for next frame to ensure DOM is ready
+        requestAnimationFrame(() => {
+          if (!textRef.current) {
+            console.warn("⚠️ textRef not ready, skipping animation");
+            return;
           }
-        );
 
-        // 1.6s: Glow pulse (200ms flash) - "spell locks in"
-        timeouts.push(setTimeout(() => {
-          if (!textRef.current) return;
-          console.log("⚡ Glow pulse!");
-          glowAnimation = gsap.to(textRef.current, {
-            textShadow: `
+          console.log("🎬 GSAP 3D crystallization starting");
+
+          // 1.4s → 1.95s: Crystallize from depth (550ms)
+          crystallizeAnimation = gsap.fromTo(
+            textRef.current,
+            {
+              opacity: 0,
+              scale: 0.92,
+              rotateY: -8,
+              y: 20, // Starts 20px below - materializing from lightning
+            },
+            {
+              opacity: 1,
+              scale: 1,
+              rotateY: 0,
+              y: 0, // Drifts to center position
+              duration: 0.55,
+              ease: "power2.out",
+            }
+          );
+
+          // 1.6s: Glow pulse (200ms flash) - "spell locks in"
+          timeouts.push(
+            setTimeout(() => {
+              if (!textRef.current) return;
+              console.log("⚡ Glow pulse!");
+              glowAnimation = gsap.to(textRef.current, {
+                textShadow: `
               0 0 24px rgba(255, 255, 255, 0.5),
               0 0 48px rgba(255, 215, 100, 0.4),
               0 0 80px rgba(255, 215, 100, 0.2)
             `,
-            duration: 0.2,
-            yoyo: true,
-            repeat: 1
-          });
-        }, 200));
+                duration: 0.2,
+                yoyo: true,
+                repeat: 1,
+              });
+            }, 200)
+          );
 
-        // 1.95s → 2.5s: Clean exit (500ms)
-        timeouts.push(setTimeout(() => {
-          if (!textRef.current) return;
-          console.log("➡️ Text exiting elegantly");
-          exitAnimation = gsap.to(textRef.current, {
-            x: -50,
-            opacity: 0,
-            duration: 0.5,
-            ease: "power2.in",
-          });
-        }, 550));
-      });
-    }, 1400));
+          // 1.95s → 2.5s: Clean exit (500ms)
+          timeouts.push(
+            setTimeout(() => {
+              if (!textRef.current) return;
+              console.log("➡️ Text exiting elegantly");
+              exitAnimation = gsap.to(textRef.current, {
+                x: -50,
+                opacity: 0,
+                duration: 0.5,
+                ease: "power2.in",
+              });
+            }, 550)
+          );
+        });
+      }, 1400)
+    );
 
     // Everything ends at 2.5s, dashboard appears smoothly
-    timeouts.push(setTimeout(() => {
-      setShowLightning(false);
-      setShowGlitchText(false);
-      setShowDashboard(true);
-      
-      // Increment view count
-      const viewCount = parseInt(localStorage.getItem('revelio_count') || '0');
-      localStorage.setItem('revelio_count', (viewCount + 1).toString());
-      
-      if (sidebar) {
-        sidebar.style.display = "block";
-        // Smooth fade in for sidebar
-        gsap.fromTo(sidebar, { opacity: 0 }, { opacity: 1, duration: 0.6 });
-      }
-    }, 2500));
+    timeouts.push(
+      setTimeout(() => {
+        setShowLightning(false);
+        setShowGlitchText(false);
+        setShowDashboard(true);
+
+        // Increment view count
+        const viewCount = parseInt(
+          localStorage.getItem("revelio_count") || "0"
+        );
+        localStorage.setItem("revelio_count", (viewCount + 1).toString());
+
+        if (sidebar) {
+          sidebar.style.display = "block";
+          // Smooth fade in for sidebar
+          gsap.fromTo(sidebar, { opacity: 0 }, { opacity: 1, duration: 0.6 });
+        }
+      }, 2500)
+    );
 
     // Cleanup function
     return () => {
-      timeouts.forEach(timeout => clearTimeout(timeout));
+      timeouts.forEach((timeout) => clearTimeout(timeout));
       if (crystallizeAnimation) crystallizeAnimation.kill();
       if (glowAnimation) glowAnimation.kill();
       if (exitAnimation) exitAnimation.kill();
@@ -190,8 +201,9 @@ function DashboardHome() {
       try {
         // Get user ID from JWT token
         let userName = "Student";
+        let userEmail = "";
         try {
-          const payload = JSON.parse(atob(token.split('.')[1]));
+          const payload = JSON.parse(atob(token.split(".")[1]));
           console.log("🔑 JWT Payload:", payload);
         } catch (e) {
           console.log("⚠️ Could not decode JWT:", e.message);
@@ -204,11 +216,12 @@ function DashboardHome() {
             { method: "GET" },
             token
           );
-          
+
           console.log("👤 /auth/me response:", authResponse.data);
-          
+
           if (authResponse.response.ok && authResponse.data.data?.user?.name) {
             userName = authResponse.data.data.user.name;
+            userEmail = authResponse.data.data.user.email;
             console.log("✅ Got name from /auth/me:", userName);
           }
         } catch (e) {
@@ -226,26 +239,28 @@ function DashboardHome() {
 
         if (response.ok && data.data?.house) {
           const houseName = data.data.house.name;
-          const firstName = userName.trim().split(' ')[0]; // Extract first name
-          
+          const firstName = userName.trim().split(" ")[0]; // Extract first name
+
           console.log("✅ Full name:", userName);
           console.log("✅ First name:", firstName);
           console.log("✅ House:", houseName);
-          
+
           // Update user data with name and house
           setUserData((prev) => ({
             ...prev,
             name: firstName,
+            email: userEmail,
             house: houseName?.toLowerCase(),
             rank: "Coming Soon",
           }));
         } else {
           console.warn("⚠️ No house data in response:", data);
           // Still set the name even if house fetch fails
-          const firstName = userName.trim().split(' ')[0];
+          const firstName = userName.trim().split(" ")[0];
           setUserData((prev) => ({
             ...prev,
             name: firstName,
+            email: userEmail,
           }));
         }
       } catch (e) {
@@ -310,22 +325,34 @@ function DashboardHome() {
       {showDashboard && (
         <div className="dashboard-content-wrapper">
           {/* Particles Background */}
-      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, pointerEvents: 'none' }}>
-        <Particles
-          particleColors={["#ffffff", "#ffffff"]}
-          particleCount={600}
-          particleSpread={15}
-          speed={0.1}
-          particleBaseSize={80}
-          moveParticlesOnHover={false}
-          alphaParticles={false}
-          disableRotation={false}
-        />
-      </div>
+          <div
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: "100%",
+              zIndex: 0,
+              pointerEvents: "none",
+            }}
+          >
+            <Particles
+              particleColors={["#ffffff", "#ffffff"]}
+              particleCount={600}
+              particleSpread={15}
+              speed={0.1}
+              particleBaseSize={80}
+              moveParticlesOnHover={false}
+              alphaParticles={false}
+              disableRotation={false}
+            />
+          </div>
           {/* House Rank */}
           <div className="quick-info-bar">
             <div className="info-item">
-              <span className="info-icon"><FaCrown /></span>
+              <span className="info-icon">
+                <FaCrown />
+              </span>
               <span className="info-text">House Rank: {userData.rank} / 4</span>
             </div>
           </div>
@@ -335,6 +362,12 @@ function DashboardHome() {
             <h1 className="welcome-greeting">
               {greeting}, {userData.name}! <FaMagic className="greeting-icon" />
             </h1>
+            {/* After greeting line */}
+            {userData.email && (
+              <div className="dashboard-email">
+                {userData.email}
+              </div>
+            )}
             <p className="welcome-subtext">
               Your magical journey continues at Parsec 2026
             </p>
@@ -362,7 +395,7 @@ function DashboardHome() {
                 <div className="stat-divider right"></div>
               </div>
               <div className="stat-value">{eventsData.length}</div>
-              <button 
+              <button
                 className="stat-btn"
                 onClick={() => navigate("/dashboard/events")}
               >
@@ -377,7 +410,7 @@ function DashboardHome() {
                 <div className="stat-divider right"></div>
               </div>
               <div className="stat-value">0</div>
-              <button 
+              <button
                 className="stat-btn"
                 onClick={() => navigate("/dashboard/leaderboard")}
               >
@@ -392,7 +425,7 @@ function DashboardHome() {
                 <div className="stat-divider right"></div>
               </div>
               <div className="stat-value">0</div>
-              <button 
+              <button
                 className="stat-btn"
                 onClick={() => navigate("/dashboard/orders")}
               >
@@ -411,7 +444,9 @@ function DashboardHome() {
                   className="action-btn"
                   onClick={() => navigate("/dashboard/events")}
                 >
-                  <span className="action-icon"><GiCastle /></span>
+                  <span className="action-icon">
+                    <GiCastle />
+                  </span>
                   <span>Browse Events</span>
                 </button>
 
@@ -419,7 +454,9 @@ function DashboardHome() {
                   className="action-btn"
                   onClick={() => navigate("/dashboard/orders")}
                 >
-                  <span className="action-icon"><FaShoppingBag /></span>
+                  <span className="action-icon">
+                    <FaShoppingBag />
+                  </span>
                   <span>My Orders</span>
                 </button>
 
@@ -427,7 +464,9 @@ function DashboardHome() {
                   className="action-btn"
                   onClick={() => navigate("/dashboard/leaderboard")}
                 >
-                  <span className="action-icon"><FaTrophy /></span>
+                  <span className="action-icon">
+                    <FaTrophy />
+                  </span>
                   <span>Leaderboard</span>
                 </button>
 
@@ -435,7 +474,9 @@ function DashboardHome() {
                   className="action-btn"
                   onClick={() => navigate("/schedule")}
                 >
-                  <span className="action-icon"><FaCalendarAlt /></span>
+                  <span className="action-icon">
+                    <FaCalendarAlt />
+                  </span>
                   <span>Schedule</span>
                 </button>
               </div>
@@ -472,7 +513,8 @@ function DashboardHome() {
                       <div className="event-info">
                         <h3>{event.title}</h3>
                         <p>
-                          <FaCalendarAlt className="event-date-icon" /> {event.date} • {event.category}
+                          <FaCalendarAlt className="event-date-icon" />{" "}
+                          {event.date} • {event.category}
                         </p>
                       </div>
                       <div className="event-badge">VIEW</div>
@@ -481,7 +523,10 @@ function DashboardHome() {
 
                 {eventsData.length === 0 && (
                   <div className="no-events">
-                    <p><GiCrystalBall /> More events will appear here as they're announced</p>
+                    <p>
+                      <GiCrystalBall /> More events will appear here as they're
+                      announced
+                    </p>
                   </div>
                 )}
               </div>

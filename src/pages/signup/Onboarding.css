@@ -204,7 +204,7 @@
 
 /* ========== TITLE ========== */
 .onboarding-title {
-  font-family: 'Cinzel', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 2rem;
   font-weight: 600;
   color: #FFD700;
@@ -352,7 +352,7 @@
   background: linear-gradient(135deg, #FFD700, #B8860B);
   color: #1a1a1a;
   font-size: 1rem;
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -406,7 +406,7 @@
   align-items: flex-start;
   gap: 12px;
   box-shadow: 0 0 20px rgba(255, 193, 7, 0.2);
-  animation: pulseGlow 3s ease-in-out infinite;
+  /* animation: pulseGlow 3s ease-in-out infinite; */
 }
 
 .notice-icon {
@@ -465,7 +465,7 @@
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 16px;
-  font-family: 'Cinzel', Georgia, serif;
+  font-family: 'Playfair Display', serif;
   text-shadow: 
     0 0 25px rgba(255, 215, 0, 0.8),
     0 0 50px rgba(255, 215, 0, 0.5);
