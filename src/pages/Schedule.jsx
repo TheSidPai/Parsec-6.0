@@ -354,8 +354,10 @@ function Schedule() {
                 Embark on a mystical journey through time as we trace the path
                 to Parsec 6.0. From preliminary challenges to the grand
                 celebration, every station marks a milestone in our quest for
-                innovation and excellence.
+                innovation and excellence. <br /><br />
+                For checking the overall day by day schedule of Parsec 6.0, click <a className="overall-schedule" href="https://docs.google.com/spreadsheets/d/1dKIYdZ5t1YiGUGmpcu0v5pGEChz2tXH4-HI08I4k2sg/edit?gid=1290078798#gid=1290078798" target="_blank" rel="noopener noreferrer">HERE</a>.
               </p>
+              {/* <p className="hero-description"></p> */}
               <div className="countdown-box">
                 <div className="countdown-grid">
                   <div className="countdown-item">
@@ -421,9 +423,8 @@ function Schedule() {
                     <h3 className="event-name">{event.name}</h3>
                     <div className="event-dates">
                       <div className="date-item">
-                        <span className="date-icon">📅</span>
-                        <span className="date-label">Start</span>
-                        <span className="date-value">
+                        <span className="schedule-date-label">Start</span>
+                        <span className="schedule-date-value">
                           {new Date(event.startDate).toLocaleDateString(
                             "en-GB",
                             {
@@ -434,9 +435,8 @@ function Schedule() {
                         </span>
                       </div>
                       <div className="date-item">
-                        <span className="date-icon">📤</span>
-                        <span className="date-label">Deadline</span>
-                        <span className="date-value">
+                        <span className="schedule-date-label">Deadline</span>
+                        <span className="schedule-date-value">
                           {new Date(
                             event.submissionDeadline
                           ).toLocaleDateString("en-GB", {
@@ -460,7 +460,7 @@ function Schedule() {
                   <div className="castle-icon">🏰</div>
                   <h2 className="destination-title">PARSEC 6.0</h2>
                   <p className="destination-dates">23rd - 27th January 2026</p>
-
+<p className="destination-subtitle">For event specific details, please visit events page! For </p>
                   <div className="main-week-preview-mobile">
                     {scheduleData.mainEvent.days.map((day) => (
                       <div key={day.day} className="day-card">
@@ -471,7 +471,7 @@ function Schedule() {
                             month: "short",
                           })}
                         </div>
-                        <div className="day-placeholder">Schedule TBA</div>
+                        {/* <div className="day-placeholder">Schedule</div> */}
                       </div>
                     ))}
                   </div>
@@ -517,11 +517,11 @@ function Schedule() {
                         {/* Event Card */}
                         <div className="event-card">
                           <h3 className="event-name">{event.name}</h3>
+                          {console.log(event.name)}
                           <div className="event-dates">
                             <div className="date-item">
-                              <span className="date-icon">📅</span>
-                              <span className="date-label">Start</span>
-                              <span className="date-value">
+                              <span className="schedule-date-label">Start</span>
+                              <span className="schedule-date-value">
                                 {new Date(event.startDate).toLocaleDateString(
                                   "en-GB",
                                   {
@@ -532,9 +532,8 @@ function Schedule() {
                               </span>
                             </div>
                             <div className="date-item">
-                              <span className="date-icon">📤</span>
-                              <span className="date-label">Deadline</span>
-                              <span className="date-value">
+                              <span className="schedule-date-label">Deadline</span>
+                              <span className="schedule-date-value">
                                 {new Date(
                                   event.submissionDeadline
                                 ).toLocaleDateString("en-GB", {
@@ -567,7 +566,7 @@ function Schedule() {
                       <p className="destination-dates">
                         23rd - 27th January 2026
                       </p>
-
+                      <p className="destination-subtitle">For event specific details, please visit events page!</p>
                       <div className="main-week-preview">
                         {scheduleData.mainEvent.days.map((day) => (
                           <div key={day.day} className="day-card">
@@ -578,7 +577,8 @@ function Schedule() {
                                 month: "short",
                               })}
                             </div>
-                            <div className="day-placeholder">Schedule TBA</div>
+                              
+                            {/* <div className="day-placeholder">Schedule</div> */}
                           </div>
                         ))}
                       </div>
@@ -589,7 +589,6 @@ function Schedule() {
             </div>
           </section>
         )}
-
         <Footer />
       </div>
     </>

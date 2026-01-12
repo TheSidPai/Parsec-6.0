@@ -986,6 +986,33 @@
   line-height: 1.6;
 }
 
+.payment-timer-notice {
+  font-family: 'Josefin Sans', sans-serif;
+  color: var(--fontAccent, #e8d4a0);
+  background: rgba(var(--primary-rgb, 218,165,32), 0.13);
+  border-left: 4px solid var(--secondary, #d4af37);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.2rem;
+  border-radius: 8px;
+  font-size: 1.08rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.payment-timer-notice .timer-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--secondary, #d4af37);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 600px) {
+  
+}
+
 /* ========== MODAL ACTIONS ========== */
 .accommodation-modal-actions {
   display: flex;
@@ -1414,6 +1441,14 @@
 
   .price-value {
     font-size: 1.2rem;
+  }
+
+  .payment-timer-notice {
+    font-size: 0.98rem;
+    padding: 0.6rem 0.7rem;
+  }
+  .payment-timer-notice .timer-value {
+    font-size: 1.05rem;
   }
 }
 

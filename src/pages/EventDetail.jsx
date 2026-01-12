@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import events from "../assets/data/events.json";
 import "./EventDetail.css";
+import Particles from "../components/Particles";
 
 function Section({ title, children }) {
   if (!children) return null;
@@ -38,6 +39,7 @@ function EventDetail() {
   return (
     <div>
       <Navbar />
+      <Particles/>
       <main className="event-detail-container">
         <p className="event-detail-meta">
           {ev.category} • {ev.mode?.toUpperCase?.() || ev.mode}

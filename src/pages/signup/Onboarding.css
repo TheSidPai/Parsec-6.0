@@ -204,7 +204,7 @@
 
 /* ========== TITLE ========== */
 .onboarding-title {
-  font-family: 'Cinzel', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: 2rem;
   font-weight: 600;
   color: #FFD700;
@@ -352,7 +352,7 @@
   background: linear-gradient(135deg, #FFD700, #B8860B);
   color: #1a1a1a;
   font-size: 1rem;
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -394,6 +394,52 @@
   transform: none;
 }
 
+/* ========== IMPORTANT NOTICE ========== */
+.important-notice {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 152, 0, 0.1));
+  border: 1px solid rgba(255, 193, 7, 0.4);
+  border-left: 4px solid #FFD700;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  box-shadow: 0 0 20px rgba(255, 193, 7, 0.2);
+  /* animation: pulseGlow 3s ease-in-out infinite; */
+}
+
+.notice-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+}
+
+.notice-content {
+  color: #FFD700;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  text-align: left;
+}
+
+.notice-content strong {
+  color: #FFA500;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(255, 165, 0, 0.4);
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 193, 7, 0.35);
+  }
+}
+
 /* ========== ERROR MESSAGE ========== */
 .error-message {
   background: rgba(220, 38, 38, 0.2);
@@ -419,7 +465,7 @@
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 16px;
-  font-family: 'Cinzel', Georgia, serif;
+  font-family: 'Playfair Display', serif;
   text-shadow: 
     0 0 25px rgba(255, 215, 0, 0.8),
     0 0 50px rgba(255, 215, 0, 0.5);

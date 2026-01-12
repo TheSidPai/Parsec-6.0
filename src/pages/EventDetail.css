@@ -11,6 +11,8 @@
   border-radius: 12px;
   box-shadow: 0 10px 30px var(--shadow), 0 0 20px var(--glow);
   position: relative;
+  backdrop-filter: blur(4px);
+
 }
 
 /* Subtle magical corner accents */

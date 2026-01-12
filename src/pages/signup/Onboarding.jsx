@@ -217,6 +217,15 @@ const OnboardingForm = () => {
       <div className="onboarding-card">
         <h1 className="onboarding-title">Complete Your Profile</h1>
 
+        {/* Important Notice */}
+        <div className="important-notice">
+          <span className="notice-icon">⚠️</span>
+          <div className="notice-content">
+            <strong>Important:</strong> Please double-check all your details before submitting. 
+            Profile information cannot be edited after onboarding is complete.
+          </div>
+        </div>
+
         <div className="onboarding-form">
           {/* College Name */}
           <div className="form-field">
