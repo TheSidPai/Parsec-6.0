@@ -172,7 +172,7 @@ function EventDetail() {
                 {ev.prizes.prizePool.toLocaleString?.() || ev.prizes.prizePool}
               </p>
             ) : null}
-            {ev.prizes.breakdown?.length ? (
+            {/* {ev.prizes.breakdown?.length ? (
               <ul>
                 {ev.prizes.breakdown.map((p, i) => (
                   <li key={`pr-${i}`}>
@@ -183,7 +183,7 @@ function EventDetail() {
                   </li>
                 ))}
               </ul>
-            ) : null}
+            ) : null} */}
             {ev.prizes.inKind?.length ? (
               <p>
                 <strong>In-kind:</strong> {ev.prizes.inKind.join(", ")}

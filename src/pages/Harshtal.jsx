@@ -33,7 +33,8 @@ function Harshtal() {
           <h1 className="harshtal-header">Harshtal</h1>
           <p className="harshtal-description">
             Cultural Extravaganza - Experience the magic of culture and
-            creativity
+            creativity<br />
+                To check out the Harshtal rulebook, click <a className="overall-schedule" href="https://drive.google.com/file/d/1Sa5UekoZzYOuKyDQGR-OEcmEsCvmV_k5/view?usp=drive_link" target="_blank" rel="noopener noreferrer">HERE</a>.
           </p>
         </div>
 

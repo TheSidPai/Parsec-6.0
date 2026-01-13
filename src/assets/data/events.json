@@ -346,7 +346,7 @@
     "registrationFee": "Free",
     "date": "Dec 22, 2025 - Jan 27, 2026",
     "image": "https://parsec-iitdh.github.io/assets/events_main_img/LOGO/singularity_logo.jpeg",
-    "registrationLink": "https://unstop.com/o/vIKbuS9?utm_medium=Share&utm_source=pullisma3250&utm_campaign=Online_coding_challenge",
+    "registrationLink": "https://unstop.com/hackathons/singularity-ai-hackathon-powered-by-pathway-parsec-60-indian-institute-of-technology-iit-dharwad-1610219",
     "description": "30-hour agentic AI hackathon building autonomous multi-agent systems with tool use and real-time decision-making.",
     "format": [
       "Preliminary (Online): report submission and shortlisting.",
@@ -601,7 +601,7 @@
       { "name": "Ayush Raj", "phone": "+91 9006777089" }
     ],
     "prizes": {
-      "prizePool": 6000,
+      "prizePool": "₹10,000",
       "breakdown": [
         { "place": "1st", "amount": 3000 },
         { "place": "2nd", "amount": 2000 },
@@ -655,7 +655,7 @@
       { "name": "Samit Aridaman Rakesh", "phone": "+91 9473764726" }
     ],
     "prizes": {
-      "prizePool": 6000,
+      "prizePool": "₹10,000",
       "breakdown": [
         { "place": "1st", "amount": 3000 },
         { "place": "2nd", "amount": 2000 },
@@ -695,7 +695,7 @@
       { "name": "Anubhav Goyal", "phone": "+91 8290051782", "email": "mc24bt005@iitdh.ac.in" }
     ],
     "prizes": {
-      "prizePool": 8000,
+      "prizePool": "₹8,500",
       "breakdown": [
         { "place": "1st", "amount": 3500 },
         { "place": "2nd", "amount": 2500 },
@@ -736,7 +736,7 @@
       { "name": "Anubhav Goyal", "phone": "+91 8290051782", "email": "mc24bt005@iitdh.ac.in" }
     ],
     "prizes": {
-      "prizePool": 8000,
+      "prizePool": "₹8,500",
       "breakdown": [
         { "place": "1st", "amount": 3500 },
         { "place": "2nd", "amount": 2500 },
@@ -788,6 +788,7 @@
       { "name": "Sudhakar S Dalawayi", "role": "Event Lead (Secretary Literary Club)", "phone": "+91 9037228517", "email": "literaryclub@iitdh.ac.in" }
     ],
     "prizes": {
+      "prizePool": "₹18,500",
       "notes": ["2 Separate prizes will be awarded for each category (Poetry, Prose, Drama/Story) in both languages"],
       "inKind": ["Certificates of Participation for all valid entries"]
     },
@@ -929,7 +930,7 @@
       { "name": "Veeksha Nagaraj", "phone": "+91 9019971059", "email": "ep24bt013@iitdh.ac.in" }
     ],
     "prizes": {
-      "prizePool": 10000,
+      "prizePool": "₹10,000",
       "breakdown": [
         { "place": "1st", "amount": 5000 },
         { "place": "2nd", "amount": 3000 },
@@ -975,6 +976,7 @@
       { "name": "L Shreya", "role": "Event Lead", "phone": "+91 8088968977", "email": "ee24bt015@iitdh.ac.in" }
     ],
     "prizes": {
+      "prizePool": "₹10,000",
       "notes": ["3 Separate prizes will be awarded for the overall event"],
       "inKind": ["Certificates of Participation for all valid entries"]
     },
@@ -1024,6 +1026,7 @@
       { "name": "Sudhakar S Dalawayi", "role": "Event Lead (Secretary Literary Club)", "phone": "+91 9037228517", "email": "literaryclub@iitdh.ac.in" }
     ],
     "prizes": {
+      "prizePool": "₹10,000",
       "notes": ["Top 3 Teams based on overall performance", "Best Delegate", "High Commendation (runner-up individual award)"],
       "inKind": ["Certificates of Participation for all delegates"]
     },
@@ -1064,6 +1067,7 @@
       { "name": "L Shreya", "role": "Event Lead", "phone": "+91 8088968977", "email": "ee24bt015@iitdh.ac.in" }
     ],
     "prizes": {
+      "prizePool": "₹10,000",
       "notes": ["3 Separate prizes will be awarded for the overall event"],
       "inKind": ["Certificates of Participation will be issued to all valid entries"]
     },
@@ -1101,7 +1105,7 @@
       { "name": "Siddhant Pai", "role": "Co-Lead", "phone": "+91 9028652518", "email": "mc24bt017@iitdh.ac.in" }
     ],
     "prizes": {
-      "prizePool": "₹5,000",
+      "prizePool": "₹22,000",
       "breakdown": ["1st Place: ₹2,500", "2nd Place: ₹1,500", "3rd Place: ₹1,000"]
     },
     "comments": ["For offline events - accommodation shall be limited/exclusive keep an eye on website"]
@@ -1137,7 +1141,7 @@
       { "name": "Thella Namratha", "role": "Co-Lead", "phone": "+91 9963101704", "email": "ep23bt003@iitdh.ac.in" }
     ],
     "prizes": {
-      "prizePool": "₹5,000",
+      "prizePool": "₹10,000",
       "breakdown": ["1st Place: ₹2,500", "2nd Place: ₹1,500", "3rd Place: ₹1,000"]
     },
     "comments": ["For offline events - accommodation shall be limited/exclusive keep an eye on website"]

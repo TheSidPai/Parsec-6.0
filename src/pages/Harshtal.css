@@ -78,6 +78,13 @@
   margin-right: auto;
 }
 
+.overall-schedule {
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  color: var(--linkHover);
+  text-decoration: none;
+}
+
 /* ========== NO EVENTS MESSAGE ========== */
 .no-events {
   text-align: center;
