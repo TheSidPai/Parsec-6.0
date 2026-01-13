@@ -36,7 +36,7 @@ const logApiCall = (endpoint, options, startTime, response = null, data = null, 
       return JSON.parse(body);
     } catch {
       return body;
-    }
+    } 
   };
 
   if (error) {

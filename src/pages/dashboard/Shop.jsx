@@ -127,23 +127,23 @@ function Shop() {
   };
 
   // Format item names for better display (especially Day Passes)
-  const formatItemName = (name, type) => {
-    // Handle Day Pass variations
-    if (type === 'event-pass1' || type === 'event-pass2') {
-      // Extract day number if present
-      const dayMatch = name.match(/(\d+)/);
-      if (dayMatch) {
-        return `Day ${dayMatch[1]} Pass`;
-      }
-      // If type is event-pass1, it's Day 1
-      if (type === 'event-pass1') return 'Day 1 Pass';
-      // If type is event-pass2, it's Day 2
-      if (type === 'event-pass2') return 'Day 2 Pass';
-    }
+  // const formatItemName = (name, type) => {
+  //   // Handle Day Pass variations
+  //   if (type === 'event-pass1' || type === 'event-pass2') {
+  //     // Extract day number if present
+  //     const dayMatch = name.match(/(\d+)/);
+  //     if (dayMatch) {
+  //       return `Day ${dayMatch[1]} Pass`;
+  //     }
+  //     // If type is event-pass1, it's Day 1
+  //     if (type === 'event-pass1') return 'Day 1 Pass';
+  //     // If type is event-pass2, it's Day 2
+  //     if (type === 'event-pass2') return 'Day 2 Pass';
+  //   }
     
-    // Return original name for other items
-    return name;
-  };
+  //   // Return original name for other items
+  //   return name;
+  // };
 
   // Get dates for event passes
   const getPassDates = (type) => {
@@ -328,7 +328,8 @@ function Shop() {
                 {/* Content */}
                 <div className="shop-card-content">
                   <h3 className="shop-card-title">
-                    {formatItemName(item.name, item.type)}
+                    {/* {formatItemName(item.name, item.type)} */}
+                    {item.name}
                   </h3>
                   
                   {/* Pass Dates */}
@@ -381,7 +382,12 @@ function Shop() {
           ))
         )}
       </div>
+      {/* {filteredMerch.map((item) => {
+  console.log(item.name, item.type); // Add this line
+  // ...rest of your code
+})} */}
     </div>
+    
   );
 }
 
