@@ -13,6 +13,7 @@ function Checkout() {
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(1); // 1: Review, 2: Create Order, 3: Payment
   const [orderId, setOrderId] = useState(null);
+  const [timeLeft, setTimeLeft] = useState(null); // Timer for payment step (300 seconds = 5 minutes)
   const navigate = useNavigate();
   const token = localStorage.getItem('jwt_token');
 
@@ -32,6 +33,37 @@ function Checkout() {
   useEffect(() => {
     loadCart();
   }, [loadCart]);
+
+  // Timer effect - start when step 3 is reached, redirect to /shop when expired
+  useEffect(() => {
+    if (step === 3) {
+      // Start the timer when payment step is reached
+      if (timeLeft === null) {
+        setTimeLeft(300); // 5 minutes
+      }
+    }
+  }, [step, timeLeft]);
+
+  useEffect(() => {
+    if (timeLeft === null || step !== 3) return;
+
+    if (timeLeft <= 0) {
+      console.log('Timer expired, redirecting to /shop');
+      navigate('/dashboard/shop');
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [timeLeft, step, navigate]);
 
   const getTotalPrice = () => {
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
@@ -270,6 +302,37 @@ function Checkout() {
       {/* Step 3: Payment */}
       {step === 3 && (
         <div className="checkout-section">
+          {/* Timer Warning - Prominently displayed */}
+          {timeLeft !== null && (
+            <div style={{
+              width: '100%',
+              textAlign: 'center',
+              marginBottom: '2rem',
+              padding: '1rem',
+              background: 'linear-gradient(135deg, #1a1a1a, #2d2d2d)',
+              border: '2px solid #00ff88',
+              borderRadius: '15px',
+              boxShadow: '0 0 20px rgba(0, 255, 136, 0.3)'
+            }}>
+              <div style={{
+                color: '#00ff88',
+                fontSize: '1.5rem',
+                fontWeight: 'bold',
+                fontFamily: 'monospace',
+                textShadow: '0 0 10px rgba(0, 255, 136, 0.5)'
+              }}>
+                ⏰ You have {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')} to complete the order
+              </div>
+              <div style={{
+                color: '#cccccc',
+                fontSize: '0.9rem',
+                marginTop: '0.5rem'
+              }}>
+                Page will redirect to shop when timer expires
+              </div>
+            </div>
+          )}
+
           <h2>Submit Payment Proof</h2>
 
           <div className="payment-instructions">

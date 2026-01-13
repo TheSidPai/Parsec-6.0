@@ -322,7 +322,6 @@ function Accommodation() {
             <div className="info-card">
               <h3>Accommodation Details</h3>
               <ul>
-                <li>✓ Availability: Male: 90 | Female: 45 per day</li>
                 <li>✓ Accommodation and Food included</li>
                 <li>✓ Access to all events and activities</li>
                 <li>✓ Cultural Night access</li>
