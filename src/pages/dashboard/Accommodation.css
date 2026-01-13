@@ -303,7 +303,7 @@
 
 .accommodation-note p {
   font-family: "Josefin Sans", sans-serif;
-  color: #e8d4a0;
+  color: var(secondary);
   margin: 0.5rem 0;
   font-size: 0.95rem;
   line-height: 1.6;
