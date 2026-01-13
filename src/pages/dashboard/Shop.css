@@ -170,7 +170,7 @@
 
 /* Important Notice */
 .shop-important-notice {
-  background: linear-gradient(135deg, rgba(255, 193, 7, 0.15), rgba(255, 152, 0, 0.10));
+  background: rgba(255, 255, 255, 0.1);
   border: 2px solid rgba(255, 193, 7, 0.4);
   border-radius: 12px;
   padding: 1.5rem;
