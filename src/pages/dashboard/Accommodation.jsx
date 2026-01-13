@@ -1,31 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
-import "./Accommodation.css";
-import { FaCalendarAlt, FaCheckCircle, FaClock, FaTimes } from "react-icons/fa";
-import {
-  API_ENDPOINTS,
-  authenticatedFetch,
-  getAuthToken,
-  API_BASE_URL,
-} from "../../config/api";
-import { useNavigate } from "react-router-dom";
-import Particles from "../../components/Particles";
+import React, { useState, useEffect } from 'react';
+import './Accommodation.css';
+import { FaCalendarAlt, FaCheckCircle, FaClock, FaTimes } from 'react-icons/fa';
+import { API_ENDPOINTS, authenticatedFetch, getAuthToken, API_BASE_URL } from '../../config/api';
+import Particles from '../../components/Particles';
 
 // Accommodation configuration
 const ACCOMMODATION_CONFIG = {
   pricePerNight: 700,
   eventDates: {
-    start: "2026-01-23",
-    end: "2026-01-27",
+    start: '2026-01-23',
+    end: '2026-01-27'
   },
-  availableDates: [
-    "2026-01-23",
-    "2026-01-24",
-    "2026-01-25",
-    "2026-01-26",
-    "2026-01-27",
-  ],
-  minDate: "2026-01-23",
-  maxDate: "2026-01-27",
+  availableDates: ['2026-01-23', '2026-01-24', '2026-01-25', '2026-01-26', '2026-01-27'],
+  minDate: '2026-01-23',
+  maxDate: '2026-01-27'
 };
 
 // API functions for accommodation
@@ -36,28 +24,28 @@ const accommodationAPI = {
       const token = getAuthToken();
       const { response, data } = await authenticatedFetch(
         API_ENDPOINTS.ACCOMMODATION_MY_BOOKINGS,
-        { method: "GET" },
+        { method: 'GET' },
         token
       );
 
-      console.log("📦 Accommodation API Response:", { response, data });
+      console.log('📦 Accommodation API Response:', { response, data });
 
       // If response is not ok, return empty array instead of throwing
       if (!response.ok) {
-        console.warn("⚠️ API returned non-ok status, returning empty bookings");
+        console.warn('⚠️ API returned non-ok status, returning empty bookings');
         return [];
       }
 
       // Handle the response structure: { status, results, data: { bookings: [] } }
       if (data?.data?.bookings && Array.isArray(data.data.bookings)) {
-        console.log("✅ Processed bookings:", data.data.bookings);
+        console.log('✅ Processed bookings:', data.data.bookings);
         return data.data.bookings;
       }
 
-      console.warn("⚠️ Unexpected response structure, returning empty array");
+      console.warn('⚠️ Unexpected response structure, returning empty array');
       return [];
     } catch (error) {
-      console.error("❌ Fetch bookings error:", error);
+      console.error('❌ Fetch bookings error:', error);
       // Return empty array instead of throwing
       return [];
     }
@@ -70,19 +58,19 @@ const accommodationAPI = {
       const { response, data } = await authenticatedFetch(
         API_ENDPOINTS.ACCOMMODATION_CREATE,
         {
-          method: "POST",
-          body: JSON.stringify({ checkInDate, checkOutDate }),
+          method: 'POST',
+          body: JSON.stringify({ checkInDate, checkOutDate })
         },
         token
       );
 
       if (!response.ok) {
-        throw new Error(data?.message || "Failed to create booking");
+        throw new Error(data?.message || 'Failed to create booking');
       }
 
       return data.data.booking;
     } catch (error) {
-      console.error("Create booking error:", error);
+      console.error('Create booking error:', error);
       throw error;
     }
   },
@@ -91,40 +79,40 @@ const accommodationAPI = {
   submitPayment: async (bookingId, amount, paymentUTR, paymentScreenshot) => {
     try {
       const token = getAuthToken();
-
+      
       // Create FormData to handle file upload
       const formData = new FormData();
-      formData.append("bookingId", bookingId);
-      formData.append("amount", amount);
-      formData.append("paymentUTR", paymentUTR);
+      formData.append('bookingId', bookingId);
+      formData.append('amount', amount);
+      formData.append('paymentUTR', paymentUTR);
       if (paymentScreenshot) {
-        formData.append("paymentScreenshot", paymentScreenshot);
+        formData.append('paymentScreenshot', paymentScreenshot);
       }
 
       const response = await fetch(
         `${API_BASE_URL}${API_ENDPOINTS.PAYMENTS_SUBMIT}`,
         {
-          method: "POST",
+          method: 'POST',
           headers: {
-            Authorization: `Bearer ${token}`,
+            'Authorization': `Bearer ${token}`
           },
-          credentials: "include",
-          body: formData, // Don't set Content-Type, browser will set it with boundary
+          credentials: 'include',
+          body: formData // Don't set Content-Type, browser will set it with boundary
         }
       );
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data?.message || "Failed to submit payment");
+        throw new Error(data?.message || 'Failed to submit payment');
       }
 
       return data.data.payment;
     } catch (error) {
-      console.error("Submit payment error:", error);
+      console.error('Submit payment error:', error);
       throw error;
     }
-  },
+  }
 };
 
 function Accommodation() {
@@ -133,61 +121,31 @@ function Accommodation() {
   const [showModal, setShowModal] = useState(false);
   const [modalStep, setModalStep] = useState(1); // 1: Details, 2: Payment
   const [bookingDetails, setBookingDetails] = useState({
-    checkInDate: "",
-    checkOutDate: "",
-    utr: "",
-    paymentScreenshot: null,
+    checkInDate: '',
+    checkOutDate: '',
+    utr: '',
+    paymentScreenshot: null
   });
   const [paymentData, setPaymentData] = useState(null);
   const [error, setError] = useState(null);
   const [submitting, setSubmitting] = useState(false);
-  const [paymentTimer, setPaymentTimer] = useState(300); // 5 minutes in seconds
-  const paymentIntervalRef = useRef(null);
-  const navigate = useNavigate();
 
   // Calculate nights and price
   const calculateBooking = () => {
     const { checkInDate, checkOutDate } = bookingDetails;
     if (!checkInDate || !checkOutDate) return { nights: 0, price: 0 };
-
+    
     const checkIn = new Date(checkInDate);
     const checkOut = new Date(checkOutDate);
     const nights = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
     const price = nights * ACCOMMODATION_CONFIG.pricePerNight;
-
+    
     return { nights: nights > 0 ? nights : 0, price: price > 0 ? price : 0 };
   };
 
   useEffect(() => {
     loadBookings();
   }, []);
-
-  // Reset timer when payment modal opens
-  useEffect(() => {
-    if (showModal && modalStep === 2) {
-      setPaymentTimer(300);
-      if (paymentIntervalRef.current) clearInterval(paymentIntervalRef.current);
-      paymentIntervalRef.current = setInterval(() => {
-        setPaymentTimer((prev) => (prev > 0 ? prev - 1 : 0));
-      }, 1000);
-    } else {
-      if (paymentIntervalRef.current) {
-        clearInterval(paymentIntervalRef.current);
-        paymentIntervalRef.current = null;
-      }
-    }
-    return () => {
-      if (paymentIntervalRef.current) clearInterval(paymentIntervalRef.current);
-    };
-  }, [showModal, modalStep]);
-
-  // Redirect if timer runs out
-  useEffect(() => {
-    if (showModal && modalStep === 2 && paymentTimer === 0) {
-      setShowModal(false);
-      navigate("/dashboard/accommodation");
-    }
-  }, [paymentTimer, showModal, modalStep, navigate]);
 
   const loadBookings = async () => {
     try {
@@ -196,7 +154,7 @@ function Accommodation() {
       const data = await accommodationAPI.fetchBookings();
       setBookings(data || []);
     } catch (error) {
-      console.error("Failed to load bookings:", error);
+      console.error('Failed to load bookings:', error);
       // Don't show error if it's just an empty response
       setBookings([]);
     } finally {
@@ -214,10 +172,10 @@ function Accommodation() {
     setShowModal(false);
     setModalStep(1);
     setBookingDetails({
-      checkInDate: "",
-      checkOutDate: "",
-      utr: "",
-      paymentScreenshot: null,
+      checkInDate: '',
+      checkOutDate: '',
+      utr: '',
+      paymentScreenshot: null
     });
     setPaymentData(null);
     setError(null);
@@ -227,15 +185,15 @@ function Accommodation() {
     if (modalStep === 1) {
       // Validate Step 1 fields
       const { checkInDate, checkOutDate } = bookingDetails;
-
+      
       if (!checkInDate || !checkOutDate) {
-        setError("Please select check-in and check-out dates");
+        setError('Please select check-in and check-out dates');
         return;
       }
 
       const { nights } = calculateBooking();
       if (nights <= 0) {
-        setError("Check-out date must be after check-in date");
+        setError('Check-out date must be after check-in date');
         return;
       }
 
@@ -254,15 +212,13 @@ function Accommodation() {
           bookingId: booking._id,
           totalPrice: booking.totalPrice,
           numberOfNights: booking.numberOfNights,
-          qrCodeUrl: "/ViditQRCode.jpeg",
-          upiId: "viditparikh@sbi",
+          qrCodeUrl: '/ViditQRCode.jpeg',
+          upiId: 'viditparikh@sbi'
         });
 
         setModalStep(2);
       } catch (error) {
-        setError(
-          error.message || "Failed to create booking. Please try again."
-        );
+        setError(error.message || 'Failed to create booking. Please try again.');
       } finally {
         setSubmitting(false);
       }
@@ -278,14 +234,14 @@ function Accommodation() {
 
   const handleSubmitPayment = async () => {
     const { utr, paymentScreenshot } = bookingDetails;
-
+    
     if (!utr || utr.trim().length === 0) {
-      setError("Please enter UTR/Transaction ID");
+      setError('Please enter UTR/Transaction ID');
       return;
     }
 
     if (!paymentScreenshot) {
-      setError("Please upload payment screenshot");
+      setError('Please upload payment screenshot');
       return;
     }
 
@@ -301,13 +257,11 @@ function Accommodation() {
       );
 
       // Success - show confirmation message
-      alert(
-        "Payment submitted successfully!\n\nYour payment is under review by our admin team. You will receive a verification email once the payment is confirmed.\n\nThank you for your patience!"
-      );
+      alert('Payment submitted successfully!\n\nYour payment is under review by our admin team. You will receive a verification email once the payment is confirmed.\n\nThank you for your patience!');
       closeModal();
       loadBookings();
     } catch (error) {
-      setError(error.message || "Failed to submit payment. Please try again.");
+      setError(error.message || 'Failed to submit payment. Please try again.');
     } finally {
       setSubmitting(false);
     }
@@ -315,18 +269,14 @@ function Accommodation() {
 
   const getStatusBadge = (status) => {
     const statusConfig = {
-      pending: {
-        label: "Pending Verification",
-        color: "#f59e0b",
-        icon: FaClock,
-      },
-      confirmed: { label: "Confirmed", color: "#10b981", icon: FaCheckCircle },
-      rejected: { label: "Rejected", color: "#ef4444", icon: FaTimes },
+      pending: { label: 'Pending Verification', color: '#f59e0b', icon: FaClock },
+      confirmed: { label: 'Confirmed', color: '#10b981', icon: FaCheckCircle },
+      rejected: { label: 'Rejected', color: '#ef4444', icon: FaTimes }
     };
-
+    
     const config = statusConfig[status] || statusConfig.pending;
     const Icon = config.icon;
-
+    
     return (
       <span className="status-badge" style={{ color: config.color }}>
         <Icon /> {config.label}
@@ -336,190 +286,156 @@ function Accommodation() {
 
   return (
     // <div className="accommodation-page">
-    <div className="accommodation-container">
-      {/* Particles Background */}
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          zIndex: 0,
-          pointerEvents: "none",
-        }}
-      >
-        <Particles
-          particleColors={["#ffffff", "#ffffff"]}
-          particleCount={600}
-          particleSpread={15}
-          speed={0.1}
-          particleBaseSize={80}
-          moveParticlesOnHover={false}
-          alphaParticles={false}
-          disableRotation={false}
-        />
-      </div>
-      {/* Header */}
-      <div className="accommodation-header">
-        <div className="title-wrapper">
-          {/* <div className="wand-divider left"></div> */}
-          <h1 className="page-title">Accommodation</h1>
-          {/* <div className="wand-divider right"></div> */}
+      <div className="accommodation-container">
+        {/* Particles Background */}
+            <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, pointerEvents: 'none' }}>
+              <Particles
+                particleColors={["#ffffff", "#ffffff"]}
+                particleCount={600}
+                particleSpread={15}
+                speed={0.1}
+                particleBaseSize={80}
+                moveParticlesOnHover={false}
+                alphaParticles={false}
+                disableRotation={false}
+              />
+            </div>
+        {/* Header */}
+        <div className="accommodation-header">
+          <div className="title-wrapper">
+            {/* <div className="wand-divider left"></div> */}
+            <h1 className="page-title">
+              Accommodation
+            </h1>
+            {/* <div className="wand-divider right"></div> */}
+          </div>
+          <p className="page-subtitle">
+            Book your stay at IIT Dharwad for Parsec 2026
+          </p>
         </div>
-        <p className="page-subtitle">
-          Book your stay at IIT Dharwad for Parsec 2026
-        </p>
-      </div>
 
-      {/* Booking Section */}
-      <div className="pass-options-section">
-        <h2 className="accommodation-section-title">Book Accommodation</h2>
+        {/* Booking Section */}
+        <div className="pass-options-section">
+          <h2 className="accommodation-section-title">Book Accommodation</h2>
+          
+          <div className="accommodation-info">
+            <div className="info-card">
+              <h3>Accommodation Details</h3>
+              <ul>
+                <li>✓ Accommodation and Food included</li>
+                <li>✓ Access to all events and activities</li>
+                <li>✓ Cultural Night access</li>
+                <li>✓ Welcome Kit and Swaggets</li>
+              </ul>
+              <p className="price-info">
+                <strong>Price:</strong> ₹{ACCOMMODATION_CONFIG.pricePerNight} per night
+              </p>
+            </div>
 
-        <div className="accommodation-info">
-          <div className="info-card">
-            <h3>Accommodation Details</h3>
-            <ul>
-              <li>✓ Availability: Male: 90 | Female: 45 per day</li>
-              <li>✓ Accommodation and Food included</li>
-              <li>✓ Access to all events and activities</li>
-              <li>✓ Cultural Night access</li>
-              <li>✓ Welcome Kit and Swaggets</li>
-            </ul>
-            <p className="price-info">
-              <strong>Price:</strong> ₹{ACCOMMODATION_CONFIG.pricePerNight} per
-              night
+            <div className="booking-cta">
+              <button 
+                className="leather-span book-btn primary-btn"
+                onClick={openBookingModal}
+              >
+                Book Accommodation
+              </button>
+            </div>
+          </div>
+
+          <div className="accommodation-note">
+            <p><strong>Event Dates:</strong> 23rd - 27th January 2026</p>
+            <p><strong>Important:</strong> Booking for date X covers 12:00 PM on date X till 10:00 AM on date X+1</p>
+            <p className="portal-info">
+              Accommodation is available on a first-come, first-serve basis. Limited slots available.
             </p>
           </div>
-
-          <div className="booking-cta">
-            <button
-              className="leather-span book-btn primary-btn"
-              onClick={openBookingModal}
-            >
-              Book Accommodation
-            </button>
-          </div>
         </div>
 
-        <div className="accommodation-note">
-          <p>
-            <strong>Event Dates:</strong> 23rd - 27th January 2026
-          </p>
-          <p>
-            <strong>Important:</strong> Booking for date X covers 12:00 PM on
-            date X till 10:00 AM on date X+1
-          </p>
-          <p className="portal-info">
-            Accommodation is available on a first-come, first-serve basis.
-            Limited slots available.
-          </p>
+        {/* Booking History */}
+        <div className="booking-history-section">
+          <h2 className="accommodation-section-title">Your Bookings</h2>
+          
+          {loading ? (
+            <div className="loading-message">Loading your bookings...</div>
+          ) : bookings.length === 0 ? (
+            <div className="empty-state">
+              <p>No bookings yet. Book your accommodation above!</p>
+            </div>
+          ) : (
+            <div className="bookings-grid">
+              {bookings.map(booking => {
+                const checkIn = new Date(booking.checkInDate);
+                const checkOut = new Date(booking.checkOutDate);
+                const formatDate = (date) => {
+                  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                };
+                
+                return (
+                  <div key={booking._id} className="booking-card">
+                    <div className="booking-header">
+                      <div className="booking-title-section">
+                        <FaCalendarAlt className="booking-icon" />
+                        <h3>Accommodation</h3>
+                      </div>
+                      {getStatusBadge(booking.status)}
+                    </div>
+                    <div className="booking-details">
+                      <div className="booking-dates">
+                        <span className="date-label">Check-in:</span>
+                        <span className="date-value">{formatDate(checkIn)}</span>
+                      </div>
+                      <div className="booking-dates">
+                        <span className="date-label">Check-out:</span>
+                        <span className="date-value">{formatDate(checkOut)}</span>
+                      </div>
+                      <div className="booking-info-row">
+                        <span className="info-label">Duration:</span>
+                        <span className="info-value">{booking.numberOfNights} {booking.numberOfNights === 1 ? 'night' : 'nights'}</span>
+                      </div>
+                      <div className="booking-divider"></div>
+                      <div className="booking-price-row">
+                        <span className="price-label">Total Amount</span>
+                        <span className="price-value">₹{booking.totalPrice.toLocaleString()}</span>
+                      </div>
+                      <div className="booking-payment-status">
+                        <span className={`payment-badge payment-${booking.paymentStatus.toLowerCase()}`}>
+                          {booking.paymentStatus === 'paid' ? '✓ Paid' : 
+                           booking.paymentStatus === 'unpaid' ? '⏳ Payment Pending' : 
+                           booking.paymentStatus}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="booking-footer">
+                      <span className="booking-date-text">Booked on {formatDate(new Date(booking.createdAt))}</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
-      </div>
-
-      {/* Booking History */}
-      <div className="booking-history-section">
-        <h2 className="accommodation-section-title">Your Bookings</h2>
-
-        {loading ? (
-          <div className="loading-message">Loading your bookings...</div>
-        ) : bookings.length === 0 ? (
-          <div className="empty-state">
-            <p>No bookings yet. Book your accommodation above!</p>
-          </div>
-        ) : (
-          <div className="bookings-grid">
-            {bookings.map((booking) => {
-              const checkIn = new Date(booking.checkInDate);
-              const checkOut = new Date(booking.checkOutDate);
-              const formatDate = (date) => {
-                return date.toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-                });
-              };
-
-              return (
-                <div key={booking._id} className="booking-card">
-                  <div className="booking-header">
-                    <div className="booking-title-section">
-                      <FaCalendarAlt className="booking-icon" />
-                      <h3>Accommodation</h3>
-                    </div>
-                    {getStatusBadge(booking.status)}
-                  </div>
-                  <div className="booking-details">
-                    <div className="booking-dates">
-                      <span className="date-label">Check-in:</span>
-                      <span className="date-value">{formatDate(checkIn)}</span>
-                    </div>
-                    <div className="booking-dates">
-                      <span className="date-label">Check-out:</span>
-                      <span className="date-value">{formatDate(checkOut)}</span>
-                    </div>
-                    <div className="booking-info-row">
-                      <span className="info-label">Duration:</span>
-                      <span className="info-value">
-                        {booking.numberOfNights}{" "}
-                        {booking.numberOfNights === 1 ? "night" : "nights"}
-                      </span>
-                    </div>
-                    <div className="booking-divider"></div>
-                    <div className="booking-price-row">
-                      <span className="price-label">Total Amount</span>
-                      <span className="price-value">
-                        ₹{booking.totalPrice.toLocaleString()}
-                      </span>
-                    </div>
-                    <div className="booking-payment-status">
-                      <span
-                        className={`payment-badge payment-${(booking.paymentStatus || 'unpaid').toLowerCase()}`}
-                      >
-                        {booking.paymentStatus === "paid"
-                          ? "✓ Paid"
-                          : booking.paymentStatus === "unpaid"
-                          ? "⏳ Payment Pending"
-                          : booking.paymentStatus}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="booking-footer">
-                    <span className="booking-date-text">
-                      Booked on {formatDate(new Date(booking.createdAt))}
-                    </span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
-      </div>
       {/* </div> */}
 
       {/* Booking Modal */}
       {showModal && (
         <div className="accommodation-modal-overlay" onClick={closeModal}>
-          <div
-            className="accommodation-modal-content"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="accommodation-modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="accommodation-modal-close" onClick={closeModal}>
               <FaTimes />
             </button>
 
             {/* Step Indicator */}
             <div className="accommodation-modal-steps">
-              <div className={`step ${modalStep >= 1 ? "active" : ""}`}>
-                1. Booking Details
-              </div>
-              <div className={`step ${modalStep >= 2 ? "active" : ""}`}>
-                2. Payment
-              </div>
+              <div className={`step ${modalStep >= 1 ? 'active' : ''}`}>1. Booking Details</div>
+              <div className={`step ${modalStep >= 2 ? 'active' : ''}`}>2. Payment</div>
             </div>
 
             {/* Error Message */}
-            {error && <div className="modal-error-message">{error}</div>}
+            {error && (
+              <div className="modal-error-message">
+                {error}
+              </div>
+            )}
 
             {/* Step 1: Booking Details Form */}
             {modalStep === 1 && (
@@ -533,16 +449,11 @@ function Accommodation() {
                       min={ACCOMMODATION_CONFIG.minDate}
                       max={ACCOMMODATION_CONFIG.maxDate}
                       value={bookingDetails.checkInDate}
-                      onChange={(e) =>
-                        setBookingDetails({
-                          ...bookingDetails,
-                          checkInDate: e.target.value,
-                        })
-                      }
+                      onChange={(e) => setBookingDetails({...bookingDetails, checkInDate: e.target.value})}
                       required
                     />
                   </div>
-
+                  
                   <div className="form-group">
                     <label>Check-out Date *</label>
                     <input
@@ -550,51 +461,31 @@ function Accommodation() {
                       min={ACCOMMODATION_CONFIG.minDate}
                       max={ACCOMMODATION_CONFIG.maxDate}
                       value={bookingDetails.checkOutDate}
-                      onChange={(e) =>
-                        setBookingDetails({
-                          ...bookingDetails,
-                          checkOutDate: e.target.value,
-                        })
-                      }
+                      onChange={(e) => setBookingDetails({...bookingDetails, checkOutDate: e.target.value})}
                       required
                     />
                   </div>
 
-                  {bookingDetails.checkInDate &&
-                    bookingDetails.checkOutDate && (
-                      <div className="booking-summary">
-                        <p>
-                          <strong>Number of Nights:</strong>{" "}
-                          {calculateBooking().nights}
-                        </p>
-                        <p>
-                          <strong>Total Price:</strong> ₹
-                          {calculateBooking().price}
-                        </p>
-                      </div>
-                    )}
+                  {bookingDetails.checkInDate && bookingDetails.checkOutDate && (
+                    <div className="booking-summary">
+                      <p><strong>Number of Nights:</strong> {calculateBooking().nights}</p>
+                      <p><strong>Total Price:</strong> ₹{calculateBooking().price}</p>
+                    </div>
+                  )}
 
                   <div className="form-note">
-                    <p>
-                      Your contact details are already registered with your
-                      account.
-                    </p>
+                    <p>Your contact details are already registered with your account.</p>
                   </div>
                 </form>
 
                 <div className="accommodation-modal-actions">
-                  <button
-                    className="leather-span btn btn-secondary"
-                    onClick={closeModal}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    className="leather-span btn btn-primary"
+                  <button className="leather-span btn btn-secondary" onClick={closeModal}>Cancel</button>
+                  <button 
+                    className="leather-span btn btn-primary" 
                     onClick={handleNextStep}
                     disabled={submitting}
                   >
-                    {submitting ? "Creating Booking..." : "Proceed to Payment"}
+                    {submitting ? 'Creating Booking...' : 'Proceed to Payment'}
                   </button>
                 </div>
               </div>
@@ -604,27 +495,13 @@ function Accommodation() {
             {modalStep === 2 && paymentData && (
               <div className="accommodation-modal-step payment-step">
                 <h2>Complete Payment</h2>
-                <div className="payment-timer-notice">
-                  You have{" "}
-                  <span className="timer-value">
-                    {Math.floor(paymentTimer / 60)}:
-                    {(paymentTimer % 60).toString().padStart(2, "0")}
-                  </span>{" "}
-                  to complete the order
-                </div>
                 <div className="payment-info">
-                  <p className="payment-amount">
-                    Amount: ₹{paymentData.totalPrice}
-                  </p>
-                  <p className="payment-nights">
-                    {paymentData.numberOfNights} night(s)
-                  </p>
+                  <p className="payment-amount">Amount: ₹{paymentData.totalPrice}</p>
+                  <p className="payment-nights">{paymentData.numberOfNights} night(s)</p>
                   <div className="qr-code-container">
                     <img src={paymentData.qrCodeUrl} alt="Payment QR Code" />
                   </div>
-                  <p className="accommodation-upi-id">
-                    UPI ID: {paymentData.upiId}
-                  </p>
+                  <p className="accommodation-upi-id">UPI ID: {paymentData.upiId}</p>
                   <div className="accommodation-payment-instructions">
                     <p>1. Scan the QR code using any UPI app</p>
                     <p>2. Enter the exact amount: ₹{paymentData.totalPrice}</p>
@@ -638,19 +515,11 @@ function Accommodation() {
                   <input
                     type="text"
                     value={bookingDetails.utr}
-                    onChange={(e) =>
-                      setBookingDetails({
-                        ...bookingDetails,
-                        utr: e.target.value,
-                      })
-                    }
+                    onChange={(e) => setBookingDetails({...bookingDetails, utr: e.target.value})}
                     placeholder="Enter 12-digit UTR number"
                     required
                   />
-                  <small>
-                    Find this in your payment app after completing the
-                    transaction
-                  </small>
+                  <small>Find this in your payment app after completing the transaction</small>
                 </div>
 
                 <div className="form-group">
@@ -663,31 +532,19 @@ function Accommodation() {
                       if (file) {
                         // Validate file size (max 5MB)
                         if (file.size > 5 * 1024 * 1024) {
-                          setError("Image size must be less than 5MB");
-                          e.target.value = "";
+                          setError('Image size must be less than 5MB');
+                          e.target.value = '';
                           return;
                         }
-                        setBookingDetails({
-                          ...bookingDetails,
-                          paymentScreenshot: file,
-                        });
+                        setBookingDetails({...bookingDetails, paymentScreenshot: file});
                         setError(null);
                       }
                     }}
                     required
                   />
-                  <small>
-                    Upload a clear screenshot of your payment confirmation (Max
-                    5MB)
-                  </small>
+                  <small>Upload a clear screenshot of your payment confirmation (Max 5MB)</small>
                   {bookingDetails.paymentScreenshot && (
-                    <div
-                      style={{
-                        marginTop: "8px",
-                        color: "#28a745",
-                        fontSize: "13px",
-                      }}
-                    >
+                    <div style={{ marginTop: '8px', color: '#28a745', fontSize: '13px' }}>
                       ✓ {bookingDetails.paymentScreenshot.name}
                     </div>
                   )}
@@ -695,33 +552,19 @@ function Accommodation() {
 
                 <div className="form-note payment-note">
                   <p>
-                    <strong>ℹ️ Note:</strong> Your payment will be manually
-                    verified by our admin team. You will receive a confirmation
-                    email once verified. Please ensure the screenshot is clear
-                    and shows the transaction details.
+                    <strong>ℹ️ Note:</strong> Your payment will be manually verified by our admin team. 
+                    You will receive a confirmation email once verified. Please ensure the screenshot is clear and shows the transaction details.
                   </p>
                 </div>
 
                 <div className="accommodation-modal-actions">
-                  <button
-                    className="leather-span btn btn-secondary"
-                    onClick={handlePrevStep}
-                    disabled={submitting}
-                  >
-                    Back
-                  </button>
-                  <button
-                    className="leather-span btn btn-primary"
+                  <button className="leather-span btn btn-secondary" onClick={handlePrevStep} disabled={submitting}>Back</button>
+                  <button 
+                    className="leather-span btn btn-primary" 
                     onClick={handleSubmitPayment}
-                    disabled={
-                      !bookingDetails.utr ||
-                      !bookingDetails.paymentScreenshot ||
-                      submitting
-                    }
+                    disabled={!bookingDetails.utr || !bookingDetails.paymentScreenshot || submitting}
                   >
-                    {submitting
-                      ? "Submitting..."
-                      : "Submit Payment for Verification"}
+                    {submitting ? 'Submitting...' : 'Submit Payment for Verification'}
                   </button>
                 </div>
               </div>

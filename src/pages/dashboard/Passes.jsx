@@ -4,43 +4,7 @@ import { API_ENDPOINTS, authenticatedFetch } from '../../config/api';
 import Particles from '../../components/Particles';
 import './Passes.css';
 
-// Event pass data from API documentation - moved outside component to avoid re-creation
-const eventPassesInfo = [
-  {
-    type: 'event-pass1',
-    name: 'DAY PASS-1',
-    description: `
-      <ul style="list-style: none; padding-left: 0; margin: 0;">
-        <li>• Unrestricted access to all daytime events</li>
-        <li>• Entry to fun, recreational activities, and games</li>
-        <li>• Access to on-campus events and experiences</li>
-      </ul>
-    `,
-    price: 300,
-    features: ['All Day 1 Events', 'Workshop Access', 'Networking Sessions', 'Food & Refreshments']
-  },
-  {
-    type: 'event-pass2',
-    name: 'Day Pass-2',
-    description: `
-      <ul style="list-style: none; padding-left: 0; margin: 0;">
-        <li>• Unrestricted access to all daytime events</li>
-        <li>• Entry to fun, recreational activities, and games</li>
-        <li>• Access to on-campus events and experiences</li>
-        <li style="font-weight: bold; margin-top: 8px;">• Exclusive access to Cultural Night & Pronites, including live musical performances and guest artists</li>
-      </ul>
-    `,
-    price: 500,
-    features: ['All Day 2 Events', 'Main Stage Shows', 'Closing Ceremony', 'Food & Refreshments']
-  },
-  {
-    type: 'event-pass3',
-    name: 'Full Event Pass',
-    description: 'Complete access to both days (24-25 Jan 2026). Best value for complete experience!',
-    price: 549,
-    features: ['Both Days Access', 'All Events & Workshops', 'Priority Entry', 'Exclusive Merchandise']
-  }
-];
+// Event pass data now comes ONLY from admin - no hardcoded data
 
 function Passes() {
   const [passes, setPasses] = useState([]);
@@ -56,37 +20,33 @@ function Passes() {
         { method: 'GET' }
       );
 
+      console.log('API Response:', response.ok);
+      console.log('API Data:', data);
+
       if (response.ok && data.status === 'success') {
-        // Filter only event passes
+        console.log('Raw merch data from API:', data.data.merch);
+        
+        // Filter only event passes and use ONLY admin data
         const eventPasses = data.data.merch.filter(item => 
           item.type === 'event-pass1' || 
           item.type === 'event-pass2' || 
           item.type === 'event-pass3'
         );
 
-        // Merge with info
-        const enrichedPasses = eventPasses.map(pass => {
-          const info = eventPassesInfo.find(p => p.type === pass.type);
-          return { ...pass, ...info };
-        });
+        console.log('Filtered event passes:', eventPasses);
+        console.log('Pass names from admin:', eventPasses.map(p => ({ name: p.name, type: p.type })));
 
-        setPasses(enrichedPasses);
+        // Use admin data as-is, no hardcoded merging
+        setPasses(eventPasses);
+        console.log('Final passes set to state:', eventPasses);
       } else {
-        // Fallback to mock data
-        setPasses(eventPassesInfo.map((info, index) => ({
-          _id: `mock-pass-${index + 1}`,
-          ...info,
-          stockQuantity: 200
-        })));
+        console.error('Failed to fetch passes from admin');
+        setPasses([]);
       }
     } catch (err) {
       console.error('Error fetching passes:', err);
-      // Fallback to mock data
-      setPasses(eventPassesInfo.map((info, index) => ({
-        _id: `mock-pass-${index + 1}`,
-        ...info,
-        stockQuantity: 200
-      })));
+      // No fallback - show empty if admin fails
+      setPasses([]);
     } finally {
       setLoading(false);
     }
@@ -149,12 +109,19 @@ function Passes() {
             </div>
 
             <div className="pass-features">
-              {pass.features.map((feature, idx) => (
-                <div key={idx} className="pass-feature">
+              {pass.features && Array.isArray(pass.features) ? (
+                pass.features.map((feature, idx) => (
+                  <div key={idx} className="pass-feature">
+                    <span className="pass-feature-icon">✓</span>
+                    <span className="pass-feature-text">{feature}</span>
+                  </div>
+                ))
+              ) : (
+                <div className="pass-feature">
                   <span className="pass-feature-icon">✓</span>
-                  <span className="pass-feature-text">{feature}</span>
+                  <span className="pass-feature-text">Event Pass Access</span>
                 </div>
-              ))}
+              )}
             </div>
 
             <div className="pass-stock">
