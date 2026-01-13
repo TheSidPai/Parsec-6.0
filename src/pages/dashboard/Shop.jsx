@@ -328,7 +328,8 @@ function Shop() {
                 {/* Content */}
                 <div className="shop-card-content">
                   <h3 className="shop-card-title">
-                    {formatItemName(item.name, item.type)}
+                    {/* {formatItemName(item.name, item.type)} */}
+                    {item.name}
                   </h3>
                   
                   {/* Pass Dates */}
@@ -381,7 +382,12 @@ function Shop() {
           ))
         )}
       </div>
+      {filteredMerch.map((item) => {
+  console.log(item.name, item.type); // Add this line
+  // ...rest of your code
+})}
     </div>
+    
   );
 }
 
