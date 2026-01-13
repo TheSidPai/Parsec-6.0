@@ -288,6 +288,16 @@ function Shop() {
         </button>
       </div>
 
+      <div className="shop-deadline-notice" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="notice-icon"></div>
+        <div className="notice-content">
+          <h3>Important Deadline</h3>
+          <p>
+            <strong>The purchase of passes will close by 17th EOD.</strong> Make sure to book your accommodation from the website on time.
+          </p>
+        </div>
+      </div>
+      
       {/* Important Notice for Passes */}
       {filter === 'passes' && (
         <div className="shop-important-notice" style={{ position: 'relative', zIndex: 1 }}>
