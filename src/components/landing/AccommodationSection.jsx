@@ -8,7 +8,7 @@ const AccommodationSection = () => {
 
   const passes = [
     {
-      name: 'Day Pass 1',
+      name: 'Event Pass 1',
       dates: '24th, 26th Jan',
       price: 300,
       benefits: [
@@ -19,7 +19,7 @@ const AccommodationSection = () => {
       ]
     },
     {
-      name: 'Day Pass 2',
+      name: 'Event Pass 2',
       dates: '25th, 27th Jan',
       price: 500,
       benefits: [
