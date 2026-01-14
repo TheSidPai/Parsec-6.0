@@ -293,7 +293,7 @@ function Shop() {
         <div className="notice-content">
           <h3>Important Deadline</h3>
           <p>
-            <strong>The purchase of passes will close by 17th EOD.</strong> Make sure to book your accommodation from the website on time.
+            <strong>The window for passes will close by 17th EOD.</strong> Make sure to purchase your passes from the website on time.
           </p>
         </div>
       </div>
