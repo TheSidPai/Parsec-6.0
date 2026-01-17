@@ -41,25 +41,25 @@ const logApiCall = (endpoint, options, startTime, response = null, data = null, 
 
   if (error) {
     // Error case
-    console.group(`%c❌ API ERROR %c${method} ${endpoint}`, styles.error, '');
-    console.log(`⏰ Time: ${timestamp}`);
-    console.log(`⏱️ Duration: ${duration}ms`);
-    console.log(`📝 Request:`, getRequestBodyLog(options.body));
-    console.error(`💥 Error:`, error.message);
-    console.groupEnd();
+    // console.group(`%c❌ API ERROR %c${method} ${endpoint}`, styles.error, '');
+    // console.log(`⏰ Time: ${timestamp}`);
+    // console.log(`⏱️ Duration: ${duration}ms`);
+    // console.log(`📝 Request:`, getRequestBodyLog(options.body));
+    // console.error(`💥 Error:`, error.message);
+    // console.groupEnd();
   } else if (response) {
     // Success case
     const statusStyle = response.ok ? styles.success : styles.error;
     const emoji = response.ok ? '✅' : '❌';
     
-    console.group(`%c${emoji} API ${response.status} %c${method} ${endpoint}`, statusStyle, '');
-    console.log(`⏰ Time: ${timestamp}`);
-    console.log(`⏱️ Duration: ${duration}ms`);
-    console.log(`📤 Request URL: ${response.url}`);
-    console.log(`📝 Request Body:`, getRequestBodyLog(options.body));
-    console.log(`📥 Response:`, data);
-    console.log(`🔑 Token Used:`, options.headers?.Authorization ? 'Yes (Bearer)' : 'No');
-    console.groupEnd();
+    // console.group(`%c${emoji} API ${response.status} %c${method} ${endpoint}`, statusStyle, '');
+    // console.log(`⏰ Time: ${timestamp}`);
+    // console.log(`⏱️ Duration: ${duration}ms`);
+    // console.log(`📤 Request URL: ${response.url}`);
+    // console.log(`📝 Request Body:`, getRequestBodyLog(options.body));
+    // console.log(`📥 Response:`, data);
+    // console.log(`🔑 Token Used:`, options.headers?.Authorization ? 'Yes (Bearer)' : 'No');
+    // console.groupEnd();
   } else {
     // Starting request
     console.log(`%c🚀 API REQUEST %c${method} ${endpoint}`, styles.info, '', `(${timestamp})`);

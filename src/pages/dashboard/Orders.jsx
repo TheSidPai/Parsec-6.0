@@ -73,29 +73,29 @@ function Orders() {
     );
   };
 
-  const getPaymentStatusBadge = (paymentStatus) => {
+  const getPaymentStatusBadge = (paymentVerificationStatus) => {
     const statusConfig = {
-      unpaid: { 
+      rejected: { 
         bg: "rgba(239, 68, 68, 0.1)",
         border: "rgba(239, 68, 68, 0.3)",
         text: "#ef4444",
-        label: "Payment Pending"
+        label: "Payment Rejected"
       },
-      paid: { 
+      Verified: { 
         bg: "rgba(34, 197, 94, 0.1)",
         border: "rgba(34, 197, 94, 0.3)",
         text: "#22c55e",
         label: "Paid"
       },
-      pending: { 
+      unverified: { 
         bg: "rgba(251, 191, 36, 0.1)",
         border: "rgba(251, 191, 36, 0.3)",
         text: "#fbbf24",
-        label: "Processing Payment"
+        label: "Under Verification"
       },
     };
 
-    const config = statusConfig[paymentStatus] || statusConfig.pending;
+    const config = statusConfig[paymentVerificationStatus] || statusConfig.unverified;
 
     return (
       <span
@@ -184,7 +184,7 @@ function Orders() {
                   </span>
                 </div>
                 <div className="order-status-badges">
-                  {getPaymentStatusBadge(order.paymentStatus || 'pending')}
+                  {getPaymentStatusBadge(order.paymentVerificationStatus || 'unverified')}
                 </div>
               </div>
 
