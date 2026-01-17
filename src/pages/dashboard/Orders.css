@@ -129,6 +129,7 @@
   border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
   border-radius: 12px;
   max-width: 500px;
+  backdrop-filter: blur(4px);
 }
 
 .empty-icon {
