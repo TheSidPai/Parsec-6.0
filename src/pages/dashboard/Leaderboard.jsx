@@ -10,7 +10,7 @@ function Leaderboard() {
       color: "#740001",
       secondary: "#D3A625",
       glow: "#E8C547",
-      image: "/houses/gryffindor.webp",
+      image: "/houses/gryffindor.png",
       emoji: "🦁",
       traits: "Courage & Bravery",
     },
