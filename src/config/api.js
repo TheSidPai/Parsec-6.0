@@ -16,7 +16,7 @@
  * @param {Error} error - Error if request failed
  */
 const logApiCall = (endpoint, options, startTime, response = null, data = null, error = null) => {
-  const duration = Date.now() - startTime;
+  // const duration = Date.now() - startTime;
   const method = options.method || 'GET';
   const timestamp = new Date().toLocaleTimeString();
   
@@ -29,15 +29,15 @@ const logApiCall = (endpoint, options, startTime, response = null, data = null, 
   };
 
   // Helper to safely log request body
-  const getRequestBodyLog = (body) => {
-    if (!body) return 'No body';
-    if (body instanceof FormData) return 'FormData (multipart/form-data)';
-    try {
-      return JSON.parse(body);
-    } catch {
-      return body;
-    } 
-  };
+  // const getRequestBodyLog = (body) => {
+  //   if (!body) return 'No body';
+  //   if (body instanceof FormData) return 'FormData (multipart/form-data)';
+  //   try {
+  //     return JSON.parse(body);
+  //   } catch {
+  //     return body;
+  //   } 
+  // };
 
   if (error) {
     // Error case
@@ -49,8 +49,8 @@ const logApiCall = (endpoint, options, startTime, response = null, data = null, 
     // console.groupEnd();
   } else if (response) {
     // Success case
-    const statusStyle = response.ok ? styles.success : styles.error;
-    const emoji = response.ok ? '✅' : '❌';
+    // const statusStyle = response.ok ? styles.success : styles.error;
+    // const emoji = response.ok ? '✅' : '❌';
     
     // console.group(`%c${emoji} API ${response.status} %c${method} ${endpoint}`, statusStyle, '');
     // console.log(`⏰ Time: ${timestamp}`);
