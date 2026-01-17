@@ -223,8 +223,8 @@ function Accommodation() {
           bookingId: booking._id,
           totalPrice: booking.totalPrice,
           numberOfNights: booking.numberOfNights,
-          qrCodeUrl: "/ViditQRCode.jpeg",
-          upiId: "viditparikh@sbi",
+          qrCodeUrl: "/YashQRCode.jpeg",
+          upiId: "yashalbhavi765@okhdfcbank",
         });
 
         setModalStep(2);
@@ -370,8 +370,6 @@ function Accommodation() {
           </div>
         </div>
 
-        
-
         <div className="accommodation-note">
           <p>
             <strong>Event Dates:</strong> 23rd - 27th January 2026
@@ -394,7 +392,9 @@ function Accommodation() {
           <div className="notice-content">
             <h3>Important Deadline</h3>
             <p>
-              <strong>The accommodation booking window will close by 17th EOD.</strong>{" "}
+              <strong>
+                The accommodation booking window will close by 17th EOD.
+              </strong>{" "}
               Make sure to book your accommodation from the website on time.
             </p>
           </div>
@@ -458,13 +458,15 @@ function Accommodation() {
                     </div>
                     <div className="booking-payment-status">
                       <span
-                        className={`payment-badge payment-${booking.paymentStatus.toLowerCase()}`}
+                        className={`payment-badge payment-${(
+                          booking.paymentMade || "unpaid"
+                        ).toLowerCase()}`}
                       >
-                        {booking.paymentStatus === "paid"
+                        {booking.paymentMade === "paid"
                           ? "✓ Paid"
-                          : booking.paymentStatus === "unpaid"
+                          : booking.paymentMade === "unpaid"
                           ? "⏳ Payment Pending"
-                          : booking.paymentStatus}
+                          : booking.paymentMade || "Unpaid"}
                       </span>
                     </div>
                   </div>
