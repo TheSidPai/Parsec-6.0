@@ -12,6 +12,7 @@ function OrderManagement() {
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const [verifyingIds, setVerifyingIds] = useState([]);
   useEffect(() => {
     fetchPayments();
   }, []);
@@ -48,9 +49,9 @@ function OrderManagement() {
     }
   };
 
+
   const filterPayments = () => {
     let filtered = payments;
-
     // Filter by search term
     if (searchTerm) {
       filtered = filtered.filter(payment =>
@@ -61,24 +62,22 @@ function OrderManagement() {
         payment.paymentUTR?.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
-
     // Filter by status
     if (statusFilter !== 'all') {
       filtered = filtered.filter(payment => 
         payment.status?.toLowerCase() === statusFilter.toLowerCase()
       );
     }
-
     setFilteredPayments(filtered);
   };
 
   const updatePaymentStatus = async (paymentId, newStatus) => {
+    setVerifyingIds((prev) => [...prev, paymentId]);
     try {
       const token = sessionStorage.getItem('admin_token');
       const endpoint = newStatus === 'verified' 
         ? API_ENDPOINTS.ADMIN_PAYMENTS_VERIFY 
         : API_ENDPOINTS.ADMIN_PAYMENTS_REJECT;
-      
       const response = await fetch(buildApiUrl(endpoint.replace(':id', paymentId)), {
         method: 'PATCH',
         headers: {
@@ -86,14 +85,10 @@ function OrderManagement() {
           'Content-Type': 'application/json',
         },
       });
-
       const data = await response.json();
-
       if (response.ok && data.status === 'success') {
         setIsModalOpen(false);
         alert(`Payment ${newStatus} successfully!`);
-        
-        // Refresh payments
         await fetchPayments();
       } else {
         alert(data.message || `Failed to ${newStatus} payment`);
@@ -101,6 +96,8 @@ function OrderManagement() {
     } catch (error) {
       console.error('Failed to update payment status:', error);
       alert('Failed to update payment status');
+    } finally {
+      setVerifyingIds((prev) => prev.filter((id) => id !== paymentId));
     }
   };
 
@@ -201,6 +198,7 @@ function OrderManagement() {
                   setIsModalOpen(true);
                 }}
                 onStatusUpdate={updatePaymentStatus}
+                verifying={verifyingIds.includes(payment._id)}
               />
             ))
           ) : (
@@ -228,7 +226,7 @@ function OrderManagement() {
 }
 
 // Payment Card Component
-function PaymentCard({ payment, onView, onStatusUpdate }) {
+function PaymentCard({ payment, onView, onStatusUpdate, verifying }) {
   const getStatusIcon = (status) => {
     switch (status?.toLowerCase()) {
       case 'verified':
@@ -328,26 +326,82 @@ function PaymentCard({ payment, onView, onStatusUpdate }) {
       <div className="flex flex-col gap-2 lg:min-w-[200px]" style={{ marginTop: '1.5rem', paddingTop: '1.5rem', borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>
         <button
           onClick={onView}
-          className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors"
+          style={{
+            marginBottom: '1.25rem',
+            alignSelf: 'center',
+            minWidth: '150px',
+            padding: '0.85rem 2rem',
+            fontSize: '1.15rem',
+            fontWeight: 600,
+            borderRadius: '8px',
+            background: '#fff',
+            color: '#222',
+            border: 'none',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '0.5rem',
+            cursor: 'pointer',
+            transition: 'all 0.2s',
+          }}
         >
-          <RiEyeLine size={16} />
+          <RiEyeLine size={20} />
           View Details
         </button>
-        
+
         {payment.status?.toLowerCase() === 'pending' && (
-          <div className="flex gap-2">
+          <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
             <button
               onClick={() => onStatusUpdate(payment._id, 'verified')}
-              className="flex-1 flex items-center justify-center gap-1 px-3 py-2 bg-green-600 hover:bg-green-700 text-white rounded text-sm transition-colors"
+              disabled={verifying}
+              style={{
+                minWidth: '130px',
+                padding: '0.85rem 2rem',
+                fontSize: '1.15rem',
+                fontWeight: 600,
+                borderRadius: '8px',
+                background: '#fff',
+                color: '#222',
+                border: 'none',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.5rem',
+                cursor: verifying ? 'not-allowed' : 'pointer',
+                opacity: verifying ? 0.7 : 1,
+                transition: 'all 0.2s',
+                outline: verifying ? '2px solid #bbb' : 'none',
+              }}
             >
-              <RiCheckLine size={14} />
-              Verify
+              <RiCheckLine size={20} />
+              {verifying ? 'Verifying...' : 'Verify'}
             </button>
             <button
               onClick={() => onStatusUpdate(payment._id, 'rejected')}
-              className="flex-1 flex items-center justify-center gap-1 px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded text-sm transition-colors"
+              disabled={verifying}
+              style={{
+                minWidth: '130px',
+                padding: '0.85rem 2rem',
+                fontSize: '1.15rem',
+                fontWeight: 600,
+                borderRadius: '8px',
+                background: '#fff',
+                color: '#222',
+                border: 'none',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.5rem',
+                cursor: verifying ? 'not-allowed' : 'pointer',
+                opacity: verifying ? 0.7 : 1,
+                transition: 'all 0.2s',
+                outline: verifying ? '2px solid #bbb' : 'none',
+              }}
             >
-              <RiCloseLine size={14} />
+              <RiCloseLine size={20} />
               Reject
             </button>
           </div>
