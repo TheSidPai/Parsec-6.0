@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { API_ENDPOINTS, authenticatedFetch } from '../../config/api';
-import Particles from '../../components/Particles';
+import React from 'react';
 import './PassCheckout.css';
 
 function PassCheckout() {
+  // --- Booking/payment logic and UI commented out for closure period ---
+  /*
   const location = useLocation();
   const navigate = useNavigate();
   const { pass } = location.state || {};
@@ -87,115 +86,14 @@ function PassCheckout() {
       setLoading(false);
     }
   };
+  */
 
-  if (!pass) return null;
-
-  if (success) {
-    return (
-      <div className="checkout-page">
-        <Particles />
-        <div className="checkout-success">
-          <div className="success-icon">✓</div>
-          <h2>Payment Submitted Successfully!</h2>
-          <p>Your payment is under review. You will receive a confirmation email with your QR code once verified by our team.</p>
-          <p>Check your payment status in Payment History.</p>
-          <div className="success-spinner"></div>
-        </div>
-      </div>
-    );
-  }
-
+  // --- Show closed message only ---
   return (
     <div className="checkout-page">
-      <Particles />
-      
-      <div className="checkout-container">
-        <button onClick={() => navigate('/dashboard/passes')} className="checkout-back">
-          ← Back to Passes
-        </button>
-
-        <h1 className="checkout-title">Complete Your Purchase</h1>
-
-        <div className="checkout-grid">
-          {/* Order Summary */}
-          <div className="checkout-summary">
-            <h3>Order Summary</h3>
-            <div className="summary-pass">
-              <div className="summary-pass-name">{pass.name}</div>
-              <div className="summary-pass-desc">{pass.description}</div>
-            </div>
-
-            <div className="summary-details">
-              <div className="summary-row">
-                <span>Pass Price</span>
-                <span>₹{pass.price}</span>
-              </div>
-              <div className="summary-row summary-total">
-                <span>Total Amount</span>
-                <span>₹{pass.price}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Payment Form */}
-          <div className="checkout-payment">
-            <h3>Payment Details</h3>
-            
-            <div className="payment-instructions">
-              <h4>📱 UPI Payment Steps:</h4>
-              <ol>
-                <li>Open your UPI app (Google Pay, PhonePe, Paytm, etc.)</li>
-                <li>Send <strong>₹{pass.price}</strong> to UPI ID: <code className="upi-id">parsec@iitdh</code></li>
-                <li>Copy the UTR/Transaction ID from your payment app</li>
-                <li>Enter the UTR number below and submit</li>
-              </ol>
-            </div>
-
-            <form onSubmit={handleSubmitPayment} className="payment-form">
-              {error && (
-                <div className="payment-error">
-                  <span className="error-icon">⚠️</span>
-                  {error}
-                </div>
-              )}
-
-              <div className="form-group">
-                <label>Payment UTR Number *</label>
-                <input
-                  type="text"
-                  value={paymentUTR}
-                  onChange={(e) => setPaymentUTR(e.target.value)}
-                  placeholder="Enter UTR/Transaction ID"
-                  className="form-input"
-                  required
-                  disabled={loading}
-                />
-                <small>Example: 202601041234567890</small>
-              </div>
-
-              <button
-                type="submit"
-                className="submit-button"
-                disabled={loading || !paymentUTR.trim()}
-              >
-                {loading ? (
-                  <>
-                    <div className="button-spinner"></div>
-                    Processing...
-                  </>
-                ) : (
-                  <>
-                    Submit Payment
-                  </>
-                )}
-              </button>
-            </form>
-
-            <div className="payment-note">
-              <strong>Note:</strong> After submission, your payment will be verified by our team. You will receive a confirmation email with your event pass QR code within 24-48 hours.
-            </div>
-          </div>
-        </div>
+      <div className="checkout-closed-message">
+        <h1>Passes/Orders Closed</h1>
+        <p>All passes and orders for Parsec 2026 are now closed.<br/>Thank you for your interest!</p>
       </div>
     </div>
   );
