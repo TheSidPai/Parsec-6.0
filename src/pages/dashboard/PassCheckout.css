@@ -3,25 +3,27 @@
   max-width: 600px;
   margin: 8rem auto 0 auto;
   padding: 3rem 2rem;
-  background: rgba(30, 30, 45, 0.97);
+  background: rgba(20, 22, 34, 0.55);
   border-radius: 18px;
-  border: 2px solid #FFD700;
+  border: 2.5px solid var(--fontAccent, #D4AF37);
   box-shadow: 0 8px 32px rgba(0,0,0,0.18);
   text-align: center;
   animation: fadeIn 0.7s cubic-bezier(0.4,0,0.2,1);
 }
 .checkout-closed-message h1 {
-  color: #FFD700;
+  color: var(--fontAccent, #D4AF37);
   font-size: 2.5rem;
   margin-bottom: 1.2rem;
   font-weight: 700;
   letter-spacing: 1px;
+  font-family: var(--houseFont, 'Playfair Display', serif);
 }
 .checkout-closed-message p {
-  color: #fff;
+  color: var(--fontMain, #F5F1E6);
   font-size: 1.25rem;
   line-height: 1.7;
   margin: 0;
+  font-family: var(--houseFont, 'JosefinSans', sans-serif);
 }
 /* Pass Checkout Page Styles */
 .checkout-page {
