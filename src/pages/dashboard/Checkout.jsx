@@ -350,7 +350,7 @@ function Checkout() {
             <h3>Scan to Pay:</h3>
             <div className="payment-qr-wrapper">
               <img 
-                src={require('../../assets/images/YashQRCode.jpeg')}
+                src={require('../../assets/images/Vidhit_qr.jpeg')}
                 alt="Payment QR Code" 
                 className="payment-qr-code"
                 onError={(e) => {
@@ -361,7 +361,7 @@ function Checkout() {
               />
             </div>
             <p className="payment-upi-id">
-              <strong>Or use UPI ID:</strong> <code>yashalbhavi765@okhdfcbank</code>
+              <strong>Or use UPI ID:</strong> <code>viditparikh@sbi</code>
             </p>
           </div>
 

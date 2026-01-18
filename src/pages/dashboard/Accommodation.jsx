@@ -223,8 +223,8 @@ function Accommodation() {
           bookingId: booking._id,
           totalPrice: booking.totalPrice,
           numberOfNights: booking.numberOfNights,
-          qrCodeUrl: "/YashQRCode.jpeg",
-          upiId: "yashalbhavi765@okhdfcbank",
+          qrCodeUrl: require("../../assets/images/Vidhit_qr.jpeg"),
+          upiId: "viditparikh@sbi",
         });
 
         setModalStep(2);
@@ -393,7 +393,7 @@ function Accommodation() {
             <h3>Important Deadline</h3>
             <p>
               <strong>
-                The accommodation booking window will close by 17th EOD.
+                The accommodation booking window will close by EOD today.
               </strong>{" "}
               Make sure to book your accommodation from the website on time.
             </p>
