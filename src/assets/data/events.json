@@ -859,7 +859,7 @@
     "category": "Cultural",
     "mode": "offline",
     "venue": "IIT Dharwad Permanent Campus",
-    "team": { "min": 8, "max": 20, "individualAllowed": false },
+    "team": { "min": 5, "max": 25, "individualAllowed": false },
     "registrationFee": "Free",
     "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLSf9BVwRaRVrrqc6PWzj_jThtBwXCcTQDjG7Wf8OFrR-EAUXLQ/viewform?usp=dialog",
     "date": "Jan 26, 2026",
@@ -872,7 +872,7 @@
         "The decision of the organizers or judges shall be treated as final and binding on all."
       ],
       "others": [
-        "Team size: 8-20 members",
+        "Team size: 5-25 members",
         "Performance must demonstrate synchronization, choreography, and thematic storytelling",
         "Participating groups are challenged to harmonize their movements"
       ]
