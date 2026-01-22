@@ -8,10 +8,12 @@ function UserManagement() {
   const [points, setPoints] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
+  const [reason, setReason] = useState('');
 
   const handleAddPoints = async () => {
-    if (!userEmail || !points || parseInt(points) <= 0) {
-      setMessage('❌ Please enter valid user email and positive points');
+    const pointsValue = Number(points.trim());
+    if (!userEmail || isNaN(pointsValue) || pointsValue <= 0 || !reason.trim()) {
+      setMessage('❌ Please enter valid user email, positive points, and a reason');
       return;
     }
 
@@ -28,7 +30,8 @@ function UserManagement() {
         },
         body: JSON.stringify({
           email: userEmail,
-          points: parseInt(points)
+          points: pointsValue,
+          reason: reason.trim()
         }),
       });
 
@@ -38,6 +41,7 @@ function UserManagement() {
         setMessage(`✅ ${data.message || 'Points added successfully'}`);
         setUserEmail('');
         setPoints('');
+        setReason('');
       } else {
         setMessage(`❌ ${data.message || 'Failed to add points'}`);
       }
@@ -50,8 +54,9 @@ function UserManagement() {
   };
 
   const handleSubtractPoints = async () => {
-    if (!userEmail || !points || parseInt(points) <= 0) {
-      setMessage('❌ Please enter valid user email and positive points');
+    const pointsValue = Number(points.trim());
+    if (!userEmail || isNaN(pointsValue) || pointsValue <= 0 || !reason.trim()) {
+      setMessage('❌ Please enter valid user email, positive points, and a reason');
       return;
     }
 
@@ -68,7 +73,8 @@ function UserManagement() {
         },
         body: JSON.stringify({
           email: userEmail,
-          points: parseInt(points)
+          points: pointsValue,
+          reason: reason.trim()
         }),
       });
 
@@ -78,6 +84,7 @@ function UserManagement() {
         setMessage(`✅ ${data.message || 'Points subtracted successfully'}`);
         setUserEmail('');
         setPoints('');
+        setReason('');
       } else {
         setMessage(`❌ ${data.message || 'Failed to subtract points'}`);
       }
@@ -137,6 +144,22 @@ function UserManagement() {
                 required
               />
               <p className="admin-form-help">Must be a positive number</p>
+            </div>
+          </div>
+          <div className="admin-form-row">
+            <div className="admin-form-group" style={{ width: '100%' }}>
+              <label className="admin-form-label admin-form-label-required">
+                Reason
+              </label>
+              <input
+                type="text"
+                value={reason}
+                onChange={(e) => setReason(e.target.value)}
+                placeholder="Enter reason for points change"
+                className="admin-form-input"
+                required
+              />
+              <p className="admin-form-help">Describe why points are being added or subtracted</p>
             </div>
           </div>
 
