@@ -6,11 +6,12 @@ import events from "../assets/data/events.json";
 import Particles from "../components/Particles";
 import "./Harshtal.css";
 import { useTheme } from "../context/ThemeContext";
+import HarshtalLogo from "../assets/images/HarshtalLogo.webp";
 
 function Harshtal() {
   const { theme } = useTheme();
   // Filter only cultural events
-  const culturalEvents = events.filter(ev => ev.category === "Cultural");
+  const culturalEvents = events.filter((ev) => ev.category === "Cultural");
 
   return (
     <div className="harshtal-page">
@@ -30,12 +31,27 @@ function Harshtal() {
       />
       <main className="harshtal-container">
         <div className="harshtal-header-section">
-          <h1 className="harshtal-header">
-            <span className="harshtal-title-main">Harshtal</span>
-            <span className="harshtl-title-sub">Cultural Extravaganza</span>
-          </h1>
+          <div className="harshtal-logo-wrapper">
+            <img
+              src={HarshtalLogo}
+              alt="Harshtal Logo"
+              className="harshtal-logo"
+            />
+          </div>
           <p className="harshtal-description">
-            Experience the magic of culture and creativity 
+            Cultural Extravaganza - Experience the magic of culture and
+            creativity
+            <br />
+            To check out the Harshtal rulebook, click{" "}
+            <a
+              className="overall-schedule"
+              href="https://drive.google.com/file/d/1Sa5UekoZzYOuKyDQGR-OEcmEsCvmV_k5/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              HERE
+            </a>
+            .
           </p>
         </div>
 

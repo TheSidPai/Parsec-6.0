@@ -55,5 +55,49 @@
   "C_Cpp_Runner.useLeakSanitizer": false,
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
-  "C_Cpp_Runner.msvcSecureNoWarnings": false
+  "C_Cpp_Runner.msvcSecureNoWarnings": false,
+  
+  // Memory optimization: Hide and exclude node_modules from indexing
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.git": true,
+    "**/build": true,
+    "**/dist": true,
+    "**/.cache": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/package-lock.json": true,
+    "**/build": true,
+    "**/dist": true
+  },
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/.cache/**": true,
+    "**/coverage/**": true
+  },
+  
+  // Aggressive memory reduction settings
+  "typescript.tsserver.maxTsServerMemory": 3072,
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "editor.semanticHighlighting.enabled": false,
+  "editor.formatOnSave": false,
+  "git.enabled": true,
+  "git.autorefresh": false,
+  "extensions.autoUpdate": false,
+  "files.autoSave": "afterDelay",
+  "editor.minimap.enabled": false,
+  "editor.suggest.preview": false,
+  "editor.quickSuggestions": {
+    "other": false,
+    "comments": false,
+    "strings": false
+  },
+  "editor.parameterHints.enabled": false,
+  "workbench.editor.enablePreview": false,
+  "explorer.autoReveal": false
 }

@@ -14,7 +14,6 @@ function Footer() {
               alt="PARSEC Logo"
               className="footer-logo-parsec"
             />
-            {/* Tech Council logo - to be added */}
             <img
               src={require("../assets/images/tech-council-logo.webp")}
               alt="Tech Council Logo"
@@ -26,14 +25,12 @@ function Footer() {
               IIT Dharwad - Permanent Campus, Karnataka
             </p>
             <p className="footer-text">PIN - 580011</p>
-            {/* Email to be provided */}
             <p className="footer-text footer-email">
-              <a href="mailto:gstech@iitdh.ac.in">gstech@iitdh.ac.in</a>
-              <br />
-              <span className="footer-text">
-                General Secretary Technical Affairs
-              </span>
+              <a href="mailto:outreach.parsec@iitdh.ac.in">
+                outreach.parsec@iitdh.ac.in
+              </a>
             </p>
+            <p className="footer-text">Reach out to Team PARSEC!</p>
           </div>
         </div>
 
@@ -70,31 +67,19 @@ function Footer() {
         <div className="footer-section footer-social">
           <h3 className="footer-heading">Social</h3>
           <div className="footer-social-links">
-            {/* <a 
-              href="https://www.facebook.com/parsec.iitdh" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-              </svg>
-            </a> */}
             <a
               href="https://www.facebook.com/parsec.iitdh"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
-              style={{ display: "inline-block", cursor: "pointer" }}
             >
               <svg
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                style={{ pointerEvents: "none" }}
               >
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
               </svg>
             </a>
             <a
@@ -143,7 +128,7 @@ function Footer() {
               </svg>
             </a>
             <a
-              href="https://discord.gg/REjx6BqD"
+              href="https://discord.gg/WcGQbUXf8A"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Discord"
@@ -158,6 +143,21 @@ function Footer() {
               </svg>
             </a>
           </div>
+
+          <div className="footer-logo-iit">
+            <a
+              href="https://iitdh.ac.in"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://parsec-iitdh.github.io/assets/iitdhfullLogo@5x.png"
+                alt="IIT Dharwad Logo"
+                className="footer-logo-iit-image"
+              />
+            </a>
+          </div>
+
           <p className="footer-copyright">
             © Copyright - 2026 PARSEC 6.0 all rights reserved
           </p>

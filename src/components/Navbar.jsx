@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
-import Button from './Button';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "./Navbar.css";
+import Button from "./Button";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [eventsDropdownOpen, setEventsDropdownOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Check if user is logged in on component mount
+  useEffect(() => {
+    const token = localStorage.getItem('jwt_token');
+    setIsLoggedIn(!!token);
+  }, []);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -23,13 +30,37 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link to="/landing" className="navbar-logo" onClick={closeMenu}>
-          <img src={require('../assets/images/parsec-logo-white.webp')} alt="PARSEC 6.0" className="navbar-logo-img" />
-        </Link>
+        <div className="navbar-logo-group">
+          {/* PARSEC Logo */}
+          <Link to="/landing" className="navbar-logo" onClick={closeMenu}>
+            <img
+              src={require("../assets/images/parsec-logo-white.webp")}
+              alt="PARSEC 6.0"
+              className="navbar-logo-img"
+            />
+          </Link>
+
+          {/* Pipe Separator */}
+          <span className="navbar-logo-separator"></span>
+
+          {/* IIT Dharwad Logo */}
+          <a
+            href="https://iitdh.ac.in"
+            className="navbar-college-logo"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={require("../assets/images/iitdh-logo-white.webp")}
+              alt="IIT Dharwad"
+              className="navbar-college-logo-img"
+            />
+          </a>
+        </div>
 
         {/* Hamburger Icon */}
-        <button 
-          className={`navbar-hamburger ${menuOpen ? 'active' : ''}`}
+        <button
+          className={`navbar-hamburger ${menuOpen ? "active" : ""}`}
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
@@ -39,18 +70,25 @@ function Navbar() {
         </button>
 
         {/* Menu */}
-        <ul className={`navbar-menu ${menuOpen ? 'active' : ''}`}>
+        <ul className={`navbar-menu ${menuOpen ? "active" : ""}`}>
           <li className="navbar-item navbar-dropdown">
-            <button 
-              className="navbar-link navbar-dropdown-toggle" 
+            <button
+              className="navbar-dropdown-toggle navbar-link "
               onClick={toggleEventsDropdown}
             >
               Events ▼
             </button>
-            <ul className={`navbar-dropdown-menu ${eventsDropdownOpen ? 'active' : ''}`}>
+            <ul
+              className={`navbar-dropdown-menu ${
+                eventsDropdownOpen ? "active" : ""
+              }`}
+            >
               <li>
-                <Link to="/events" className="navbar-dropdown-link" onClick={closeMenu}>
-                  <span className="dropdown-icon">⚡</span>
+                <Link
+                  to="/events"
+                  className="navbar-dropdown-link"
+                  onClick={closeMenu}
+                >
                   <span className="dropdown-text">
                     <strong>PARSEC</strong>
                     <small>Technical Events</small>
@@ -58,8 +96,11 @@ function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link to="/harshtal" className="navbar-dropdown-link" onClick={closeMenu}>
-                  <span className="dropdown-icon">🎭</span>
+                <Link
+                  to="/harshtal"
+                  className="navbar-dropdown-link"
+                  onClick={closeMenu}
+                >
                   <span className="dropdown-text">
                     <strong>Harshtal</strong>
                     <small>Cultural Events</small>
@@ -67,8 +108,11 @@ function Navbar() {
                 </Link>
               </li>
               <li>
-                <Link to="/tesseract" className="navbar-dropdown-link" onClick={closeMenu}>
-                  <span className="dropdown-icon">🧊</span>
+                <Link
+                  to="/tesseract"
+                  className="navbar-dropdown-link"
+                  onClick={closeMenu}
+                >
                   <span className="dropdown-text">
                     <strong>Tesseract</strong>
                     <small>Innovation Challenge</small>
@@ -78,18 +122,34 @@ function Navbar() {
             </ul>
           </li>
           <li className="navbar-item">
-            <Link to="/schedule" className="navbar-link" onClick={closeMenu}>Schedule</Link>
-          </li>
-          <li className="navbar-item">
-            <Link to="/team" className="navbar-link" onClick={closeMenu}>Team</Link>
-          </li>
-          <li className="navbar-item">
-            <Link to="/accommodation" className="navbar-link" onClick={closeMenu}>Accommodation</Link>
-          </li>
-          <li className="navbar-item">
-            <Link to="/login" className="navbar-signup" onClick={closeMenu}>
-              <Button variant="primary">Login/signup</Button>
+            <Link to="/schedule" className="navbar-link" onClick={closeMenu}>
+              Schedule
             </Link>
+          </li>
+          <li className="navbar-item">
+            <Link to="/team" className="navbar-link" onClick={closeMenu}>
+              Team
+            </Link>
+          </li>
+          <li className="navbar-item">
+            <Link
+              to="/accommodation"
+              className="navbar-link"
+              onClick={closeMenu}
+            >
+              Accommodation
+            </Link>
+          </li>
+          <li className="navbar-item">
+            {isLoggedIn ? (
+              <Link to="/dashboard" className="navbar-signup" onClick={closeMenu}>
+                <Button variant="primary">Dashboard</Button>
+              </Link>
+            ) : (
+              <Link to="/login" className="navbar-signup" onClick={closeMenu}>
+                <Button variant="primary">Login/signup</Button>
+              </Link>
+            )}
           </li>
         </ul>
       </div>

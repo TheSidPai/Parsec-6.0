@@ -16,6 +16,11 @@
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
+
+  .btn:active {
+    transform: translateY(0) scale(0.98);
+    transition: all 0.1s ease;
+  }
   
   .btn:disabled {
     opacity: 0.5;
@@ -23,27 +28,29 @@
     transform: none;
   }
   
-  /* Primary button - themed */
+  /* Primary button - filled gold gradient */
   .btn-primary {
-    background: var(--buttonBg);
-    color: var(--buttonText);
-    box-shadow: 0 0 10px var(--glow);
+    background: linear-gradient(135deg, #FFD700, #DAA520);
+    color: #000;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
   }
   
   .btn-primary:hover {
-    background: var(--buttonHoverBg);
-    box-shadow: 0 0 18px var(--glow);
+    background: linear-gradient(135deg, #FFA500, #FFD700);
+    box-shadow: 0 0 18px rgba(255, 215, 0, 0.6), 0 6px 16px rgba(0, 0, 0, 0.4);
   }
   
-  /* Secondary button - dark blue */
+  /* Secondary button - outline style */
   .btn-secondary {
-    background: var(--surface);
+    background: transparent;
     color: var(--fontMain);
-    border: 2px solid var(--border);
+    border: 2px solid rgba(255, 215, 0, 0.4);
   }
   
   .btn-secondary:hover {
-    background: color-mix(in srgb, var(--surface) 80%, var(--fontAccent));
+    background: rgba(255, 215, 0, 0.1);
+    border-color: rgba(255, 215, 0, 0.7);
   }
   
   /* House-themed button (we'll dynamically style this later) */

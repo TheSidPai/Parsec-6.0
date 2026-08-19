@@ -4,14 +4,16 @@ import { API_ENDPOINTS, buildApiUrl } from '../../config/api';
 import '../admin/AdminComponents.css';
 
 function UserManagement() {
-  const [userId, setUserId] = useState('');
+  const [userEmail, setUserEmail] = useState('');
   const [points, setPoints] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
+  const [reason, setReason] = useState('');
 
   const handleAddPoints = async () => {
-    if (!userId || !points || parseInt(points) <= 0) {
-      setMessage('Please enter valid User ID and positive points');
+    const pointsValue = Number(points.trim());
+    if (!userEmail || isNaN(pointsValue) || pointsValue <= 0 || !reason.trim()) {
+      setMessage('❌ Please enter valid user email, positive points, and a reason');
       return;
     }
 
@@ -27,17 +29,19 @@ function UserManagement() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userId: userId,
-          pointsToAdd: parseInt(points)
+          email: userEmail,
+          points: pointsValue,
+          reason: reason.trim()
         }),
       });
 
       const data = await response.json();
 
-      if (response.ok && data.status === 'success') {
-        setMessage(`✅ ${data.message}`);
-        setUserId('');
+      if (response.ok && (data.status === 'success' || data.success === true)) {
+        setMessage(`✅ ${data.message || 'Points added successfully'}`);
+        setUserEmail('');
         setPoints('');
+        setReason('');
       } else {
         setMessage(`❌ ${data.message || 'Failed to add points'}`);
       }
@@ -50,8 +54,9 @@ function UserManagement() {
   };
 
   const handleSubtractPoints = async () => {
-    if (!userId || !points || parseInt(points) <= 0) {
-      setMessage('Please enter valid User ID and positive points');
+    const pointsValue = Number(points.trim());
+    if (!userEmail || isNaN(pointsValue) || pointsValue <= 0 || !reason.trim()) {
+      setMessage('❌ Please enter valid user email, positive points, and a reason');
       return;
     }
 
@@ -67,17 +72,19 @@ function UserManagement() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userId: userId,
-          pointsToSubtract: parseInt(points)
+          email: userEmail,
+          points: pointsValue,
+          reason: reason.trim()
         }),
       });
 
       const data = await response.json();
 
-      if (response.ok && data.status === 'success') {
-        setMessage(`✅ ${data.message}`);
-        setUserId('');
+      if (response.ok && (data.status === 'success' || data.success === true)) {
+        setMessage(`✅ ${data.message || 'Points subtracted successfully'}`);
+        setUserEmail('');
         setPoints('');
+        setReason('');
       } else {
         setMessage(`❌ ${data.message || 'Failed to subtract points'}`);
       }
@@ -110,17 +117,17 @@ function UserManagement() {
           <div className="admin-form-row two-col">
             <div className="admin-form-group">
               <label className="admin-form-label admin-form-label-required">
-                User ID (MongoDB ObjectId)
+                User Email
               </label>
               <input
-                type="text"
-                value={userId}
-                onChange={(e) => setUserId(e.target.value)}
-                placeholder="e.g., 673c3e6912abd5e72d56f9cb"
+                type="email"
+                value={userEmail}
+                onChange={(e) => setUserEmail(e.target.value)}
+                placeholder="e.g., student@example.com"
                 className="admin-form-input"
                 required
               />
-              <p className="admin-form-help">Enter the user's MongoDB ObjectId</p>
+              <p className="admin-form-help">Enter the user's registered email address</p>
             </div>
 
             <div className="admin-form-group">
@@ -137,6 +144,22 @@ function UserManagement() {
                 required
               />
               <p className="admin-form-help">Must be a positive number</p>
+            </div>
+          </div>
+          <div className="admin-form-row">
+            <div className="admin-form-group" style={{ width: '100%' }}>
+              <label className="admin-form-label admin-form-label-required">
+                Reason
+              </label>
+              <input
+                type="text"
+                value={reason}
+                onChange={(e) => setReason(e.target.value)}
+                placeholder="Enter reason for points change"
+                className="admin-form-input"
+                required
+              />
+              <p className="admin-form-help">Describe why points are being added or subtracted</p>
             </div>
           </div>
 
@@ -163,11 +186,35 @@ function UserManagement() {
         <div className="admin-how-to-use">
           <h3 className="admin-how-to-title">How to use:</h3>
           <ul className="admin-how-to-list">
-            <li className="admin-how-to-item">User ID is the MongoDB ObjectId (24-character hex string)</li>
+            <li className="admin-how-to-item">Enter the user's registered email address to identify them</li>
             <li className="admin-how-to-item">Adding points updates both user points and their house points</li>
             <li className="admin-how-to-item">Subtracting points will fail if user doesn't have enough points</li>
             <li className="admin-how-to-item">Points changes are reflected in the leaderboard immediately</li>
           </ul>
+        </div>
+
+        <div className="admin-mongodb-helper">
+          <h3 className="admin-mongodb-helper-title">
+            🔍 How to Find User Email
+          </h3>
+          <div className="admin-mongodb-helper-content">
+            <p><strong>Option 1: From Admin Orders Tab</strong></p>
+            <ol style={{ marginLeft: '1.5rem', marginTop: '0.5rem', lineHeight: '1.8' }}>
+              <li>Go to the "Orders" tab in admin panel</li>
+              <li>View any payment record - the email is displayed prominently</li>
+              <li>Copy the email address shown</li>
+            </ol>
+
+            <p style={{ marginTop: '1rem' }}><strong>Option 2: Ask User Directly</strong></p>
+            <ol style={{ marginLeft: '1.5rem', marginTop: '0.5rem', lineHeight: '1.8' }}>
+              <li>Ask the user for their registered email address</li>
+              <li>This is the email they used to sign up for Parsec</li>
+            </ol>
+
+            <div style={{ marginTop: '1rem', padding: '1rem', background: 'rgba(255, 215, 0, 0.1)', borderRadius: '8px', border: '1px solid rgba(255, 215, 0, 0.3)' }}>
+              <strong style={{ color: '#FFD700' }}>💡 Pro Tip:</strong> Email-based identification is much simpler and more user-friendly than MongoDB ObjectIds. Make sure to use the exact email address registered in the system!
+            </div>
+          </div>
         </div>
       </div>
     </div>

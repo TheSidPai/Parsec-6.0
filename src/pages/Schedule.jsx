@@ -93,6 +93,9 @@ function Schedule() {
         },
       });
 
+      // Expose scroll instance to window for ScrollToTopButton
+      window.locomotive = scroll;
+
       // Update ScrollTrigger when Locomotive Scroll updates
       scroll.on("scroll", ScrollTrigger.update);
 
@@ -162,7 +165,6 @@ function Schedule() {
       }
 
       // Multiple refresh attempts at staggered intervals
-      // This mimics what happens when DevTools opens (resize triggers refresh)
       const refreshDelays = [0, 100, 300, 500, 1000];
       refreshDelays.forEach((delay) => {
         const timeoutId = setTimeout(() => {
@@ -189,6 +191,8 @@ function Schedule() {
       }
       if (scroll) {
         scroll.destroy();
+        // Clean up window reference
+        delete window.locomotive;
       }
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
@@ -205,7 +209,7 @@ function Schedule() {
           width: "100%",
           height: "100vh",
           zIndex: -1,
-          pointerEvents: "none", // Ensures it doesn't interfere with clicks
+          pointerEvents: "none",
         }}
       >
         <Particles
@@ -345,13 +349,15 @@ function Schedule() {
             </div>
 
             <div className="hero-text">
-              <h1 className="hero-title">Board the Hogwarts Express</h1>
+              <h1 className="hero-title">Board the <span>Hogwarts Express</span></h1>
               <p className="hero-description">
                 Embark on a mystical journey through time as we trace the path
                 to Parsec 6.0. From preliminary challenges to the grand
                 celebration, every station marks a milestone in our quest for
-                innovation and excellence.
+                innovation and excellence. <br /><br />
+                For checking the overall day by day schedule of Parsec 6.0, click <a className="overall-schedule" href="https://docs.google.com/spreadsheets/d/1dKIYdZ5t1YiGUGmpcu0v5pGEChz2tXH4-HI08I4k2sg/edit?gid=1290078798#gid=1290078798" target="_blank" rel="noopener noreferrer">HERE</a>.
               </p>
+              {/* <p className="hero-description"></p> */}
               <div className="countdown-box">
                 <div className="countdown-grid">
                   <div className="countdown-item">
@@ -417,9 +423,8 @@ function Schedule() {
                     <h3 className="event-name">{event.name}</h3>
                     <div className="event-dates">
                       <div className="date-item">
-                        <span className="date-icon">📅</span>
-                        <span className="date-label">Start</span>
-                        <span className="date-value">
+                        <span className="schedule-date-label">Start</span>
+                        <span className="schedule-date-value">
                           {new Date(event.startDate).toLocaleDateString(
                             "en-GB",
                             {
@@ -430,9 +435,8 @@ function Schedule() {
                         </span>
                       </div>
                       <div className="date-item">
-                        <span className="date-icon">📤</span>
-                        <span className="date-label">Deadline</span>
-                        <span className="date-value">
+                        <span className="schedule-date-label">Deadline</span>
+                        <span className="schedule-date-value">
                           {new Date(
                             event.submissionDeadline
                           ).toLocaleDateString("en-GB", {
@@ -456,7 +460,7 @@ function Schedule() {
                   <div className="castle-icon">🏰</div>
                   <h2 className="destination-title">PARSEC 6.0</h2>
                   <p className="destination-dates">23rd - 27th January 2026</p>
-
+<p className="destination-subtitle">For event specific details, please visit events page! For </p>
                   <div className="main-week-preview-mobile">
                     {scheduleData.mainEvent.days.map((day) => (
                       <div key={day.day} className="day-card">
@@ -467,7 +471,7 @@ function Schedule() {
                             month: "short",
                           })}
                         </div>
-                        <div className="day-placeholder">Schedule TBA</div>
+                        {/* <div className="day-placeholder">Schedule</div> */}
                       </div>
                     ))}
                   </div>
@@ -513,11 +517,11 @@ function Schedule() {
                         {/* Event Card */}
                         <div className="event-card">
                           <h3 className="event-name">{event.name}</h3>
+                          {console.log(event.name)}
                           <div className="event-dates">
                             <div className="date-item">
-                              <span className="date-icon">📅</span>
-                              <span className="date-label">Start</span>
-                              <span className="date-value">
+                              <span className="schedule-date-label">Start</span>
+                              <span className="schedule-date-value">
                                 {new Date(event.startDate).toLocaleDateString(
                                   "en-GB",
                                   {
@@ -528,9 +532,8 @@ function Schedule() {
                               </span>
                             </div>
                             <div className="date-item">
-                              <span className="date-icon">📤</span>
-                              <span className="date-label">Deadline</span>
-                              <span className="date-value">
+                              <span className="schedule-date-label">Deadline</span>
+                              <span className="schedule-date-value">
                                 {new Date(
                                   event.submissionDeadline
                                 ).toLocaleDateString("en-GB", {
@@ -540,7 +543,9 @@ function Schedule() {
                               </span>
                             </div>
                           </div>
-                          <div className={`event-status status-${event.status}`}>
+                          <div
+                            className={`event-status status-${event.status}`}
+                          >
                             {event.status}
                           </div>
                         </div>
@@ -552,7 +557,7 @@ function Schedule() {
                   <div
                     className="destination-station"
                     style={{
-                      left: `${300 + events.length * 350}px`,
+                      left: `${450 + events.length * 350}px`,
                     }}
                   >
                     <div className="destination-marker">
@@ -561,7 +566,7 @@ function Schedule() {
                       <p className="destination-dates">
                         23rd - 27th January 2026
                       </p>
-
+                      <p className="destination-subtitle">For event specific details, please visit events page!</p>
                       <div className="main-week-preview">
                         {scheduleData.mainEvent.days.map((day) => (
                           <div key={day.day} className="day-card">
@@ -572,7 +577,8 @@ function Schedule() {
                                 month: "short",
                               })}
                             </div>
-                            <div className="day-placeholder">Schedule TBA</div>
+                              
+                            {/* <div className="day-placeholder">Schedule</div> */}
                           </div>
                         ))}
                       </div>
@@ -583,311 +589,10 @@ function Schedule() {
             </div>
           </section>
         )}
-
         <Footer />
       </div>
     </>
   );
-  // return (
-  // <div className="schedule-page" ref={scrollRef} data-scroll-container>
-  //   {/* Full-page particles background */}
-  //   <div
-  //     style={{
-  //       position: "fixed",
-  //       top: 0,
-  //       left: 0,
-  //       width: "100%",
-  //       height: "100vh",
-  //       zIndex: -1, // Keeps it behind other content
-  //     }}
-  //   >
-  //     <Particles
-  //       particleColors={[
-  //         theme.fontMain || "#ffffff",
-  //         theme.fontMain || "#ffffff",
-  //       ]}
-  //       particleCount={400}
-  //       particleSpread={15}
-  //       speed={0.1}
-  //       particleBaseSize={70}
-  //       moveParticlesOnHover={false}
-  //       alphaParticles={false}
-  //       disableRotation={false}
-  //     />
-  //   </div>
-
-  //   <Navbar />
-
-  //   {/* Hero Section - Vertical Scroll */}
-  //   <section className="schedule-hero" ref={heroRef}>
-  //     <div className="hero-content">
-  //       <div className="train-container">
-  //         <div className="train-svg">
-  //           {/* Simple train SVG */}
-  //           <svg viewBox="0 0 200 100" className="hogwarts-express">
-  //             <g className="train-body">
-  //               {/* Engine */}
-  //               <rect
-  //                 x="10"
-  //                 y="40"
-  //                 width="40"
-  //                 height="30"
-  //                 fill="var(--fontAccent)"
-  //                 rx="3"
-  //               />
-  //               <rect
-  //                 x="15"
-  //                 y="30"
-  //                 width="30"
-  //                 height="15"
-  //                 fill="var(--fontAccent)"
-  //                 rx="2"
-  //               />
-  //               {/* Cabin */}
-  //               <rect
-  //                 x="55"
-  //                 y="35"
-  //                 width="50"
-  //                 height="35"
-  //                 fill="var(--surface)"
-  //                 stroke="var(--fontAccent)"
-  //                 strokeWidth="2"
-  //                 rx="3"
-  //               />
-  //               <rect
-  //                 x="60"
-  //                 y="40"
-  //                 width="18"
-  //                 height="15"
-  //                 fill="var(--fontMain)"
-  //                 opacity="0.3"
-  //                 rx="1"
-  //               />
-  //               <rect
-  //                 x="82"
-  //                 y="40"
-  //                 width="18"
-  //                 height="15"
-  //                 fill="var(--fontMain)"
-  //                 opacity="0.3"
-  //                 rx="1"
-  //               />
-  //               {/* Wheels */}
-  //               <circle
-  //                 cx="25"
-  //                 cy="72"
-  //                 r="8"
-  //                 fill="var(--fontMain)"
-  //                 stroke="var(--fontAccent)"
-  //                 strokeWidth="2"
-  //               />
-  //               <circle
-  //                 cx="45"
-  //                 cy="72"
-  //                 r="8"
-  //                 fill="var(--fontMain)"
-  //                 stroke="var(--fontAccent)"
-  //                 strokeWidth="2"
-  //               />
-  //               <circle
-  //                 cx="70"
-  //                 cy="72"
-  //                 r="8"
-  //                 fill="var(--fontMain)"
-  //                 stroke="var(--fontAccent)"
-  //                 strokeWidth="2"
-  //               />
-  //               <circle
-  //                 cx="90"
-  //                 cy="72"
-  //                 r="8"
-  //                 fill="var(--fontMain)"
-  //                 stroke="var(--fontAccent)"
-  //                 strokeWidth="2"
-  //               />
-  //               {/* Steam */}
-  //               <circle
-  //                 className="steam steam-1"
-  //                 cx="8"
-  //                 cy="25"
-  //                 r="5"
-  //                 fill="var(--fontMain)"
-  //                 opacity="0.4"
-  //               />
-  //               <circle
-  //                 className="steam steam-2"
-  //                 cx="5"
-  //                 cy="15"
-  //                 r="7"
-  //                 fill="var(--fontMain)"
-  //                 opacity="0.3"
-  //               />
-  //               <circle
-  //                 className="steam steam-3"
-  //                 cx="12"
-  //                 cy="10"
-  //                 r="6"
-  //                 fill="var(--fontMain)"
-  //                 opacity="0.2"
-  //               />
-  //             </g>
-  //           </svg>
-  //         </div>
-  //       </div>
-
-  //       <div className="hero-text">
-  //         <h1 className="hero-title">Board the Hogwarts Express</h1>
-  //         <p className="hero-description">
-  //           Embark on a mystical journey through time as we trace the path to
-  //           Parsec 6.0. From preliminary challenges to the grand celebration,
-  //           every station marks a milestone in our quest for innovation and
-  //           excellence.
-  //         </p>
-  //         <div className="countdown-box">
-  //           <div className="countdown-grid">
-  //             <div className="countdown-item">
-  //               <div className="countdown-number">{timeUntilParsec.days}</div>
-  //               <div className="countdown-label">Days</div>
-  //             </div>
-  //             <div className="countdown-separator">:</div>
-  //             <div className="countdown-item">
-  //               <div className="countdown-number">
-  //                 {String(timeUntilParsec.hours).padStart(2, "0")}
-  //               </div>
-  //               <div className="countdown-label">Hours</div>
-  //             </div>
-  //             <div className="countdown-separator">:</div>
-  //             <div className="countdown-item">
-  //               <div className="countdown-number">
-  //                 {String(timeUntilParsec.minutes).padStart(2, "0")}
-  //               </div>
-  //               <div className="countdown-label">Minutes</div>
-  //             </div>
-  //             <div className="countdown-separator">:</div>
-  //             <div className="countdown-item">
-  //               <div className="countdown-number">
-  //                 {String(timeUntilParsec.seconds).padStart(2, "0")}
-  //               </div>
-  //               <div className="countdown-label">Seconds</div>
-  //             </div>
-  //           </div>
-  //           <div className="countdown-date">
-  //             23rd - 27th January 2026 • Starts at 10:00 AM
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </section>
-
-  //   {/* Journey Section - Horizontal Scroll */}
-  //   <section className="schedule-journey" ref={journeyRef}>
-  //     <div className="journey-container" ref={containerRef}>
-  //       <div className="track-background">
-  //         {/* Railroad track */}
-  //         <div className="railroad-track">
-  //           <div className="rail rail-top"></div>
-  //           <div className="rail rail-bottom"></div>
-  //           <div className="sleepers">
-  //             {Array.from({ length: 50 }).map((_, i) => (
-  //               <div
-  //                 key={i}
-  //                 className="sleeper"
-  //                 style={{ left: `${i * 3}%` }}
-  //               ></div>
-  //             ))}
-  //           </div>
-  //         </div>
-
-  //         {/* Event Stations */}
-  //         <div className="event-stations">
-  //           {events.map((event, index) => {
-  //             const startPadding = 300;
-  //             const eventSpacing = 350;
-  //             const leftPosition = startPadding + index * eventSpacing;
-  //             return (
-  //               <div
-  //                 key={event.id}
-  //                 className={`event-station ${event.position}`}
-  //                 style={{ left: `${leftPosition}px` }}
-  //               >
-  //                 {/* Station Node */}
-  //                 <div className="station-node"></div>
-
-  //                 {/* Event Card */}
-  //                 <div className="event-card">
-  //                   {/* <div className="event-number">#{event.serialNumber}</div> */}
-  //                   <h3 className="event-name">{event.name}</h3>
-  //                   <div className="event-dates">
-  //                     <div className="date-item">
-  //                       <span className="date-icon">📅</span>
-  //                       <span className="date-label">Start</span>
-  //                       <span className="date-value">
-  //                         {new Date(event.startDate).toLocaleDateString(
-  //                           "en-GB",
-  //                           {
-  //                             day: "2-digit",
-  //                             month: "short",
-  //                           }
-  //                         )}
-  //                       </span>
-  //                     </div>
-  //                     <div className="date-item">
-  //                       <span className="date-icon">📤</span>
-  //                       <span className="date-label">Deadline</span>
-  //                       <span className="date-value">
-  //                         {new Date(
-  //                           event.submissionDeadline
-  //                         ).toLocaleDateString("en-GB", {
-  //                           day: "2-digit",
-  //                           month: "short",
-  //                         })}
-  //                       </span>
-  //                     </div>
-  //                   </div>
-  //                   <div className={`event-status status-${event.status}`}>
-  //                     {event.status}
-  //                   </div>
-  //                 </div>
-  //               </div>
-  //             );
-  //           })}
-
-  //           {/* Destination - Main Event */}
-  //           <div
-  //             className="destination-station"
-  //             style={{
-  //               left: `${300 + events.length * 350}px`,
-  //             }}
-  //           >
-  //             <div className="destination-marker">
-  //               <div className="castle-icon">🏰</div>
-  //               <h2 className="destination-title">PARSEC 6.0</h2>
-  //               <p className="destination-dates">23rd - 27th January 2026</p>
-
-  //               <div className="main-week-preview">
-  //                 {scheduleData.mainEvent.days.map((day) => (
-  //                   <div key={day.day} className="day-card">
-  //                     <div className="day-number">Day {day.day}</div>
-  //                     <div className="day-date">
-  //                       {new Date(day.date).toLocaleDateString("en-GB", {
-  //                         day: "2-digit",
-  //                         month: "short",
-  //                       })}
-  //                     </div>
-  //                     <div className="day-placeholder">Schedule TBA</div>
-  //                   </div>
-  //                 ))}
-  //               </div>
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </div>
-  // </div>
-  // </section>
-
-  // <Footer />
-  //   </div>
-  // );
 }
 
 export default Schedule;

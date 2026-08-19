@@ -1,23 +1,25 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import './EventCard2.css';
-import Button from './Button';
-import './LeatherSpan.css';
+import React from "react";
+// import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import "./EventCard2.css";
+import Button from "./Button";
+import "./LeatherSpan.css";
 
-function EventCard2({ 
-  id, 
-  title, 
-  category, 
-  date, 
-  image, 
+function EventCard2({
+  id,
+  title,
+  category,
+  date,
+  image,
   description,
-  isAuthenticated = false 
+  isAuthenticated = false,
 }) {
   const navigate = useNavigate();
-  const bgStyle = image && image.trim() !== ''
-    ? { backgroundImage: `url(${image})` }
-    : { background: 'linear-gradient(135deg, #222 0%, #333 100%)' };
-  
+  const bgStyle =
+    image && image.trim() !== ""
+      ? { backgroundImage: `url(${image})` }
+      : { background: "linear-gradient(135deg, #222 0%, #333 100%)" };
+
   return (
     <div className="event-card-2">
       {/* Sparkle effects */}
@@ -32,40 +34,43 @@ function EventCard2({
       <div className="corner-decoration corner-bottom-left"></div>
       <div className="corner-decoration corner-bottom-right"></div> */}
 
-      <div 
-        className="event-card-image" 
-        style={bgStyle}
-      >
+      <div className="event-card-image" style={bgStyle}>
         <span className=" leather-span">{category}</span>
       </div>
-      
+
       <div className="event-card-content">
         <h3 className="event-title">{title}</h3>
         <p className="event-date">{date}</p>
-        
+
         {/* Decorative divider */}
         <div className="decorative-divider">
           <div className="divider-line"></div>
           <div className="divider-dot"></div>
           <div className="divider-line"></div>
         </div>
-        
+
         <p className="event-description">{description}</p>
-        
+
         <div className="event-card-actions">
-          <Button 
-            variant="secondary" 
-            onClick={() => navigate(`/events/${id}`)}
-          >
+          <Button variant="secondary" onClick={() => navigate(`/events/${id}`)}>
             View Details
           </Button>
-          
+
           {isAuthenticated ? (
             <Button variant="primary">Register</Button>
           ) : (
-            <Link to="/login">
-              <Button variant="primary">Login to Register</Button>
-            </Link>
+            <div className="disabled-register-wrapper">
+              <Button
+                variant="primary"
+                className="btn-disabled"
+                aria-disabled="true"
+                onClick={(e) => e.preventDefault()}
+              >
+                Login to Register
+              </Button>
+
+              
+            </div>
           )}
         </div>
       </div>

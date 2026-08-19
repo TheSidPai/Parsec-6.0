@@ -168,6 +168,7 @@
 
 .navbar-signup button {
   background: var(--buttonBg);
+  /* background: transparent; */
   color: var(--buttonText);
   padding: 12px 30px;
   font-family: 'JosefinSans', sans-serif;
@@ -180,55 +181,148 @@
   box-shadow: 0 0 15px var(--glow);
 }
 
+ .navbar-leather-span{
+  position: static;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  /* Leather gradient */
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, rgb(0, 8, 44) 70%, #010025d3) 0%,
+    color-mix(in srgb, rgb(0, 8, 44) 50%, #010327) 50%,
+    color-mix(in srgb, rgb(0, 8, 44) 30%, #0d0a1a) 100%
+  );
+
+  color: var(--fontAccent, var(--fontAccent));
+  border: 1px solid color-mix(in srgb, rgb(0, 8, 44) 30%, #1a0f0a);
+
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3), 0 3px 8px rgba(0, 0, 0, 0.4);
+
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
 .navbar-signup button:hover {
   background: var(--buttonHoverBg);
   box-shadow: 0 0 25px var(--glow);
   transform: translateY(-2px);
 }
 
-/* ========== RESPONSIVE - TABLET ========== */
-@media screen and (max-width: 960px) {
-  .navbar-container {
-    padding: 0 30px;
-  }
+.navbar-logo-group{
+  display: flex;
+  align-items: center;
+}
 
-  .navbar-logo-img {
-    height: 45px;
+.navbar-logo-separator{
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 0 15px;
+}
+
+.navbar-college-logo-img{
+  max-height: 40px;
+  width: auto;
+  filter: drop-shadow(0 0 8px var(--glow));
+  transition: filter 0.3s ease;
+  /* display: none; */
+  margin-right: 20px;
+}
+
+/* ========== RESPONSIVE - LARGE TABLET / SMALL DESKTOP ========== */
+@media screen and (max-width: 1200px) {
+  .navbar-container {
+    padding: 0 35px;
   }
 
   .navbar-menu {
-    gap: 10px;
+    gap: 8px;
   }
 
   .navbar-link {
-    padding: 10px 15px;
-    font-size: 0.95rem;
+    padding: 10px 12px;
+    font-size: 0.9rem;
   }
 
   .navbar-signup button {
     padding: 10px 20px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
-  .navbar-dropdown-menu {
-    width: 240px;
+  .navbar-college-logo-img {
+    max-height: 35px;
+    margin-right: 10px;
   }
 
-  .dropdown-text strong {
-    font-size: 14px;
-  }
-
-  .dropdown-text small {
-    font-size: 11px;
-  }
-
-  .dropdown-icon {
-    font-size: 18px;
+  .navbar-logo-separator {
+    height: 35px;
+    margin: 0 12px;
   }
 }
 
-/* ========== RESPONSIVE - MOBILE (HAMBURGER) ========== */
-@media screen and (max-width: 768px) {
+/* ========== RESPONSIVE - TABLET ========== */
+@media screen and (max-width: 960px) {
+  .navbar-container {
+    padding: 0 25px;
+  }
+
+  .navbar-logo-img {
+    height: 42px;
+  }
+
+  .navbar-college-logo-img {
+    max-height: 32px;
+    margin-right: 0;
+  }
+
+  .navbar-logo-separator {
+    height: 30px;
+    margin: 0 10px;
+  }
+
+  .navbar-menu {
+    gap: 5px;
+  }
+
+  .navbar-link {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+
+  .navbar-signup button {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+
+  .navbar-dropdown-menu {
+    width: 220px;
+  }
+
+  .dropdown-text strong {
+    font-size: 13px;
+  }
+
+  .dropdown-text small {
+    font-size: 10px;
+  }
+
+  .dropdown-icon {
+    font-size: 16px;
+  }
+}
+
+/* ========== RESPONSIVE - TABLET HAMBURGER ========== */
+@media screen and (max-width: 850px) {
   .navbar {
     min-height: 70px;
   }
@@ -238,7 +332,17 @@
   }
 
   .navbar-logo-img {
-    height: 40px;
+    height: 42px;
+  }
+
+  .navbar-college-logo-img {
+    max-height: 32px;
+    margin-right: 0;
+  }
+
+  .navbar-logo-separator {
+    height: 30px;
+    margin: 0 10px;
   }
 
   /* Show hamburger */
@@ -271,6 +375,35 @@
   }
 }
 
+/* ========== RESPONSIVE - MOBILE ========== */
+@media screen and (max-width: 768px) {
+  .navbar {
+    min-height: 65px;
+  }
+
+  .navbar-container {
+    padding: 12px 18px;
+  }
+
+  .navbar-logo-img {
+    height: 38px;
+  }
+
+  .navbar-college-logo-img {
+    max-height: 28px;
+  }
+
+  .navbar-logo-separator {
+    height: 26px;
+    margin: 0 8px;
+  }
+
+  .navbar-menu {
+    top: 65px;
+    height: calc(100vh - 65px);
+  }
+}
+
 /* ========== EVENTS DROPDOWN ========== */
 .navbar-dropdown {
   position: relative;
@@ -280,7 +413,7 @@
   background: none;
   border: none;
   color: var(--fontAccent);
-  font-family: 'Cinzel', serif;
+  font-family: 'JosefinSans', sans-serif;
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -446,7 +579,7 @@
 }
 
 .dropdown-text strong {
-  font-family: 'Cinzel', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 16px;
   font-weight: 700;
   text-transform: uppercase;
@@ -470,7 +603,14 @@
 /* ========== RESPONSIVE - TABLET ========== */
 
 /* ========== RESPONSIVE - TABLET & MOBILE DROPDOWN ========== */
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 850px) {
+  /* Make dropdown container stack vertically */
+  .navbar-dropdown {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
   .navbar-dropdown-menu {
     position: static;
     transform: none;
@@ -487,6 +627,7 @@
     overflow: hidden;
     width: 100%;
     transition: max-height 0.3s ease, padding 0.3s ease;
+    display: block;
   }
 
   .navbar-dropdown-menu::before {
@@ -497,6 +638,7 @@
     max-height: 500px;
     overflow-y: auto;
     padding: 8px 0;
+    margin-left: 100%;
   }
 
   .navbar-dropdown-toggle {
@@ -513,28 +655,35 @@
   }
 
   .navbar-dropdown-link {
-    padding: 10px 15px 10px 15px;
-    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 25px 12px 40px;
+    gap: 2px;
     animation: none;
     opacity: 1;
     transform: none;
+    border-radius: 0;
+  }
+
+  .navbar-dropdown-link:hover {
+    background: rgba(147, 112, 219, 0.15);
   }
 
   .navbar-dropdown-link .dropdown-icon {
-    font-size: 18px;
-    flex-shrink: 0;
+    display: none;
   }
 
   .navbar-dropdown-link .dropdown-text {
-    flex: 1;
-    min-width: 0;
+    width: 100%;
   }
 
   .navbar-dropdown-link .dropdown-text strong {
-    font-size: 13px;
+    font-size: 14px;
     display: block;
     line-height: 1.3;
     word-wrap: break-word;
+    color: var(--fontAccent);
   }
 
   .navbar-dropdown-link .dropdown-text small {
@@ -542,10 +691,20 @@
     display: block;
     line-height: 1.2;
     word-wrap: break-word;
+    margin-top: 2px;
+    color: var(--fontSub);
+  }
+
+  .navbar-dropdown-menu li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .navbar-dropdown-menu li:last-child {
+    border-bottom: none;
   }
 
   .navbar-dropdown-menu li:first-child::after {
-    margin: 6px 20px;
+    display: none;
   }
 
   .navbar-item {
@@ -609,34 +768,15 @@
   }
 
   .navbar-dropdown-link {
-    padding: 8px 12px;
-    gap: 8px;
-  }
-
-  .navbar-dropdown-link .dropdown-icon {
-    font-size: 16px;
-    flex-shrink: 0;
-  }
-
-  .navbar-dropdown-link .dropdown-text {
-    flex: 1;
-    min-width: 0;
+    padding: 10px 20px 10px 35px;
   }
 
   .navbar-dropdown-link .dropdown-text strong {
-    font-size: 12px;
-    display: block;
-    line-height: 1.3;
-    word-wrap: break-word;
-    white-space: normal;
+    font-size: 13px;
   }
 
   .navbar-dropdown-link .dropdown-text small {
     font-size: 10px;
-    display: block;
-    line-height: 1.2;
-    word-wrap: break-word;
-    white-space: normal;
   }
 
   .navbar-link {

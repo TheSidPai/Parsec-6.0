@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Button from "../components/Button";
 import { buildApiUrl, API_ENDPOINTS, API_BASE_URL } from "../config/api";
 import "./Login.css";
+import Particles from '../components/Particles';
 
 function Login() {
   const [debugInfo, setDebugInfo] = useState(null);
@@ -13,6 +14,11 @@ function Login() {
     console.log('🔐 Initiating Google OAuth Login');
     console.log('📍 OAuth URL:', oauthUrl);
     console.log('🌐 Base URL:', API_BASE_URL);
+    
+    // Store current origin in sessionStorage so we know where to redirect back
+    const currentOrigin = window.location.origin;
+    sessionStorage.setItem('auth_origin', currentOrigin);
+    console.log('💾 Stored origin for redirect:', currentOrigin);
     
     // Test backend connectivity first
     testBackendConnection();
@@ -45,6 +51,7 @@ function Login() {
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
     >
+      <Particles />
       <Navbar />
 
       <div className="login-container">
@@ -85,14 +92,14 @@ function Login() {
           </p>
           
           {/* Debug Panel */}
-          <details style={{ marginTop: '20px', fontSize: '12px', opacity: 0.7 }}>
+          {/* <details style={{ marginTop: '20px', fontSize: '12px', opacity: 0.7 }}>
             <summary style={{ cursor: 'pointer' }}>🔧 Debug Info</summary>
             <div style={{ marginTop: '8px', padding: '8px', backgroundColor: '#f5f5f5', borderRadius: '4px', fontFamily: 'monospace' }}>
               <div><strong>OAuth URL:</strong> {oauthUrl}</div>
               <div><strong>Base URL:</strong> {API_BASE_URL}</div>
               <div><strong>Environment:</strong> {process.env.NODE_ENV}</div>
             </div>
-          </details>
+          </details> */}
         </motion.div>
       </div>
     </motion.div>

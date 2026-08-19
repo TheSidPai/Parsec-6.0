@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import eventsData from '../../assets/data/events.json';
 import './DashboardEvents.css';
+import Particles from '../../components/Particles';
 
 function DashboardEvents() {
   const navigate = useNavigate();
@@ -43,8 +44,21 @@ function DashboardEvents() {
 
   return (
     <div className="dashboard-events-container">
+      {/* Particles Background */}
+            <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: 0, pointerEvents: 'none' }}>
+              <Particles
+                particleColors={["#ffffff", "#ffffff"]}
+                particleCount={600}
+                particleSpread={15}
+                speed={0.1}
+                particleBaseSize={80}
+                moveParticlesOnHover={false}
+                alphaParticles={false}
+                disableRotation={false}
+              />
+            </div>
       <div className="dashboard-events-header">
-        <h1 className="dashboard-events-title">Event Registration</h1>
+        <h1 className="page-title">Event Registration</h1>
         <p className="dashboard-events-subtitle">
           Explore {registrableEvents.length} exciting events at PARSEC 6.0
         </p>

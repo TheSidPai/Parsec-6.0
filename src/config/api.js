@@ -16,7 +16,7 @@
  * @param {Error} error - Error if request failed
  */
 const logApiCall = (endpoint, options, startTime, response = null, data = null, error = null) => {
-  const duration = Date.now() - startTime;
+  // const duration = Date.now() - startTime;
   const method = options.method || 'GET';
   const timestamp = new Date().toLocaleTimeString();
   
@@ -28,27 +28,38 @@ const logApiCall = (endpoint, options, startTime, response = null, data = null, 
     warning: 'background: #ffc107; color: black; padding: 2px 6px; border-radius: 3px; font-weight: bold;',
   };
 
+  // Helper to safely log request body
+  // const getRequestBodyLog = (body) => {
+  //   if (!body) return 'No body';
+  //   if (body instanceof FormData) return 'FormData (multipart/form-data)';
+  //   try {
+  //     return JSON.parse(body);
+  //   } catch {
+  //     return body;
+  //   } 
+  // };
+
   if (error) {
     // Error case
-    console.group(`%c❌ API ERROR %c${method} ${endpoint}`, styles.error, '');
-    console.log(`⏰ Time: ${timestamp}`);
-    console.log(`⏱️ Duration: ${duration}ms`);
-    console.log(`📝 Request:`, options.body ? JSON.parse(options.body) : 'No body');
-    console.error(`💥 Error:`, error.message);
-    console.groupEnd();
+    // console.group(`%c❌ API ERROR %c${method} ${endpoint}`, styles.error, '');
+    // console.log(`⏰ Time: ${timestamp}`);
+    // console.log(`⏱️ Duration: ${duration}ms`);
+    // console.log(`📝 Request:`, getRequestBodyLog(options.body));
+    // console.error(`💥 Error:`, error.message);
+    // console.groupEnd();
   } else if (response) {
     // Success case
-    const statusStyle = response.ok ? styles.success : styles.error;
-    const emoji = response.ok ? '✅' : '❌';
+    // const statusStyle = response.ok ? styles.success : styles.error;
+    // const emoji = response.ok ? '✅' : '❌';
     
-    console.group(`%c${emoji} API ${response.status} %c${method} ${endpoint}`, statusStyle, '');
-    console.log(`⏰ Time: ${timestamp}`);
-    console.log(`⏱️ Duration: ${duration}ms`);
-    console.log(`📤 Request URL: ${response.url}`);
-    console.log(`📝 Request Body:`, options.body ? JSON.parse(options.body) : 'No body');
-    console.log(`📥 Response:`, data);
-    console.log(`🔑 Token Used:`, options.headers?.Authorization ? 'Yes (Bearer)' : 'No');
-    console.groupEnd();
+    // console.group(`%c${emoji} API ${response.status} %c${method} ${endpoint}`, statusStyle, '');
+    // console.log(`⏰ Time: ${timestamp}`);
+    // console.log(`⏱️ Duration: ${duration}ms`);
+    // console.log(`📤 Request URL: ${response.url}`);
+    // console.log(`📝 Request Body:`, getRequestBodyLog(options.body));
+    // console.log(`📥 Response:`, data);
+    // console.log(`🔑 Token Used:`, options.headers?.Authorization ? 'Yes (Bearer)' : 'No');
+    // console.groupEnd();
   } else {
     // Starting request
     console.log(`%c🚀 API REQUEST %c${method} ${endpoint}`, styles.info, '', `(${timestamp})`);
@@ -93,13 +104,27 @@ export const API_ENDPOINTS = {
   PAYMENTS_MY: '/payments/me',
 
   // Points
-  POINTS: '/points',
-  POINTS_HOUSE_LEADERBOARD: '/points/house-leaderboard',
-  POINTS_INDIVIDUAL_LEADERBOARD: '/points/individual-leaderboard',
+  POINTS_ME: '/points/me',
+  POINTS_LEADERBOARD: '/points/leaderboard',
+
+  // Merchandise
+  MERCH_GET_ALL: '/merch',
+  MERCH_GET_BY_ID: '/merch/:id', // Replace :id with actual merch ID
+  MERCH_ADD: '/paneermoms/merch', // Admin only
+  MERCH_UPDATE: '/paneermoms/merch/:id', // Admin only - Full item update
+  MERCH_UPDATE_STOCK: '/paneermoms/merch/:id/stock', // Admin only
+  MERCH_DELETE: '/paneermoms/merch/:id', // Admin only
 
   // Orders (Merchandise)
-  ORDERS: '/orders',
-  ORDERS_MY: '/orders/my',
+  ORDERS_CREATE: '/orders',
+  ORDERS_MY: '/orders/me',
+
+  // Payments
+  PAYMENTS_SUBMIT: '/payments',
+
+  // Accommodation
+  ACCOMMODATION_CREATE: '/accommodation',
+  ACCOMMODATION_MY_BOOKINGS: '/accommodation', // GET user's accommodation bookings
 
   // Admin - All admin routes prefixed with /paneermoms
   ADMIN_LOGIN: '/paneermoms/login',
@@ -107,6 +132,7 @@ export const API_ENDPOINTS = {
   ADMIN_PAYMENTS_VERIFY: '/paneermoms/payments/:id/verify', // Replace :id with actual payment ID
   ADMIN_PAYMENTS_REJECT: '/paneermoms/payments/:id/reject', // Replace :id with actual payment ID
   ADMIN_PAYMENTS_STATS: '/paneermoms/payments/stats',
+  ADMIN_QR_VERIFY: '/paneermoms/qr/verify',
   ADMIN_POINTS_ADD: '/paneermoms/points/add',
   ADMIN_POINTS_SUBTRACT: '/paneermoms/points/subtract',
 };
@@ -132,9 +158,14 @@ export const authenticatedFetch = async (endpoint, options = {}, token = null) =
   const url = buildApiUrl(endpoint);
   
   const headers = {
-    'Content-Type': 'application/json',
     ...options.headers,
   };
+
+  // Only add Content-Type for non-FormData requests
+  // FormData sets its own Content-Type with boundary
+  if (!(options.body instanceof FormData)) {
+    headers['Content-Type'] = 'application/json';
+  }
 
   // Add Authorization header if token is provided
   if (token) {
@@ -173,11 +204,20 @@ export const authenticatedFetch = async (endpoint, options = {}, token = null) =
   }
 };
 
+/**
+ * Helper function to get JWT token from localStorage
+ * @returns {string|null} - JWT token or null if not found
+ */
+export const getAuthToken = () => {
+  return localStorage.getItem('jwt_token'); // Matches the key used in Auth.jsx
+};
+
 const apiConfig = {
   API_BASE_URL,
   API_ENDPOINTS,
   buildApiUrl,
   authenticatedFetch,
+  getAuthToken,
 };
 
 export default apiConfig;

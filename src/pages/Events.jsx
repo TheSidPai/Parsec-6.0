@@ -10,8 +10,8 @@ import { useTheme } from "../context/ThemeContext";
 function Events() {
   const { theme } = useTheme();
   // Filter only technical events (non-cultural)
-  const technicalEvents = events.filter(ev => ev.category !== "Cultural");
-  
+  const technicalEvents = events.filter((ev) => ev.category !== "Cultural");
+
   return (
     <div>
       <Navbar />
@@ -35,26 +35,26 @@ function Events() {
         </p>
 
         {/* Scroll Indicator */}
-        <div className="events-scroll-indicator">
+        {/* <div className="events-scroll-indicator">
           <div className="scroll-icon">
             <div className="scroll-wheel"></div>
           </div>
           <p className="scroll-text">Scroll to explore</p>
           <div className="scroll-arrow">↓</div>
-        </div>
+        </div> */}
 
         <div className="events-grid">
           {technicalEvents.map((ev) => (
             <EventCard2
-                key={ev.id}
-                id={ev.id}
-                title={ev.title}
-                category={ev.category}
-                date={ev.date}
-                image={ev.image}
-                description={ev.description}
-                isAuthenticated={false}
-              />
+              key={ev.id}
+              id={ev.id}
+              title={ev.title}
+              category={ev.category}
+              date={ev.date}
+              image={ev.image}
+              description={ev.description}
+              isAuthenticated={false}
+            />
           ))}
         </div>
       </main>

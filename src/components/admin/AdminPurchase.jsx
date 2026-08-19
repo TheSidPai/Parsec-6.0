@@ -1,23 +1,570 @@
-import React from 'react';
-import { RiShoppingCartLine } from '@remixicon/react';
+import React, { useState, useEffect } from 'react';
+import { RiShoppingCartLine, RiAddLine, RiDeleteBinLine, RiEditLine, RiSaveLine } from '@remixicon/react';
+import { API_ENDPOINTS, authenticatedFetch } from '../../config/api';
 import './AdminComponents.css';
 
 function AdminPurchase() {
+  const [items, setItems] = useState([]);
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [editingItem, setEditingItem] = useState(null);
+  const [, setLoading] = useState(true);
+  const [formData, setFormData] = useState({
+    name: '',
+    description: '',
+    price: '',
+    category: 'event-pass1',
+    stockQuantity: '100',
+    sizesAvailable: [],
+    imageUrl: '',
+    available: true
+  });
+
+  // Fetch items from backend
+  useEffect(() => {
+    fetchItemsFromBackend();
+  }, []);
+
+  const fetchItemsFromBackend = async () => {
+    try {
+      setLoading(true);
+      const token = sessionStorage.getItem('admin_token');
+      
+      const { response, data } = await authenticatedFetch(
+        API_ENDPOINTS.MERCH_GET_ALL,
+        { method: 'GET' },
+        token
+      );
+
+      console.log('🔍 Admin fetching items:', { response, data });
+
+      if (response.ok && (data?.status === 'success' || data?.success === true)) {
+        let backendItems = [];
+        
+        if (data?.data?.merch) {
+          backendItems = data.data.merch;
+        } else if (Array.isArray(data?.data)) {
+          backendItems = data.data;
+        } else if (data?.data?.body) {
+          backendItems = data.data.body;
+        }
+
+        console.log('✅ Admin loaded items:', backendItems);
+        setItems(backendItems);
+      } else {
+        console.warn('⚠️ No items from backend');
+        setItems([]);
+      }
+    } catch (error) {
+      console.error('❌ Error fetching items:', error);
+      setItems([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+  };
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      // Validate file type
+      if (!file.type.startsWith('image/')) {
+        alert('Please upload an image file');
+        return;
+      }
+
+      // Validate file size (max 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        alert('Image size should be less than 5MB');
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData(prev => ({
+          ...prev,
+          imageUrl: reader.result
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!formData.name || !formData.price) {
+      alert('Please fill in all required fields');
+      return;
+    }
+
+    const adminToken = localStorage.getItem('admin_token') || sessionStorage.getItem('admin_token');
+    if (!adminToken) {
+      alert('⚠️ Admin authentication required. Please login again.');
+      return;
+    }
+
+    try {
+      // Prepare data for backend API based on item type
+      const isWearable = formData.category === 'wearable' || formData.category === 'non-wearable';
+      
+      const apiData = {
+        type: formData.category,
+        name: formData.name,
+        description: formData.description || 'No description provided',
+        price: parseFloat(formData.price),
+        available: formData.available !== false // Default to true
+      };
+      
+      // Always send both stock and stockQuantity to be safe
+      const quantity = parseInt(formData.stockQuantity) || 100;
+      apiData.stock = quantity;
+      apiData.stockQuantity = quantity;
+      
+      // For wearables/merchandise: also add sizesAvailable
+      if (isWearable) {
+        apiData.sizesAvailable = formData.sizesAvailable || [];
+      }
+      
+      // Only add imageUrl if provided (it's optional)
+      if (formData.imageUrl) {
+        apiData.imageUrl = formData.imageUrl;
+      }
+
+      console.log('📦 Sending API data:', apiData);
+
+      if (editingItem && editingItem._id && !editingItem._id.startsWith('local_')) {
+        // Update existing backend item - use stock endpoint (supports all fields)
+        const endpoint = API_ENDPOINTS.MERCH_UPDATE_STOCK.replace(':id', editingItem._id);
+        
+        console.log('🔄 Updating item with endpoint:', endpoint);
+        console.log('📦 Update data:', apiData);
+        
+        const { response, data } = await authenticatedFetch(
+          endpoint,
+          {
+            method: 'PATCH',
+            body: JSON.stringify(apiData)
+          },
+          adminToken
+        );
+
+        console.log('📥 Update response:', { response, data });
+
+        if (response.ok && (data?.status === 'success' || data?.success === true)) {
+          alert('✅ Item updated successfully!');
+          
+          // Refresh the items list from backend
+          await fetchItemsFromBackend();
+          
+          // Reset form
+          setFormData({
+            name: '',
+            description: '',
+            price: '',
+            category: 'event-pass1',
+            stockQuantity: '100',
+            sizesAvailable: [],
+            imageUrl: '',
+            available: true
+          });
+          setShowAddForm(false);
+          setEditingItem(null);
+        } else {
+          throw new Error(data?.message || 'Failed to update item');
+        }
+      } else {
+        // Add new item to backend
+        const { response, data } = await authenticatedFetch(
+          API_ENDPOINTS.MERCH_ADD,
+          {
+            method: 'POST',
+            body: JSON.stringify(apiData)
+          },
+          adminToken
+        );
+
+        if (response.ok && (data?.status === 'success' || data?.success === true)) {
+          alert('✅ Item added successfully to store!');
+          
+          // Refresh the items list from backend
+          await fetchItemsFromBackend();
+          
+          // Reset form
+          setFormData({
+            name: '',
+            description: '',
+            price: '',
+            category: 'event-pass1',
+            stockQuantity: '100',
+            sizesAvailable: [],
+            imageUrl: '',
+            available: true
+          });
+          setShowAddForm(false);
+          setEditingItem(null);
+        } else {
+          throw new Error(data?.message || 'Failed to add item');
+        }
+      }
+
+      // Reset form
+      setFormData({
+        name: '',
+        description: '',
+        price: '',
+        category: 'event-pass1',
+        stockQuantity: '100',
+        sizesAvailable: [],
+        imageUrl: '',
+        available: true
+      });
+      setShowAddForm(false);
+      setEditingItem(null);
+    } catch (error) {
+      console.error('Error adding item:', error);
+      alert(`❌ Failed to add item: ${error.message}`);
+    }
+  };
+
+  const handleEdit = (item) => {
+    setEditingItem(item);
+    setFormData({
+      name: item.name,
+      description: item.description,
+      price: item.price.toString(),
+      category: item.category,
+      stockQuantity: item.stockQuantity?.toString() || '100',
+      sizesAvailable: item.sizesAvailable || [],
+      imageUrl: item.imageUrl,
+      available: item.available
+    });
+    setShowAddForm(true);
+  };
+
+  const handleDelete = async (itemId) => {
+    if (!window.confirm('Are you sure you want to delete this item?')) {
+      return;
+    }
+
+    const adminToken = localStorage.getItem('admin_token') || sessionStorage.getItem('admin_token');
+    if (!adminToken) {
+      alert('⚠️ Admin authentication required. Please login again.');
+      return;
+    }
+
+    try {
+      const { response, data } = await authenticatedFetch(
+        `${API_ENDPOINTS.MERCH_ADD}/${itemId}`,
+        {
+          method: 'DELETE'
+        },
+        adminToken
+      );
+
+      if (response.ok && (data?.status === 'success' || data?.success === true)) {
+        alert('✅ Item deleted successfully!');
+        // Refresh the list
+        fetchItemsFromBackend();
+      } else {
+        throw new Error(data?.message || 'Failed to delete item');
+      }
+    } catch (error) {
+      console.error('❌ Error deleting item:', error);
+      alert('❌ Failed to delete item: ' + (error.message || 'Unknown error'));
+    }
+  };
+
+  const toggleAvailability = async (itemId) => {
+    alert('⚠️ Update availability requires backend endpoint implementation.');
+    // TODO: Implement when backend PATCH endpoint is ready
+  };
+
+  const cancelForm = () => {
+    setShowAddForm(false);
+    setEditingItem(null);
+    setFormData({
+      name: '',
+      description: '',
+      price: '',
+      category: 'event-pass1',
+      stockQuantity: '100',
+      sizesAvailable: [],
+      imageUrl: '',
+      available: true
+    });
+  };
+
   return (
     <div className="admin-section-container">
       <div className="admin-section-title-wrapper">
         <div className="admin-section-icon">
           <RiShoppingCartLine size={32} />
         </div>
-        <h2 className="admin-section-main-title">Purchase Passes</h2>
-        <p className="admin-section-subtitle">Admin pass purchasing functionality</p>
+        <h2 className="admin-section-main-title">Store Management</h2>
+        <p className="admin-section-subtitle">Manage passes, merchandise, and other items</p>
       </div>
 
       <div className="admin-content-card">
-        <div className="admin-empty-state">
-          <div className="admin-empty-icon">🛒</div>
-          <p className="admin-empty-text">Purchase Pass Feature</p>
-          <p className="admin-empty-subtext">This feature allows admins to purchase passes on behalf of users. Coming soon!</p>
+        {/* Add Item Button */}
+        {!showAddForm && (
+          <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
+            <button
+              onClick={() => setShowAddForm(true)}
+              className="admin-btn admin-btn-primary"
+            >
+              <RiAddLine size={20} />
+              Add New Item
+            </button>
+          </div>
+        )}
+
+        {/* Add/Edit Form */}
+        {showAddForm && (
+          <div className="admin-store-form-container">
+            <h3 className="admin-store-form-title">
+              {editingItem ? 'Edit Item' : 'Add New Item'}
+            </h3>
+            <form onSubmit={handleSubmit} className="admin-form">
+              <div className="admin-form-row two-col">
+                <div className="admin-form-group">
+                  <label className="admin-form-label admin-form-label-required">
+                    Item Name
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="e.g., 2-Day Pass, Event T-Shirt"
+                    className="admin-form-input"
+                    required
+                  />
+                </div>
+
+                <div className="admin-form-group">
+                  <label className="admin-form-label admin-form-label-required">
+                    Price (₹)
+                  </label>
+                  <input
+                    type="number"
+                    name="price"
+                    value={formData.price}
+                    onChange={handleInputChange}
+                    placeholder="e.g., 299"
+                    min="0"
+                    step="0.01"
+                    className="admin-form-input"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="admin-form-group">
+                <label className="admin-form-label">Category</label>
+                <select
+                  name="category"
+                  value={formData.category}
+                  onChange={handleInputChange}
+                  className="admin-form-select"
+                >
+                  <option value="event-pass1">Event Pass - Day 1</option>
+                  <option value="event-pass2">Event Pass - Day 2</option>
+                  <option value="wearable">Wearable (T-shirts, Hoodies, etc.)</option>
+                  <option value="non-wearable">Non-Wearable (Stickers, Bottles, etc.)</option>
+                </select>
+              </div>
+
+              <div className="admin-form-group">
+                <label className="admin-form-label">Stock Quantity <span className="text-red-400">*</span></label>
+                <input
+                  type="number"
+                  name="stockQuantity"
+                  value={formData.stockQuantity}
+                  onChange={handleInputChange}
+                  placeholder="e.g., 100"
+                  min="0"
+                  className="admin-form-input"
+                  required
+                />
+              </div>
+
+              {formData.category === 'wearable' && (
+                <div className="admin-form-group">
+                  <label className="admin-form-label">Sizes Available</label>
+                  <div className="flex gap-2 flex-wrap">
+                    {['XS', 'S', 'M', 'L', 'XL', 'XXL'].map(size => (
+                      <label key={size} className="flex items-center gap-2 text-gray-300">
+                        <input
+                          type="checkbox"
+                          checked={formData.sizesAvailable.includes(size)}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setFormData(prev => ({
+                                ...prev,
+                                sizesAvailable: [...prev.sizesAvailable, size]
+                              }));
+                            } else {
+                              setFormData(prev => ({
+                                ...prev,
+                                sizesAvailable: prev.sizesAvailable.filter(s => s !== size)
+                              }));
+                            }
+                          }}
+                          className="rounded"
+                        />
+                        {size}
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div className="admin-form-group">
+                <label className="admin-form-label">Description</label>
+                <textarea
+                  name="description"
+                  value={formData.description}
+                  onChange={handleInputChange}
+                  placeholder="Describe the item, what's included, etc."
+                  className="admin-form-textarea"
+                  rows="4"
+                />
+              </div>
+
+              <div className="admin-form-group">
+                <label className="admin-form-label">Item Image</label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  className="admin-form-input"
+                />
+                <p className="admin-form-help">
+                  Upload an image (max 5MB). Supports JPG, PNG, WebP
+                </p>
+                {formData.imageUrl && (
+                  <div style={{ marginTop: '1rem' }}>
+                    <img
+                      src={formData.imageUrl}
+                      alt="Preview"
+                      className="admin-image-preview"
+                    />
+                  </div>
+                )}
+              </div>
+
+              <div className="admin-form-group">
+                <label className="admin-form-checkbox-label">
+                  <input
+                    type="checkbox"
+                    name="available"
+                    checked={formData.available}
+                    onChange={handleInputChange}
+                    className="admin-form-checkbox"
+                  />
+                  <span>Item is available for purchase</span>
+                </label>
+              </div>
+
+              <div className="admin-actions">
+                <button type="submit" className="admin-btn admin-btn-success">
+                  <RiSaveLine size={20} />
+                  {editingItem ? 'Update Item' : 'Add Item'}
+                </button>
+                <button
+                  type="button"
+                  onClick={cancelForm}
+                  className="admin-btn admin-btn-secondary"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
+
+        {/* Items List */}
+        {items.length === 0 && !showAddForm ? (
+          <div className="admin-empty-state">
+            <div className="admin-empty-icon">🛒</div>
+            <p className="admin-empty-text">No items added yet</p>
+            <p className="admin-empty-subtext">
+              Click "Add New Item" to create your first pass or merchandise item
+            </p>
+          </div>
+        ) : (
+          <div className="admin-store-items-grid">
+            {items.map(item => (
+              <div key={item.id} className="admin-store-item-card">
+                {item.imageUrl && (
+                  <div className="admin-store-item-image">
+                    <img src={item.imageUrl} alt={item.name} />
+                    {!item.available && (
+                      <div className="admin-store-item-overlay">UNAVAILABLE</div>
+                    )}
+                  </div>
+                )}
+                
+                <div className="admin-store-item-content">
+                  <div className="admin-store-item-header">
+                    <h4 className="admin-store-item-title">{item.name}</h4>
+                    <span className="admin-store-item-category">{item.category}</span>
+                  </div>
+
+                  {item.description && (
+                    <p className="admin-store-item-description">{item.description}</p>
+                  )}
+
+                  <div className="admin-store-item-price">₹{item.price.toFixed(2)}</div>
+
+                  <div className="admin-store-item-actions">
+                    <button
+                      onClick={() => toggleAvailability(item._id)}
+                      className={`admin-btn-sm ${item.available ? 'admin-btn-warning' : 'admin-btn-success'}`}
+                    >
+                      {item.available ? 'Mark Unavailable' : 'Mark Available'}
+                    </button>
+                    <button
+                      onClick={() => handleEdit(item)}
+                      className="admin-btn-icon admin-btn-primary"
+                      title="Edit"
+                    >
+                      <RiEditLine size={18} />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(item._id)}
+                      className="admin-btn-icon admin-btn-danger"
+                      title="Delete"
+                    >
+                      <RiDeleteBinLine size={18} />
+                    </button>
+                  </div>
+
+                  <div className="admin-store-item-meta">
+                    <small>Updated: {new Date(item.updatedAt).toLocaleString()}</small>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <div className="admin-how-to-use" style={{ marginTop: '2rem' }}>
+          <h3 className="admin-how-to-title">How this works:</h3>
+          <ul className="admin-how-to-list">
+            <li className="admin-how-to-item">Add items (passes, merch, etc.) with images and descriptions</li>
+            <li className="admin-how-to-item">Items are stored locally and will appear on your frontend store</li>
+            <li className="admin-how-to-item">Toggle availability to control what users can purchase</li>
+            <li className="admin-how-to-item">Edit or delete items anytime</li>
+            <li className="admin-how-to-item">Images are stored as base64 (for demo purposes)</li>
+          </ul>
         </div>
       </div>
     </div>

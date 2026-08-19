@@ -4,28 +4,38 @@ on:
   pull_request:
     branches:
       - main
-  
+    paths-ignore:
+      - '**/*.md'
+
   push:
     branches:
-      - dev
+      - main
 
 jobs:
-  linting:
-    
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Setup node
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
       - name: Install deps
-        run: npm ci
+        run: npm ci --no-audit --no-fund
 
-      - name: Lint check
+      - name: Lint
         run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-build
+          path: build

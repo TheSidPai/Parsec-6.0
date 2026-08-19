@@ -9,7 +9,8 @@ function Sidebar({ house = 'gryffindor' }) {
     { path: '/dashboard', label: 'Home', icon: '🏠' },
     { path: '/dashboard/events', label: 'Events', icon: '🎯' },
     { path: '/dashboard/schedule', label: 'Schedule', icon: '📅' },
-    { path: '/dashboard/tickets', label: 'Tickets', icon: '🎫' },
+    { path: '/dashboard/passes', label: 'Event Passes', icon: '🎟️' },
+    { path: '/dashboard/payment-history', label: 'My Orders', icon: '📜' },
     { path: '/dashboard/profile', label: 'Profile', icon: '👤' },
     { path: '/dashboard/leaderboard', label: 'Leaderboard', icon: '🏆' },
     { path: '/dashboard/team', label: 'Team', icon: '👥' },
@@ -19,7 +20,11 @@ function Sidebar({ house = 'gryffindor' }) {
   return (
     <aside className={`sidebar sidebar-${house}`}>
       <div className="sidebar-header">
-        <h2>PARSEC 6.0</h2>
+        <img 
+          src={require("../assets/images/parsec-logo-white.webp")}
+          alt="PARSEC 6.0"
+          className="sidebar-logo"
+        />
         <p className="house-name">{house.toUpperCase()}</p>
       </div>
 

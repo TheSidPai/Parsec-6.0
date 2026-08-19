@@ -1,236 +1,467 @@
 [
-  {
-    "email": "cs23bt070@iitdh.ac.in",
-    "name": "Shreya S Bhat",
-    "team": "Events Team",
-    "role": "Agentic AI Hackathon",
-    "photo": "/teams/IMG_20250601_230335---SHREYA-S-BHAT.webp",
-    "linkedin": "https://www.linkedin.com/in/shreya-s-bhat-041b762a1",
-    "instagram": "https://www.instagram.com/shreya_bhat05"
-  },
-  {
-    "email": "cs23bt066@iitdh.ac.in",
-    "name": "Varshith",
-    "team": "Events Team",
-    "role": "Agentic AI Hackathon",
-    "photo": "/teams/IMG_3208---MEDA-VARSHITH.webp",
-    "linkedin": "https://www.linkedin.com/in/varshith",
-    "instagram": ""
-  },
-  {
-    "email": "cs23bt068@iitdh.ac.in",
-    "name": "Surya Prakash S",
-    "team": "Events Team",
-    "role": "Agentic AI Hackathon",
-    "photo": "/teams/WhatsApp-Image-2025-10-25-at-7.10.44-PM---SURYA-PRAKASH-S.webp",
-    "linkedin": "https://www.linkedin.com/in/surya-prakash",
-    "instagram": "https://www.instagram.com/the_sid_pai"
-  },
-  {
-    "email": "cs23bt049@iitdh.ac.in",
-    "name": "Dileepan S K",
-    "team": "Events Team",
-    "role": "AlgoStrike",
-    "photo": "/teams/Dileepan_S_K_Photo---DILEEPAN-S-K.webp",
-    "linkedin": "https://www.linkedin.com/in/dileepan-s-k-6418792ab",
-    "instagram": "https://www.instagram.com/your_friend_dileepan"
-  },
-  {
-    "email": "is24bm037@iitdh.ac.in",
-    "name": "Aayushi Singh",
-    "team": "Events Team",
-    "role": "AlgoStrike",
-    "photo": "/teams/i4dmxl---Aayushi-Singh.webp",
-    "linkedin": "https://www.linkedin.com/in/aayushi-singh-426946331",
-    "instagram": "https://www.instagram.com/.aayushi.7."
-  },
-  {
-    "email": "me24bt047@iitdh.ac.in",
-    "name": "Balamaruli V B",
-    "team": "Events Team",
-    "role": "Aurora",
-    "photo": "/teams/My_photo---Balamurali-V-B.webp",
-    "linkedin": "https://www.linkedin.com/in/balamurali-v-b-726103337",
-    "instagram": "https://www.instagram.com/srismaran_3581"
-  },
-  {
-    "email": "ee23bt031@iitdh.ac.in",
-    "name": "Aniruddh Pandav",
-    "team": "Events Team",
-    "role": "Aurora",
-    "photo": "/teams/IMG_20250916_222841---ANIRUDDH-PANDAV.webp",
-    "linkedin": "https://www.linkedin.com/in/aniruddh-pandav",
-    "instagram": ""
-  },
-  {
-    "email": "ce24bt001@iitdh.ac.in",
-    "name": "Saikat Ghosh",
-    "team": "Events Team",
-    "role": "BitHunt",
-    "photo": "/teams/CE24BT001_Photo---Saikat-Ghosh.webp",
-    "linkedin": "https://www.linkedin.com/in/saikat-ghosh-67b38a321",
-    "instagram": "https://www.instagram.com/__saikatghosh__/"
-  },
-  {
-    "email": "cs23bt039@iitdh.ac.in",
-    "name": "P Sri Smaran",
-    "team": "Events Team",
-    "role": "BitHunt",
-    "photo": "/teams/Screenshot_2025-10-22-18-03-06-41_92460851df6f172a4592fca41cc2d2e6---PULLIPUDI-SRI-SMARAN.webp",
-    "linkedin": "https://www.linkedin.com/in/sri-smaran-pullipudi-126a79324",
-    "instagram": "https://www.instagram.com/srismaran_3581"
-  },
-  {
-    "email": "me24bt041@iitdh.ac.in",
-    "name": "Suchitra Mandar Dabholkar",
-    "team": "Events Team",
-    "role": "Build-A-Bot 3.0",
-    "photo": "/teams/Suchitra_-Dabholkar_Photo---Suchitra-Mandar-Dabholkar.webp",
-    "linkedin": "https://www.linkedin.com/in/suchitra-dabholkar-164425368",
-    "instagram": "https://www.instagram.com/suchitra_dabholkar"
-  },
-  {
-    "email": "cs24bt033@iitdh.ac.in",
-    "name": "Affan P",
-    "team": "Events Team",
-    "role": "Build-A-Bot 3.0",
-    "photo": "/teams/affan_photo.webp",
-    "linkedin": "https://www.linkedin.com/in/affan-p-ba6492330",
-    "instagram": ""
-  },
-  {
-    "email": "me24bt049@iitdh.ac.in",
-    "name": "Rajat Gupta",
-    "team": "Events Team",
-    "role": "Design Club Workshop",
-    "photo": "/teams/IMG-20250829-WA0020---Rajat-Gupta.webp",
-    "linkedin": "https://www.linkedin.com/in/rajat-gupta-4a58b1324",
-    "instagram": "https://www.instagram.com/___._rajat_.___|"
-  },
-  {
-    "email": "mc24bt009@iitdh.ac.in",
-    "name": "Gourav Sherikar",
-    "team": "Events Team",
-    "role": "DevHack 7.0",
-    "photo": "/teams/IMG_20251021_020309_397---Gourav-Sherikar.webp",
-    "linkedin": "https://www.linkedin.com/in/gourav-sherikar-8ab210343",
-    "instagram": "https://www.instagram.com/_gouravsherikar"
-  },
-  {
-    "email": "cs23bt009@iitdh.ac.in",
-    "name": "Nidhish Doshi",
-    "team": "Events Team",
-    "role": "DevHack 7.0",
-    "photo": "/teams/20241026_014655-1-(1)---NIDHISH-DOSHI.webp",
-    "linkedin": "https://www.linkedin.com/in/nidhish-doshi-294b9b283",
-    "instagram": "https://www.instagram.com/nidhish_doshi"
-  },
-  {
-    "email": "mc24bt001@iitdh.ac.in",
-    "name": "Anant Tripathi",
-    "team": "Events Team",
-    "role": "DevHack 7.0",
-    "photo": "/teams/IMG_5169---Anant-Tripathi.webp",
-    "linkedin": "https://www.linkedin.com/in/anant-tripathi-195573301",
-    "instagram": "https://www.instagram.com/koenigsmann"
-  },
-  {
-    "email": "mc24bt010@iitdh.ac.in",
-    "name": "Samarth M",
-    "team": "Events Team",
-    "role": "Finance Club Workshop",
-    "photo": "/teams/Samarth_M_Photo---Samarth-M.webp",
-    "linkedin": "https://www.linkedin.com/in/samarth-m-644b53388",
-    "instagram": "https://www.instagram.com/devkaushal02"
-  },
-  {
-    "email": "me23bt028@iitdh.ac.in",
-    "name": "Kavichelvan K",
-    "team": "Events Team",
-    "role": "Solidedge",
-    "photo": "/teams/f257929f-6728-4c8c-8f0f-3c29ba9e2cfc---KAVICHELVAN-K.webp",
-    "linkedin": "https://www.linkedin.com/in/kavichelvan-k",
-    "instagram": "https://www.instagram.com/kavichelvan93"
-  },
-  {
-    "email": "me23bt023@iitdh.ac.in",
-    "name": "Farhaan Nasir",
-    "team": "Events Team",
-    "role": "Solidedge",
-    "photo": "/teams/WhatsApp-Image-2025-10-22-at-14.41.12_581c6ce5---FARHAAN-NASIR.webp",
-    "linkedin": "https://www.linkedin.com/in/farhaan-nasir",
-    "instagram": "https://www.instagram.com/_.farhaan_n/"
-  },
-  {
-    "email": "mc24bt022@iitdh.ac.in",
-    "name": "Swarup Sahoo",
-    "team": "Events Team",
-    "role": "Trumble",
-    "photo": "/teams/SWARUP_SAHOO_Photo---Swarup-Sahoo.webp",
-    "linkedin": "https://www.linkedin.com/in/swarup-sahoo-947b17369",
-    "instagram": "https://www.instagram.com/swarup_sparkk"
-  },
-  {
-    "email": "mc24bt002@iitdh.ac.in",
-    "name": "Sreejita Chatterjee",
-    "team": "Events Team",
-    "role": "Veni Vidi Vici",
-    "photo": "/teams/Meh---Sreejita-Chatterjee.webp",
-    "linkedin": "https://www.linkedin.com/in/sreejita-chatterjee",
-    "instagram": ""
-  },
-  {
-    "email": "mc23bt010@iitdh.ac.in",
-    "name": "Vidit Parikh",
-    "team": "Core Team",
-    "role": "",
-    "photo": "/teams/MC23BT010_Photo---VIDIT-JIGNESH-PARIKH.webp",
-    "linkedin": "https://www.linkedin.com/in/vidit-parikh",
-    "instagram": "https://www.instagram.com/vidit.parikh.10"
-  },
-  {
-    "email": "support.parsec@iitdh.ac.in",
-    "name": "Dev Kaushal",
-    "team": "Mentors",
-    "role": "",
-    "photo": "/teams/Dev_parsec---Support-Parsec.webp",
-    "linkedin": "https://www.linkedin.com/in/dev-kaushal-645734248",
-    "instagram": "https://www.instagram.com/devkaushal02"
-  },
-  {
-    "email": "220030047@iitdh.ac.in",
-    "name": "Vedant Kannur",
-    "team": "Mentors",
-    "role": "",
-    "photo": "/teams/IMG_7712---Vedant-Kannur.webp",
-    "linkedin": "https://www.linkedin.com/in/vedant-kannur-478a50239",
-    "instagram": "https://www.instagram.com/vedantkannur_07"
-  },
-  {
-    "email": "is24bm003@iitdh.ac.in",
-    "name": "Ayush Raj",
-    "team": "Web Team",
-    "role": "",
-    "photo": "/teams/is24bm003_Photo---Ayush-Raj.webp",
-    "linkedin": "https://www.linkedin.com/in/ayush-raj-13x",
-    "instagram": "https://www.instagram.com/itsxayush.raj"
-  },
-  {
-    "email": "mc24bt017@iitdh.ac.in",
-    "name": "Siddhant Pai",
-    "team": "Web Team",
-    "role": "",
-    "photo": "/teams/Sidphoto---Edited---Siddhant-Mahindra-Pai.webp",
-    "linkedin": "https://www.linkedin.com/in/siddhant-pai-9a53b6371",
-    "instagram": "https://www.instagram.com/the_sid_pai"
-  },
-  {
-    "email": "mc24bt016@iitdh.ac.in",
-    "name": "Yogya Ahuja",
-    "team": "Web Team",
-    "role": "",
-    "photo": "/teams/IMG_5892---Yogya-Ahuja.webp",
-    "linkedin": "https://www.linkedin.com/in/yogya-ahuja",
-    "instagram": "https://www.instagram.com/yogyaa._16"
-  }
+    {
+        "name": "Samarth M",
+        "team": "Events Team",
+        "role": "Finance Workshop",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/SamarthM.webp",
+        "linkedin": "https://www.linkedin.com/in/samarth-m-644b53388/",
+        "instagram": ""
+    },
+    {
+        "name": "Nidhish Doshi",
+        "team": "Events Team",
+        "role": "DevHack 7.0",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/NidhishDoshi.webp",
+        "linkedin": "https://www.linkedin.com/in/nidhish-doshi-294b9b283",
+        "instagram": "https://www.instagram.com/nidhish_doshi"
+    },
+    {
+        "name": "Gourav Sherikar",
+        "team": "Events Team",
+        "role": "DevHack 7.0",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/GouravSherikar.webp",
+        "linkedin": "https://www.linkedin.com/in/gourav-sherikar-8ab210343?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "instagram": "https://www.instagram.com/_gouravsherikar?igsh=aDg0NnI5N3RvcjR6"
+    },
+    {
+        "name": "Anant Tripathi",
+        "team": "Events Team",
+        "role": "DevHack 7.0",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/AnantTripathi.webp",
+        "linkedin": "https://www.linkedin.com/in/anant-tripathi-195573301?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+        "instagram": ""
+    },
+    {
+        "name": "Swarup Sahoo",
+        "team": "Events Team",
+        "role": "Trumble",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/SwarupSahoo.webp",
+        "linkedin": "https://www.linkedin.com/in/swarup-sahoo-947b17369",
+        "instagram": "https://www.instagram.com/swarup_sparkk?igsh=MXRjd2liM3c2MWRsdQ=="
+    },
+    {
+        "name": "Saikat Ghosh",
+        "team": "Events Team",
+        "role": "BitHunt",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/SaikatGhosh.webp",
+        "linkedin": "https://www.linkedin.com/in/saikat-ghosh-67b38a321",
+        "instagram": "https://www.instagram.com/__saikatghosh__/"
+    },
+    {
+        "name": "P Sri Smaran",
+        "team": "Events Team",
+        "role": "BitHunt",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/Smaran.webp",
+        "linkedin": "https://www.linkedin.com/in/sri-smaran-pullipudi-126a79324?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "instagram": "https://www.instagram.com/srismaran_3581"
+    },
+    {
+        "name": "Kavichelvan K",
+        "team": "Events Team",
+        "role": "Protocraft",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/KavichelvanK.webp",
+        "linkedin": "https://www.linkedin.com/in/kavichelvan-k?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+        "instagram": "https://www.instagram.com/kavichelvan93"
+    },
+    {
+        "name": "Farhaan Nasir",
+        "team": "Events Team",
+        "role": "Protocraft",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/FarhaanNasir.webp",
+        "linkedin": "https://www.linkedin.com/in/farhaan-nasir/",
+        "instagram": "https://www.instagram.com/_.farhaan_n/"
+    },
+    {
+        "name": "Sreejita Chatterjee",
+        "team": "Events Team",
+        "role": "Veni Vidi Vici",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/SreejitaChatterjee.webp",
+        "linkedin": "",
+        "instagram": ""
+    },
+    {
+        "name": "Vishvanathan K",
+        "team": "Events Team",
+        "role": "Veni Vidi Vici",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/VishvanathanK.webp",
+        "linkedin": "https://www.linkedin.com/in/vishvanathan-k",
+        "instagram": ""
+    },
+    {
+        "name": "Dileepan S K",
+        "team": "Events Team",
+        "role": "AlgoStrike",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/DileepanSK.webp",
+        "linkedin": "https://www.linkedin.com/in/dileepan-s-k-6418792ab",
+        "instagram": "https://www.instagram.com/your_friend_dileepan"
+    },
+    {
+        "name": "Aayushi Singh",
+        "team": "Events Team",
+        "role": "Synapse",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/AayushiSingh.webp",
+        "linkedin": "https://www.linkedin.com/in/aayushi-singh-426946331?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "instagram": "https://www.instagram.com/_.aayushi.7._"
+    },
+    {
+        "name": "Aniruddh Pandav",
+        "team": "Events Team",
+        "role": "Aurora",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/AniruddhPandav.webp",
+        "linkedin": "https://www.linkedin.com/in/aniruddh-pandav",
+        "instagram": ""
+    },
+    {
+        "name": "Balamurali V B",
+        "team": "Events Team",
+        "role": "Aurora",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/BalamuraliVB.webp",
+        "linkedin": "https://www.linkedin.com/in/balamurali-v-b-726103337?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "instagram": ""
+    },
+    {
+        "name": "Suchitra Mandar Dabholkar",
+        "team": "Events Team",
+        "role": "Build-A-Bot 3.0",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/SuchitraDabholkar.webp",
+        "linkedin": "https://www.linkedin.com/in/suchitra-dabholkar-164425368/",
+        "instagram": "https://www.instagram.com/suchitra_dabholkar"
+    },
+    {
+        "name": "Affan P",
+        "team": "Events Team",
+        "role": "Build-A-Bot 3.0",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/AffanPathan.webp",
+        "linkedin": "https://www.linkedin.com/in/affan-p-ba6492330/",
+        "instagram": ""
+    },
+    {
+        "name": "Varshith",
+        "team": "Events Team",
+        "role": "Agentic AI Hackathon",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/MedaVarshith.webp",
+        "linkedin": "",
+        "instagram": ""
+    },
+    {
+        "name": "Surya Prakash S",
+        "team": "Events Team",
+        "role": "Agentic AI Hackathon",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/SuryaPrakash.webp",
+        "linkedin": "https://www.linkedin.com/in/surya-prakash-03641827a",
+        "instagram": "https://www.instagram.com/_koenigsmann_?igsh=cHl4ZWk2a2N6dHJj"
+    },
+    {
+        "name": "Shreya S Bhat",
+        "team": "Events Team",
+        "role": "Agentic AI Hackathon",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/ShreyaBhat.webp",
+        "linkedin": "https://www.linkedin.com/in/shreya-s-bhat-041b762a1",
+        "instagram": "https://www.instagram.com/shreya_bhat05"
+    },
+    {
+        "name": "Rithika Athawade",
+        "team": "Events Team",
+        "role": "Astronomy Events",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/RithikaAthawade.webp",
+        "linkedin": "https://www.linkedin.com/in/rithika-athawade-9a251a321",
+        "instagram": "https://www.instagram.com/riithikaaaaaaa"
+    },
+    {
+        "name": "Ranit Maity",
+        "team": "Events Team",
+        "role": "Astronomy Events",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/RanitMaity.webp",
+        "linkedin": "https://www.linkedin.com/in/ranit-maity-643233271",
+        "instagram": "https://www.instagram.com/ei_besh_bhalo_achi"
+    },
+    {
+        "name": "Rajat Gupta",
+        "team": "Events Team",
+        "role": "Design Club Workshop",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/RajatGupta.webp",
+        "linkedin": "https://www.linkedin.com/in/rajat-gupta-4a58b1324",
+        "instagram": "https://www.instagram.com/___._rajat_.___"
+    },
+    {
+        "name": "K Varaprasad Reddy",
+        "team": "Events Team",
+        "role": "Dance",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/VaraPrasad.webp",
+        "linkedin": "https://www.linkedin.com/in/karyada-varaparasad-reddy-8a59b7228",
+        "instagram": "https://www.instagram.com/stalin_0806?igsh=MTBtMHIxdmYzem05aw=="
+    },
+    {
+        "name": "Thella Namratha",
+        "team": "Events Team",
+        "role": "Music Arts",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/ThellaNamratha.webp",
+        "linkedin": "https://www.linkedin.com/in/thella-namratha-6b1630294/",
+        "instagram": "https://www.instagram.com/miami__heatwave/"
+    },
+    {
+        "name": "Arshdeep Singh",
+        "team": "Events Team",
+        "role": "Theater Arts",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/ArshdeepSingh.webp",
+        "linkedin": "https://www.linkedin.com/in/arshdeep-singh-a43b7b2a4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "instagram": "https://www.instagram.com/_arshdeep21?igsh=MXB3NXhnZjAyeHpqbw=="
+    },
+    {
+        "name": "Kirtiraj Mallik",
+        "team": "Events Team",
+        "role": "Theater Arts",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/KirtirajMallik.webp",
+        "linkedin": "https://www.linkedin.com/in/kirtiraj-mallick-651606254?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "instagram": "https://www.instagram.com/kirtiraj_mallick?igsh=MWJxdzRlNGM4MWVwZQ=="
+    },
+    {
+        "name": "Sudhakar S Dalawayi",
+        "team": "Events Team",
+        "role": "Literary Arts",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/SudhakarDalwayi.webp",
+        "linkedin": "https://www.linkedin.com/in/sudhakar-dalawayi-664b1b399?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "instagram": "https://www.instagram.com/sudhakardalawayi"
+    },
+    {
+        "name": "Mayank Sharma",
+        "team": "Events Team",
+        "role": "Photography",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/MayankSharma.webp",
+        "linkedin": "https://www.linkedin.com/in/mayank-sharma-aa3648287?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "instagram": "https://www.instagram.com/hey.p9dt"
+    },
+    {
+        "name": "Aayush Vats",
+        "team": "Mentors",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/AayushVats.webp",
+        "linkedin": "https://www.linkedin.com/in/vatsaayush/",
+        "instagram": "https://www.instagram.com/astrogeek.iitdh"
+    },
+    {
+        "name": "Anvay Jaykar",
+        "team": "Mentors",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/AnvayJaykar.webp",
+        "linkedin": "https://www.linkedin.com/in/anvay-jaykar-7b3974267/",
+        "instagram": "https://www.instagram.com/anvayjaykar"
+    },
+    {
+        "name": "Jai Sharma",
+        "team": "Mentors",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/JaiSharma.webp",
+        "linkedin": "https://www.linkedin.com/in/jaisharma1902/",
+        "instagram": "https://www.instagram.com/jaisharma___"
+    },
+    {
+        "name": "Vedant Kannur",
+        "team": "Mentors",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/VedantKannur.webp",
+        "linkedin": "https://www.linkedin.com/in/vedant-kannur-478a50239?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "instagram": "https://www.instagram.com/vedantkannur_07/?hl=en#"
+    },
+    {
+        "name": "Vidit Parikh",
+        "team": "Core Team - PARSEC",
+        "displayRole": "Overall Coordinator - PARSEC",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/ViditParikh.webp",
+        "linkedin": "https://www.linkedin.com/in/vidit-parikh/",
+        "instagram": "https://www.instagram.com/vidit.parikh.10/"
+    },
+    {
+        "name": "Yash Halbhavi",
+        "team": "Core Team - PARSEC",
+        "displayRole": "Finance Head - PARSEC",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/YashHalbhavi.webp",
+        "linkedin": "https://www.linkedin.com/in/yash-halbhavi-53672927b",
+        "instagram": ""
+    },
+    {
+        "name": "Saipushkar Nagaraj",
+        "team": "Core Team - PARSEC",
+        "displayRole": "Operations Head - PARSEC",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/SaipushkarNagaraj.webp",
+        "linkedin": "https://www.linkedin.com/in/saipushkar-nagaraj-71364728a/",
+        "instagram": "https://www.instagram.com/saipushkar_n2112"
+    },
+    {
+        "name": "Dev Kaushal",
+        "team": "Core Team - PARSEC",
+        "displayRole": "Events Head - PARSEC",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/DevKaushal.webp",
+        "linkedin": "https://www.linkedin.com/in/dev-kaushal-645734248/",
+        "instagram": "https://www.instagram.com/devkaushal02/?hl=en"
+    },
+    {
+        "name": "Ayush Raj",
+        "team": "Web Team",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/AyushRaj.webp",
+        "linkedin": "https://www.linkedin.com/in/ayush-raj-13x/",
+        "instagram": "https://www.instagram.com/itsxayush.raj/"
+    },
+    {
+        "name": "Siddhant Pai",
+        "team": "Web Team",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/SiddhantPai.webp",
+        "linkedin": "https://www.linkedin.com/in/siddhant-pai-9a53b6371",
+        "instagram": "https://www.instagram.com/the_sid_pai?igsh=MXRkOTY2N21rb2o5Zw=="
+    },
+    {
+        "name": "Yogya Ahuja",
+        "team": "Web Team",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/YogyaAhuja.webp",
+        "linkedin": "https://www.linkedin.com/in/yogya-ahuja-8b4630348/",
+        "instagram": "https://www.instagram.com/yogyaa._16"
+    },
+    {
+        "name": "Prajwal Prasad",
+        "team": "Core Team - Harshtal",
+        "displayRole": "Overall Coordinator - harSHtAl",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/PrajwalPrasad.webp",
+        "linkedin": "https://www.linkedin.com/in/prajwalprasad24/",
+        "instagram": "https://www.instagram.com/prajwal._.n"
+    },
+    {
+        "name": "Yashas Subramanya",
+        "team": "Core Team - Harshtal",
+        "displayRole": "Finance Head - harSHtAl",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/YashasSubramanhya.webp",
+        "linkedin": "https://www.linkedin.com/in/yashas-subramanya",
+        "instagram": "https://www.instagram.com/yashasx840"
+    },
+    {
+        "name": "Nihar Sagar G",
+        "team": "Core Team - Harshtal",
+        "displayRole": "Operations Head - harSHtAl",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/NiharSagar.webp",
+        "linkedin": "https://linkedin.com/in/nihar-s-g",
+        "instagram": "https://www.instagram.com/nihar_s_g/"
+    },
+    {
+        "name": "Prakruthi KS",
+        "team": "Core Team - Harshtal",
+        "displayRole": "Events Head - harSHtAl",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/PrakruthiKS.webp",
+        "linkedin": "https://www.linkedin.com/in/prakruthi-k-s-2663ba355?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "instagram": "https://www.instagram.com/g0ldensunshine._"
+    },
+    {
+        "name": "K Sanjana",
+        "team": "Marketing Team",
+        "displayRole": "Marketing Head",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/KopparaSanjana.webp",
+        "linkedin": "https://www.linkedin.com/in/koppara-sanjana-5ba20b28a",
+        "instagram": "https://www.instagram.com/sanjana_25_0806"
+    },
+    {
+        "name": "Sucharitha",
+        "team": "Marketing Team",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/KameraSucharitha.webp",
+        "linkedin": "-",
+        "instagram": "https://www.instagram.com/itsme_suchii"
+    },
+    {
+        "name": "Neerav Solanki",
+        "team": "Marketing Team",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/NeeravSolanki.webp",
+        "linkedin": "https://www.linkedin.com/in/neerav-solanki-20a457327?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "instagram": "https://www.instagram.com/neerav.2.1"
+    },
+    {
+        "name": "Mayank Mishra",
+        "team": "Marketing Team",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/MayankMishra.webp",
+        "linkedin": "https://www.linkedin.com/in/mayank-mishra-222374323?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "instagram": "https://www.instagram.com/mayankmishra_19?igsh=Z3dxaGhhZ2NtMW1v"
+    },
+    {
+        "name": "Thiaana Balasani",
+        "team": "Marketing Team",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/BalasaniThiaana.webp",
+        "linkedin": "https://www.linkedin.com/in/thiaana-balasani-b4455537b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "instagram": "https://www.instagram.com/thiaana_aroha_676?igsh=MXIyb3M1Zzhub3FrMg=="
+    },
+    {
+        "name": "E. Sai Charan",
+        "team": "Marketing Team",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/ElusariSaiCharan.webp",
+        "linkedin": "-",
+        "instagram": "https://www.instagram.com/charan_unscripted"
+    },
+    {
+        "name": "Sarthak Gour",
+        "team": "Marketing Team",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/SarthakGour.webp",
+        "linkedin": "-",
+        "instagram": ""
+    },
+    {
+        "name": "Samit",
+        "team": "Marketing Team",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/SamitRakesh.webp",
+        "linkedin": "-",
+        "instagram": "https://www.instagram.com/official_samit_rakesh_ji"
+    },
+    {
+        "name": "Divyansh Janagal",
+        "team": "Marketing Team",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/DivyanshJanagal.webp",
+        "linkedin": "https://www.linkedin.com/in/divyanshjanagal?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "instagram": "https://www.instagram.com/divyansh_janagal?igsh=MWF2cmFidnFlOHl2cw=="
+    },
+    {
+        "name": "Apratim Das",
+        "team": "Marketing Team",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/ApratimDas.webp",
+        "linkedin": "https://www.linkedin.com/in/apratim-das-82a043316?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "instagram": "https://www.instagram.com/apratimdasofficial"
+    },
+    {
+        "name": "Tangirala Dhanunjaya Rao",
+        "team": "Marketing Team",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/DhanunjayRao.webp",
+        "linkedin": "http://www.linkedin.com/in/dhanunjaya-rao-tangirala-571a56322",
+        "instagram": "https://www.instagram.com/@dj_002247"
+    },
+    {
+        "name": "Aditya Prabhakar",
+        "team": "Marketing Team",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/AdityaPrabhakar.webp",
+        "linkedin": "https://www.linkedin.com/in/aditya-prabhakar-13aa81304",
+        "instagram": "https://www.instagram.com/"
+    },
+    {
+        "name": "L Shreya",
+        "team": "Events Team",
+        "role": "",
+        "photo": "https://parsec-iitdh.github.io/assets/teams/LShreya.webp",
+        "linkedin": "https://www.linkedin.com/in/shreya-l-251823326",
+        "instagram": "https://www.instagram.com/real_h00man"
+    }
 ]
